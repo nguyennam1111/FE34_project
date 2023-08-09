@@ -1,0 +1,4 @@
+.hot-product :hover,
+.hot-product :focus {
+  cursor: pointer;
+}

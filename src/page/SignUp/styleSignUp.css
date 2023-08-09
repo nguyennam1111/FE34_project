@@ -1,0 +1,13 @@
+.img-social {
+  width: 120px;
+  max-width: 100%;
+}
+.toggle-eye,
+.edit-symbol {
+  margin-left: -30px;
+  cursor: pointer;
+  color: gray;
+  text-align: center;
+  vertical-align: middle;
+  z-index: 2;
+}
