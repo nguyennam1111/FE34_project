@@ -29,24 +29,11 @@ export const actfetchAllProducts = createAsyncThunk(
     ]);
     return response;
   }
-  // async (params) => {
-  //   const response = productsApi.getAllProducts(params);
-
-  //   return response;
-  // }
 );
-// export const actGetProductByStatus = createAsyncThunk(
-//   "products/actGetProductByStatus",
-
-//   async () => {
-//     const response = await Promise.all([
-//       productsApi.getAllProducts({ productStatus: "new" }),
-//       productsApi.getAllProducts({ productStatus: "bestSale" }),
-//       productsApi.getAllProducts({ productStatus: "hot" }),
-//     ]);
-//     return response;
-//   }
-// );
+export const updateSaleQty = createAsyncThunk(
+  "product/updateSaleQty",
+  async () => {}
+);
 
 export const actGetProductbyId = createAsyncThunk(
   "products/actGetProductbyId",

@@ -45,6 +45,13 @@ const ProductDetails = () => {
   const { isAuth, userProfile } = useSelector((state) => state.auth);
 
   const { productComments } = useSelector((state) => state.productComment);
+  const { cart } = useSelector((state) => state.cart);
+  // const _productQtyInCart = cart.map?.((item) =>
+  //   item.productId == productDetails.id && sizeAndColor == item.sizeAndColor
+  //     ? item.productQty
+  //     : 0
+  // );
+  // console.log(productQtyInCart, "productQtyInCart");
 
   const currentUrl = window.location.pathname;
   localStorage.setItem("currentUrl", JSON.stringify(currentUrl));
@@ -72,8 +79,6 @@ const ProductDetails = () => {
   }, [productDetails.tags]);
 
   const imageList = productDetails?.productsImg;
-
-  const keywords = productDetails?.productName?.split(" ");
 
   const handleProductDetails = (productId) => {
     navigate(`/Products/${productId}`);

@@ -1,4 +1,120 @@
 {
+  "banners": [
+    "https://bizweb.dktcdn.net/100/117/632/themes/157694/assets/banner1.gif?1564585558451",
+    "https://bizweb.dktcdn.net/100/117/632/themes/157694/assets/slideshow_image_2.jpg?1564585558451",
+    "https://bizweb.dktcdn.net/100/117/632/themes/157694/assets/slideshow_image_3.jpg?1564585558451",
+    "https://icotton.vn/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhome_pc.d3e2e8b4.jpg&w=3840&q=75"
+  ],
+  "logos": [
+    "https://bizweb.dktcdn.net/100/117/632/themes/157694/assets/logo1.png?1564585558451",
+    "https://bizweb.dktcdn.net/100/117/632/themes/157694/assets/logo2.png?1564585558451",
+    "https:/bizweb.dktcdn.net/100/117/632/themes/157694/assets/logo3.png?1564585558451",
+    "https:bizweb.dktcdn.net/100/117/632/themes/157694/assets/logo4.png?1564585558451",
+    "https:bizweb.dktcdn.net/100/117/632/themes/157694/assets/logo5.png?1564585558451",
+    "https:bizweb.dktcdn.net/100/117/632/themes/157694/assets/logo6.png?1564585558451",
+    "https:bizweb.dktcdn.net/100/117/632/themes/157694/assets/logo7.png?1564585558451",
+    "https:bizweb.dktcdn.net/100/117/632/themes/157694/assets/logo8.png?1564585558451",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB0uo0KnzEEfWyOAGf5-OZgCPmNTboQEq8pizbV4gGBg&s",
+    "https://icotton.vn/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.14fb6136.png&w=128&q=75"
+  ],
+  "guidance": [
+    {
+      "policy": {
+        "id": 1,
+        "title": "Chính sách mua bán, trao đổi hàng",
+        "content": "Chúng tôi gửi đến bạn những chính sách mua hàng, đổi trả, vận chuyển để đảm bảo được tính công bằng và rõ ràng giữa hai bên"
+      },
+      "exchange": {
+        "id": 2,
+        "title": "Chính sách đổi trả hàng hóa",
+        "content": "Chúng tôi luôn đảm bảo những chính sách tốt nhất cho quý khách hàng với chính sách đổi trả hàng khi sản phẩm bị lỗi"
+      },
+      "giftPrizePromote": {
+        "id": 3,
+        "title": "Quà tặng, giải thưởng, khuyến mãi",
+        "content": "Để tri ân khách hàng,gửi tặng đến toàn bộ những khách hàng những món quà tuyệt vời đã ủng hộ chúng tôi trong thời gian qua"
+      },
+      "onlineShopping": {
+        "id": 4,
+        "title": "Hướng dẫn mua hàng online",
+        "content": "Quý khách có thể gửi đơn hàng hoặc goi trực tiếp tới số Hotline để đặt hàng",
+        "description": [
+          "Bước 1: Truy cập website và lựa chọn sản phẩm cần mua để mua hàng",
+          "Bước 2: Click và sản phẩm muốn mua, màn hình hiển thị ra pop up với các lựa chọn sau Nếu bạn muốn tiếp tục mua hàng: Bấm vào phần tiếp tục mua hàng để lựa chọn thêm sản phẩm vào giỏ hàng Nếu bạn muốn xem giỏ hàng để cập nhật sản phẩm: Bấm vào xem giỏ hàng Nếu bạn muốn đặt hàng và thanh toán cho sản phẩm này vui lòng bấm vào: Đặt hàng và thanh toán",
+          "Bước 3: Lựa chọn thông tin tài khoản thanh toán Nếu bạn đã có tài khoản vui lòng nhập thông tin tên đăng nhập là email và mật khẩu vào mục đã có tài khoản trên hệ thống Nếu bạn chưa có tài khoản và muốn đăng ký tài khoản vui lòng điền các thông tin cá nhân để tiếp tục đăng ký tài khoản. Khi có tài khoản bạn sẽ dễ dàng theo dõi được đơn hàng của mình Nếu bạn muốn mua hàng mà không cần tài khoản vui lòng nhấp chuột vào mục đặt hàng không cần tài khoản",
+          "Bước 4: Điền các thông tin của bạn để nhận đơn hàng, lựa chọn hình thức thanh toán và vận chuyển cho đơn hàng của mình",
+          "Bước 5: Xem lại thông tin đặt hàng, điền chú thích và gửi đơn hàng Sau khi nhận được đơn hàng bạn gửi chúng tôi sẽ liên hệ bằng cách gọi điện lại để xác nhận lại đơn hàng và địa chỉ của bạn."
+        ]
+      },
+      "transportation": {
+        "id": 5,
+        "title": "Chính sách vận chuyển",
+        "content": "Với mong muốn mang lại sự hài lòng cho quý khách khi mua hàng, chúng tôi có những quy định trong vận chuyển, nhằm đảm bảo rằng những sản phẩm quý khách mua là sản phẩm mà vừa ý nhất.",
+        "description": [
+          "1. Chúng tôi sẽ được thực hiện và chuyển phát dựa trên mẫu khách hàng đã chọn. Trường hợp không có đúng sản phẩm Quý khách yêu cầu chúng tôi sẽ gọi điện xác nhận gửi sản phẩm tương tự thay thế.",
+          "2. Thời gian chuyển phát tiêu chuẩn cho một đơn hàng là 12 giờ kể từ lúc đặt hàng. Chuyển phát sản phẩm đến các khu vực nội thành thành phố trên toàn quốc từ 4 giờ kể từ khi nhận hàng, chuyển phát ngay trong ngày đến các vùng lân cận (bán kính từ 10km – 50km).",
+          "3. Các đơn hàng gửi đi quốc tế: không đảm bảo thời gian được chính xác như yêu cầu, không đảm bảo thời gian nếu thời điểm chuyển phát trùng với các ngày lễ, tết và chủ nhật tại khu vực nơi đến.",
+          "4. Trường hợp không liên lạc được với người nhận, người nhận đi vắng: - Nếu chưa rõ địa chỉ chúng tôi sẽ lưu lại trong vòng 6 tiếng và liên lạc lại với người nhận, trong trường hợp ko liên lạc được đơn hàng sẽ bị hủy và không được hoàn lại thanh toán. - Nếu địa chỉ là công ty, văn phòng, nhà ở… Chúng tôi sẽ gửi đồng nghiệp, người thân nhận hộ và ký xác nhận - Để tại một nơi an toàn người nhận dễ nhận thấy tại nhà, văn phòng, công ty… Trường hợp này không có ký nhận.",
+          "5. Trường hợp người nhận không nhận đơn hàng: - Chúng tôi sẽ hủy bỏ đơn hàng. Trường hợp này sẽ không được hoàn trả thanh toán.",
+          "6. Trường hợp không đúng địa chỉ, thay đổi địa chỉ: - Không đúng địa chỉ: trường hợp sai địa chỉ chúng tôi sẽ lưu lại 6 tiếng và liên lạc với người gửi và người nhận để thỏa thuận về địa điểm, thời gian, nếu địa chỉ mới không quá 3km sẽ phát miễn phí. Trường hợp địa chỉ mới xa hơn 3km sẽ tính thêm phí theo quy định chuyển phát.",
+          " 7. Trường hợp không tồn tại người nhận tại địa chỉ yêu cầu: đơn hàng sẽ được hủy và không được hoàn lại thanh toán.",
+          "8. Chúng tôi không vận chuyển sản phẩm đến các địa chỉ trên tàu hỏa, máy bay, tàu thủy, khu vực nguy hiểm, các khu vực cấm…",
+          "..."
+        ]
+      }
+    }
+  ],
+  "service": [
+    {
+      "title": "Baby gap",
+      "content": [
+        "Hàng về hàng tháng theo đợt lớn, từ 30-50 mẫu mới tinh ko đụng hàng trên thị trường. Chất vải mịn, đẹp, hình thêu tinh tế, hình dán chắc và ko bị nứt. Sản lượng trên 10.000 bộ / đợt.",
+        "Chất lượng hoàn toàn được khẳng định qua hơn 2 năm shop cung ứng dòng hàng này, với nhiều khách lẻ đến từ các thị trường Việt Nam, Mỹ, Singapore, Úc, Malaysia....",
+        "Bán buôn bán lẻ số lượng lớn toàn quốc, giá cạnh tranh nhất thị trường."
+      ]
+    },
+    {
+      "title": "GW",
+      "content": [
+        "Hàng có mình vải chắc, đẹp, mẫu mã dễ thương phong phú",
+        "Hàng về ổn định mỗi đợt, giá gốc tốt nhất cho partner thân thiết của nhà máy và tổng nhập từ 6.000 -10.000 bộ / đợt",
+        "Số lượng nhập lớn, full mẫu. Giá để sỉ tốt nhất cho các bạn hàng, có khả năng deal giá tùy theo số lượng",
+        "Hàng về sớm nhất ngay trong ngày xuất xưởng"
+      ]
+    },
+    {
+      "title": "Top Baby",
+      "content": [
+        "Dòng phụ kiện chủ lực của shop",
+        "Nhập gốc từ xưởng sản xuất",
+        "Số lượng lớn với giá thành tốt nhất"
+      ]
+    },
+    {
+      "title": "Áo thun Coddle Me, Baby Gap, Disney",
+      "content": [
+        "Số lượng nhập lớn, phong phú với hàng trăm mẫu mỗi tháng",
+        "Nhập gốc từ nhà máy",
+        "Hàng bảo đảm đẹp, chất và giá cạnh tranh nhất thị trường"
+      ]
+    },
+    {
+      "title": "ZARA",
+      "content": [
+        "Số lượng nhập ko lớn nhưng hàng được tuyển chọn cực kỹ",
+        "Giá thành cao, đảm bảo chất lượng",
+        "Hàng về hàng tháng mẫu cập nhật liên tục"
+      ]
+    },
+    {
+      "title": "NEXT",
+      "content": [
+        "Dòng hàng đại diện cho nguồn hàng đồ sơ sinh cao cấp tại shop bé tom",
+        "Hàng đặt, chất lượng và mẫu mã cực kỳ ấn tượng",
+        "Giá thành cao nhưng shop khẳng định ko hề cao so với chất lượng sản phẩm"
+      ]
+    }
+  ],
   "products": [
     {
       "id": 1,
@@ -1015,6 +1131,33 @@
       "commentsContent": "test reload",
       "createdAt": "Wed Aug 09 2023 1:25:02 PM",
       "id": 9
+    },
+    {
+      "rate": 5,
+      "productId": 5,
+      "email": "abc@gmail.com",
+      "fullName": "NguyenNam",
+      "commentsContent": "good",
+      "createdAt": "Wed Aug 09 2023 7:50:52 PM",
+      "id": 10
+    },
+    {
+      "rate": 4.5,
+      "productId": 1,
+      "email": "abc@gmail.com",
+      "fullName": "NguyenNam",
+      "commentsContent": "ssss",
+      "createdAt": "Thu Aug 10 2023 10:54:36 PM",
+      "id": 11
+    },
+    {
+      "rate": 4.5,
+      "productId": 9,
+      "email": "abc@gmail.com",
+      "fullName": "NguyenNam",
+      "commentsContent": "id=9 , test",
+      "createdAt": "Thu Aug 10 2023 10:58:37 PM",
+      "id": 12
     }
   ],
   "userAccounts": [
@@ -1098,71 +1241,6 @@
       "confirmedPassword": "abc123",
       "createdAt": "2023-08-08 12:21:43",
       "id": 9
-    }
-  ],
-  "banners": [
-    "https://bizweb.dktcdn.net/100/117/632/themes/157694/assets/banner1.gif?1564585558451",
-    "https://bizweb.dktcdn.net/100/117/632/themes/157694/assets/slideshow_image_2.jpg?1564585558451",
-    "https://bizweb.dktcdn.net/100/117/632/themes/157694/assets/slideshow_image_3.jpg?1564585558451",
-    "https://icotton.vn/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhome_pc.d3e2e8b4.jpg&w=3840&q=75"
-  ],
-  "logos": [
-    "https://bizweb.dktcdn.net/100/117/632/themes/157694/assets/logo1.png?1564585558451",
-    "https://bizweb.dktcdn.net/100/117/632/themes/157694/assets/logo2.png?1564585558451",
-    "https:/bizweb.dktcdn.net/100/117/632/themes/157694/assets/logo3.png?1564585558451",
-    "https:bizweb.dktcdn.net/100/117/632/themes/157694/assets/logo4.png?1564585558451",
-    "https:bizweb.dktcdn.net/100/117/632/themes/157694/assets/logo5.png?1564585558451",
-    "https:bizweb.dktcdn.net/100/117/632/themes/157694/assets/logo6.png?1564585558451",
-    "https:bizweb.dktcdn.net/100/117/632/themes/157694/assets/logo7.png?1564585558451",
-    "https:bizweb.dktcdn.net/100/117/632/themes/157694/assets/logo8.png?1564585558451",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB0uo0KnzEEfWyOAGf5-OZgCPmNTboQEq8pizbV4gGBg&s",
-    "https://icotton.vn/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.14fb6136.png&w=128&q=75"
-  ],
-  "guidance": [
-    {
-      "policy": {
-        "id": 1,
-        "title": "Chính sách mua bán, trao đổi hàng",
-        "content": "Chúng tôi gửi đến bạn những chính sách mua hàng, đổi trả, vận chuyển để đảm bảo được tính công bằng và rõ ràng giữa hai bên"
-      },
-      "exchange": {
-        "id": 2,
-        "title": "Chính sách đổi trả hàng hóa",
-        "content": "Chúng tôi luôn đảm bảo những chính sách tốt nhất cho quý khách hàng với chính sách đổi trả hàng khi sản phẩm bị lỗi"
-      },
-      "giftPrizePromote": {
-        "id": 3,
-        "title": "Quà tặng, giải thưởng, khuyến mãi",
-        "content": "Để tri ân khách hàng,gửi tặng đến toàn bộ những khách hàng những món quà tuyệt vời đã ủng hộ chúng tôi trong thời gian qua"
-      },
-      "onlineShopping": {
-        "id": 4,
-        "title": "Hướng dẫn mua hàng online",
-        "content": "Quý khách có thể gửi đơn hàng hoặc goi trực tiếp tới số Hotline để đặt hàng",
-        "description": [
-          "Bước 1: Truy cập website và lựa chọn sản phẩm cần mua để mua hàng",
-          "Bước 2: Click và sản phẩm muốn mua, màn hình hiển thị ra pop up với các lựa chọn sau Nếu bạn muốn tiếp tục mua hàng: Bấm vào phần tiếp tục mua hàng để lựa chọn thêm sản phẩm vào giỏ hàng Nếu bạn muốn xem giỏ hàng để cập nhật sản phẩm: Bấm vào xem giỏ hàng Nếu bạn muốn đặt hàng và thanh toán cho sản phẩm này vui lòng bấm vào: Đặt hàng và thanh toán",
-          "Bước 3: Lựa chọn thông tin tài khoản thanh toán Nếu bạn đã có tài khoản vui lòng nhập thông tin tên đăng nhập là email và mật khẩu vào mục đã có tài khoản trên hệ thống Nếu bạn chưa có tài khoản và muốn đăng ký tài khoản vui lòng điền các thông tin cá nhân để tiếp tục đăng ký tài khoản. Khi có tài khoản bạn sẽ dễ dàng theo dõi được đơn hàng của mình Nếu bạn muốn mua hàng mà không cần tài khoản vui lòng nhấp chuột vào mục đặt hàng không cần tài khoản",
-          "Bước 4: Điền các thông tin của bạn để nhận đơn hàng, lựa chọn hình thức thanh toán và vận chuyển cho đơn hàng của mình",
-          "Bước 5: Xem lại thông tin đặt hàng, điền chú thích và gửi đơn hàng Sau khi nhận được đơn hàng bạn gửi chúng tôi sẽ liên hệ bằng cách gọi điện lại để xác nhận lại đơn hàng và địa chỉ của bạn."
-        ]
-      },
-      "transportation": {
-        "id": 5,
-        "title": "Chính sách vận chuyển",
-        "content": "Với mong muốn mang lại sự hài lòng cho quý khách khi mua hàng, chúng tôi có những quy định trong vận chuyển, nhằm đảm bảo rằng những sản phẩm quý khách mua là sản phẩm mà vừa ý nhất.",
-        "description": [
-          "1. Chúng tôi sẽ được thực hiện và chuyển phát dựa trên mẫu khách hàng đã chọn. Trường hợp không có đúng sản phẩm Quý khách yêu cầu chúng tôi sẽ gọi điện xác nhận gửi sản phẩm tương tự thay thế.",
-          "2. Thời gian chuyển phát tiêu chuẩn cho một đơn hàng là 12 giờ kể từ lúc đặt hàng. Chuyển phát sản phẩm đến các khu vực nội thành thành phố trên toàn quốc từ 4 giờ kể từ khi nhận hàng, chuyển phát ngay trong ngày đến các vùng lân cận (bán kính từ 10km – 50km).",
-          "3. Các đơn hàng gửi đi quốc tế: không đảm bảo thời gian được chính xác như yêu cầu, không đảm bảo thời gian nếu thời điểm chuyển phát trùng với các ngày lễ, tết và chủ nhật tại khu vực nơi đến.",
-          "4. Trường hợp không liên lạc được với người nhận, người nhận đi vắng: - Nếu chưa rõ địa chỉ chúng tôi sẽ lưu lại trong vòng 6 tiếng và liên lạc lại với người nhận, trong trường hợp ko liên lạc được đơn hàng sẽ bị hủy và không được hoàn lại thanh toán. - Nếu địa chỉ là công ty, văn phòng, nhà ở… Chúng tôi sẽ gửi đồng nghiệp, người thân nhận hộ và ký xác nhận - Để tại một nơi an toàn người nhận dễ nhận thấy tại nhà, văn phòng, công ty… Trường hợp này không có ký nhận.",
-          "5. Trường hợp người nhận không nhận đơn hàng: - Chúng tôi sẽ hủy bỏ đơn hàng. Trường hợp này sẽ không được hoàn trả thanh toán.",
-          "6. Trường hợp không đúng địa chỉ, thay đổi địa chỉ: - Không đúng địa chỉ: trường hợp sai địa chỉ chúng tôi sẽ lưu lại 6 tiếng và liên lạc với người gửi và người nhận để thỏa thuận về địa điểm, thời gian, nếu địa chỉ mới không quá 3km sẽ phát miễn phí. Trường hợp địa chỉ mới xa hơn 3km sẽ tính thêm phí theo quy định chuyển phát.",
-          " 7. Trường hợp không tồn tại người nhận tại địa chỉ yêu cầu: đơn hàng sẽ được hủy và không được hoàn lại thanh toán.",
-          "8. Chúng tôi không vận chuyển sản phẩm đến các địa chỉ trên tàu hỏa, máy bay, tàu thủy, khu vực nguy hiểm, các khu vực cấm…",
-          "..."
-        ]
-      }
     }
   ],
   "orders": [

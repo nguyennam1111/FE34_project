@@ -9,8 +9,8 @@ const ShowNewProducts = (props) => {
   const renderNewProducts = (data, classCol) => {
     return (
       <div>
-        <div className="row align-items-center m-0">
-          <div className="col-md-6 ">
+        <div className="row align-items-center m-0 mt-3">
+          <div className="col-md-6 p-0 ">
             <h5 className="text-left m-0 text-highlight new-product-catalog">
               HÀNG MỚI VỀ !
             </h5>
@@ -40,7 +40,7 @@ const ShowNewProducts = (props) => {
           </ul>
         </div>
         <div
-          className="row border p-2 m-0"
+          className="row border  m-0"
           style={{ maxHeight: 700, height: "100%", overflowY: "scroll" }}
         >
           <RenderProducts

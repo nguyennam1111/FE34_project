@@ -16,8 +16,8 @@ const ShowHotProducts = (props) => {
     return (
       <div className="mt-2 ">
         <h5 className="text-left text-title-normal">SẢN PHẨM NỔI BẬT</h5>
-        <div className="row p-2">
-          <div className="col-md-4 border p-2">
+        <div className="row m-0">
+          <div className="col-sm-4 border p-2">
             <Carousel
               useKeyboardArrows={true}
               autoPlay={true}
@@ -51,10 +51,10 @@ const ShowHotProducts = (props) => {
                   </button>
 
                   <div
-                    className="position-absolute bg-light"
+                    className="position-absolute bg-opacity"
                     style={{
                       width: "100%",
-                      bottom: 10,
+                      bottom: 0,
                       left: 0,
                     }}
                   >
@@ -98,9 +98,9 @@ const ShowHotProducts = (props) => {
             </Carousel>
           </div>
 
-          <div className="col-md-7 border pb-3 overflow-y-scroll">
+          <div className="col-sm-8 border pb-3 overflow-y-scroll">
             <div
-              className="row p-1 "
+              className="row p-2 "
               style={{ maxHeight: 500, height: "100%", overflowY: "scroll" }}
             >
               <RenderProducts

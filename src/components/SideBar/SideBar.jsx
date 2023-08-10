@@ -15,7 +15,8 @@ const SideBar = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const { products, productDetails } = useSelector((state) => state.product);
-
+  const [searchParams] = useSearchParams();
+  const catalog = searchParams.get("catalogue");
   useEffect(() => {
     dispatch(actfetchAllProducts());
   }, []);
@@ -23,6 +24,7 @@ const SideBar = () => {
   useEffect(() => {
     dispatch(actGetProductbyId(params.id));
   }, [params.id]);
+
   return (
     <>
       <div className="border m-0">
@@ -35,7 +37,10 @@ const SideBar = () => {
             </Link>
           </li>
           <li>
-            <Link to={"/Products?catalogue=boy"} className="nav-link p-0 my-2">
+            <Link
+              to={"/Products?catalogue=boy"}
+              className={`nav-link p-0 my-2 `}
+            >
               <i className="bi bi-arrow-right-circle fw-bold mx-2"></i>
               <span className="text-body">Góc bé trai </span>
             </Link>
@@ -52,7 +57,7 @@ const SideBar = () => {
               className="nav-link p-0 my-2"
             >
               <i className="bi bi-arrow-right-circle fw-bold mx-2"></i>
-              <span className="text-body">Phụ kiện</span>
+              <span className="text-body ">Phụ kiện</span>
             </Link>
           </li>
           <li>
@@ -68,10 +73,7 @@ const SideBar = () => {
       </div>
       <div className="border m-0">
         <h5 className="p-2 bg-info text-white">TAGS</h5>
-        <RenderTags
-          data={params.id ? productDetails : products}
-          id={params.id}
-        />
+        <RenderTags data={params.id ? productDetails : ""} id={params.id} />
       </div>
     </>
   );

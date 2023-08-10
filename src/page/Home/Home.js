@@ -61,15 +61,6 @@ const Home = () => {
     );
   }, [filters]);
 
-  // const newProducts = products.filter((item) => item.productStatus === "new");
-
-  // const hotSaleProducts = products.filter(
-  //   (item) => item.productStatus === "hot"
-  // );
-  // const bestSaleProducts = products.filter(
-  //   (item) => item.productStatus === "bestSale"
-  // );
-
   const handleProductDetails = (productId) => {
     navigate(`/Products/${productId}`);
   };
@@ -89,9 +80,9 @@ const Home = () => {
             handleProductDetails={handleProductDetails}
             handlePrevButton={handlePrevButton}
           />
-          <div className="text-white text-center mt-2 bg-highlight">
-            <h3 className="border-bottom mx-5 py-3">HOTLINE</h3>
-            <h3 className="py-3">090.515.0109</h3>
+          <div className="text-white text-center  mt-2 bg-highlight">
+            <h3 className="border-bottom mx-5 py-3 text-white">HOTLINE</h3>
+            <h3 className="py-3 text-white">090.515.0109</h3>
           </div>
         </div>
         <div className="col-md-9 mt-2 text-center">
@@ -101,13 +92,7 @@ const Home = () => {
             handleProductDetails={handleProductDetails}
           />
           <ShowNewProducts
-            data={
-              catalogue === null
-                ? newProducts
-                : newProducts.filter(
-                    (item) => item.productCatalogue === catalogue
-                  )
-            }
+            data={newProducts}
             classCol={"col-sm-3"}
             handleProductDetails={handleProductDetails}
           />

@@ -80,9 +80,9 @@ const ShowsBestSale = (props) => {
   };
 
   return (
-    <div className="border-bottom  mt-3">
+    <div className="border-bottom border mt-3">
       <div className="d-flex justify-content-between py-1 text-white bg-highlight">
-        <h6 className="m-0 px-2 py-2">SẢN PHẨM BÁN CHẠY</h6>
+        <h6 className="m-0 px-2 py-2 text-white">SẢN PHẨM BÁN CHẠY</h6>
       </div>
       <div>
         <Carousel

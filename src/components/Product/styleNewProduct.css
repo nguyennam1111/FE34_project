@@ -2,13 +2,14 @@
   font-family: "utm-alexander-regular", sans-serif;
 }
 .new-product-catalog li a {
-  font-family: "utm-alexander-regular", sans-serif;
-  color: rgb(22, 22, 22);
-  font-style: italic;
+  font-family: "UTM Alexander";
+  color: #686868;
+  font-size: 18px;
   font-weight: 600;
 }
 .new-product-catalog li a:hover,
 .new-product-catalog li a:focus,
 .new-product-catalog li a:active {
   color: rgb(121, 189, 154);
+  font-style: italic;
 }

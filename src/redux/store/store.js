@@ -8,6 +8,8 @@ import authReducer from "../feature/Authenticate/authSlice";
 import ordersRecordReducer from "../feature/ordersRecord/ordersRecordSlice";
 import guidanceReducer from "../feature/guidance/guidanceSlice";
 import productCommentsReduce from "../feature/ProductComments/productCommentsSlice";
+import serviceReducer from "../feature/service/serviceSlice";
+import locationReducer from "../feature/Location/getLocationSlice";
 export const store = configureStore({
   reducer: {
     product: productReducer,
@@ -19,6 +21,8 @@ export const store = configureStore({
     orders: ordersRecordReducer,
     guidance: guidanceReducer,
     productComment: productCommentsReduce,
+    service: serviceReducer,
+    location: locationReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

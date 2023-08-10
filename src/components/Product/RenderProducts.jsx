@@ -7,26 +7,70 @@ const RenderProducts = (props) => {
       return (
         <div
           key={item.id}
-          className={`${classCol} g-2 pt-2 justify-content-between text-center`}
+          className={`${classCol} p-2 justify-content-between text-center `}
           onClick={() => {
             props.handleProductDetails(item.id);
           }}
         >
-          <div className="border">
-            <div className="position-relative  product-block">
-              <img src={item.productsImg[0]} alt="" className="img"></img>
+          <div>
+            <div className="position-relative product-block border">
+              <img src={item.productsImg[0]} alt="" className="img-fluid"></img>
               <button
                 className="discount-widget"
                 style={
                   item?.saleOffValue !== 0
-                    ? { display: "block" }
+                    ? { display: "" }
                     : { display: "none" }
                 }
               >
                 {Number(item?.saleOffValue) * 100}%
               </button>
+              <div
+                className="position-absolute bg-opacity"
+                style={{
+                  width: "100%",
+                  bottom: 0,
+                  left: 0,
+                  maxHeight: 50,
+                  height: "100%",
+                }}
+              >
+                <p className="m-0 text-highlight fw-bolder">
+                  <NumericFormat
+                    value={
+                      Number(item.productPrice) -
+                      Number(item.productPrice) * Number(item?.saleOffValue)
+                    }
+                    displayType={"text"}
+                    allowLeadingZeros
+                    thousandSeparator={true}
+                    suffix={"đ"}
+                  />
+                </p>
+                <p
+                  className="m-0 text-line-through "
+                  style={
+                    item?.saleOffValue !== 0
+                      ? { display: "" }
+                      : { display: "none" }
+                  }
+                >
+                  <NumericFormat
+                    value={item.productPrice}
+                    displayType={"text"}
+                    allowLeadingZeros
+                    thousandSeparator={true}
+                    suffix={"đ"}
+                  />
+                </p>
+              </div>
             </div>
-            <p className="m-0 text-highlight ">
+            <p className="m-0">{item.productName}</p>
+            <button className="border-0 mb-2 bg-transparent">
+              <img src={btn_buy} className="img-fluid"></img>
+            </button>
+          </div>
+          {/* <p className="m-0 text-highlight ">
               <NumericFormat
                 value={
                   Number(item.productPrice) -
@@ -58,7 +102,7 @@ const RenderProducts = (props) => {
           <p className="m-0 py-3 ">{item.productName}</p>
           <button className="border-0 mb-2 bg-transparent">
             <img src={btn_buy} className="img-fluid"></img>
-          </button>
+          </button> */}
         </div>
       );
     });

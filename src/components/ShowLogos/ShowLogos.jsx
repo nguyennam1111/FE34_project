@@ -8,7 +8,7 @@ const ShowLogos = (props) => {
           <img
             src={item}
             alt="logo"
-            className="img-fluid align-middle align-items-middle"
+            className="img-fluid object-fit-cover"
           ></img>
         </div>
       );

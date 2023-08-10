@@ -43,7 +43,6 @@ export const ordersRecordSlice = createSlice({
     });
     builder.addCase(actGetAllOrders.fulfilled, (state, action) => {
       state.orders = action.payload;
-      console.log(action.payload, "action.payload");
     });
   },
 });

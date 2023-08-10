@@ -33,6 +33,7 @@ const RenderComments = (props) => {
         toast("Bình luận trống");
       } else {
         dispatch(actAddComment(_Comments));
+        setComment("");
       }
     } else {
       toast("Bạn chưa đăng nhập");
@@ -101,7 +102,7 @@ const RenderComments = (props) => {
       <div className="row m-0">
         <div className="col-sm-6 p-0">
           <h4>Đánh giá sản phẩm</h4>
-          <ReactStars count={5} size={30} value={rate} onChange={setRate} />
+          <ReactStars count={5} size={40} value={rate} onChange={setRate} />
         </div>
         <div className="col-sm-6">
           <h4>Đánh giá: {isNaN(averageRate) ? 0 : averageRate}/5 </h4>

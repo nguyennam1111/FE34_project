@@ -17,22 +17,25 @@ import {
 } from "../../redux/feature/ordersRecord/ordersRecordSlice";
 import { clearCart } from "../../redux/feature/Cart/cartSlice";
 import { isAnyOf } from "@reduxjs/toolkit";
+import { actGetAllProvince } from "../../redux/feature/Location/getLocationSlice";
+import ShowLocation from "../Location/ShowLocation";
 
 const OrderPayment = (props) => {
   const phonePattern = /^([0|84])([3|5|7|8|9]{1})+(\d{8})$\b/g;
   const navigate = useNavigate();
-  const [shippingFee, setShippingFee] = useState("");
-  const [shippingType, setShippingType] = useState("");
+  const [shippingFee, setShippingFee] = useState("35000");
+  const [shippingType, setShippingType] = useState("Giao hàng nhanh");
   const [payment, setPayment] = useState("COD");
   const dispatch = useDispatch();
 
   const { userAccounts } = useSelector((state) => state.userAccount);
   const { isAuth, userProfile } = useSelector((state) => state.auth);
   const { orders } = useSelector((state) => state.orders);
-  console.log(userProfile, "userProfile");
+
   useEffect(() => {
     dispatch(actGetAllOrders());
   }, []);
+
   const schemaValidatePayment = Yup.object().shape({
     orderEmail: Yup.string().email("wrong email").required("Enter email"),
     fullName: Yup.string()
@@ -46,15 +49,12 @@ const OrderPayment = (props) => {
     district: Yup.string().required("Chọn quận huyện"),
     ward: Yup.string().required("Chọn phường xã"),
     comments: Yup.string(),
-    shippingType: Yup.string().oneOf(
-      [15000, 35000],
-      "Chọn phương pháp giao hàng"
-    ),
-
-    paymentMethod: Yup.string().oneOf(
-      ["OnlinePayment", "COD"],
-      "Chọn phương thức thanh toán"
-    ),
+    shippingType: Yup.string()
+      .required("Chọn phương pháp giao hàng")
+      .oneOf(["normal", "fast"], "", "Chọn phương pháp giao hàng"),
+    paymentMethod: Yup.string()
+      .required("Chọn phương thức thanh toán")
+      .oneOf(["OnlinePayment", "COD"], "Chọn phương thức thanh toán"),
   });
 
   const {
@@ -126,7 +126,10 @@ const OrderPayment = (props) => {
           <div className="col-sm-6">
             <div className="row m-0 justify-content-between">
               <h5 className="col-sm-8 m-0 p-0">Thông tin nhận hàng</h5>
-              <div className="col-sm-4 text-right p-0">
+              <div
+                className="col-sm-4 text-right p-0"
+                style={isAuth ? { display: "none" } : { display: "" }}
+              >
                 <Link to={ROUTES.SIGNIN} className="text-right">
                   <i className="bi bi-person-fill pr-1 p-0 border rounded-circle"></i>
                   Đăng nhập
@@ -160,7 +163,6 @@ const OrderPayment = (props) => {
                       className="form-control mt-2"
                       placeholder="Họ và tên*"
                       id="fullName"
-                      // value={isAuth ? userProfile?.fullName : ""}
                       {...field}
                     />
                   )}
@@ -175,7 +177,6 @@ const OrderPayment = (props) => {
                       className="form-control mt-2"
                       placeholder="Số điện thoại*"
                       id="phone"
-                      // value={isAuth ? userProfile?.phone : ""}
                       {...field}
                     />
                   )}
@@ -199,44 +200,11 @@ const OrderPayment = (props) => {
                   defaultValue=""
                 />
                 <p className="m-0 text-danger">{errors?.address?.message}</p>
-
-                <select className="form-control mt-2" {...register("province")}>
-                  <option value="" disabled selected>
-                    Chọn tỉnh thành*
-                  </option>
-                  <option>Đà Nẵng</option>
-                  <option>Quảng Nam</option>
-                  <option>TT-Huế</option>
-                </select>
-                <p className="m-0 text-danger">{errors?.province?.message}</p>
-
-                <select className="form-control mt-2" {...register("district")}>
-                  <option value="" disabled selected>
-                    Chọn quận huyện*
-                  </option>
-                  <option>Hải Châu 1</option>
-                  <option>Hải Châu 2</option>
-                  <option>Thanh Khê</option>
-                  <option>Liên Chiểu</option>
-                  <option>Sơn Trà</option>
-                  <option>Cẩm Lệ</option>
-                  <option>Hòa Vang</option>
-                  <option>Huyện đảo Hoàng Sa</option>
-                </select>
-                <p className="m-0 text-danger">{errors?.district?.message}</p>
-
-                <select className="form-control mt-2" {...register("ward")}>
-                  <option value="" disabled selected>
-                    Chọn phường xã*
-                  </option>
-                  <option>Hòa minh</option>
-                  <option>Hòa Khánh Nam</option>
-                  <option>Hòa Khánh Bắc</option>
-                  <option>Hòa Hiệp Nam</option>
-                  <option>Hòa Hiệp Bắc</option>
-                  <option>....</option>
-                </select>
-                <p className="m-0 text-danger">{errors?.ward?.message}</p>
+                <ShowLocation
+                  errors={errors}
+                  register={register}
+                  setShippingFee={setShippingFee}
+                />
 
                 <textarea
                   {...register("comments")}
@@ -252,25 +220,29 @@ const OrderPayment = (props) => {
           <div className="col-sm-6 ">
             <div>
               <h4>Vận Chuyển</h4>
-              <form form="form-order" name="shippingType">
+              <form form="form-order">
                 <div className="row justify-content-between m-0 p-2 border rounded">
                   <label className="m-0 " htmlFor="shipping_fast">
                     <input
+                      {...register("shippingType")}
                       className="mr-2"
                       type="radio"
                       name="shippingType"
                       id="shipping_fast"
-                      checked={shippingFee == 35000}
+                      checked={shippingType == "Giao hàng nhanh"}
                       onChange={(e) => {
                         setShippingType("Giao hàng nhanh");
-                        setShippingFee(e.target.value);
+                        setShippingFee(35000);
                       }}
-                      value={35000}
+                      value="fast"
                     ></input>
                     Giao hàng nhanh
                   </label>
                   <span className="col-sm-4 p-0 text-right">
                     <NumericFormat
+                      value={
+                        shippingType === "Giao hàng nhanh" ? shippingFee : ""
+                      }
                       displayType={"text"}
                       allowLeadingZeros
                       thousandSeparator={true}
@@ -281,21 +253,23 @@ const OrderPayment = (props) => {
                 <div className="row justify-content-between m-0 p-2 border rounded">
                   <label className="m-0" htmlFor="shipping_normal">
                     <input
+                      {...register("shippingType")}
                       className="mr-2"
                       type="radio"
                       name="shippingType"
                       id="shipping_normal"
-                      checked={shippingFee == 15000}
+                      checked={shippingType == "Giao thường"}
                       onChange={(e) => {
                         setShippingType("Giao thường");
-                        setShippingFee(e.target.value);
+                        setShippingFee(15000);
                       }}
-                      value={15000}
+                      value="normal"
                     ></input>
                     Giao thường
                   </label>
                   <span className="col-sm-4 p-0 text-right">
                     <NumericFormat
+                      value={shippingType === "Giao thường" ? shippingFee : ""}
                       displayType={"text"}
                       allowLeadingZeros
                       thousandSeparator={true}
@@ -322,7 +296,7 @@ const OrderPayment = (props) => {
                       id="cod"
                       name="paymentMethod"
                       value="COD"
-                      checked={payment == "COD"}
+                      checked={payment === "COD"}
                       onChange={(e) => setPayment(e.target.value)}
                     />
                     Thu hộ (COD)
@@ -337,7 +311,7 @@ const OrderPayment = (props) => {
                       id="online"
                       name="paymentMethod"
                       value="OnlinePayment"
-                      checked={payment == "OnlinePayment"}
+                      checked={payment === "OnlinePayment"}
                       onChange={(e) => setPayment(e.target.value)}
                     />
                     Thanh toán online
@@ -346,6 +320,37 @@ const OrderPayment = (props) => {
                 <p className="m-0 text-danger">
                   {errors?.paymentMethod?.message}
                 </p>
+                <div
+                  className="justify-content-between mt-2 p-3 border bg-light"
+                  style={
+                    payment == "OnlinePayment" || payment == null
+                      ? { display: "" }
+                      : { display: "none" }
+                  }
+                >
+                  <label htmlFor="visa" className="mr-3">
+                    <input
+                      {...register("transferMethod")}
+                      type="radio"
+                      className="m-0 mr-2"
+                      id="visa"
+                      name="transferMethod"
+                      value={"visa"}
+                    />
+                    Visa
+                  </label>
+                  <label htmlFor="banking" className="m-0">
+                    <input
+                      {...register("transferMethod")}
+                      type="radio"
+                      className="m-0 mr-2"
+                      id="banking"
+                      value="banking"
+                      name="transferMethod"
+                    />
+                    Chuyển khoản
+                  </label>
+                </div>
               </form>
             </div>
           </div>
