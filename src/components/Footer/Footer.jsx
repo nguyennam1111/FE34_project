@@ -3,12 +3,17 @@ import "./footerStyle.css";
 import { Link, useNavigate } from "react-router-dom";
 import { ROUTES } from "../../constants/routes";
 import { useSelector } from "react-redux";
+import { Alert, Space } from "antd";
 const Footer = () => {
   const currentUrl = window.location.pathname;
   localStorage.setItem("currentUrl", JSON.stringify(currentUrl));
   const { isAuth, userProfile } = useSelector((state) => state.auth);
   const navigate = useNavigate();
-  const handleVerifyLogin = () => (isAuth ? "" : alert("Bạn chưa đăng nhập"));
+  const handleVerifyLogin = () =>
+    isAuth
+      ? ""
+      : alert("Bạn chưa đăng nhập");
+        // <Alert message="Bạn chưa đăng nhập" type="warning" closable />
 
   return (
     <div className="m-0 container-fluid">
@@ -52,8 +57,8 @@ const Footer = () => {
 
           <p>
             <Link
-              to={isAuth ? `/userAccount/${userProfile.id}` : ""}
               onClick={() => handleVerifyLogin()}
+              to={isAuth ? `/userAccount/${userProfile.id}` : ""}
             >
               Tài khoản của bạn
             </Link>

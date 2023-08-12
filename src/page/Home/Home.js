@@ -19,6 +19,10 @@ import { actfetchAllBanners } from "../../redux/feature/Banner/bannerSlice";
 import { actfetchAllGuidance } from "../../redux/feature/guidance/guidanceSlice";
 
 const Home = () => {
+  const callBackUrl = window.location.pathname;
+
+  localStorage.setItem("callBackUrl", JSON.stringify(callBackUrl));
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { products, filters, newProducts, bestSaleProducts, hotProducts } =
@@ -33,9 +37,7 @@ const Home = () => {
   const { logos } = useSelector((state) => state.logo);
   const { banners } = useSelector((state) => state.banner);
   const { guidance } = useSelector((state) => state.guidance);
-
-  const currentUrl = window.location.pathname;
-  localStorage.setItem("currentUrl", JSON.stringify(currentUrl));
+  const { isAuth } = useSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(actfetchAllLogos());
@@ -92,7 +94,13 @@ const Home = () => {
             handleProductDetails={handleProductDetails}
           />
           <ShowNewProducts
-            data={newProducts}
+            data={
+              catalogue == null
+                ? newProducts
+                : newProducts.filter(
+                    (item) => item.productCatalogue === catalogue
+                  )
+            }
             classCol={"col-sm-3"}
             handleProductDetails={handleProductDetails}
           />

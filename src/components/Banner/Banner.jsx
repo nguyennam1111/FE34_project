@@ -4,6 +4,24 @@ import { useNavigate } from "react-router";
 const Banner = (props) => {
   const navigate = useNavigate();
   const [index, setIndex] = useState();
+
+  const handleClickBanner = (index) => {
+    console.log(index);
+    switch (index) {
+      case 0:
+        navigate(`/Products?status=promote`);
+        break;
+      case 1:
+        navigate(`/Products`);
+        break;
+      case 2:
+        navigate(`/Products?catalogue=accessory`);
+        break;
+      default:
+        break;
+    }
+  };
+
   const showBanners = (data) => {
     return (
       <div>
@@ -13,6 +31,7 @@ const Banner = (props) => {
           showThumbs={false}
           infiniteLoop={true}
           interval={2000}
+          onClickItem={(index) => handleClickBanner(index)}
         >
           {data.map((each, index) => (
             <img

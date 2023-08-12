@@ -22,6 +22,9 @@ import { actFetchAllUserAccounts } from "../../redux/feature/UserAccount/userAcc
 import OrderHistory from "../../components/Information/OrderHistory";
 
 const Payment = () => {
+  const callBackUrl = window.location.pathname;
+
+  localStorage.setItem("callBackUrl", JSON.stringify(callBackUrl));
   const [searchParams] = useSearchParams();
   const [shippingFee, setShippingFee] = useState(null);
   const [payment, setPayment] = useState("COD");

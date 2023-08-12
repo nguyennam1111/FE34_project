@@ -14,6 +14,9 @@ import { useNavigate } from "react-router";
 import { ROUTES } from "../../constants/routes";
 
 const Cart = () => {
+  const callBackUrl = window.location.pathname;
+
+  localStorage.setItem("callBackUrl", JSON.stringify(callBackUrl));
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -49,7 +52,7 @@ const Cart = () => {
               src={item.productImg}
               className="img-fluid img p-0 product-block"
               onClick={() => {
-                handleProductDetails(item.id);
+                handleProductDetails(item.productId);
               }}
             ></img>
           </td>
@@ -102,22 +105,30 @@ const Cart = () => {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid mt-3">
       <div>
         <table className="table table-bordered">
-          <thead>
-            <tr>
-              <th>MÃ SẢN PHẨM</th>
-              <th>HÌNH ẢNH</th>
-              <th>SẢN PHẨM</th>
-              <th>Size/Màu</th>
-              <th>ĐƠN GIÁ</th>
-              <th>SỐ LƯỢNG</th>
-              <th>THÀNH TIỀN</th>
-              <th>XÓA</th>
+          <thead className="sticky-sm-top">
+            <tr className="text-center align-middle">
+              <th className="align-middle">MÃ SẢN PHẨM</th>
+              <th className="align-middle">HÌNH ẢNH</th>
+              <th className="align-middle">SẢN PHẨM</th>
+              <th className="align-middle">Size/Màu</th>
+              <th className="align-middle">ĐƠN GIÁ</th>
+              <th className="align-middle">SỐ LƯỢNG</th>
+              <th className="align-middle">THÀNH TIỀN</th>
+              <th className="align-middle">XÓA</th>
             </tr>
           </thead>
-          <tbody>{renderCartItems(cart)}</tbody>
+          <tbody
+            style={{
+              maxHeight: 100,
+              height: "100%",
+              overflowY: "scroll",
+            }}
+          >
+            {renderCartItems(cart)}
+          </tbody>
         </table>
       </div>
       <div className="row mt-2 align-items-center">

@@ -15,6 +15,10 @@ import useScrollToTop from "../../hooks/useScrollToTop";
 
 const Products = (props) => {
   useScrollToTop();
+  const callBackUrl = window.location.pathname;
+
+  localStorage.setItem("callBackUrl", JSON.stringify(callBackUrl));
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -25,8 +29,7 @@ const Products = (props) => {
   const { pagination, products, filters, sortBy } = useSelector(
     (state) => state.product
   );
-  const currentUrl = window.location.pathname;
-  localStorage.setItem("currentUrl", JSON.stringify(currentUrl));
+
   useEffect(() => {
     dispatch(
       setFilters({

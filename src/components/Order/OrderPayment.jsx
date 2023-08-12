@@ -60,6 +60,8 @@ const OrderPayment = (props) => {
   const {
     register,
     handleSubmit: handlePayment,
+    setValue,
+    watch,
     formState: { errors: errors },
     control: control,
   } = useForm({
@@ -203,6 +205,8 @@ const OrderPayment = (props) => {
                 <ShowLocation
                   errors={errors}
                   register={register}
+                  setValue={setValue}
+                  watch={watch}
                   setShippingFee={setShippingFee}
                 />
 
@@ -370,10 +374,12 @@ const OrderPayment = (props) => {
         </div>
         <div className="row m-0 py-4 border-bottom">
           <input
-            className="form-control col-sm-8 mr-2"
+            className="col-sm-8 form-control"
             placeholder="Mã giảm giá"
           ></input>
-          <button className="btn btn-primary">Áp dụng</button>
+          <div className="col-sm-4 p-0 text-right">
+            <button className="btn btn-primary">Áp dụng</button>
+          </div>
         </div>
         <div className="row mx-0 py-3">
           <p className="col-sm-6 m-0">Tạm tính</p>

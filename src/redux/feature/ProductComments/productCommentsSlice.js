@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { productCommentApi } from "../../../apis/productCommentApi";
+import { toast } from "react-toastify";
 
 const initialState = {
   productComments: [],
@@ -48,9 +49,7 @@ export const productCommentsSlice = createSlice({
     builder.addCase(actAddComment.rejected, (state, action) => {
       console.log(action.payload, "reject");
     });
-    builder.addCase(actAddComment.fulfilled, (state, action) => {
-      console.log(action.payload, "actAddComment fulfilled");
-    });
+    builder.addCase(actAddComment.fulfilled, (state, action) => {});
   },
 });
 export const {} = productCommentsSlice.actions;

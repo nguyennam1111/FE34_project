@@ -8,7 +8,7 @@ import { PrinterOutlined } from "@ant-design/icons";
 
 const OrderHistory = (props) => {
   const navigate = useNavigate();
-  console.log(props.orders, "orders");
+
   const orderHistory = props.orders?.filter(
     (item) => item.orderEmail === props.userProfile?.email
   );

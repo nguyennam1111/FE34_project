@@ -54,7 +54,7 @@ const ShowHotProducts = (props) => {
                     className="position-absolute bg-opacity"
                     style={{
                       width: "100%",
-                      bottom: 0,
+                      bottom: 10,
                       left: 0,
                     }}
                   >
@@ -88,7 +88,9 @@ const ShowHotProducts = (props) => {
                         suffix={"đ"}
                       />
                     </p>
-                    <p className=" m-0 ">{item.productName}</p>
+                    <p className="m-0" style={{ fontSize: 25 }}>
+                      {item.productName}
+                    </p>
                     <button className="border-0 bg-transparent">
                       <img src={btn_buy}></img>
                     </button>

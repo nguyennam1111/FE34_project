@@ -10,6 +10,9 @@ import { actfetchAllGuidance } from "../../redux/feature/guidance/guidanceSlice"
 import OnlineShopping from "../../components/Information/OnlineShopping";
 
 const Information = () => {
+  const callBackUrl = window.location.pathname;
+
+  localStorage.setItem("callBackUrl", JSON.stringify(callBackUrl));
   const dispatch = useDispatch();
   const { orders } = useSelector((state) => state.orders);
   const { isAuth, userProfile } = useSelector((state) => state.auth);

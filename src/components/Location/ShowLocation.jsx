@@ -7,14 +7,19 @@ import {
   setDistrictCode,
   setProvinceCode,
 } from "../../redux/feature/Location/getLocationSlice";
+import { ContactsFilled } from "@ant-design/icons";
 
 const ShowLocation = (props) => {
   const dispatch = useDispatch();
   // const [provinceCode, setProvinceCode] = useState("");
   // const [districtCode, setDistrictCode] = useState("");
 
-  const { provinces, districts, wards, provinceCode, districtCode } =
-    useSelector((state) => state.location);
+  const { provinces, districts, wards } = useSelector(
+    (state) => state.location
+  );
+
+  const provinceCode = props.watch("province");
+  const districtCode = props.watch("district");
 
   useEffect(() => {
     dispatch(actGetAllProvince());
@@ -23,19 +28,19 @@ const ShowLocation = (props) => {
   }, [provinceCode, districtCode]);
 
   useEffect(() => {
-    dispatch(setDistrictCode(districtCode));
-    dispatch(setProvinceCode(provinceCode));
-  }, []);
+    props.setValue("district", "");
+    props.setValue("ward", "");
+  }, [provinceCode]);
 
   const renderLocation = (register, errors) => {
     return (
       <>
         <select
+          {...register("province")}
           name="province"
           id="province"
           className="form-control mt-2"
-          {...register("province")}
-          onChange={(e) => dispatch(setProvinceCode(e.target.value))}
+          onChange={(e) => props.setValue("province", e.target.value)}
         >
           <option value="" selected disabled>
             Chọn tỉnh thành*
@@ -51,11 +56,11 @@ const ShowLocation = (props) => {
         <p className="m-0 text-danger">{errors?.province?.message}</p>
 
         <select
+          {...register("district")}
           name="district"
           id="district"
           className="form-control mt-2"
-          {...register("district")}
-          onChange={(e) => dispatch(setDistrictCode(e.target.value))}
+          onChange={(e) => props.setValue("district", e.target.value)}
         >
           <option value="" selected disabled>
             Chọn quận huyện*
@@ -71,10 +76,10 @@ const ShowLocation = (props) => {
         <p className="m-0 text-danger">{errors?.district?.message}</p>
 
         <select
+          {...register("ward")}
           name="ward"
           id="ward"
           className="form-control mt-2"
-          {...register("ward")}
         >
           <option value="" selected disabled>
             Chọn phường xã*

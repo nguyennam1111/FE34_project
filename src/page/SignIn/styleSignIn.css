@@ -6,3 +6,10 @@
 
   z-index: 2;
 }
+
+.forgot-pass:hover,
+.forgot-pass:focus,
+.forgot-pass:active {
+  color: blue;
+  cursor: pointer;
+}

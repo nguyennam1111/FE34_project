@@ -7,6 +7,7 @@ import {
   actGetAllComments,
 } from "../../redux/feature/ProductComments/productCommentsSlice";
 import { CaretDownOutlined } from "@ant-design/icons";
+import { Alert } from "antd";
 
 const RenderComments = (props) => {
   const [rate, setRate] = useState();
@@ -15,8 +16,12 @@ const RenderComments = (props) => {
   const [showRate, setShowRate] = useState(false);
 
   useEffect(() => {
-    dispatch(actGetAllComments());
-  }, []);
+    dispatch(
+      actGetAllComments({
+        productId: props.id,
+      })
+    );
+  }, [comment]);
 
   const handleSendComments = () => {
     const _Comments = {
@@ -30,23 +35,37 @@ const RenderComments = (props) => {
 
     if (props.isAuth) {
       if (comment === "") {
-        toast("Bình luận trống");
+        <Alert
+          message="Warning"
+          description="Bình luận trống."
+          type="warning"
+          showIcon
+          closable
+        />;
+
+        alert("Bình luận trống");
       } else {
         dispatch(actAddComment(_Comments));
         setComment("");
       }
     } else {
-      toast("Bạn chưa đăng nhập");
+      alert("Bạn chưa đăng nhập. Vui lòng đâng nhập để đánh giá sản phẩm");
+      <Alert
+        message="Warning"
+        description="Bạn chưa đăng nhập. Vui lòng đâng nhập để đánh giá sản phẩm"
+        type="warning"
+        showIcon
+        closable
+      />;
     }
-    window.location.reload(true);
   };
 
   const averageRate = (
     props.productComments
-      ?.map((item) => item.rate)
+      ?.map((item) => (item.rate > 0 ? item.rate : ""))
       .reduce((total, num) => {
         return total + Number(num);
-      }, 0) / props.productComments?.length
+      }, 0) / props.productComments?.filter((item) => item.rate > 0).length
   ).toFixed(1);
 
   const renderDetailsStar = () => {
@@ -102,7 +121,12 @@ const RenderComments = (props) => {
       <div className="row m-0">
         <div className="col-sm-6 p-0">
           <h4>Đánh giá sản phẩm</h4>
-          <ReactStars count={5} size={40} value={rate} onChange={setRate} />
+          <ReactStars
+            count={5}
+            size={40}
+            value={rate ? rate : 0}
+            onChange={setRate}
+          />
         </div>
         <div className="col-sm-6">
           <h4>Đánh giá: {isNaN(averageRate) ? 0 : averageRate}/5 </h4>
@@ -110,7 +134,10 @@ const RenderComments = (props) => {
 
           <p>
             {" "}
-            Có {props.productComments?.length} đánh giá{" "}
+            Có {
+              props.productComments?.filter((item) => item.rate >= 0).length
+            }{" "}
+            đánh giá / {props.productComments?.length} bình luận
             <CaretDownOutlined
               className="text-success"
               style={showRate ? { rotate: "180deg" } : { rotate: "" }}
@@ -129,14 +156,14 @@ const RenderComments = (props) => {
           placeholder="Nhận xét về sản phẩm"
           className="w-100 form-control my-3"
           maxLength={100}
+          value={comment}
           onChange={(e) => setComment(e.target.value)}
         ></textarea>
         <div className="text-right align-right">
           <button
             type="button"
             className="btn btn-primary"
-            onClick={(e) => {
-              e.preventDefault();
+            onClick={() => {
               handleSendComments();
             }}
           >

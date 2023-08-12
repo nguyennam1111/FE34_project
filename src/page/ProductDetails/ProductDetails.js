@@ -33,6 +33,10 @@ import RenderComments from "../../components/Product/RenderComments";
 
 const ProductDetails = () => {
   useScrollToTop();
+  const callBackUrl = window.location.pathname;
+
+  localStorage.setItem("callBackUrl", JSON.stringify(callBackUrl));
+
   const params = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -46,28 +50,22 @@ const ProductDetails = () => {
 
   const { productComments } = useSelector((state) => state.productComment);
   const { cart } = useSelector((state) => state.cart);
-  // const _productQtyInCart = cart.map?.((item) =>
-  //   item.productId == productDetails.id && sizeAndColor == item.sizeAndColor
-  //     ? item.productQty
-  //     : 0
-  // );
-  // console.log(productQtyInCart, "productQtyInCart");
-
-  const currentUrl = window.location.pathname;
-  localStorage.setItem("currentUrl", JSON.stringify(currentUrl));
+  const _productQtyInCart = cart.filter?.((item) =>
+    item.productId == productDetails.id && sizeAndColor == item.sizeAndColor
+      ? item.productQty
+      : 0
+  );
+  console.log(_productQtyInCart, "productQtyInCart");
 
   useEffect(() => {
     dispatch(actfetchAllProducts());
     dispatch(actfetchAllGuidance());
+    dispatch(actGetProductbyId(params.id));
     dispatch(
       actGetAllComments({
         productId: params.id,
       })
     );
-  }, [params.id]);
-
-  useEffect(() => {
-    dispatch(actGetProductbyId(params.id));
   }, [params.id]);
 
   useEffect(() => {
@@ -321,6 +319,7 @@ const ProductDetails = () => {
                 productDetails={productDetails}
                 userProfile={userProfile}
                 isAuth={isAuth}
+                id={params.id}
               />
             </div>
           </div>

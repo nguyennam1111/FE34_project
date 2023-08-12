@@ -4,6 +4,9 @@ import ShowService from "../../components/service/ShowService";
 import { actGetAllService } from "../../redux/feature/service/serviceSlice";
 
 const Services = () => {
+  const callBackUrl = window.location.pathname;
+
+  localStorage.setItem("callBackUrl", JSON.stringify(callBackUrl));
   const dispatch = useDispatch();
   const { service } = useSelector((state) => state.service);
   useEffect(() => {

@@ -10,7 +10,10 @@ import {
 import { ROUTES } from "../../constants/routes";
 import { useDispatch, useSelector } from "react-redux";
 
-import { logout } from "../../redux/feature/Authenticate/authSlice";
+import {
+  logout,
+  setForgotPassword,
+} from "../../redux/feature/Authenticate/authSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -19,7 +22,7 @@ const Header = () => {
 
   const { cart } = useSelector((state) => state.cart);
 
-  const { isAuth, userProfile } = useSelector((state) => state.auth);
+  const { isAuth, userProfile, isForgot } = useSelector((state) => state.auth);
 
   const handleSearch = () => {
     if (search != undefined) {
@@ -30,12 +33,17 @@ const Header = () => {
   const handleSignOut = () => {
     dispatch(logout());
   };
+
   return (
     <div className="container-fluid">
       <div className="row py-2 m-0">
         <div className="col-md-4 offset-md-7 text-center p-0">
           <div style={isAuth ? { display: "none" } : { display: "block" }}>
-            <Link to={ROUTES.SIGNIN} className="mr-3">
+            <Link
+              to={ROUTES.SIGNIN}
+              className="mr-3"
+              onClick={() => dispatch(setForgotPassword(false))}
+            >
               <i className="bi bi-person-fill pr-1 border rounded-circle"></i>
               Đăng nhập
             </Link>

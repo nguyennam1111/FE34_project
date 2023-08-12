@@ -1,9 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { userAccountApi } from "../../../apis/userAccountApi";
 import { toast } from "react-toastify";
+import { message } from "antd";
 
 const initialState = {
   isAuth: JSON.parse(localStorage.getItem("isAuth")) ?? false,
+  isForgot: JSON.parse(localStorage.getItem("isForgot")) ?? false,
   userProfile: JSON.parse(localStorage.getItem("userProfile")) ?? null,
   loginError: null,
 };
@@ -31,28 +33,15 @@ export const actLogin = createAsyncThunk(
   }
 );
 
-// const fetchAllUserAccounts = createAsyncThunk(
-//   "auth/fetchAllUsers",
-//   async () => {
-//     const { data } = await userAccountApi.getAllUserAccounts();
-//     return data;
-//   }
-// );
-
 export const authSlice = createSlice({
   name: "auth",
   initialState: initialState,
 
   reducers: {
-    // loginSuccess: (state, action) => {
-    //   state.isAuth = true;
-    //   state.userProfile = {
-    //     email: action.payload.email,
-    //     password: action.payload.password,
-    //   };
-    //   localStorage.setItem("isAuth", JSON.stringify(state.isAuth));
-    //   localStorage.setItem("userProfile", JSON.stringify(state.userProfile));
-    // },
+    setForgotPassword: (state, action) => {
+      state.isForgot = action.payload;
+      localStorage.setItem("isForgot", JSON.stringify(state.isForgot));
+    },
     logout: (state, action) => {
       state.isAuth = false;
       state.userProfile = "";
@@ -81,5 +70,5 @@ export const authSlice = createSlice({
     // });
   },
 });
-export const { loginSuccess, logout } = authSlice.actions;
+export const { loginSuccess, logout, setForgotPassword } = authSlice.actions;
 export default authSlice.reducer;

@@ -10,6 +10,8 @@ import guidanceReducer from "../feature/guidance/guidanceSlice";
 import productCommentsReduce from "../feature/ProductComments/productCommentsSlice";
 import serviceReducer from "../feature/service/serviceSlice";
 import locationReducer from "../feature/Location/getLocationSlice";
+import contactReducer from "../feature/Contact/contactSlice";
+import introduceReducer from "../feature/Introduce/introduceSlice";
 export const store = configureStore({
   reducer: {
     product: productReducer,
@@ -23,6 +25,8 @@ export const store = configureStore({
     productComment: productCommentsReduce,
     service: serviceReducer,
     location: locationReducer,
+    contact: contactReducer,
+    introduce: introduceReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
