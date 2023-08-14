@@ -4,15 +4,11 @@ import {
   actGetAllDistrict,
   actGetAllProvince,
   actGetAllWard,
-  setDistrictCode,
-  setProvinceCode,
 } from "../../redux/feature/Location/getLocationSlice";
 import { ContactsFilled } from "@ant-design/icons";
 
 const ShowLocation = (props) => {
   const dispatch = useDispatch();
-  // const [provinceCode, setProvinceCode] = useState("");
-  // const [districtCode, setDistrictCode] = useState("");
 
   const { provinces, districts, wards } = useSelector(
     (state) => state.location
@@ -36,7 +32,7 @@ const ShowLocation = (props) => {
     return (
       <>
         <select
-          {...register("province")}
+          // {...register("province")}
           name="province"
           id="province"
           className="form-control mt-2"
@@ -46,6 +42,7 @@ const ShowLocation = (props) => {
             Chọn tỉnh thành*
           </option>
           {provinces?.map((item) => {
+            props.setProvinceName(item.name);
             return (
               <option key={item.code} value={item.code}>
                 {item.name}
@@ -56,7 +53,7 @@ const ShowLocation = (props) => {
         <p className="m-0 text-danger">{errors?.province?.message}</p>
 
         <select
-          {...register("district")}
+          // {...register("district")}
           name="district"
           id="district"
           className="form-control mt-2"
@@ -66,6 +63,7 @@ const ShowLocation = (props) => {
             Chọn quận huyện*
           </option>
           {districts.districts?.map((item) => {
+            props.setDistrictName(item.name);
             return (
               <option key={item.code} value={item.code}>
                 {item?.name}
@@ -76,10 +74,11 @@ const ShowLocation = (props) => {
         <p className="m-0 text-danger">{errors?.district?.message}</p>
 
         <select
-          {...register("ward")}
+          // {...register("ward")}
           name="ward"
           id="ward"
           className="form-control mt-2"
+          onChange={(e) => props.setValue("ward", e.target.value)}
         >
           <option value="" selected disabled>
             Chọn phường xã*

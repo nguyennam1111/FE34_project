@@ -54,16 +54,7 @@ export const actUpdateUserAccount = createAsyncThunk(
 export const userAccountSlice = createSlice({
   name: "userAccounts",
   initialState: initialState,
-  reducers: {
-    // addUserAccount(state, action) {
-    //   const existEmail = state.userAccounts.findIndex(
-    //     (item) => item.email === action.payload.email
-    //   );
-    //   if (existEmail >= 0) {
-    //     userAccountApi.addUserAccount(action.payload);
-    //   }
-    // },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(actAddUserAccount.pending, (state, action) => {
       state.isLoading = true;

@@ -54,7 +54,7 @@ const Products = (props) => {
         _order: sortBy.order,
         q: filters.search,
         productCatalogue: filters.catalogue,
-        // productStatus: filters.status,
+
         productPromote: filters.status,
       })
     );
@@ -75,20 +75,6 @@ const Products = (props) => {
   useEffect(() => {
     handleChangePageSize(pagination.pageSize);
   }, [filters]);
-
-  // useEffect(() => {
-  //   dispatch(
-  //     actfetchAllProducts({
-  //       _page: pagination.currentPage,
-  //       _limit: pagination.pageSize,
-  //       _sort: sortBy.sort,
-  //       _order: sortBy.order,
-  //       q: filters.search,
-  //       productCatalogue: filters.catalogue,
-  //       productStatus: filters.status,
-  //     })
-  //   );
-  // }, [filters, sortBy, pagination.pageSize, pagination.currentPage]);
 
   const handleProductDetails = (productId) => {
     navigate(`/Products/${productId}`);

@@ -6,6 +6,7 @@ import { message } from "antd";
 const initialState = {
   isAuth: JSON.parse(localStorage.getItem("isAuth")) ?? false,
   isForgot: JSON.parse(localStorage.getItem("isForgot")) ?? false,
+  isChangePass: JSON.parse(localStorage.getItem("isChangePass")) ?? false,
   userProfile: JSON.parse(localStorage.getItem("userProfile")) ?? null,
   loginError: null,
 };
@@ -42,6 +43,10 @@ export const authSlice = createSlice({
       state.isForgot = action.payload;
       localStorage.setItem("isForgot", JSON.stringify(state.isForgot));
     },
+    changePassword: (state, action) => {
+      state.isChangePass = action.payload;
+      localStorage.setItem("isChangePass", JSON.stringify(state.isChangePass));
+    },
     logout: (state, action) => {
       state.isAuth = false;
       state.userProfile = "";
@@ -70,5 +75,6 @@ export const authSlice = createSlice({
     // });
   },
 });
-export const { loginSuccess, logout, setForgotPassword } = authSlice.actions;
+export const { loginSuccess, logout, setForgotPassword, changePassword } =
+  authSlice.actions;
 export default authSlice.reducer;

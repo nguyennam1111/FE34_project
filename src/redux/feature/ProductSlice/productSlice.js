@@ -16,6 +16,7 @@ const initialState = {
     pageSize: 8,
     totalProducts: 0,
   },
+  saleQty: "",
 };
 
 export const actfetchAllProducts = createAsyncThunk(
@@ -30,9 +31,11 @@ export const actfetchAllProducts = createAsyncThunk(
     return response;
   }
 );
-export const updateSaleQty = createAsyncThunk(
-  "product/updateSaleQty",
-  async () => {}
+export const actUpdateSaleQty = createAsyncThunk(
+  "product/actUpdateSaleQty",
+  async (item) => {
+    return await productsApi.updateProduct(item.updateId, item.updateItem);
+  }
 );
 
 export const actGetProductbyId = createAsyncThunk(
@@ -139,13 +142,10 @@ const productSlice = createSlice({
       state.productDetails = action.payload;
     });
 
-    // get product by status
-    // builder.addCase(actGetProductByStatus.fulfilled, (state, action) => {
-    //   state.newProducts = action.payload[0].data;
-    //   state.hotProducts = action.payload[1].data;
-    //   state.bestSaleProducts = action.payload[2].data;
-    //   console.log(action.payload, "filter by status");
-    // });
+    // updateProduct
+    builder.addCase(actUpdateSaleQty.fulfilled, (state, action) => {
+      console.log(action.payload, "update sale Qty");
+    });
   },
 });
 

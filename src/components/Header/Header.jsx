@@ -24,6 +24,8 @@ const Header = () => {
 
   const { isAuth, userProfile, isForgot } = useSelector((state) => state.auth);
 
+  const backToUrl = JSON.parse(localStorage.getItem("currentUrl"));
+
   const handleSearch = () => {
     if (search != undefined) {
       navigate(`/Products?search=${search}`);
@@ -32,13 +34,14 @@ const Header = () => {
 
   const handleSignOut = () => {
     dispatch(logout());
+    navigate(ROUTES.HOME);
   };
 
   return (
     <div className="container-fluid">
       <div className="row py-2 m-0">
         <div className="col-md-4 offset-md-7 text-center p-0">
-          <div style={isAuth ? { display: "none" } : { display: "block" }}>
+          <div style={isAuth ? { display: "none" } : { display: "" }}>
             <Link
               to={ROUTES.SIGNIN}
               className="mr-3"
@@ -60,7 +63,9 @@ const Header = () => {
               Xin chào:{" "}
               <span
                 className="text-primary col-md-9 pl-0 header-userAcc"
-                onClick={() => navigate(`/userAccount/${userProfile.id}`)}
+                onClick={() => {
+                  navigate(`/userAccount/${userProfile.id}`);
+                }}
               >
                 {userProfile?.fullName}
               </span>

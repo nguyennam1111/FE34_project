@@ -24,12 +24,11 @@ import useScrollToTop from "../../hooks/useScrollToTop";
 import { ROUTES } from "../../constants/routes";
 import ProductDescription from "../../components/Product/ProductDescription";
 import { actfetchAllGuidance } from "../../redux/feature/guidance/guidanceSlice";
-import {
-  actAddComment,
-  actGetAllComments,
-  actGetCommentDetails,
-} from "../../redux/feature/ProductComments/productCommentsSlice";
+import { actGetAllComments } from "../../redux/feature/ProductComments/productCommentsSlice";
 import RenderComments from "../../components/Product/RenderComments";
+import { Controller, useForm } from "react-hook-form";
+import * as Yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const ProductDetails = () => {
   useScrollToTop();
@@ -40,8 +39,7 @@ const ProductDetails = () => {
   const params = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [inputQty, setInputQty] = useState("1");
-  const [sizeAndColor, setSizeAndColor] = useState();
+
   let { products, productDetails, bestSaleProducts } = useSelector(
     (state) => state.product
   );
@@ -50,12 +48,6 @@ const ProductDetails = () => {
 
   const { productComments } = useSelector((state) => state.productComment);
   const { cart } = useSelector((state) => state.cart);
-  const _productQtyInCart = cart.filter?.((item) =>
-    item.productId == productDetails.id && sizeAndColor == item.sizeAndColor
-      ? item.productQty
-      : 0
-  );
-  console.log(_productQtyInCart, "productQtyInCart");
 
   useEffect(() => {
     dispatch(actfetchAllProducts());
@@ -77,61 +69,97 @@ const ProductDetails = () => {
   }, [productDetails.tags]);
 
   const imageList = productDetails?.productsImg;
+  const schemaAddToCart = Yup.object().shape({
+    size: Yup.string().required("Chọn size"),
+    color: Yup.string().required("Chọn màu"),
+    inputQty: Yup.string()
+      .required("Nhập số lượng cần mua")
+      .test(
+        "check integer",
+        "Số lượng phải số nguyên",
+        (value) => value % 1 === 0
+      )
+      .test("check min", "Số lượng phải lớn hơn 0", (value) => value > 0)
+      .test(
+        "checkStockQty",
+        "Over stock",
+        (value) =>
+          Number(productDetails?.stock?.totalQty) -
+            Number(productDetails?.stock?.saledQty) >=
+          value
+      ),
+  });
+
+  const {
+    handleSubmit: handleAddProductToCart,
+    register,
+    watch,
+    formState: { errors },
+    control,
+    setValue,
+    reset,
+  } = useForm({
+    defaultValue: {
+      size: "",
+      color: "",
+      inputQty: "1",
+    },
+    mode: "onSubmit",
+
+    resolver: yupResolver(schemaAddToCart),
+  });
 
   const handleProductDetails = (productId) => {
     navigate(`/Products/${productId}`);
   };
-  const handleInputChange = (e) => {
-    setInputQty(e.target.value);
-  };
 
-  const handleSelectSizeAndColor = (e) => {
-    setSizeAndColor(e);
-  };
-
-  const handleAddProductToCart = () => {
-    if (
-      !isNaN(inputQty) &&
-      inputQty > 0 &&
-      inputQty !== "" &&
-      parseFloat(inputQty) % 1 === 0
-    ) {
-      document.getElementById("text-warning-Qty").textContent = "";
-      if (sizeAndColor != undefined) {
-        document.getElementById(
-          "selectSizeAndColor"
-        ).nextElementSibling.textContent = "";
-
-        dispatch(
-          addItemToCart({
-            product: productDetails,
-            sizeAndColor: sizeAndColor,
-            inputQty: inputQty,
-          })
-        );
-
-        setInputQty("");
-      } else {
-        document.getElementById(
-          "selectSizeAndColor"
-        ).nextElementSibling.textContent = "Chọn size và màu";
-      }
-    } else {
-      document.getElementById("text-warning-Qty").textContent =
-        "Vui lòng nhập số lượng cần mua";
-    }
-  };
-
-  const renderSelectDetails = (data) => {
-    return productDetails?.productSize?.map((ele) => {
-      return data?.map((item) => {
-        return (
-          <option value={`${ele}/${item}`}>
-            {ele}/{item}
-          </option>
-        );
-      });
+  const renderSize = () => {
+    return productDetails.productSize?.map((size) => {
+      return (
+        <button
+          style={{ backgroundColor: "" }}
+          type="button"
+          key={size}
+          className={`btn border mr-2 ${
+            watch("size") === size ? "bg-success text-white" : ""
+          }`}
+          value={size}
+          onClick={(e) => {
+            setValue("size", e.target.value);
+          }}
+        >
+          {size}
+        </button>
+      );
     });
+  };
+
+  const renderColor = () => {
+    return productDetails.productColor?.map((color) => {
+      return (
+        <div className="d-flex mr-2">
+          <button
+            type="button"
+            className={`btn border ${
+              watch("color") === color ? "bg-success text-white" : ""
+            }`}
+            value={color}
+            onClick={(e) => setValue("color", e.target.value)}
+          >
+            {color}
+          </button>
+        </div>
+      );
+    });
+  };
+  const AddProductToCart = (data) => {
+    dispatch(
+      addItemToCart({
+        product: productDetails,
+        sizeAndColor: `${data.size}/${data.color}`,
+        inputQty: data.inputQty,
+      })
+    );
   };
 
   return (
@@ -221,76 +249,68 @@ const ProductDetails = () => {
             </p>
             <p>{productDetails.productDescription?.title}</p>
             <div>
-              <select
-                name={productDetails?.productCode}
-                id="selectSizeAndColor"
-                className="form-control w-50"
-                defaultValue=""
-                value={sizeAndColor}
-                onChange={(e) => {
-                  handleSelectSizeAndColor(e.target.value);
-                }}
-                disabled={
-                  Number(productDetails?.stock?.totalQty) -
-                    Number(productDetails?.stock?.saledQty) ===
-                  0
-                }
-              >
-                <option>Chọn size và màu</option>
-                {renderSelectDetails(productDetails?.productColor)}
-              </select>
-              <p className="text-danger"></p>
-              <div>
-                <div className="d-flex mt-3">
-                  <input
-                    id="inputQty"
-                    name="inputQty"
-                    type="number"
-                    max={`${
-                      Number(productDetails?.stock?.totalQty) -
-                      Number(productDetails?.stock?.saledQty)
-                    }`}
-                    className="form-control w-25"
-                    defaultValue="1"
-                    value={inputQty}
-                    onChange={(e) => {
-                      handleInputChange(e);
-                    }}
-                    disabled={
-                      Number(productDetails?.stock?.totalQty) -
-                        Number(productDetails?.stock?.saledQty) ===
-                      0
-                    }
-                  ></input>
+              <form onSubmit={handleAddProductToCart(AddProductToCart)}>
+                <div className="d-flex mt-3" {...register("size")}>
+                  <p className="mr-2">Chọn size: </p>
 
-                  <button
-                    className="btn bg-content mx-2"
-                    onClick={() => {
-                      handleAddProductToCart();
-                    }}
-                    disabled={
-                      Number(productDetails?.stock?.totalQty) -
-                        Number(productDetails?.stock?.saledQty) ===
-                      0
-                    }
-                  >
-                    Đặt Hàng
-                  </button>
-                  <ToastContainer
-                    position="top-right"
-                    autoClose={3000}
-                    hideProgressBar={true}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={true}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme="light"
-                  />
+                  {renderSize()}
                 </div>
-                <p className="text-danger" id="text-warning-Qty"></p>
-              </div>
+                <p className="text-danger">{errors?.size?.message}</p>
+                <div className="d-flex mt-3" {...register("color")}>
+                  <p className="mr-2">Chọn màu: </p>
+
+                  {renderColor()}
+                </div>
+
+                <p className="text-danger">{errors?.color?.message}</p>
+                <div {...register("inputQty")}>
+                  <div className="d-flex mt-3">
+                    <input
+                      id="inputQty"
+                      name="inputQty"
+                      type="number"
+                      // max={`${
+                      //   Number(productDetails?.stock?.totalQty) -
+                      //   Number(productDetails?.stock?.saledQty)
+                      // }`}
+                      className="form-control w-25"
+                      onChange={(e) => setValue("inputQty", e.target.value)}
+                      disabled={
+                        Number(productDetails?.stock?.totalQty) -
+                          Number(productDetails?.stock?.saledQty) ===
+                        0
+                      }
+                    ></input>
+
+                    <button
+                      className="btn bg-content mx-2 text-white"
+                      type="submit"
+                      disabled={
+                        Number(productDetails?.stock?.totalQty) -
+                          Number(productDetails?.stock?.saledQty) ===
+                        0
+                      }
+                    >
+                      Đặt Hàng
+                    </button>
+                    <ToastContainer
+                      position="top-right"
+                      autoClose={3000}
+                      hideProgressBar={true}
+                      newestOnTop={false}
+                      closeOnClick
+                      rtl={true}
+                      pauseOnFocusLoss
+                      draggable
+                      pauseOnHover
+                      theme="light"
+                    />
+                  </div>
+                  <p className="text-danger" id="text-warning-Qty">
+                    {errors?.inputQty?.message}
+                  </p>
+                </div>
+              </form>
               <p className="mt-3">Gọi ngay để được tư vấn</p>
               <h5 className="p-3 bg-highlight text-center text-white w-sm-50">
                 HOTLINE: 0905150109

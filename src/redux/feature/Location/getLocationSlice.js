@@ -38,14 +38,7 @@ export const actGetAllWard = createAsyncThunk(
 export const getLocationSlice = createSlice({
   name: "location",
   initialState: initialState,
-  reducers: {
-    setProvinceCode: (state, action) => {
-      state.provinceCode = action.payload;
-    },
-    setDistrictCode: (state, action) => {
-      state.districtCode = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(actGetAllProvince.pending, (state, action) => {});
     builder.addCase(actGetAllProvince.rejected, (state, action) => {});
@@ -62,5 +55,5 @@ export const getLocationSlice = createSlice({
     });
   },
 });
-export const { setProvinceCode, setDistrictCode } = getLocationSlice.actions;
+export const {} = getLocationSlice.actions;
 export default getLocationSlice.reducer;

@@ -11,3 +11,11 @@
     content: "";
   }
 }
+.select-size:hover,
+.select-size:focus,
+.select-size:active,
+.select-color:hover,
+.select-color:focus,
+.select-color::selection {
+  background-color: aqua;
+}

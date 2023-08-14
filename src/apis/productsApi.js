@@ -17,14 +17,11 @@ export const productsApi = {
     );
     return data;
   },
-  addDataToProduct: async (updateId, updateItem) => {
-    try {
-      await axios.put(
-        `${process.env.REACT_APP_BE_URL}products/${updateId}`,
-        updateItem
-      );
-    } catch (error) {
-      console.log(error);
-    }
+  updateProduct: async (updateId, updateItem) => {
+    const { data } = await axios.patch(
+      `${process.env.REACT_APP_BE_URL}products/${updateId}`,
+      updateItem
+    );
+    return data;
   },
 };

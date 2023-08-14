@@ -11,3 +11,8 @@
   vertical-align: middle;
   z-index: 2;
 }
+.setHover:hover,
+.setHover:focus {
+  cursor: pointer;
+  font-style: italic;
+}

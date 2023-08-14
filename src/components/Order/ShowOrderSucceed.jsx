@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 const ShowOrderSucceed = (props) => {
+  console.log(props.orderSucceed, "orderSucceed");
   const navigate = useNavigate();
   return (
     <div className="container-fluid px-4 bg-light">
@@ -38,18 +39,26 @@ const ShowOrderSucceed = (props) => {
               <div>
                 <h4>Thông tin mua hàng</h4>
                 <p>Tên:{props.orderSucceed?.fullName}</p>
+
+                <p>Điệnthoại:{props.orderSucceed?.phone}</p>
                 <p>Email:{props.orderSucceed?.orderEmail}</p>
               </div>
               <div>
                 <h4>Phương thức thanh toán</h4>
-                <p>{props.orderSucceed?.paymentMethod}</p>
+                <p>
+                  {props.orderSucceed?.paymentMethod}/
+                  {props.orderSucceed?.transferMethod}
+                </p>
               </div>
             </div>
             <div className="col-sm-6">
               <div>
                 <h4>Địa chỉ nhận hàng</h4>
-                <p>Địa chỉ:{props.orderSucceed?.adrress}</p>
+                <p>Địa chỉ:{props.orderSucceed?.address}</p>
                 <p>Tỉnh:{props.orderSucceed?.province}</p>
+                <p>Quận/Huyện:{props.orderSucceed?.district}</p>
+
+                <p>Phường/Xã:{props.orderSucceed?.ward}</p>
               </div>
               <div>
                 <h4>Phương thức vận chuyển</h4>
@@ -88,7 +97,7 @@ const ShowOrderSucceed = (props) => {
             <p className="col-sm-6 m-0">Phí vận chuyển</p>
             <p className="col-sm-6 m-0 text-right">
               <NumericFormat
-                value={props?.shippingFee}
+                value={props.orderSucceed?.shippingFee}
                 displayType={"text"}
                 allowLeadingZeros
                 thousandSeparator={true}

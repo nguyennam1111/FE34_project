@@ -19,21 +19,27 @@ import { clearCart } from "../../redux/feature/Cart/cartSlice";
 import { isAnyOf } from "@reduxjs/toolkit";
 import { actGetAllProvince } from "../../redux/feature/Location/getLocationSlice";
 import ShowLocation from "../Location/ShowLocation";
+import {
+  actGetProductbyId,
+  actUpdateSaleQty,
+  actfetchAllProducts,
+} from "../../redux/feature/ProductSlice/productSlice";
+import ProductDetails from "../../page/ProductDetails/ProductDetails";
 
 const OrderPayment = (props) => {
   const phonePattern = /^([0|84])([3|5|7|8|9]{1})+(\d{8})$\b/g;
   const navigate = useNavigate();
-  const [shippingFee, setShippingFee] = useState("35000");
-  const [shippingType, setShippingType] = useState("Giao hàng nhanh");
-  const [payment, setPayment] = useState("COD");
   const dispatch = useDispatch();
-
   const { userAccounts } = useSelector((state) => state.userAccount);
   const { isAuth, userProfile } = useSelector((state) => state.auth);
   const { orders } = useSelector((state) => state.orders);
+  const { products } = useSelector((state) => state.product);
+  const [provinceName, setProvinceName] = useState("");
+  const [districtName, setDistrictName] = useState("");
 
   useEffect(() => {
     dispatch(actGetAllOrders());
+    dispatch(actfetchAllProducts());
   }, []);
 
   const schemaValidatePayment = Yup.object().shape({
@@ -49,12 +55,11 @@ const OrderPayment = (props) => {
     district: Yup.string().required("Chọn quận huyện"),
     ward: Yup.string().required("Chọn phường xã"),
     comments: Yup.string(),
-    shippingType: Yup.string()
-      .required("Chọn phương pháp giao hàng")
-      .oneOf(["normal", "fast"], "", "Chọn phương pháp giao hàng"),
-    paymentMethod: Yup.string()
-      .required("Chọn phương thức thanh toán")
-      .oneOf(["OnlinePayment", "COD"], "Chọn phương thức thanh toán"),
+    shippingType: Yup.string().required("Chọn phương pháp giao hàng"),
+    // .oneOf(["normal", "fast"], "", "Chọn phương pháp giao hàng"),
+    paymentMethod: Yup.string().required("Chọn phương thức thanh toán"),
+    // .oneOf(["OnlinePayment", "COD"], "Chọn phương thức thanh toán"),
+    transferMethod: Yup.string(),
   });
 
   const {
@@ -75,27 +80,39 @@ const OrderPayment = (props) => {
       ward: "",
       comments: "",
       shippingType: "",
+      shippingFee: "",
+      paymentMethod: "",
+      transferMethod: "",
     },
     mode: "onSubmit",
     resolver: yupResolver(schemaValidatePayment),
   });
 
+  // const filterOrderbyId = orders.filter((p) =>
+  //   products.map((item) => item.productId === p.id)
+  // );
+  // console.log(filterOrderbyId, "filterOrderbyId");
+  // console.log(
+  //   filterOrderbyId.map((item) => item.orderList?.map((e) => e.productQty)),
+  //   "saleQtybyId"
+  // );
+
   const onPayment = (data) => {
+    // create order code
     let orderCode = 0;
 
-    orders.map((item) =>
+    orders?.map((item) =>
       item.orderCode !== `#${parseInt(Math.random() * 1000)}`
         ? (orderCode = `#${parseInt(Math.random() * 1000)}`)
         : ""
     );
-
+    //
     dispatch(
       actAddOrder({
         ...data,
+        province: provinceName,
+        district: districtName,
         orderCode: orderCode,
-        paymentMethod: payment,
-        shippingFee: shippingFee,
-        shippingType: shippingType,
         totalAmount: props.totalAmount,
         totalItemQty: props.totalItemQty,
         orderList: props.cart,
@@ -105,14 +122,23 @@ const OrderPayment = (props) => {
     dispatch(
       setOrderSucceed({
         ...data,
+        province: provinceName,
+        district: districtName,
         orderCode: orderCode,
-        paymentMethod: payment,
-        shippingFee: shippingFee,
-        shippingType: shippingType,
         orderList: props.cart,
         orderAt: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`,
       })
     );
+
+    // const updateStock = {
+    //   stock: {
+    //     saledQty: item.productQty,
+    //   },
+    // };
+    // dispatch(
+    //   actUpdateSaleQty({ updateId: item.productId, updateItem: updateStock })
+    // );
+
     dispatch(clearCart());
     navigate("/Payment?status=succeed");
   };
@@ -120,6 +146,7 @@ const OrderPayment = (props) => {
   const handleBackToCart = () => {
     navigate(ROUTES.CART);
   };
+
   return (
     <div className="row container-fluid m-0">
       <div className="col-sm-8">
@@ -152,6 +179,7 @@ const OrderPayment = (props) => {
                       placeholder="email*"
                       id="orderEmail"
                       {...field}
+                      // onChange={(e) => setValue("orderEmail", e.target.value)}
                     />
                   )}
                   name="orderEmail"
@@ -166,6 +194,7 @@ const OrderPayment = (props) => {
                       placeholder="Họ và tên*"
                       id="fullName"
                       {...field}
+                      // onChange={(e) => setValue("fullName", e.target.value)}
                     />
                   )}
                   name="fullName"
@@ -180,6 +209,7 @@ const OrderPayment = (props) => {
                       placeholder="Số điện thoại*"
                       id="phone"
                       {...field}
+                      // onChange={(e) => setValue("phone", e.target.value)}
                     />
                   )}
                   name="phone"
@@ -195,6 +225,7 @@ const OrderPayment = (props) => {
                       placeholder="Địa chỉ*"
                       id="address"
                       {...field}
+                      // onChange={(e) => setValue("address", e.target.value)}
                     />
                   )}
                   name="address"
@@ -207,15 +238,17 @@ const OrderPayment = (props) => {
                   register={register}
                   setValue={setValue}
                   watch={watch}
-                  setShippingFee={setShippingFee}
+                  setProvinceName={setProvinceName}
+                  setDistrictName={setDistrictName}
                 />
 
                 <textarea
-                  {...register("comments")}
+                  // {...register("comments")}
                   className="form-control mt-2"
                   placeholder="Ghi chú"
                   id="comments"
                   name="comments"
+                  // onChange={(e) => setValue("comments", e.target.value)}
                 ></textarea>
               </form>
             </div>
@@ -228,24 +261,25 @@ const OrderPayment = (props) => {
                 <div className="row justify-content-between m-0 p-2 border rounded">
                   <label className="m-0 " htmlFor="shipping_fast">
                     <input
-                      {...register("shippingType")}
+                      // {...register("shippingType")}
                       className="mr-2"
                       type="radio"
                       name="shippingType"
                       id="shipping_fast"
-                      checked={shippingType == "Giao hàng nhanh"}
+                      checked={watch("shippingType") == "Giao hàng nhanh"}
                       onChange={(e) => {
-                        setShippingType("Giao hàng nhanh");
-                        setShippingFee(35000);
+                        setValue("shippingType", "Giao hàng nhanh");
+                        setValue("shippingFee", 35000);
                       }}
-                      value="fast"
                     ></input>
                     Giao hàng nhanh
                   </label>
-                  <span className="col-sm-4 p-0 text-right">
+                  <span className="col-sm-4 p-0 text-right" name="shippingFee">
                     <NumericFormat
                       value={
-                        shippingType === "Giao hàng nhanh" ? shippingFee : ""
+                        watch("shippingType") == "Giao hàng nhanh"
+                          ? watch("shippingFee")
+                          : ""
                       }
                       displayType={"text"}
                       allowLeadingZeros
@@ -257,23 +291,27 @@ const OrderPayment = (props) => {
                 <div className="row justify-content-between m-0 p-2 border rounded">
                   <label className="m-0" htmlFor="shipping_normal">
                     <input
-                      {...register("shippingType")}
+                      // {...register("shippingType")}
                       className="mr-2"
                       type="radio"
                       name="shippingType"
                       id="shipping_normal"
-                      checked={shippingType == "Giao thường"}
+                      checked={watch("shippingType") == "Giao thường"}
                       onChange={(e) => {
-                        setShippingType("Giao thường");
-                        setShippingFee(15000);
+                        setValue("shippingType", "Giao thường");
+                        setValue("shippingFee", 15000);
                       }}
-                      value="normal"
+                      // value="normal"
                     ></input>
                     Giao thường
                   </label>
-                  <span className="col-sm-4 p-0 text-right">
+                  <span className="col-sm-4 p-0 text-right" name="shippingFee">
                     <NumericFormat
-                      value={shippingType === "Giao thường" ? shippingFee : ""}
+                      value={
+                        watch("shippingType") == "Giao thường"
+                          ? watch("shippingFee")
+                          : ""
+                      }
                       displayType={"text"}
                       allowLeadingZeros
                       thousandSeparator={true}
@@ -294,14 +332,16 @@ const OrderPayment = (props) => {
                 <div className="m-0 p-2 border rounded">
                   <label htmlFor="cod" className="m-0">
                     <input
-                      {...register("paymentMethod")}
+                      // {...register("paymentMethod")}
                       type="radio"
                       className="m-0 mr-2"
                       id="cod"
                       name="paymentMethod"
                       value="COD"
-                      checked={payment === "COD"}
-                      onChange={(e) => setPayment(e.target.value)}
+                      checked={watch("paymentMethod") === "COD"}
+                      onChange={(e) =>
+                        setValue("paymentMethod", e.target.value)
+                      }
                     />
                     Thu hộ (COD)
                   </label>
@@ -309,14 +349,16 @@ const OrderPayment = (props) => {
                 <div className="mt-2 p-2 border rounded">
                   <label htmlFor="online" className="m-0">
                     <input
-                      {...register("paymentMethod")}
+                      // {...register("paymentMethod")}
                       type="radio"
                       className="m-0 mr-2"
                       id="online"
                       name="paymentMethod"
                       value="OnlinePayment"
-                      checked={payment === "OnlinePayment"}
-                      onChange={(e) => setPayment(e.target.value)}
+                      checked={watch("paymentMethod") === "OnlinePayment"}
+                      onChange={(e) =>
+                        setValue("paymentMethod", e.target.value)
+                      }
                     />
                     Thanh toán online
                   </label>
@@ -327,33 +369,44 @@ const OrderPayment = (props) => {
                 <div
                   className="justify-content-between mt-2 p-3 border bg-light"
                   style={
-                    payment == "OnlinePayment" || payment == null
+                    watch("paymentMethod") == "OnlinePayment"
                       ? { display: "" }
                       : { display: "none" }
                   }
                 >
                   <label htmlFor="visa" className="mr-3">
                     <input
-                      {...register("transferMethod")}
+                      // {...register("transferMethod")}
                       type="radio"
                       className="m-0 mr-2"
                       id="visa"
                       name="transferMethod"
                       value={"visa"}
+                      checked={watch("transferMethod") === "visa"}
+                      onChange={(e) =>
+                        setValue("transferMethod", e.target.value)
+                      }
                     />
                     Visa
                   </label>
                   <label htmlFor="banking" className="m-0">
                     <input
-                      {...register("transferMethod")}
+                      // {...register("transferMethod")}
                       type="radio"
                       className="m-0 mr-2"
                       id="banking"
                       value="banking"
                       name="transferMethod"
+                      checked={watch("transferMethod") === "banking"}
+                      onChange={(e) =>
+                        setValue("transferMethod", e.target.value)
+                      }
                     />
                     Chuyển khoản
                   </label>
+                  <p className="text-danger">
+                    {errors?.transferMethod?.message}
+                  </p>
                 </div>
               </form>
             </div>
@@ -397,7 +450,7 @@ const OrderPayment = (props) => {
           <p className="col-sm-6 m-0">Phí vận chuyển</p>
           <p className="col-sm-6 m-0 text-right">
             <NumericFormat
-              value={shippingFee}
+              value={watch("shippingFee")}
               displayType={"text"}
               allowLeadingZeros
               thousandSeparator={true}
@@ -409,7 +462,7 @@ const OrderPayment = (props) => {
           <h4 className="col-sm-6 m-0">Tổng cộng</h4>
           <h4 className="col-sm-6 m-0 text-right" style={{ color: "#2a9dcc" }}>
             <NumericFormat
-              value={props.totalAmount + Number(shippingFee)}
+              value={props.totalAmount + Number(watch("shippingFee"))}
               displayType={"text"}
               allowLeadingZeros
               thousandSeparator={true}

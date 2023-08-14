@@ -27,7 +27,7 @@ const Payment = () => {
   localStorage.setItem("callBackUrl", JSON.stringify(callBackUrl));
   const [searchParams] = useSearchParams();
   const [shippingFee, setShippingFee] = useState(null);
-  const [payment, setPayment] = useState("COD");
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { cart, totalAmount, totalItemQty } = useSelector(
@@ -76,10 +76,6 @@ const Payment = () => {
             cart={cart}
             totalAmount={totalAmount}
             searchParams={searchParams}
-            setShippingFee={setShippingFee}
-            setPayment={setPayment}
-            shippingFee={shippingFee}
-            payment={payment}
             totalItemQty={totalItemQty}
           />
         </>

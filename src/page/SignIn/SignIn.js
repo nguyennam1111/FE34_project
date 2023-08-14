@@ -6,7 +6,10 @@ import { Controller, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { ROUTES } from "../../constants/routes";
 import { useDispatch, useSelector } from "react-redux";
-import { actFetchAllUserAccounts } from "../../redux/feature/UserAccount/userAccountSlice";
+import {
+  actFetchAllUserAccounts,
+  actUpdateUserAccount,
+} from "../../redux/feature/UserAccount/userAccountSlice";
 import {
   actLogin,
   loginSuccess,
@@ -16,9 +19,8 @@ import {
 const SignIn = () => {
   const [eyePassword, setEyePassword] = useState("password");
   const { userAccounts } = useSelector((state) => state.userAccount);
-  const { isAuth, userProfile, loginError, isForgot } = useSelector(
-    (state) => state.auth
-  );
+  const { isAuth, userProfile, loginError, isForgot, isChangePass } =
+    useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -39,15 +41,22 @@ const SignIn = () => {
       ),
     loginPassword: Yup.string()
       .required("Nhập mật khẩu")
-      .oneOf(
-        userAccounts?.map((item) => item.password),
-        "Mật khẩu không đúng"
-      ),
+      .test("matchPass", "Mật khẩu không đúng", (value, context) => {
+        const index = userAccounts?.findIndex(
+          (item) =>
+            item.email === context.parent.loginUser && item.password === value
+        );
+
+        if (index >= 0) {
+          return true;
+        }
+      }),
   });
 
   const {
     handleSubmit: handleSignIn,
     formState: { errors },
+    setError,
     control,
   } = useForm({
     defaultValue: {
@@ -79,6 +88,10 @@ const SignIn = () => {
     resolver: yupResolver(schemaRecoverPassword),
   });
 
+  useEffect(() => {
+    dispatch(actLogin());
+  }, [isAuth]);
+
   const onValidLogin = (data) => {
     dispatch(setForgotPassword(false));
     dispatch(actLogin(data));
@@ -86,6 +99,17 @@ const SignIn = () => {
   };
 
   const onValidRecover = (recoverData) => {
+    const validEmail = userAccounts.find(
+      (item) => item.email === recoverData.recoverEmail
+    );
+    console.log(validEmail, "validEmail");
+    const resetPassword = { password: "123456" };
+    dispatch(
+      actUpdateUserAccount({
+        id: validEmail.id,
+        formData: resetPassword,
+      })
+    );
     alert(
       `Mật khẩu mới được gởi về email ${recoverData.recoverEmail}. Vui lòng check email và thực hiện đăng nhập lại`
     );
@@ -117,8 +141,7 @@ const SignIn = () => {
         className="col-sm-6"
         style={
           ({ color: "#686868" },
-          isForgot ? { display: "none" } : { display: "" },
-          isAuth ? { display: "none" } : { display: "" })
+          isForgot ? { display: "none" } : { display: "" })
         }
       >
         <h4 className="pt-4">ĐĂNG NHẬP</h4>
