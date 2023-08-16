@@ -17,7 +17,7 @@ const ShowHotProducts = (props) => {
       <div className="mt-2 ">
         <h5 className="text-left text-title-normal">SẢN PHẨM NỔI BẬT</h5>
         <div className="row m-0">
-          <div className="col-sm-4 border p-2">
+          <div className="col-md-4 border p-2">
             <Carousel
               useKeyboardArrows={true}
               autoPlay={true}
@@ -99,7 +99,7 @@ const ShowHotProducts = (props) => {
             </Carousel>
           </div>
 
-          <div className="col-sm-8 border pb-3 overflow-y-scroll">
+          <div className="col-md-8 border pb-3 overflow-y-scroll">
             <div className="row p-2 ">
               <RenderProducts
                 data={data}

@@ -19,12 +19,12 @@ const ShowsBestSale = (props) => {
           return (
             <div
               key={item.id}
-              className="row text-center mx-2 g-3 p-2 border-bottom position-relative product-block"
+              className="row text-center mx-2 p-2 border-bottom  product-block"
               onClick={() => {
                 props.handleProductDetails(item.id);
               }}
             >
-              <div className="col-sm-5 border p-0">
+              <div className="col-md-6 border p-0 position-relative">
                 <img
                   src={item?.productsImg[0]}
                   alt="vay lien than"
@@ -41,7 +41,7 @@ const ShowsBestSale = (props) => {
                   {Number(item?.saleOffValue) * 100}%
                 </button>
               </div>
-              <div className="col-sm-7 mt-2">
+              <div className="col-md-6 mt-2">
                 <p>{item.productName}</p>
                 <p className="m-0 text-highlight">
                   <NumericFormat
@@ -97,7 +97,6 @@ const ShowsBestSale = (props) => {
           {newList?.map((list) => renderBestSale(list))}
         </Carousel>
       </div>
-      <div className="border container p-0"></div>
     </div>
   );
 };

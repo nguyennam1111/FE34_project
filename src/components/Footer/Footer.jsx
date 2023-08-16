@@ -9,16 +9,13 @@ const Footer = () => {
   localStorage.setItem("currentUrl", JSON.stringify(currentUrl));
   const { isAuth, userProfile } = useSelector((state) => state.auth);
   const navigate = useNavigate();
-  const handleVerifyLogin = () =>
-    isAuth
-      ? ""
-      : alert("Bạn chưa đăng nhập");
-        // <Alert message="Bạn chưa đăng nhập" type="warning" closable />
+  const handleVerifyLogin = () => (isAuth ? "" : alert("Bạn chưa đăng nhập"));
+  // <Alert message="Bạn chưa đăng nhập" type="warning" closable />
 
   return (
     <div className="m-0 container-fluid">
       <div className="row m-0 py-5 mt-3 justify-content-between footer-style">
-        <div className="col-sm-4">
+        <div className="col-md-4">
           <h5>LIÊN HỆ VỚI CHÚNG TÔI</h5>
           <p>Số 442 Đội Cấn, P. Cống Vị, Q. Ba Đình, Hà Nội</p>
           <p>(04) 6674 2332 - (04) 6674 2332</p>
@@ -52,7 +49,7 @@ const Footer = () => {
             ></img>
           </div>
         </div>
-        <div className="col-sm-2">
+        <div className="col-md-2">
           <h5>THÔNG TIN</h5>
 
           <p>
@@ -87,7 +84,7 @@ const Footer = () => {
             <Link to={ROUTES.CONTACTUS}>Liên hệ</Link>
           </p>
         </div>
-        <div className="col-sm-2">
+        <div className="col-md-2">
           <h5>SẢN PHẨM</h5>
           <p>
             <Link to={"/Products?"}>Tất cả sản phẩm </Link>
@@ -105,7 +102,7 @@ const Footer = () => {
             <Link to={"/Products?status=promote"}>Khuyễn mãi</Link>
           </p>
         </div>
-        <div className="col-sm-2">
+        <div className="col-md-2">
           <h5>LIÊN KẾT BLOG</h5>
           <p>
             <a href="#">Cẩm nang cho mẹ</a>

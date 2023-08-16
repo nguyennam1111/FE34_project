@@ -128,6 +128,32 @@
       ]
     }
   ],
+  "news": [
+    {
+      "newsId": 1,
+      "link": "https://kidshop-1.mysapo.net/cach-nhan-biet-quan-ao-tre-em-viet-nam-xuat-khau-xin",
+      "header": "Cách nhận biết quần áo trẻ em Việt Nam xuất khẩu xịn",
+      "title": "Hiện nay, trên thị trường có rất nhiều vụ quần áo trẻ em hàng Trung Quốc có nhiễm độc tố, chất gây ung thư…Nên tâm lý người tiêu dùng muốn mua các loại quần áo trẻ em made in viet nam . Tuy nhiên, không phải shop quần áo nào cũng đều bán quần áo trẻ em xuất khẩu . Timishop.vn xin chia sẻ một số kinh nghiệm giúp người tiêu dùng có thể phân biệt được quần áo trẻ em Việt Nam xuất khẩu xịn.",
+      "img": "https://bizweb.dktcdn.net/100/039/188/files/ttxk-43.jpg?v=1449467950553",
+      "createdAt": "2023/08/16"
+    },
+    {
+      "newsId": 2,
+      "link": "https://kidshop-1.mysapo.net/giup-ban-tiet-kiem-chi-phi-khi-mua-quan-ao-tre-em",
+      "header": "Giúp bạn tiết kiệm chi phí khi mua quần áo trẻ em",
+      "title": "Hiện nay trên thị trường có hàng ngàn shop thời trang trẻ em với nhiều mẫu mã đa dạng, phong phú khiến mẹ gặp nhiều khó khăn khi lựa chọn cho con mình những bộ quần áo vừa có chất lượng tốt, vừa phù hợp với túi tiền. Sau đây Timishop xin giới thiệu một số mẹo giúp tiết kiệm chi phí khi mẹ đi mua quần áo cho bé.",
+      "img": "https://bizweb.dktcdn.net/thumb/large/100/117/632/articles/chuyen-buon-quan-ao-tre-em-gia-re-cho-cho-tan-binh-1.jpg?v=1473010063163",
+      "createdAt": "2023/08/10"
+    },
+    {
+      "newsId": 3,
+      "link": "https://kidshop-1.mysapo.net/nhung-dieu-can-biet-khi-mua-quan-ao-tre-em-online",
+      "header": "Những điều cần biết khi mua quần áo trẻ em online",
+      "title": "Mua sắm online là xu hướng phổ biến hiện nay của người tiêu dùng nhưng với mặt hàng quần áo, đặc biệt là quần áo trẻ em thì luôn tiềm ẩn nhiều rủi ro không mong muốn",
+      "img": "https://bizweb.dktcdn.net/thumb/large/100/117/632/articles/13.jpg?v=1473010026883",
+      "createdAt": "2023/08/07"
+    }
+  ],
   "saleStatus": [
     {
       "productId": 1,
@@ -1455,6 +1481,15 @@
       "commentsContent": "5 star",
       "createdAt": "Sat Aug 12 2023 7:14:11 PM",
       "id": 35
+    },
+    {
+      "rate": 5,
+      "productId": 6,
+      "email": "abc@gmail.com",
+      "fullName": "NguyenVu Truong Nam",
+      "commentsContent": "ok",
+      "createdAt": "Wed Aug 16 2023 3:26:38 PM",
+      "id": 36
     }
   ],
   "userAccounts": [

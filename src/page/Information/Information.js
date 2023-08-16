@@ -32,7 +32,7 @@ const Information = () => {
   switch (branch) {
     case "history":
       return (
-        <div className="col-sm-9 container-fluid m-0 py-3">
+        <div className="col-md-9 container-fluid m-0 py-3">
           <OrderHistory
             orders={orders}
             userProfile={userProfile}
@@ -44,7 +44,7 @@ const Information = () => {
       break;
     case "transportationPolicy":
       return (
-        <div className="col-sm-9 container-fluid m-0 py-3">
+        <div className="col-md-9 container-fluid m-0 py-3">
           <h4 className="text-title-normal">
             Chính sách vận chuyển của KidShop
           </h4>
@@ -53,7 +53,7 @@ const Information = () => {
       );
     case "OnlineShopping":
       return (
-        <div className="col-sm-9 container-fluid m-0 py-3">
+        <div className="col-md-9 container-fluid m-0 py-3">
           <h4 className="text-title-normal">Hướng dẫn mua hàng online</h4>
           <OnlineShopping data={guidance} />
         </div>

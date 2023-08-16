@@ -40,7 +40,7 @@ const Header = () => {
   return (
     <div className="container-fluid">
       <div className="row py-2 m-0">
-        <div className="col-md-4 offset-md-7 text-center p-0">
+        <div className="col-md-5 offset-md-6 p-0">
           <div style={isAuth ? { display: "none" } : { display: "" }}>
             <Link
               to={ROUTES.SIGNIN}
@@ -55,23 +55,25 @@ const Header = () => {
               Đăng ký
             </Link>
           </div>
-          <div className="row m-0 ">
-            <p
-              className="m-0 p-0"
-              style={isAuth ? { display: "block" } : { display: "none" }}
-            >
-              Xin chào:{" "}
-              <span
-                className="text-primary col-md-9 pl-0 header-userAcc"
-                onClick={() => {
-                  navigate(`/userAccount/${userProfile.id}`);
-                }}
+          <div className="row m-0 align-items-center">
+            <div className="col-md-8">
+              <p
+                className="m-0 p-0  "
+                style={isAuth ? { display: "block" } : { display: "none" }}
               >
-                {userProfile?.fullName}
-              </span>
-            </p>
+                Xin chào:
+                <span
+                  className="text-primary  pl-0 header-userAcc"
+                  onClick={() => {
+                    navigate(`/userAccount/${userProfile.id}`);
+                  }}
+                >
+                  {userProfile?.fullName}
+                </span>
+              </p>
+            </div>
             <button
-              className="btn btn-outline-none p-0 m-0 col-md-3 text-left text-danger"
+              className="btn btn-outline-none m-0 col-md-4 text-danger text-left"
               onClick={() => handleSignOut()}
               style={isAuth ? { display: "block" } : { display: "none" }}
             >
@@ -79,32 +81,39 @@ const Header = () => {
             </button>
           </div>
         </div>
-        <div className="col-md-1 p-0">
+        <div className="col-md-1 my-auto">
           <Link to={ROUTES.CART}>
             <i
               className={`bi bi-cart align-middle mr-2 fw-2 ${
                 cart?.length === 0 ? "text-danger" : "text-sucess"
               }`}
-            ></i>
+            >
+              <span className="ml-2">
+                {cart?.length === 0 ? 0 : cart?.length}
+              </span>
+            </i>
           </Link>
-          <span>{cart?.length === 0 ? 0 : cart?.length}</span>
         </div>
       </div>
 
-      <nav className="navbar navbar-expand-md bg-content sticky-sm-top">
+      <nav className="navbar navbar-expand-md bg-content sticky-sm-top p-2 ">
         <div className="container-fluid p-0">
           <button
-            className="navbar-toggler border-white"
+            class="navbar-toggler border-white text-white p-2"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
+            data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            Menu
+            {/* <span className="navbar-toggler-icon text-white p-0"></span> */}
           </button>
-          <div className="collapse navbar-collapse p-0 my-auto" id="navbarNav">
+          <div
+            className="collapse navbar-collapse p-0 align-items-center"
+            id="navbarNavDropdown"
+          >
             <ul className="navbar-nav  mb-2 mb-lg-0 text-left">
               <li className="nav-item ">
                 <Link
@@ -125,7 +134,7 @@ const Header = () => {
               </li>
               <li className="nav-item dropdown">
                 <Link
-                  className="nav-link text-white dropdown-toggle text-white header-font "
+                  className="nav-link text-white dropdown-toggle text-white header-font"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"

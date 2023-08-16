@@ -31,7 +31,7 @@ const ContactUs = () => {
     });
   };
   return (
-    <div className="col-sm-9 container text-left mt-3">
+    <div className="col-md-9 container text-left mt-3">
       <h3 className="h3 text-success">Contact Us</h3>
       <h5 className="text-warning">Please contact us following:</h5>
       {renderContactInformation()}

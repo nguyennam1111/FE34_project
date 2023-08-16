@@ -7,14 +7,18 @@ const RenderProducts = (props) => {
       return (
         <div
           key={item.id}
-          className={`${classCol} p-2 justify-content-between text-center `}
+          className={`${classCol} p-2 justify-content-between text-center object-fit-cover`}
           onClick={() => {
             props.handleProductDetails(item.id);
           }}
         >
           <div>
-            <div className="position-relative product-block border">
-              <img src={item.productsImg[0]} alt="" className="img-fluid"></img>
+            <div className="position-relative product-block border object-fit-cover">
+              <img
+                src={item.productsImg[0]}
+                alt=""
+                className="img-fluid img"
+              ></img>
               <button
                 className="discount-widget"
                 style={
@@ -62,7 +66,7 @@ const RenderProducts = (props) => {
                 </p>
               </div>
             </div>
-            <p className="m-0">{item.productName}</p>
+            <p className="m-0 mt-2">{item.productName}</p>
             <button className="border-0 mb-2 bg-transparent">
               <img src={btn_buy} className="img-fluid"></img>
             </button>

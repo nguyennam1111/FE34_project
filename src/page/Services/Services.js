@@ -14,7 +14,7 @@ const Services = () => {
   }, []);
 
   return (
-    <div className="col-sm-9 text-justify my-3 ">
+    <div className="col-md-8 text-justify my-3 ">
       <h4>KidShop Services</h4>
       <div>
         <h5 className="text-warning">

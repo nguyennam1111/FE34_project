@@ -118,7 +118,7 @@ const SignIn = () => {
 
   return (
     <div className="m-0 text-left container-fluid">
-      <div className="col-sm-12 p-0">
+      <div className="col-md-12 p-0">
         <ol className="breadcrumb m-0">
           <li className="breadcrumb-item">
             <Link to={ROUTES.HOME}>Trang chủ</Link>
@@ -138,7 +138,7 @@ const SignIn = () => {
         </button>
       </div>
       <div
-        className="col-sm-6"
+        className="col-md-6"
         style={
           ({ color: "#686868" },
           isForgot ? { display: "none" } : { display: "" })
@@ -153,12 +153,12 @@ const SignIn = () => {
         <form key={1} onSubmit={handleSignIn(onValidLogin)}>
           <p className="text-danger">{loginError}</p>
           <label className="row">
-            <p className="col-sm-3 pr-0">
+            <p className="col-md-3 pr-0">
               Tên đăng nhập<span className="text-danger"> *</span>
             </p>
             <Controller
               render={({ field }) => (
-                <input className="form-control col-sm-8" {...field} />
+                <input className="form-control col-md-8" {...field} />
               )}
               id="loginUser"
               name="loginUser"
@@ -171,7 +171,7 @@ const SignIn = () => {
           </p>
 
           <label className=" row">
-            <p className="col-sm-3 pr-0">
+            <p className="col-md-3 pr-0">
               Mật khẩu <span className="text-danger">*</span>
             </p>
             <Controller
@@ -179,7 +179,7 @@ const SignIn = () => {
                 <>
                   <input
                     type={eyePassword}
-                    className="form-control col-sm-8"
+                    className="form-control col-md-8"
                     {...field}
                   />
                   <i
@@ -207,12 +207,12 @@ const SignIn = () => {
 
           <div className="row m-0">
             <div
-              className="col-sm-8 p-0 offset-sm-3 forgot-pass"
+              className="col-md-8 p-0 offset-sm-3 forgot-pass"
               onClick={() => dispatch(setForgotPassword(true))}
             >
               <p>Quên mật khẩu</p>
             </div>
-            <div className="col-sm-8 p-0 offset-sm-3">
+            <div className="col-md-8 p-0 offset-sm-3">
               <button className="btn text-white bg-content p-0" type="submit">
                 ĐĂNG NHẬP
               </button>
@@ -231,7 +231,7 @@ const SignIn = () => {
           </div>
         </form>
         <div className="row m-0">
-          <div className="col-sm-8 mt-2 p-0 offset-sm-3">
+          <div className="col-md-8 mt-2 p-0 offset-sm-3">
             <img
               src="https:////bizweb.dktcdn.net/assets/admin/images/login/fb-btn.svg"
               alt="Facebook"
@@ -250,7 +250,7 @@ const SignIn = () => {
       </div>
 
       <div
-        className="col-sm-6 "
+        className="col-md-6 "
         style={
           ({ color: "#686868" },
           isForgot ? { display: "" } : { display: "none" })
@@ -264,10 +264,10 @@ const SignIn = () => {
         </p>
         <form key={2} onSubmit={handleRecoverPassword(onValidRecover)}>
           <label className="row">
-            <p className="col-sm-3">Email</p>
+            <p className="col-md-3">Email</p>
             <Controller
               render={({ field }) => (
-                <input className="form-control col-sm-8" {...field} />
+                <input className="form-control col-md-8" {...field} />
               )}
               id="recoverEmail"
               name="recoverEmail"
@@ -277,7 +277,7 @@ const SignIn = () => {
           </label>
           <p className="text-danger">{errors2.recoverEmail?.message}</p>
           <div className="row">
-            <div className="col-sm-8 offset-sm-3 p-0 ">
+            <div className="col-md-8 offset-sm-3 p-0 ">
               <button className="btn bg-content sm p-0 px-3">GỬI</button>
               <button
                 className="btn btn-secondary ml-sm-3 p-0 px-3"

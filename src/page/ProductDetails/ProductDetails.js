@@ -193,7 +193,7 @@ const ProductDetails = () => {
     <>
       <div>
         <div className="row m-0">
-          <div className="col-sm-5">
+          <div className="col-md-5">
             <Carousel
               useKeyboardArrows={true}
               autoPlay={true}
@@ -219,7 +219,7 @@ const ProductDetails = () => {
               ))}
             </Carousel>
           </div>
-          <div className="col-sm-7">
+          <div className="col-md-7">
             <h4>{productDetails?.productName}</h4>
             <p
               style={
@@ -353,7 +353,7 @@ const ProductDetails = () => {
         </div>
 
         <div className="row m-0">
-          <div className="col-sm-8 fixed-content position-relative ">
+          <div className="col-md-8 fixed-content position-relative ">
             <ProductDescription
               productDetails={productDetails}
               data={guidance}
@@ -370,7 +370,7 @@ const ProductDetails = () => {
             </div>
           </div>
 
-          <div className="col-sm-4">
+          <div className="col-md-4">
             <SideBar />
             <ShowsBestSale
               data={bestSaleProducts}
@@ -388,7 +388,7 @@ const ProductDetails = () => {
         >
           <RenderProducts
             data={products}
-            classCol="col-sm-2"
+            classCol="col-md-2"
             handleProductDetails={handleProductDetails}
           />
         </div>

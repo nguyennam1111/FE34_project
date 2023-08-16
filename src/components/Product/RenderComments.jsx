@@ -119,7 +119,7 @@ const RenderComments = (props) => {
   return (
     <div className="border p-3">
       <div className="row m-0">
-        <div className="col-sm-6 p-0">
+        <div className="col-md-6 p-0">
           <h4>Đánh giá sản phẩm</h4>
           <ReactStars
             count={5}
@@ -128,7 +128,7 @@ const RenderComments = (props) => {
             onChange={setRate}
           />
         </div>
-        <div className="col-sm-6">
+        <div className="col-md-6">
           <h4>Đánh giá: {isNaN(averageRate) ? 0 : averageRate}/5 </h4>
           <ReactStars count={5} size={25} value={averageRate} edit={false} />
 

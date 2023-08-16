@@ -191,21 +191,21 @@ const SignUp = () => {
         </div>
         <div className="container-fluid">
           <div className="row">
-            <p className="col-sm-2">Họ và tên</p>
-            <p className="col-sm-3">{userProfile.fullName}</p>
+            <p className="col-md-2">Họ và tên</p>
+            <p className="col-md-3">{userProfile.fullName}</p>
           </div>
           <div className="row">
-            <p className="col-sm-2">Email</p>
-            <p className="col-sm-3">{userProfile.email}</p>
+            <p className="col-md-2">Email</p>
+            <p className="col-md-3">{userProfile.email}</p>
           </div>
           <div className="row">
-            <p className="col-sm-2">Số điện thoại</p>
-            <p className="col-sm-3">{userProfile.phone}</p>
+            <p className="col-md-2">Số điện thoại</p>
+            <p className="col-md-3">{userProfile.phone}</p>
           </div>
 
           <div className="row">
-            <p className="col-sm-2">Đăng ký lúc</p>
-            <p className="col-sm-3">{userProfile.createdAt}</p>
+            <p className="col-md-2">Đăng ký lúc</p>
+            <p className="col-md-3">{userProfile.createdAt}</p>
           </div>
 
           <div className="d-flex">
@@ -266,13 +266,13 @@ const SignUp = () => {
         <div className="container-fluid p-0">
           <form onSubmit={handleSignUp(isAuth ? onUpdate : onValid)}>
             <div className="row align-items-center m-0">
-              <p className="col-sm-2 m-0">
+              <p className="col-md-2 m-0">
                 Họ <span className="text-danger">*</span>
               </p>
               <Controller
                 render={({ field }) => (
                   <input
-                    className={`form-control col-sm-8 `}
+                    className={`form-control col-md-8 `}
                     disabled={isAuth ? !isEdit : isAuth}
                     {...field}
                   />
@@ -287,13 +287,13 @@ const SignUp = () => {
             </div>
 
             <div className="row align-items-center m-0 mt-2">
-              <p className="col-sm-2 m-0 ">
+              <p className="col-md-2 m-0 ">
                 Tên <span className="text-danger p-0 m-0">*</span>
               </p>
               <Controller
                 render={({ field }) => (
                   <input
-                    className={`form-control col-sm-8 `}
+                    className={`form-control col-md-8 `}
                     disabled={isAuth ? !isEdit : isAuth}
                     {...field}
                   />
@@ -308,7 +308,7 @@ const SignUp = () => {
             </div>
 
             <div className=" row align-items-center m-0 mt-2">
-              <p className="col-sm-2 m-0">
+              <p className="col-md-2 m-0">
                 Email <span className="text-danger">*</span>
               </p>
               <Controller
@@ -316,7 +316,7 @@ const SignUp = () => {
                   <>
                     <input
                       id="email"
-                      className={`form-control col-sm-8 `}
+                      className={`form-control col-md-8 `}
                       disabled={isAuth}
                       {...field}
                     />
@@ -332,14 +332,14 @@ const SignUp = () => {
             </div>
 
             <div className=" row m-0 mt-2">
-              <p className="col-sm-2 m-0 ">
+              <p className="col-md-2 m-0 ">
                 Điện Thoại <span className="text-danger">*</span>
               </p>
               <Controller
                 render={({ field }) => (
                   <>
                     <input
-                      className={`form-control col-sm-8 `}
+                      className={`form-control col-md-8 `}
                       disabled={isAuth ? !isEdit : isAuth}
                       {...field}
                     />
@@ -394,7 +394,7 @@ const SignUp = () => {
                     : { display: "none" }
                 }
               >
-                <p className="col-sm-2 m-0">
+                <p className="col-md-2 m-0">
                   Mật khẩu cũ<span className="text-danger">*</span>
                 </p>
                 <Controller
@@ -402,7 +402,7 @@ const SignUp = () => {
                     <>
                       <input
                         type={eyeOldPassword}
-                        className={`form-control col-sm-8 `}
+                        className={`form-control col-md-8 `}
                         disabled={isAuth ? !isEdit : isAuth}
                         {...field}
                       />
@@ -430,7 +430,7 @@ const SignUp = () => {
                 </p>
               </div>
               <div className=" row m-0 mt-2">
-                <p className="col-sm-2 m-0">
+                <p className="col-md-2 m-0">
                   Mật khẩu <span className="text-danger">*</span>
                 </p>
                 <Controller
@@ -438,7 +438,7 @@ const SignUp = () => {
                     <>
                       <input
                         type={eyePassword}
-                        className={`form-control col-sm-8 `}
+                        className={`form-control col-md-8 `}
                         disabled={isAuth ? !isEdit : isAuth}
                         {...field}
                       />
@@ -465,7 +465,7 @@ const SignUp = () => {
               </div>
               <div>
                 <div className=" row m-0 mt-2">
-                  <p className="col-sm-2 m-0">
+                  <p className="col-md-2 m-0">
                     Xác nhận mật khẩu <span className="text-danger">*</span>
                   </p>
                   <Controller
@@ -473,7 +473,7 @@ const SignUp = () => {
                       <>
                         <input
                           type={eyeConfirmedPass}
-                          className="form-control col-sm-8"
+                          className="form-control col-md-8"
                           {...field}
                         />
                         <i
@@ -503,7 +503,7 @@ const SignUp = () => {
             </div>
 
             <div className="row mr-0 offset-sm-2">
-              <div className="row col-sm-9 p-0 mt-2">
+              <div className="row col-md-9 p-0 mt-2">
                 <button
                   className="btn bg-content px-2 mr-2 text-white"
                   type="submit"
@@ -520,7 +520,7 @@ const SignUp = () => {
               </div>
             </div>
             <div className="row mr-0 offset-sm-2">
-              <div className="row  col-sm-9  p-0 align-items-center">
+              <div className="row  col-md-9  p-0 align-items-center">
                 <img
                   src="https:////bizweb.dktcdn.net/assets/admin/images/login/fb-btn.svg"
                   alt="Facebook"
@@ -542,7 +542,7 @@ const SignUp = () => {
 
   return (
     <div className="container-fluid text-left">
-      <div className="col-sm-12 p-0">
+      <div className="col-md-12 p-0">
         <ol className="breadcrumb m-0">
           <li className="breadcrumb-item">
             <Link to={ROUTES.HOME}>Trang chủ</Link>

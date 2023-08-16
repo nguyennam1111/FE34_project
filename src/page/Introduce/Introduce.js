@@ -23,7 +23,7 @@ const Introduce = () => {
     });
   };
 
-  return <div className="col-sm-9 text-left pt-3">{renderIntroduce()}</div>;
+  return <div className="col-md-9 text-left pt-3">{renderIntroduce()}</div>;
 };
 
 export default Introduce;

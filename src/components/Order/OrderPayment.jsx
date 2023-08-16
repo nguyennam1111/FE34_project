@@ -158,8 +158,6 @@ const OrderPayment = (props) => {
           saledQty: Number(list.stock.saledQty) + Number(cartQty),
         },
       };
-      console.log(cartQty, "cartQty");
-      console.log(updateStock, "updateStock", list.id, "list.id");
 
       dispatch(
         actUpdateSaleQty({
@@ -179,14 +177,14 @@ const OrderPayment = (props) => {
 
   return (
     <div className="row container-fluid m-0">
-      <div className="col-sm-8">
+      <div className="col-md-8">
         <h4 className="text-title-normal py-4">KidShop</h4>
         <div className="row m-0">
-          <div className="col-sm-6">
+          <div className="col-md-6">
             <div className="row m-0 justify-content-between">
-              <h5 className="col-sm-8 m-0 p-0">Thông tin nhận hàng</h5>
+              <h5 className="col-md-8 m-0 p-0">Thông tin nhận hàng</h5>
               <div
-                className="col-sm-4 text-right p-0"
+                className="col-md-4 text-right p-0"
                 style={isAuth ? { display: "none" } : { display: "" }}
               >
                 <Link to={ROUTES.SIGNIN} className="text-right">
@@ -284,7 +282,7 @@ const OrderPayment = (props) => {
             </div>
           </div>
 
-          <div className="col-sm-6 ">
+          <div className="col-md-6 ">
             <div>
               <h4>Vận Chuyển</h4>
               <form form="form-order">
@@ -304,7 +302,7 @@ const OrderPayment = (props) => {
                     ></input>
                     Giao hàng nhanh
                   </label>
-                  <span className="col-sm-4 p-0 text-right" name="shippingFee">
+                  <span className="col-md-4 p-0 text-right" name="shippingFee">
                     <NumericFormat
                       value={
                         watch("shippingType") == "Giao hàng nhanh"
@@ -335,7 +333,7 @@ const OrderPayment = (props) => {
                     ></input>
                     Giao thường
                   </label>
-                  <span className="col-sm-4 p-0 text-right" name="shippingFee">
+                  <span className="col-md-4 p-0 text-right" name="shippingFee">
                     <NumericFormat
                       value={
                         watch("shippingType") == "Giao thường"
@@ -443,7 +441,7 @@ const OrderPayment = (props) => {
           </div>
         </div>
       </div>
-      <div className="col-sm-4 bg-light border-left pr-0">
+      <div className="col-md-4 bg-light border-left pr-0">
         <div>
           <h4 className="m-0 py-4">
             Đơn hàng{" "}
@@ -457,16 +455,16 @@ const OrderPayment = (props) => {
         </div>
         <div className="row m-0 py-4 border-bottom">
           <input
-            className="col-sm-8 form-control"
+            className="col-md-8 form-control"
             placeholder="Mã giảm giá"
           ></input>
-          <div className="col-sm-4 p-0 text-right">
+          <div className="col-md-4 p-0 text-right">
             <button className="btn btn-primary">Áp dụng</button>
           </div>
         </div>
         <div className="row mx-0 py-3">
-          <p className="col-sm-6 m-0">Tạm tính</p>
-          <p className="col-sm-6 m-0 text-right">
+          <p className="col-md-6 m-0">Tạm tính</p>
+          <p className="col-md-6 m-0 text-right">
             <NumericFormat
               value={props.totalAmount}
               displayType={"text"}
@@ -477,8 +475,8 @@ const OrderPayment = (props) => {
           </p>
         </div>
         <div className="row mx-0 py-3 border-bottom">
-          <p className="col-sm-6 m-0">Phí vận chuyển</p>
-          <p className="col-sm-6 m-0 text-right">
+          <p className="col-md-6 m-0">Phí vận chuyển</p>
+          <p className="col-md-6 m-0 text-right">
             <NumericFormat
               value={watch("shippingFee")}
               displayType={"text"}
@@ -489,8 +487,8 @@ const OrderPayment = (props) => {
           </p>
         </div>
         <div className="row mx-0 py-3 border-bottom">
-          <h4 className="col-sm-6 m-0">Tổng cộng</h4>
-          <h4 className="col-sm-6 m-0 text-right" style={{ color: "#2a9dcc" }}>
+          <h4 className="col-md-6 m-0">Tổng cộng</h4>
+          <h4 className="col-md-6 m-0 text-right" style={{ color: "#2a9dcc" }}>
             <NumericFormat
               value={props.totalAmount + Number(watch("shippingFee"))}
               displayType={"text"}
@@ -502,7 +500,7 @@ const OrderPayment = (props) => {
         </div>
         <div className="row mx-0 py-3 justify-content-between">
           <button
-            className="col-sm-6 border-0 bg-transparent m-0 p-0 text-left"
+            className="col-md-6 border-0 bg-transparent m-0 p-0 text-left"
             style={{ color: "#2a9dcc" }}
             onClick={() => {
               handleBackToCart();
@@ -510,7 +508,7 @@ const OrderPayment = (props) => {
           >
             {"<<"} Quay về giỏ hàng
           </button>
-          <div className="col-sm-6 p-0 text-right">
+          <div className="col-md-6 p-0 text-right">
             <button className="btn btn-primary" form="form-order" type="submit">
               ĐẶT HÀNG
             </button>

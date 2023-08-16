@@ -13,6 +13,7 @@ import locationReducer from "../feature/Location/getLocationSlice";
 import contactReducer from "../feature/Contact/contactSlice";
 import introduceReducer from "../feature/Introduce/introduceSlice";
 import saleStatusReducer from "../feature/SaleStatusSlice/saleStatusSlice";
+import newsReducer from "../feature/News/newsSlice";
 export const store = configureStore({
   reducer: {
     product: productReducer,
@@ -29,6 +30,7 @@ export const store = configureStore({
     contact: contactReducer,
     introduce: introduceReducer,
     saleStatus: saleStatusReducer,
+    news: newsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

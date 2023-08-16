@@ -132,7 +132,7 @@ const Home = () => {
     <div className="m-0 container-fluid">
       <Banner data={banners} />
       <div className="row m-0 mt-2">
-        <div className="col-md-3 p-2 ">
+        <div className="col-md-3 p-2 " id="sidebar ">
           <ShowLogos data={logos} />
 
           <ShowBestSale
@@ -164,7 +164,7 @@ const Home = () => {
           />
           <div className="m-0 mt-2">
             <img
-              className="img-fluid"
+              className="img-fluid object-fit-cover"
               src="https://bizweb.dktcdn.net/100/117/632/themes/157694/assets/banner1.gif?1564585558451"
             ></img>
           </div>

@@ -174,8 +174,8 @@ const Products = (props) => {
             <li className="breadcrumb-item">
               <a href="Home">Trang chủ</a>
             </li>
-            <li className="breadcrumb-item active">
-              <a className="active">
+            <li className="breadcrumb-item active" aria-current="page">
+              <a>
                 {searchParams.get("search") != null
                   ? "Tìm kiếm"
                   : catalogue === "boy"
@@ -248,10 +248,10 @@ const Products = (props) => {
       </div>
       <div className="px-3">
         <form className="row p-0 m-0" onSubmit={handFilterPrice(onValid)}>
-          <div className="my-auto p-0 col-sm-2 align-items-center">
+          <div className="my-auto p-0 col-md-2 align-items-center">
             <p className="m-0 p-0">Lọc theo giá:</p>
           </div>
-          <div className="d-flex col-sm-4 w-75 align-items-center p-0">
+          <div className="d-flex col-md-4 align-items-center p-0">
             <p className="m-0 pr-1">Từ:</p>
             <input
               className="form-control"
@@ -259,7 +259,7 @@ const Products = (props) => {
               {...register("startPrice")}
             ></input>
           </div>
-          <div className="d-flex col-sm-4 align-items-center w-75 p-0">
+          <div className="d-flex col-md-4 align-items-center  p-0">
             <p className="m-0 px-1">đến:</p>
             <input
               name="endPrice"
@@ -267,7 +267,7 @@ const Products = (props) => {
               {...register("endPrice")}
             ></input>
           </div>
-          <div className="col-sm-2 align-items-center align-middle">
+          <div className="d-flex col-md-2 align-center p-0">
             <button className="border-0 bg-transparent" type="submit">
               <FilterOutlined />
               Lọc
@@ -279,7 +279,7 @@ const Products = (props) => {
         <div className="row m-0 p-0 ">
           <RenderProducts
             data={products}
-            classCol={"col-sm-3"}
+            classCol={"col-md-3"}
             handleProductDetails={handleProductDetails}
           />
         </div>

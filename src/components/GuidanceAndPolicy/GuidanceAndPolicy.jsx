@@ -7,7 +7,7 @@ const GuidanceAndPolicy = (props) => {
         <div key={item.id && item.index} className="guidance mt-3">
           <h2 className="pt-3 mx-5">Chính sách & hướng dẫn của kidshop !</h2>
           <div className="row mx-5 ">
-            <div className="col-sm-6 my-3">
+            <div className="col-md-6 my-3">
               <div className="d-flex">
                 <div>1.</div>
                 <div>
@@ -20,7 +20,7 @@ const GuidanceAndPolicy = (props) => {
                 </div>
               </div>
             </div>
-            <div className="col-sm-6 my-3">
+            <div className="col-md-6 my-3">
               <div className="d-flex">
                 <div>2.</div>
                 <div>
@@ -33,7 +33,7 @@ const GuidanceAndPolicy = (props) => {
                 </div>
               </div>
             </div>
-            <div className="col-sm-6 my-3">
+            <div className="col-md-6 my-3">
               <div className="d-flex">
                 <div>3.</div>
                 <div>
@@ -46,7 +46,7 @@ const GuidanceAndPolicy = (props) => {
                 </div>
               </div>
             </div>
-            <div className="col-sm-6 my-3">
+            <div className="col-md-6 my-3">
               <div className="d-flex">
                 <div className="px-2">4.</div>
                 <div>
