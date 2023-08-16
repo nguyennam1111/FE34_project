@@ -31,10 +31,34 @@ export const actfetchAllProducts = createAsyncThunk(
     return response;
   }
 );
+
+export const actUpdateProductPrice = createAsyncThunk(
+  "product/actUpdateProductPrice",
+  async (item) => {
+    return await productsApi.updateProductPrice(
+      item.updateId,
+      item.updatePrice
+    );
+  }
+);
+
 export const actUpdateSaleQty = createAsyncThunk(
   "product/actUpdateSaleQty",
   async (item) => {
-    return await productsApi.updateProduct(item.updateId, item.updateItem);
+    return await productsApi.updateProductSaleQty(
+      item.updateId,
+      item.updateItem
+    );
+  }
+);
+
+export const actUpdateProductStatus = createAsyncThunk(
+  "product/actUpdateProductStatus",
+  async (item) => {
+    return await productsApi.updateProductStatus(
+      item.updateId,
+      item.updateSaleStatus
+    );
   }
 );
 
@@ -76,6 +100,7 @@ const productSlice = createSlice({
         case "asc_productPrice":
           state.sortBy = {
             sort: "productPrice",
+
             order: "asc",
           };
 
@@ -83,6 +108,7 @@ const productSlice = createSlice({
         case "desc_productPrice":
           state.sortBy = {
             sort: "productPrice",
+
             order: "desc",
           };
 
@@ -142,9 +168,17 @@ const productSlice = createSlice({
       state.productDetails = action.payload;
     });
 
-    // updateProduct
+    // updateProductSaleQty
     builder.addCase(actUpdateSaleQty.fulfilled, (state, action) => {
-      console.log(action.payload, "update sale Qty");
+      // console.log(action.payload, "update sale Qty");
+    });
+    // updateProductprice
+    builder.addCase(actUpdateProductPrice.fulfilled, (state, action) => {
+      // console.log(action.payload, "update sale Qty");
+    });
+    // updateProductStatus
+    builder.addCase(actUpdateProductStatus.fulfilled, (state, action) => {
+      // console.log(action.payload, "actUpdateProductStatus");
     });
   },
 });

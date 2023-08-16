@@ -9,6 +9,10 @@ import { useDispatch, useSelector } from "react-redux";
 import ShowLogos from "../../components/ShowLogos/ShowLogos";
 import {
   actGetProductByStatus,
+  actUpdateProductPrice,
+  actUpdateProductStatus,
+  actUpdateSaleStatus,
+  actUpdateStatus,
   actfetchAllProducts,
   setFilters,
 } from "../../redux/feature/ProductSlice/productSlice";
@@ -17,6 +21,7 @@ import GuidanceAndPolicy from "../../components/GuidanceAndPolicy/GuidanceAndPol
 import { actfetchAllLogos } from "../../redux/feature/LogoSlice/logoSlice";
 import { actfetchAllBanners } from "../../redux/feature/Banner/bannerSlice";
 import { actfetchAllGuidance } from "../../redux/feature/guidance/guidanceSlice";
+import { actGetAllSaleStatus } from "../../redux/feature/SaleStatusSlice/saleStatusSlice";
 
 const Home = () => {
   const callBackUrl = window.location.pathname;
@@ -27,7 +32,7 @@ const Home = () => {
   const navigate = useNavigate();
   const { products, filters, newProducts, bestSaleProducts, hotProducts } =
     useSelector((state) => state.product);
-
+  const { orders } = useSelector((state) => state.orders);
   const [searchParams] = useSearchParams();
   const search = searchParams.get("search");
   const catalogue = searchParams.get("catalogue");
@@ -38,12 +43,65 @@ const Home = () => {
   const { banners } = useSelector((state) => state.banner);
   const { guidance } = useSelector((state) => state.guidance);
   const { isAuth } = useSelector((state) => state.auth);
+  const { saleStatus } = useSelector((state) => state.saleStatus);
+
+  // useEffect(() => {
+  //   products?.map((item) => {
+  //     const newPrice =
+  //       item.oldProductPrice - item.oldProductPrice * item.saleOffValue;
+  //     saleStatus?.map((saleItem) => {
+  //       if (saleItem.productId == item.id) {
+  //         dispatch(
+  //           actUpdateProductStatus({
+  //             updateId: item.id,
+  //             updateSaleStatus: {
+  //               productStatus: saleItem.productStatus,
+  //               productPromote: saleItem.productPromote,
+  //               saleOffValue: saleItem.saleOffValue,
+  //             },
+  //           })
+  //         );
+  //       }
+  //     });
+  //     dispatch(
+  //       actUpdateProductPrice({
+  //         updateId: item.id,
+  //         updatePrice: { productPrice: newPrice },
+  //       })
+  //     );
+  //   });
+  // }, [products]);
 
   useEffect(() => {
     dispatch(actfetchAllLogos());
     dispatch(actfetchAllProducts());
     dispatch(actfetchAllBanners());
     dispatch(actfetchAllGuidance());
+    dispatch(actGetAllSaleStatus());
+    products?.map((item) => {
+      const newPrice =
+        item.oldProductPrice - item.oldProductPrice * item.saleOffValue;
+      saleStatus?.map((saleItem) => {
+        if (saleItem.productId == item.id) {
+          dispatch(
+            actUpdateProductStatus({
+              updateId: item.id,
+              updateSaleStatus: {
+                productStatus: saleItem.productStatus,
+                productPromote: saleItem.productPromote,
+                saleOffValue: saleItem.saleOffValue,
+              },
+            })
+          );
+        }
+      });
+      dispatch(
+        actUpdateProductPrice({
+          updateId: item.id,
+          updatePrice: { productPrice: newPrice },
+        })
+      );
+    });
   }, []);
 
   useEffect(() => {

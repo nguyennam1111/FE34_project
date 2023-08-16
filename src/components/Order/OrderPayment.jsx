@@ -88,15 +88,30 @@ const OrderPayment = (props) => {
     resolver: yupResolver(schemaValidatePayment),
   });
 
-  // const filterOrderbyId = orders.filter((p) =>
-  //   products.map((item) => item.productId === p.id)
+  //
+  // products.map((list) => {
+  //   const cartQty = props.cart
+  //     ?.map((item) => (list.id == item.productId ? item.productQty : ""))
+  //     .reduce((total, num) => {
+  //       return total + Number(num);
+  //     }, 0);
+  //   const updateStock = {
+  //     stock: {
+  //       totalQty: list.stock.totalQty,
+  //       saledQty: Number(list.stock.saledQty) + Number(cartQty),
+  //     },
+  //   };
+  //   console.log(cartQty, "cartQty");
+  //   console.log(updateStock, "updateStock");
+  //    dispatch(
+  //   actUpdateSaleQty({
+  //     updateId: list.productId,
+  //     updateItem: updateStock,
+  //   })
   // );
-  // console.log(filterOrderbyId, "filterOrderbyId");
-  // console.log(
-  //   filterOrderbyId.map((item) => item.orderList?.map((e) => e.productQty)),
-  //   "saleQtybyId"
-  // );
+  // });
 
+  //
   const onPayment = (data) => {
     // create order code
     let orderCode = 0;
@@ -129,15 +144,30 @@ const OrderPayment = (props) => {
         orderAt: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`,
       })
     );
+    // update saleQty
 
-    // const updateStock = {
-    //   stock: {
-    //     saledQty: item.productQty,
-    //   },
-    // };
-    // dispatch(
-    //   actUpdateSaleQty({ updateId: item.productId, updateItem: updateStock })
-    // );
+    products.map((list) => {
+      const cartQty = props.cart
+        ?.map((item) => (list.id == item.productId ? item.productQty : ""))
+        .reduce((total, num) => {
+          return total + Number(num);
+        }, 0);
+      const updateStock = {
+        stock: {
+          totalQty: list.stock.totalQty,
+          saledQty: Number(list.stock.saledQty) + Number(cartQty),
+        },
+      };
+      console.log(cartQty, "cartQty");
+      console.log(updateStock, "updateStock", list.id, "list.id");
+
+      dispatch(
+        actUpdateSaleQty({
+          updateId: list.id,
+          updateItem: updateStock,
+        })
+      );
+    });
 
     dispatch(clearCart());
     navigate("/Payment?status=succeed");

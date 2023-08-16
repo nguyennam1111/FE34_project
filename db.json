@@ -128,6 +128,74 @@
       ]
     }
   ],
+  "saleStatus": [
+    {
+      "productId": 1,
+      "productStatus": "hot",
+      "productPromote": "promote",
+      "saleOffValue": 0.15
+    },
+    {
+      "productId": 2,
+      "productStatus": "bestSale",
+      "productPromote": "promote",
+      "saleOffValue": 0.15
+    },
+    {
+      "productId": 3,
+      "productStatus": "new",
+      "productPromote": "",
+      "saleOffValue": 0
+    },
+    {
+      "productId": 4,
+      "productStatus": "bestSale",
+      "productPromote": "promote",
+      "saleOffValue": 0.2
+    },
+    {
+      "productId": 5,
+      "productStatus": "bestSale",
+      "productPromote": "promote",
+      "saleOffValue": 0.2
+    },
+    {
+      "productId": 6,
+      "productStatus": "hot",
+      "productPromote": "promote",
+      "saleOffValue": 0.25
+    },
+    {
+      "productId": 7,
+      "productStatus": "hot",
+      "productPromote": "",
+      "saleOffValue": 0
+    },
+    {
+      "productId": 8,
+      "productStatus": "hot",
+      "productPromote": "promote",
+      "saleOffValue": 0.2
+    },
+    {
+      "productId": 9,
+      "productStatus": "bestSale",
+      "productPromote": "promote",
+      "saleOffValue": 0.1
+    },
+    {
+      "productId": 10,
+      "productStatus": "new",
+      "productPromote": "",
+      "saleOffValue": 0
+    },
+    {
+      "productId": 11,
+      "productStatus": "hot",
+      "productPromote": "",
+      "saleOffValue": 0.1
+    }
+  ],
   "products": [
     {
       "id": 1,
@@ -145,7 +213,6 @@
         "L",
         "XL"
       ],
-      "productPrice": 350000,
       "productsImg": [
         "https://bizweb.dktcdn.net/thumb/large/100/117/632/products/somi6-6f995308-45d3-4e20-8d47-4618d8f5a0c7-14476867-2495-491c-806b-86678712960e.jpg?v=1473604250600",
         "https://bizweb.dktcdn.net/100/117/632/products/somi3-6683f4d9-784f-4dfa-9223-a45d58dd521b-ba0bbeaa-3b9e-4214-be2b-9a8d3a3535d2.jpg?v=1473604250600",
@@ -165,12 +232,14 @@
         ]
       },
       "productCatalogue": "boy",
-      "productStatus": "bestSale",
+      "productStatus": "hot",
       "productPromote": "promote",
+      "oldProductPrice": 350000,
+      "productPrice": 297500,
       "saleOffValue": 0.15,
       "stock": {
         "totalQty": 100,
-        "saledQty": 20
+        "saledQty": 19
       },
       "inboundDate": "2023-07-22",
       "tags": [
@@ -195,7 +264,8 @@
         "24",
         "26"
       ],
-      "productPrice": 80000,
+      "oldProductPrice": 80000,
+      "productPrice": 68000,
       "productsImg": [
         "https://bizweb.dktcdn.net/100/117/632/products/tat5.jpg?v=1473606717327",
         "https://bizweb.dktcdn.net/100/117/632/products/tat3.jpg?v=1473606717327",
@@ -210,12 +280,12 @@
         ]
       },
       "productCatalogue": "accessory",
-      "productStatus": "new",
-      "productPromote": "No",
-      "saleOffValue": 0,
+      "productStatus": "bestSale",
+      "productPromote": "promote",
+      "saleOffValue": 0.15,
       "stock": {
         "totalQty": 100,
-        "saledQty": 90
+        "saledQty": 15
       },
       "inboundDate": "2023-07-22",
       "tags": [
@@ -238,6 +308,7 @@
         "L",
         "XL"
       ],
+      "oldProductPrice": 350000,
       "productPrice": 350000,
       "productsImg": [
         "https://bizweb.dktcdn.net/100/117/632/products/aovay12.jpg?v=1473606357990",
@@ -256,12 +327,12 @@
         ]
       },
       "productCatalogue": "girl",
-      "productStatus": "hot",
-      "productPromote": "promote",
-      "saleOffValue": 0.15,
+      "productStatus": "new",
+      "productPromote": "",
+      "saleOffValue": 0,
       "stock": {
         "totalQty": 100,
-        "saledQty": 20
+        "saledQty": 7
       },
       "inboundDate": "2023-07-22",
       "tags": [
@@ -285,7 +356,8 @@
         "Size:140",
         "Size:150"
       ],
-      "productPrice": 99000,
+      "oldProductPrice": 99000,
+      "productPrice": 79200,
       "productsImg": [
         "https://be.icotton.vn/storage/files/2023/06/IMG_6082.jpg-3d70456d-a088-4a83-a22e-290cbec61ce9.jpg",
         "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lh4d33dvo7qq99",
@@ -316,7 +388,7 @@
       "saleOffValue": 0.2,
       "stock": {
         "totalQty": 100,
-        "saledQty": 30
+        "saledQty": 6
       },
       "inboundDate": "2023-07-18",
       "tags": [
@@ -340,7 +412,8 @@
         "L",
         "XL"
       ],
-      "productPrice": 350000,
+      "oldProductPrice": 350000,
+      "productPrice": 280000,
       "productsImg": [
         "https://bizweb.dktcdn.net/100/117/632/products/aovay4.jpg?v=1473606362390",
         "https://bizweb.dktcdn.net/100/117/632/products/aovay3.jpg?v=1473606362390",
@@ -359,12 +432,12 @@
         ]
       },
       "productCatalogue": "girl",
-      "productStatus": "hot",
+      "productStatus": "bestSale",
       "productPromote": "promote",
-      "saleOffValue": 0.15,
+      "saleOffValue": 0.2,
       "stock": {
         "totalQty": 100,
-        "saledQty": 10
+        "saledQty": 0
       },
       "inboundDate": "2023-07-22",
       "tags": [
@@ -377,7 +450,7 @@
       "id": 6,
       "productCode": "KID-123_3",
       "productBranch": "KID-GAP",
-      "productName": "Váy liên thân KIDS - KF1",
+      "productName": "Váy liên thân KIDS - KF5",
       "productColor": [
         "pink",
         "blue",
@@ -390,7 +463,8 @@
         "L",
         "XL"
       ],
-      "productPrice": 320000,
+      "oldProductPrice": 320000,
+      "productPrice": 240000,
       "productsImg": [
         "https://bizweb.dktcdn.net/100/117/632/products/aovay9.jpg?v=1473603722567",
         "https://bizweb.dktcdn.net/100/117/632/products/aovay4.jpg?v=1473606362390",
@@ -410,12 +484,12 @@
         ]
       },
       "productCatalogue": "girl",
-      "productStatus": "new",
-      "productPromote": "No",
-      "saleOffValue": 0,
+      "productStatus": "hot",
+      "productPromote": "promote",
+      "saleOffValue": 0.25,
       "stock": {
         "totalQty": 100,
-        "saledQty": 30
+        "saledQty": 3
       },
       "inboundDate": "2023-07-18",
       "tags": [
@@ -441,6 +515,7 @@
         "L",
         "XL"
       ],
+      "oldProductPrice": 310000,
       "productPrice": 310000,
       "productsImg": [
         "https://bizweb.dktcdn.net/100/117/632/products/aovay7.jpg?v=1473606362390",
@@ -459,12 +534,12 @@
         ]
       },
       "productCatalogue": "girl",
-      "productStatus": "bestSale",
-      "productPromote": "promote",
-      "saleOffValue": 0.2,
+      "productStatus": "hot",
+      "productPromote": "",
+      "saleOffValue": 0,
       "stock": {
         "totalQty": 100,
-        "saledQty": 30
+        "saledQty": 15
       },
       "inboundDate": "2023-06-18",
       "tags": [
@@ -490,7 +565,8 @@
         "L",
         "XL"
       ],
-      "productPrice": 245000,
+      "oldProductPrice": 245000,
+      "productPrice": 196000,
       "productsImg": [
         "https://bizweb.dktcdn.net/100/117/632/products/aovay8.jpg?v=1473603722567",
         "https://bizweb.dktcdn.net/100/117/632/products/aovay9.jpg?v=1473603722567",
@@ -508,12 +584,12 @@
         ]
       },
       "productCatalogue": "girl",
-      "productStatus": "new",
-      "productPromote": "No",
-      "saleOffValue": 0,
+      "productStatus": "hot",
+      "productPromote": "promote",
+      "saleOffValue": 0.2,
       "stock": {
         "totalQty": 100,
-        "saledQty": 30
+        "saledQty": 0
       },
       "inboundDate": "2023-07-18",
       "tags": [
@@ -539,7 +615,8 @@
         "L",
         "XL"
       ],
-      "productPrice": 63000,
+      "oldProductPrice": 430000,
+      "productPrice": 387000,
       "productsImg": [
         "https://bizweb.dktcdn.net/100/117/632/products/aovay1.jpg?v=1473606362390",
         "https://bizweb.dktcdn.net/100/117/632/products/aovay4.jpg?v=1473606362390",
@@ -557,13 +634,13 @@
           "Thiết kế đầm kiểu dáng suông thích hợp với các bé gái có cân nặng từ 9kg - 26kg đi dự tiệc sinh nhật, đám cưới..."
         ]
       },
-      "productCatalogue": "boy",
+      "productCatalogue": "girl",
       "productStatus": "bestSale",
-      "productPromote": "No",
-      "saleOffValue": 0,
+      "productPromote": "promote",
+      "saleOffValue": 0.1,
       "stock": {
         "totalQty": 100,
-        "saledQty": 30
+        "saledQty": 0
       },
       "inboundDate": "2023-07-18",
       "tags": [
@@ -589,6 +666,7 @@
         "L",
         "XL"
       ],
+      "oldProductPrice": 250000,
       "productPrice": 250000,
       "productsImg": [
         "https://down-vn.img.susercontent.com/file/f8b56c6bebe70dcce2329647da3cecde",
@@ -614,12 +692,12 @@
         ]
       },
       "productCatalogue": "boy",
-      "productStatus": "hot",
-      "productPromote": "No",
+      "productStatus": "new",
+      "productPromote": "",
       "saleOffValue": 0,
       "stock": {
         "totalQty": 100,
-        "saledQty": 30
+        "saledQty": 0
       },
       "inboundDate": "2023-08-07",
       "tags": [
@@ -642,7 +720,8 @@
         "L",
         "XL"
       ],
-      "productPrice": 180000,
+      "oldProductPrice": 180000,
+      "productPrice": 162000,
       "productsImg": [
         "https://down-vn.img.susercontent.com/file/vn-11134201-7qukw-lewqwj9dqijb8c",
         "https://down-vn.img.susercontent.com/file/vn-11134201-7qukw-lewqwj9dqijb8c",
@@ -656,12 +735,12 @@
         ]
       },
       "productCatalogue": "girl",
-      "productStatus": "new",
-      "productPromote": "No",
-      "saleOffValue": 0,
+      "productStatus": "hot",
+      "productPromote": "",
+      "saleOffValue": 0.1,
       "stock": {
         "totalQty": 100,
-        "saledQty": 30
+        "saledQty": 0
       },
       "inboundDate": "2023-08-07",
       "tags": [
@@ -687,7 +766,8 @@
         "L",
         "XL"
       ],
-      "productPrice": 390000,
+      "oldProductPrice": 390000,
+      "productPrice": 273000,
       "productsImg": [
         "https://bizweb.dktcdn.net/100/117/632/products/aovay8-c94651b1-547e-4da8-b628-07cdc0729dd2-6047f168-249d-4217-bc7a-4fa37d654087-5c70d949-f1d5-4c8f-ae99-e52457839fbb-b517f83b-daee-43f7-9580-e798d195ba99-a7e81694-9824-44a7-8576-3f78900fc4e9.jpg?v=1473603722567",
         "https://bizweb.dktcdn.net/100/117/632/products/aovay9.jpg?v=1473603722567",
@@ -710,7 +790,7 @@
       "saleOffValue": 0.3,
       "stock": {
         "totalQty": 100,
-        "saledQty": 10
+        "saledQty": 0
       },
       "inboundDate": "2023-07-18",
       "tags": [
@@ -734,6 +814,7 @@
         "L",
         "XL"
       ],
+      "oldProductPrice": 250000,
       "productPrice": 250000,
       "productsImg": [
         "https://canifa.com/img/1000/1500/resize/2/t/2th23s002-cg090-120-1.webp",
@@ -747,12 +828,12 @@
         ]
       },
       "productCatalogue": "boy",
-      "productStatus": "new",
-      "productPromote": "No",
+      "productStatus": "",
+      "productPromote": "",
       "saleOffValue": 0,
       "stock": {
         "totalQty": 100,
-        "saledQty": 10
+        "saledQty": 0
       },
       "inboundDate": "2023-08-05",
       "tags": [
@@ -778,6 +859,7 @@
         "24",
         "25"
       ],
+      "oldProductPrice": 430000,
       "productPrice": 430000,
       "productsImg": [
         "https://bizweb.dktcdn.net/100/117/632/products/giay5-6ad05ccc-be71-4eca-83f8-3e73a5570372-42da6097-d9b3-437a-afe5-66c1be4352b4-8a365fca-ef0a-415a-838e-f172e148cb7c.jpg?v=1473603367790",
@@ -798,12 +880,12 @@
         ]
       },
       "productCatalogue": "accessory",
-      "productStatus": "new",
-      "productPromote": "No",
+      "productStatus": "",
+      "productPromote": "",
       "saleOffValue": 0,
       "stock": {
         "totalQty": 100,
-        "saledQty": 10
+        "saledQty": 0
       },
       "inboundDate": "2023-08-05",
       "tags": [
@@ -828,6 +910,7 @@
         "24",
         "25"
       ],
+      "oldProductPrice": 430000,
       "productPrice": 430000,
       "productsImg": [
         "https://bizweb.dktcdn.net/100/117/632/products/giay2-9329f524-e461-459c-b349-8bdf501a81c3-759c8264-d053-4063-a719-5f1d3a6ee6aa-a009bc24-955d-4ff1-9465-fec7351640c6.jpg?v=1473603367790",
@@ -848,12 +931,12 @@
         ]
       },
       "productCatalogue": "accessory",
-      "productStatus": "new",
-      "productPromote": "promote",
-      "saleOffValue": 0.25,
+      "productStatus": "",
+      "productPromote": "",
+      "saleOffValue": 0,
       "stock": {
         "totalQty": 100,
-        "saledQty": 10
+        "saledQty": 0
       },
       "inboundDate": "2023-08-05",
       "tags": [
@@ -877,6 +960,7 @@
         "DK30",
         "DK40"
       ],
+      "oldProductPrice": 450000,
       "productPrice": 450000,
       "productsImg": [
         "//bizweb.dktcdn.net/100/117/632/products/kinh3-63d039b5-b2ef-434a-98f1-661dabd93f3b-4ef5c754-f487-4137-bc30-4830323e7a32.jpg?v=1473602839287",
@@ -894,12 +978,12 @@
           "- Đệm mũi thiết kế theo tiêu chuẩn quốc tế với đường cong của gọng kính ôm sát vào mũi, giúp kính bám chắc vào mũi cho bạn cảm giác thoải mái khi đeo."
         ]
       },
-      "productStatus": "bestSale",
-      "productPromote": "No",
+      "productStatus": "",
+      "productPromote": "",
       "saleOffValue": 0,
       "stock": {
         "totalQty": 100,
-        "saledQty": 10
+        "saledQty": 0
       },
       "inboundDate": "2023-08-05",
       "tags": [
@@ -922,6 +1006,7 @@
         "L",
         "XL"
       ],
+      "oldProductPrice": 120000,
       "productPrice": 120000,
       "productsImg": [
         "https://down-vn.img.susercontent.com/file/vn-11134201-7qukw-leqhcpvaziya4e",
@@ -945,7 +1030,7 @@
       "saleOffValue": 0,
       "stock": {
         "totalQty": 100,
-        "saledQty": 10
+        "saledQty": 0
       },
       "inboundDate": "2023-08-07",
       "tags": [
@@ -969,7 +1054,8 @@
         "L",
         "XL"
       ],
-      "productPrice": 250000,
+      "oldProductPrice": 250000,
+      "productPrice": 225000,
       "productsImg": [
         "https://down-vn.img.susercontent.com/file/b0702300e95ea44fe33ade5ffb580cbc",
         "https://down-vn.img.susercontent.com/file/f8b56c6bebe70dcce2329647da3cecde",
@@ -999,7 +1085,7 @@
       "saleOffValue": 0.1,
       "stock": {
         "totalQty": 100,
-        "saledQty": 30
+        "saledQty": 0
       },
       "inboundDate": "2023-08-07",
       "tags": [
@@ -1021,6 +1107,7 @@
         "DK30",
         "DK40"
       ],
+      "oldProductPrice": 450000,
       "productPrice": 450000,
       "productsImg": [
         "https://product.hstatic.net/1000096196/product/mn1197-kinh-mat-tre-em-dep-_1__optimized_a8aa0ba031cc4ee89ae876d03bcbd25b_1024x1024.jpg",
@@ -1049,12 +1136,12 @@
           "Sản phẩm tặng kèm hộp và khăn lau."
         ]
       },
-      "productStatus": "bestSale",
-      "productPromote": "No",
+      "productStatus": "",
+      "productPromote": "",
       "saleOffValue": 0,
       "stock": {
         "totalQty": 100,
-        "saledQty": 10
+        "saledQty": 0
       },
       "inboundDate": "2023-08-05",
       "tags": [
@@ -1473,36 +1560,70 @@
   ],
   "orders": [
     {
-      "comments": "",
-      "shippingType": "Giao hàng nhanh",
-      "paymentMethod": "COD",
-      "transferMethod": null,
       "orderEmail": "abc@gmail.com",
       "fullName": "NguyenVu Truong Nam",
       "phone": "0912345678",
-      "address": "20-Chon Tam 12",
-      "district": "490",
-      "ward": "Phường Hòa Minh",
-      "province": "48",
+      "address": "abc, 1234",
+      "district": "Huyện Tân Sơn",
+      "ward": "Xã Tân Lập",
+      "province": "Tỉnh Cà Mau",
+      "shippingType": "Giao thường",
+      "shippingFee": 15000,
+      "paymentMethod": "COD",
       "orderCode": 0,
-      "shippingFee": "35000",
-      "totalAmount": 1487500,
-      "totalItemQty": 5,
+      "totalAmount": 8963600,
+      "totalItemQty": 36,
       "orderList": [
         {
           "id": 1,
-          "productId": 5,
-          "productCode": "KID-123_1",
-          "productName": "Váy liên thân KIDS-02",
+          "productId": 3,
+          "productCode": "GAP-KF-01",
+          "productName": "Váy liên thân KIDS-01",
           "sizeAndColor": "M/Đen xám",
-          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay4.jpg?v=1473606362390",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay12.jpg?v=1473606357990",
           "productPrice": 297500,
-          "productQty": "5",
-          "productAmount": 1487500,
-          "createdAt": "Mon Aug 14 2023 10:37:20 AM"
+          "productQty": "25",
+          "productAmount": 7437500,
+          "createdAt": "Tue Aug 15 2023 11:51:48 AM"
+        },
+        {
+          "id": 2,
+          "productId": 3,
+          "productCode": "GAP-KF-01",
+          "productName": "Váy liên thân KIDS-01",
+          "sizeAndColor": "XL/Đen xám",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay12.jpg?v=1473606357990",
+          "productPrice": 297500,
+          "productQty": "3",
+          "productAmount": 892500,
+          "createdAt": "Tue Aug 15 2023 11:51:56 AM"
+        },
+        {
+          "id": 3,
+          "productId": 4,
+          "productCode": "Icotton-03",
+          "productName": "Bộ sát nách bé trai viền đen đỏ hình người dơi Batman",
+          "sizeAndColor": "Size:100/Đỏ đô",
+          "productImg": "https://be.icotton.vn/storage/files/2023/06/IMG_6082.jpg-3d70456d-a088-4a83-a22e-290cbec61ce9.jpg",
+          "productPrice": 79200,
+          "productQty": "2",
+          "productAmount": 158400,
+          "createdAt": "Tue Aug 15 2023 11:52:07 AM"
+        },
+        {
+          "id": 4,
+          "productId": 4,
+          "productCode": "Icotton-03",
+          "productName": "Bộ sát nách bé trai viền đen đỏ hình người dơi Batman",
+          "sizeAndColor": "Size:130/Đỏ đô",
+          "productImg": "https://be.icotton.vn/storage/files/2023/06/IMG_6082.jpg-3d70456d-a088-4a83-a22e-290cbec61ce9.jpg",
+          "productPrice": 79200,
+          "productQty": "6",
+          "productAmount": 475200,
+          "createdAt": "Tue Aug 15 2023 11:52:11 AM"
         }
       ],
-      "orderAt": "Mon Aug 14 2023 11:10:11 AM",
+      "orderAt": "Tue Aug 15 2023 11:52:40 AM",
       "id": 1
     },
     {
@@ -1510,31 +1631,66 @@
       "fullName": "NguyenVu Truong Nam",
       "phone": "0912345678",
       "address": "20-Chon tam 12",
-      "district": "70",
-      "ward": "Phường An Tường",
-      "paymentMethod": "OnlinePayment",
-      "transferMethod": "banking",
+      "district": "Huyện Sông Lô",
+      "ward": "Phường Định Trung",
+      "province": "Tỉnh Cà Mau",
       "shippingType": "Giao thường",
-      "province": "8",
-      "orderCode": "#313",
       "shippingFee": 15000,
-      "totalAmount": 5950000,
-      "totalItemQty": 20,
+      "paymentMethod": "COD",
+      "orderCode": "#921",
+      "totalAmount": 4017000,
+      "totalItemQty": 15,
       "orderList": [
         {
-          "id": 2,
-          "productId": 5,
-          "productCode": "KID-123_1",
-          "productName": "Váy liên thân KIDS-02",
-          "sizeAndColor": "M/Đỏ",
-          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay4.jpg?v=1473606362390",
+          "id": 1,
+          "productId": 3,
+          "productCode": "GAP-KF-01",
+          "productName": "Váy liên thân KIDS-01",
+          "sizeAndColor": "M/Đen xám",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay12.jpg?v=1473606357990",
           "productPrice": 297500,
-          "productQty": 20,
-          "productAmount": 5950000,
-          "createdAt": "Mon Aug 14 2023 11:33:08 AM"
+          "productQty": "4",
+          "productAmount": 1190000,
+          "createdAt": "Tue Aug 15 2023 12:00:53 PM"
+        },
+        {
+          "id": 2,
+          "productId": 3,
+          "productCode": "GAP-KF-01",
+          "productName": "Váy liên thân KIDS-01",
+          "sizeAndColor": "M/kẻ xanh",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay12.jpg?v=1473606357990",
+          "productPrice": 297500,
+          "productQty": "2",
+          "productAmount": 595000,
+          "createdAt": "Tue Aug 15 2023 12:00:55 PM"
+        },
+        {
+          "id": 3,
+          "productId": 7,
+          "productCode": "G-342_5",
+          "productName": "Váy liên thân KIDS - KF-2",
+          "sizeAndColor": "M/pink",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay7.jpg?v=1473606362390",
+          "productPrice": 248000,
+          "productQty": "5",
+          "productAmount": 1240000,
+          "createdAt": "Tue Aug 15 2023 12:01:06 PM"
+        },
+        {
+          "id": 4,
+          "productId": 7,
+          "productCode": "G-342_5",
+          "productName": "Váy liên thân KIDS - KF-2",
+          "sizeAndColor": "XL/green",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay7.jpg?v=1473606362390",
+          "productPrice": 248000,
+          "productQty": "4",
+          "productAmount": 992000,
+          "createdAt": "Tue Aug 15 2023 12:01:14 PM"
         }
       ],
-      "orderAt": "Mon Aug 14 2023 1:14:59 PM",
+      "orderAt": "Tue Aug 15 2023 12:01:31 PM",
       "id": 2
     },
     {
@@ -1542,160 +1698,496 @@
       "fullName": "NguyenVu Truong Nam",
       "phone": "0912345678",
       "address": "20-Chon tam 12",
-      "district": "256",
-      "ward": "Phường Vân Dương",
-      "shippingType": "Giao thường",
-      "province": "27",
-      "comments": "sssss",
-      "paymentMethod": "OnlinePayment",
-      "transferMethod": "visa",
-      "orderCode": "#575",
-      "shippingFee": 15000,
-      "totalAmount": 250000,
-      "totalItemQty": 1,
-      "orderList": [
-        {
-          "id": 1,
-          "productId": 10,
-          "productCode": "LOTUKA-01",
-          "productName": "Đồ bộ Bé Trai, Bé Gái LOTUKA",
-          "sizeAndColor": "S/pink",
-          "productImg": "https://down-vn.img.susercontent.com/file/f8b56c6bebe70dcce2329647da3cecde",
-          "productPrice": 250000,
-          "productQty": "1",
-          "productAmount": 250000,
-          "createdAt": "Mon Aug 14 2023 1:26:54 PM"
-        }
-      ],
-      "orderAt": "Mon Aug 14 2023 1:27:47 PM",
-      "id": 3
-    },
-    {
-      "orderEmail": "abc@gmail.com",
-      "fullName": "Nguyen Vu Truong Nam",
-      "phone": "0905150109",
-      "address": "20-Chon tam 12",
-      "district": "87",
-      "ward": "Xã Xuân Thượng",
-      "paymentMethod": "COD",
-      "shippingType": "Giao thường",
-      "email": "abc@gmail.com",
-      "province": "10",
-      "comments": "abcd",
-      "orderCode": "#384",
-      "shippingFee": 15000,
-      "totalAmount": 158400,
-      "totalItemQty": 2,
-      "orderList": [
-        {
-          "id": 1,
-          "productId": 4,
-          "productCode": "Icotton-03",
-          "productName": "Bộ sát nách bé trai viền đen đỏ hình người dơi Batman",
-          "sizeAndColor": "Size:140/Đỏ đô",
-          "productImg": "https://be.icotton.vn/storage/files/2023/06/IMG_6082.jpg-3d70456d-a088-4a83-a22e-290cbec61ce9.jpg",
-          "productPrice": 79200,
-          "productQty": "2",
-          "productAmount": 158400,
-          "createdAt": "Mon Aug 14 2023 1:29:15 PM"
-        }
-      ],
-      "orderAt": "Mon Aug 14 2023 1:46:06 PM",
-      "id": 4
-    },
-    {
-      "orderEmail": "abc@gmail.com",
-      "fullName": "Nguyen Vu Truong Nam",
-      "phone": "0924510222",
-      "address": "abc, 1234",
-      "district": "239",
-      "ward": "Xã Hoàng Xá",
-      "province": "25",
-      "shippingType": "Giao hàng nhanh",
-      "paymentMethod": "OnlinePayment",
-      "transferMethod": "banking",
-      "orderCode": "#908",
-      "shippingFee": 35000,
-      "totalAmount": 250000,
-      "totalItemQty": 1,
-      "orderList": [
-        {
-          "id": 1,
-          "productId": 10,
-          "productCode": "LOTUKA-01",
-          "productName": "Đồ bộ Bé Trai, Bé Gái LOTUKA",
-          "sizeAndColor": "M/blue",
-          "productImg": "https://down-vn.img.susercontent.com/file/f8b56c6bebe70dcce2329647da3cecde",
-          "productPrice": 250000,
-          "productQty": "1",
-          "productAmount": 250000,
-          "createdAt": "Mon Aug 14 2023 1:52:09 PM"
-        }
-      ],
-      "orderAt": "Mon Aug 14 2023 1:52:31 PM",
-      "id": 5
-    },
-    {
-      "orderEmail": "abc@gmail.com",
-      "fullName": "Nguyen Nam",
-      "phone": "0905150109",
-      "address": "20-Chon Tam 12",
-      "district": "315",
-      "ward": "Xã Tiên Minh",
-      "shippingType": "Giao hàng nhanh",
-      "shippingFee": 35000,
-      "province": "31",
-      "paymentMethod": "COD",
-      "orderCode": "#467",
-      "totalAmount": 297500,
-      "totalItemQty": 1,
-      "orderList": [
-        {
-          "id": 1,
-          "productId": 5,
-          "productCode": "KID-123_1",
-          "productName": "Váy liên thân KIDS-02",
-          "sizeAndColor": "M/Đen xám",
-          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay4.jpg?v=1473606362390",
-          "productPrice": 297500,
-          "productQty": "1",
-          "productAmount": 297500,
-          "createdAt": "Mon Aug 14 2023 2:00:48 PM"
-        }
-      ],
-      "orderAt": "Mon Aug 14 2023 2:06:19 PM",
-      "id": 6
-    },
-    {
-      "orderEmail": "abc@gmail.com",
-      "fullName": "Nguyen Vu Truong Nam",
-      "phone": "0905150109",
-      "address": "20-Chon tam 12",
       "district": "Huyện Sông Lô",
-      "ward": "Xã Ngọc Thanh",
+      "ward": "Phường Định Trung",
       "province": "Tỉnh Cà Mau",
       "shippingType": "Giao thường",
       "shippingFee": 15000,
       "paymentMethod": "COD",
-      "orderCode": "#560",
-      "totalAmount": 500000,
+      "orderCode": "#283",
+      "totalAmount": 4017000,
+      "totalItemQty": 15,
+      "orderList": [
+        {
+          "id": 1,
+          "productId": 3,
+          "productCode": "GAP-KF-01",
+          "productName": "Váy liên thân KIDS-01",
+          "sizeAndColor": "M/Đen xám",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay12.jpg?v=1473606357990",
+          "productPrice": 297500,
+          "productQty": "4",
+          "productAmount": 1190000,
+          "createdAt": "Tue Aug 15 2023 12:00:53 PM"
+        },
+        {
+          "id": 2,
+          "productId": 3,
+          "productCode": "GAP-KF-01",
+          "productName": "Váy liên thân KIDS-01",
+          "sizeAndColor": "M/kẻ xanh",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay12.jpg?v=1473606357990",
+          "productPrice": 297500,
+          "productQty": "2",
+          "productAmount": 595000,
+          "createdAt": "Tue Aug 15 2023 12:00:55 PM"
+        },
+        {
+          "id": 3,
+          "productId": 7,
+          "productCode": "G-342_5",
+          "productName": "Váy liên thân KIDS - KF-2",
+          "sizeAndColor": "M/pink",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay7.jpg?v=1473606362390",
+          "productPrice": 248000,
+          "productQty": "5",
+          "productAmount": 1240000,
+          "createdAt": "Tue Aug 15 2023 12:01:06 PM"
+        },
+        {
+          "id": 4,
+          "productId": 7,
+          "productCode": "G-342_5",
+          "productName": "Váy liên thân KIDS - KF-2",
+          "sizeAndColor": "XL/green",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay7.jpg?v=1473606362390",
+          "productPrice": 248000,
+          "productQty": "4",
+          "productAmount": 992000,
+          "createdAt": "Tue Aug 15 2023 12:01:14 PM"
+        }
+      ],
+      "orderAt": "Tue Aug 15 2023 12:01:42 PM",
+      "id": 3
+    },
+    {
+      "orderEmail": "abc@gmail.com",
+      "fullName": "NguyenVu Truong Nam",
+      "phone": "0912345678",
+      "address": "20-Chon tam 12",
+      "district": "Huyện Tân Sơn",
+      "ward": "Xã Đoan Hạ",
+      "province": "Tỉnh Cà Mau",
+      "shippingType": "Giao thường",
+      "shippingFee": 15000,
+      "paymentMethod": "COD",
+      "orderCode": "#767",
+      "totalAmount": 5205000,
+      "totalItemQty": 27,
+      "orderList": [
+        {
+          "id": 1,
+          "productId": 1,
+          "productCode": "SM-234_1",
+          "productName": "Sơ mi kẻ sọc thời trang cho bé-01",
+          "sizeAndColor": "M/Đen xám",
+          "productImg": "https://bizweb.dktcdn.net/thumb/large/100/117/632/products/somi6-6f995308-45d3-4e20-8d47-4618d8f5a0c7-14476867-2495-491c-806b-86678712960e.jpg?v=1473604250600",
+          "productPrice": 297500,
+          "productQty": "4",
+          "productAmount": 1190000,
+          "createdAt": "Tue Aug 15 2023 12:07:21 PM"
+        },
+        {
+          "id": 2,
+          "productId": 1,
+          "productCode": "SM-234_1",
+          "productName": "Sơ mi kẻ sọc thời trang cho bé-01",
+          "sizeAndColor": "M/kẻ xanh",
+          "productImg": "https://bizweb.dktcdn.net/thumb/large/100/117/632/products/somi6-6f995308-45d3-4e20-8d47-4618d8f5a0c7-14476867-2495-491c-806b-86678712960e.jpg?v=1473604250600",
+          "productPrice": 297500,
+          "productQty": "10",
+          "productAmount": 2975000,
+          "createdAt": "Tue Aug 15 2023 12:07:26 PM"
+        },
+        {
+          "id": 3,
+          "productId": 2,
+          "productCode": "UNIQLO_1",
+          "productName": "Tất trẻ em UNIQLO",
+          "sizeAndColor": "22/Xanh đen",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/tat5.jpg?v=1473606717327",
+          "productPrice": 80000,
+          "productQty": "5",
+          "productAmount": 400000,
+          "createdAt": "Tue Aug 15 2023 12:07:40 PM"
+        },
+        {
+          "id": 4,
+          "productId": 2,
+          "productCode": "UNIQLO_1",
+          "productName": "Tất trẻ em UNIQLO",
+          "sizeAndColor": "26/nâu",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/tat5.jpg?v=1473606717327",
+          "productPrice": 80000,
+          "productQty": "8",
+          "productAmount": 640000,
+          "createdAt": "Tue Aug 15 2023 12:07:42 PM"
+        }
+      ],
+      "orderAt": "Tue Aug 15 2023 12:13:31 PM",
+      "id": 4
+    },
+    {
+      "orderEmail": "abc@gmail.com",
+      "fullName": "NguyenVu Truong Nam",
+      "phone": "0912345678",
+      "address": "abc, 1234",
+      "district": "Huyện Lương Tài",
+      "ward": "Xã Long Châu",
+      "province": "Tỉnh Cà Mau",
+      "shippingType": "Giao hàng nhanh",
+      "shippingFee": 35000,
+      "paymentMethod": "COD",
+      "orderCode": "#144",
+      "totalAmount": 1647500,
+      "totalItemQty": 7,
+      "orderList": [
+        {
+          "id": 1,
+          "productId": 1,
+          "productCode": "SM-234_1",
+          "productName": "Sơ mi kẻ sọc thời trang cho bé-01",
+          "sizeAndColor": "L/Đỏ",
+          "productImg": "https://bizweb.dktcdn.net/thumb/large/100/117/632/products/somi6-6f995308-45d3-4e20-8d47-4618d8f5a0c7-14476867-2495-491c-806b-86678712960e.jpg?v=1473604250600",
+          "productPrice": 297500,
+          "productQty": "1",
+          "productAmount": 297500,
+          "createdAt": "Tue Aug 15 2023 12:14:06 PM"
+        },
+        {
+          "id": 2,
+          "productId": 1,
+          "productCode": "SM-234_1",
+          "productName": "Sơ mi kẻ sọc thời trang cho bé-01",
+          "sizeAndColor": "S/Đen xám",
+          "productImg": "https://bizweb.dktcdn.net/thumb/large/100/117/632/products/somi6-6f995308-45d3-4e20-8d47-4618d8f5a0c7-14476867-2495-491c-806b-86678712960e.jpg?v=1473604250600",
+          "productPrice": 297500,
+          "productQty": "4",
+          "productAmount": 1190000,
+          "createdAt": "Tue Aug 15 2023 12:14:10 PM"
+        },
+        {
+          "id": 3,
+          "productId": 2,
+          "productCode": "UNIQLO_1",
+          "productName": "Tất trẻ em UNIQLO",
+          "sizeAndColor": "24/Xanh đen",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/tat5.jpg?v=1473606717327",
+          "productPrice": 80000,
+          "productQty": "2",
+          "productAmount": 160000,
+          "createdAt": "Tue Aug 15 2023 12:14:37 PM"
+        }
+      ],
+      "orderAt": "Tue Aug 15 2023 12:14:55 PM",
+      "id": 5
+    },
+    {
+      "orderEmail": "abc@gmail.com",
+      "fullName": "NguyenVu Truong Nam",
+      "phone": "0912345678",
+      "address": "abc, 1234",
+      "district": "Huyện Sông Lô",
+      "ward": "Xã Cao Minh",
+      "province": "Tỉnh Cà Mau",
+      "shippingType": "Giao thường",
+      "shippingFee": 15000,
+      "paymentMethod": "COD",
+      "orderCode": "#463",
+      "totalAmount": 2152800,
+      "totalItemQty": 15,
+      "orderList": [
+        {
+          "id": 1,
+          "productId": 6,
+          "productCode": "KID-123_3",
+          "productName": "Váy liên thân KIDS - KF1",
+          "sizeAndColor": "M/blue",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay9.jpg?v=1473603722567",
+          "productPrice": 240000,
+          "productQty": "2",
+          "productAmount": 480000,
+          "createdAt": "Wed Aug 16 2023 8:24:17 AM"
+        },
+        {
+          "id": 2,
+          "productId": 6,
+          "productCode": "KID-123_3",
+          "productName": "Váy liên thân KIDS - KF1",
+          "sizeAndColor": "M/yellow",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay9.jpg?v=1473603722567",
+          "productPrice": 240000,
+          "productQty": "4",
+          "productAmount": 960000,
+          "createdAt": "Wed Aug 16 2023 8:24:19 AM"
+        },
+        {
+          "id": 3,
+          "productId": 4,
+          "productCode": "Icotton-03",
+          "productName": "Bộ sát nách bé trai viền đen đỏ hình người dơi Batman",
+          "sizeAndColor": "Size:110/Đỏ đô",
+          "productImg": "https://be.icotton.vn/storage/files/2023/06/IMG_6082.jpg-3d70456d-a088-4a83-a22e-290cbec61ce9.jpg",
+          "productPrice": 79200,
+          "productQty": "2",
+          "productAmount": 158400,
+          "createdAt": "Wed Aug 16 2023 8:24:28 AM"
+        },
+        {
+          "id": 4,
+          "productId": 4,
+          "productCode": "Icotton-03",
+          "productName": "Bộ sát nách bé trai viền đen đỏ hình người dơi Batman",
+          "sizeAndColor": "Size:130/Đỏ đô",
+          "productImg": "https://be.icotton.vn/storage/files/2023/06/IMG_6082.jpg-3d70456d-a088-4a83-a22e-290cbec61ce9.jpg",
+          "productPrice": 79200,
+          "productQty": "7",
+          "productAmount": 554400,
+          "createdAt": "Wed Aug 16 2023 8:24:32 AM"
+        }
+      ],
+      "orderAt": "Wed Aug 16 2023 8:52:39 AM",
+      "id": 6
+    },
+    {
+      "orderEmail": "abc@gmail.com",
+      "fullName": "NguyenVu Truong Nam",
+      "phone": "0912345678",
+      "address": "abc, 1234",
+      "district": "Huyện Hiệp Hòa",
+      "ward": "Xã An Thượng",
+      "province": "Tỉnh Cà Mau",
+      "shippingType": "Giao thường",
+      "shippingFee": 15000,
+      "paymentMethod": "COD",
+      "orderCode": "#938",
+      "totalAmount": 2522000,
+      "totalItemQty": 11,
+      "orderList": [
+        {
+          "id": 1,
+          "productId": 7,
+          "productCode": "G-342_5",
+          "productName": "Váy liên thân KIDS - KF-2",
+          "sizeAndColor": "L/blue",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay7.jpg?v=1473606362390",
+          "productPrice": 310000,
+          "productQty": "2",
+          "productAmount": 620000,
+          "createdAt": "Wed Aug 16 2023 8:54:48 AM"
+        },
+        {
+          "id": 2,
+          "productId": 7,
+          "productCode": "G-342_5",
+          "productName": "Váy liên thân KIDS - KF-2",
+          "sizeAndColor": "L/yellow",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay7.jpg?v=1473606362390",
+          "productPrice": 310000,
+          "productQty": "3",
+          "productAmount": 930000,
+          "createdAt": "Wed Aug 16 2023 8:54:50 AM"
+        },
+        {
+          "id": 4,
+          "productId": 11,
+          "productCode": "Icotton-02",
+          "productName": "Váy đuôi cá bé gái Icotton thun 4 chiều",
+          "sizeAndColor": "M/Tím",
+          "productImg": "https://down-vn.img.susercontent.com/file/vn-11134201-7qukw-lewqwj9dqijb8c",
+          "productPrice": 162000,
+          "productQty": "3",
+          "productAmount": 486000,
+          "createdAt": "Wed Aug 16 2023 8:55:43 AM"
+        },
+        {
+          "id": 5,
+          "productId": 11,
+          "productCode": "Icotton-02",
+          "productName": "Váy đuôi cá bé gái Icotton thun 4 chiều",
+          "sizeAndColor": "M/Hồng nhạt",
+          "productImg": "https://down-vn.img.susercontent.com/file/vn-11134201-7qukw-lewqwj9dqijb8c",
+          "productPrice": 162000,
+          "productQty": "3",
+          "productAmount": 486000,
+          "createdAt": "Wed Aug 16 2023 8:55:59 AM"
+        }
+      ],
+      "orderAt": "Wed Aug 16 2023 8:56:49 AM",
+      "id": 7
+    },
+    {
+      "orderEmail": "abc@gmail.com",
+      "fullName": "NguyenVu Truong Nam",
+      "phone": "0912345678",
+      "address": "abc, 1234",
+      "district": "Huyện Lương Tài",
+      "ward": "Xã Long Châu",
+      "province": "Tỉnh Cà Mau",
+      "shippingType": "Giao thường",
+      "shippingFee": 15000,
+      "paymentMethod": "COD",
+      "orderCode": "#261",
+      "totalAmount": 648000,
+      "totalItemQty": 4,
+      "orderList": [
+        {
+          "id": 1,
+          "productId": 11,
+          "productCode": "Icotton-02",
+          "productName": "Váy đuôi cá bé gái Icotton thun 4 chiều",
+          "sizeAndColor": "L/Tím",
+          "productImg": "https://down-vn.img.susercontent.com/file/vn-11134201-7qukw-lewqwj9dqijb8c",
+          "productPrice": 162000,
+          "productQty": "1",
+          "productAmount": 162000,
+          "createdAt": "Wed Aug 16 2023 8:58:51 AM"
+        },
+        {
+          "id": 2,
+          "productId": 11,
+          "productCode": "Icotton-02",
+          "productName": "Váy đuôi cá bé gái Icotton thun 4 chiều",
+          "sizeAndColor": "L/Hồng nhạt",
+          "productImg": "https://down-vn.img.susercontent.com/file/vn-11134201-7qukw-lewqwj9dqijb8c",
+          "productPrice": 162000,
+          "productQty": "3",
+          "productAmount": 486000,
+          "createdAt": "Wed Aug 16 2023 8:58:53 AM"
+        }
+      ],
+      "orderAt": "Wed Aug 16 2023 8:59:54 AM",
+      "id": 8
+    },
+    {
+      "orderEmail": "abc@gmail.com",
+      "fullName": "NguyenVu Truong Nam",
+      "phone": "0912345678",
+      "address": "20-Chon tam 12",
+      "district": "Huyện Bạch Long Vĩ",
+      "ward": "Xã Hưng Nhân",
+      "province": "Tỉnh Cà Mau",
+      "shippingType": "Giao thường",
+      "shippingFee": 15000,
+      "paymentMethod": "COD",
+      "orderCode": "#298",
+      "totalAmount": 620000,
       "totalItemQty": 2,
       "orderList": [
         {
           "id": 1,
-          "productId": 10,
-          "productCode": "LOTUKA-01",
-          "productName": "Đồ bộ Bé Trai, Bé Gái LOTUKA",
-          "sizeAndColor": "L/blue",
-          "productImg": "https://down-vn.img.susercontent.com/file/f8b56c6bebe70dcce2329647da3cecde",
-          "productPrice": 250000,
+          "productId": 7,
+          "productCode": "G-342_5",
+          "productName": "Váy liên thân KIDS - KF-2",
+          "sizeAndColor": "M/blue",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay7.jpg?v=1473606362390",
+          "productPrice": 310000,
           "productQty": "2",
-          "productAmount": 500000,
-          "createdAt": "Mon Aug 14 2023 2:16:24 PM"
+          "productAmount": 620000,
+          "createdAt": "Wed Aug 16 2023 9:03:16 AM"
+        },
+        {
+          "id": 2,
+          "productId": 9,
+          "productCode": "G-342_4",
+          "productName": "Váy liên thân KIDS - KF4",
+          "sizeAndColor": "/",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay1.jpg?v=1473606362390",
+          "productPrice": 387000,
+          "productQty": 0,
+          "productAmount": 0,
+          "createdAt": "Wed Aug 16 2023 9:07:02 AM"
         }
       ],
-      "orderAt": "Mon Aug 14 2023 2:16:43 PM",
-      "id": 7
+      "orderAt": "Wed Aug 16 2023 9:08:50 AM",
+      "id": 9
+    },
+    {
+      "orderEmail": "abc@gmail.com",
+      "fullName": "NguyenVu Truong Nam",
+      "phone": "0912345678",
+      "address": "20-Chon Tam 12",
+      "district": "Huyện Lương Tài",
+      "ward": "Xã Đông Phong",
+      "province": "Tỉnh Cà Mau",
+      "shippingType": "Giao thường",
+      "shippingFee": 15000,
+      "paymentMethod": "OnlinePayment",
+      "transferMethod": "banking",
+      "orderCode": "#938",
+      "totalAmount": 1240000,
+      "totalItemQty": 4,
+      "orderList": [
+        {
+          "id": 1,
+          "productId": 7,
+          "productCode": "G-342_5",
+          "productName": "Váy liên thân KIDS - KF-2",
+          "sizeAndColor": "M/pink",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay7.jpg?v=1473606362390",
+          "productPrice": 310000,
+          "productQty": "2",
+          "productAmount": 620000,
+          "createdAt": "Wed Aug 16 2023 9:11:16 AM"
+        },
+        {
+          "id": 2,
+          "productId": 7,
+          "productCode": "G-342_5",
+          "productName": "Váy liên thân KIDS - KF-2",
+          "sizeAndColor": "XL/yellow",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay7.jpg?v=1473606362390",
+          "productPrice": 310000,
+          "productQty": "2",
+          "productAmount": 620000,
+          "createdAt": "Wed Aug 16 2023 9:11:24 AM"
+        }
+      ],
+      "orderAt": "Wed Aug 16 2023 9:11:46 AM",
+      "id": 10
+    },
+    {
+      "orderEmail": "abc@gmail.com",
+      "fullName": "NguyenVu Truong Nam",
+      "phone": "0912345678",
+      "address": "20-Chon tam 12",
+      "district": "Huyện Sông Lô",
+      "ward": "Phường Khai Quang",
+      "province": "Tỉnh Cà Mau",
+      "shippingType": "Giao thường",
+      "shippingFee": 15000,
+      "paymentMethod": "COD",
+      "orderCode": "#867",
+      "totalAmount": 2790000,
+      "totalItemQty": 9,
+      "orderList": [
+        {
+          "id": 1,
+          "productId": 7,
+          "productCode": "G-342_5",
+          "productName": "Váy liên thân KIDS - KF-2",
+          "sizeAndColor": "L/blue",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay7.jpg?v=1473606362390",
+          "productPrice": 310000,
+          "productQty": "4",
+          "productAmount": 1240000,
+          "createdAt": "Wed Aug 16 2023 9:13:00 AM"
+        },
+        {
+          "id": 2,
+          "productId": 7,
+          "productCode": "G-342_5",
+          "productName": "Váy liên thân KIDS - KF-2",
+          "sizeAndColor": "M/yellow",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay7.jpg?v=1473606362390",
+          "productPrice": 310000,
+          "productQty": "5",
+          "productAmount": 1550000,
+          "createdAt": "Wed Aug 16 2023 9:13:08 AM"
+        }
+      ],
+      "orderAt": "Wed Aug 16 2023 9:13:22 AM",
+      "id": 11
     }
   ]
 }

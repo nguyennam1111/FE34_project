@@ -4,16 +4,18 @@ import { toast } from "react-toastify";
 
 const initialState = {
   cart: JSON.parse(localStorage.getItem("cart")) ?? [],
-  totalAmount: JSON.parse(localStorage.getItem("cart"))
-    ?.map((item) => item.productAmount)
-    ?.reduce((total, num) => {
-      return total + num;
-    }, 0),
-  totalItemQty: JSON.parse(localStorage.getItem("cart"))
-    ?.map((item) => item.productQty)
-    ?.reduce((total, num) => {
-      return total + Number(num);
-    }, 0),
+  totalAmount:
+    JSON.parse(localStorage.getItem("cart"))
+      ?.map((item) => item.productAmount)
+      ?.reduce((total, num) => {
+        return total + num;
+      }, 0) ?? "",
+  totalItemQty:
+    JSON.parse(localStorage.getItem("cart"))
+      ?.map((item) => item.productQty)
+      ?.reduce((total, num) => {
+        return total + Number(num);
+      }, 0) ?? "",
 };
 
 export const cartSlice = createSlice({
@@ -74,27 +76,22 @@ export const cartSlice = createSlice({
           productName: action.payload.product.productName,
           sizeAndColor: action.payload.sizeAndColor,
           productImg: action.payload.product.productsImg[0],
-          productPrice:
-            Number(action.payload.product.productPrice) -
-            Number(action.payload.product.productPrice) *
-              Number(action.payload.product.saleOffValue),
+          productPrice: Number(action.payload.product.productPrice),
           productQty: action.payload.inputQty,
           productAmount:
-            (Number(action.payload.product.productPrice) -
-              Number(action.payload.product.productPrice) *
-                Number(action.payload.product.saleOffValue)) *
+            Number(action.payload.product.productPrice) *
             Number(action.payload.inputQty),
           createdAt: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`,
         });
       }
       state.totalAmount = state.cart
-        .map((item) => item.productAmount)
+        ?.map((item) => item.productAmount)
         .reduce((total, num) => {
           return total + Number(num);
         }, 0);
 
       state.totalItemQty = state.cart
-        .map((item) => item.productQty)
+        ?.map((item) => item.productQty)
         .reduce((total, num) => {
           return total + Number(num);
         }, 0);
@@ -164,6 +161,8 @@ export const cartSlice = createSlice({
     },
     clearCart: (state, action) => {
       state.cart = [];
+      state.totalAmount = "";
+      state.totalItemQty = "";
       localStorage.removeItem("cart");
     },
   },

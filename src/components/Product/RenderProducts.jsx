@@ -37,10 +37,7 @@ const RenderProducts = (props) => {
               >
                 <p className="m-0 text-highlight fw-bolder">
                   <NumericFormat
-                    value={
-                      Number(item.productPrice) -
-                      Number(item.productPrice) * Number(item?.saleOffValue)
-                    }
+                    value={Number(item.productPrice)}
                     displayType={"text"}
                     allowLeadingZeros
                     thousandSeparator={true}
@@ -56,7 +53,7 @@ const RenderProducts = (props) => {
                   }
                 >
                   <NumericFormat
-                    value={item.productPrice}
+                    value={item.oldProductPrice}
                     displayType={"text"}
                     allowLeadingZeros
                     thousandSeparator={true}
@@ -70,39 +67,6 @@ const RenderProducts = (props) => {
               <img src={btn_buy} className="img-fluid"></img>
             </button>
           </div>
-          {/* <p className="m-0 text-highlight ">
-              <NumericFormat
-                value={
-                  Number(item.productPrice) -
-                  Number(item.productPrice) * Number(item?.saleOffValue)
-                }
-                displayType={"text"}
-                allowLeadingZeros
-                thousandSeparator={true}
-                suffix={"đ"}
-              />
-            </p>
-            <p
-              className="m-0 text-line-through "
-              style={
-                item?.saleOffValue !== 0
-                  ? { display: "block" }
-                  : { visibility: "hidden" }
-              }
-            >
-              <NumericFormat
-                value={item.productPrice}
-                displayType={"text"}
-                allowLeadingZeros
-                thousandSeparator={true}
-                suffix={"đ"}
-              />
-            </p>
-          </div>
-          <p className="m-0 py-3 ">{item.productName}</p>
-          <button className="border-0 mb-2 bg-transparent">
-            <img src={btn_buy} className="img-fluid"></img>
-          </button> */}
         </div>
       );
     });

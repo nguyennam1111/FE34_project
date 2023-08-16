@@ -112,9 +112,10 @@ const OrderHistory = (props) => {
             </tr>
             <tr>
               <td className="align-middle">Địa chỉ nhận hàng</td>
-              <td className="align-middle" colSpan={7}>
-                {order?.address}
-              </td>
+              <td className="align-middle">{order?.address}</td>
+              <td colSpan={2}> Tỉnh/Thành phố:{order?.province}</td>
+              <td colSpan={2}> Quận/Huyện:{order?.district}</td>
+              <td colSpan={2}> Phường/Xã:{order?.ward}</td>
             </tr>
           </tfoot>
         </table>
@@ -131,15 +132,17 @@ const OrderHistory = (props) => {
         </h5>
       </div>
 
-      <div className="border" style={{ height: 500, overflowY: "scroll" }}>
-        {renderOrderHistory()}
-      </div>
+      <div className="border">{renderOrderHistory()}</div>
 
       <div className="mt-3 text-center">
-        <span style={{ color: "#2A9DCC", fontSize: 20 }}>
+        <button
+          style={{ color: "#2A9DCC", fontSize: 20 }}
+          className="border-0 bg-transparent"
+          onClick={() => window.print()}
+        >
           {" "}
-          <PrinterOutlined /> <span>In</span>
-        </span>
+          <PrinterOutlined /> In
+        </button>
         <button
           className=" btn btn-primary text-right ml-3"
           type="button"

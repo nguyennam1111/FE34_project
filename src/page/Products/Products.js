@@ -12,7 +12,11 @@ import {
   setSort,
 } from "../../redux/feature/ProductSlice/productSlice";
 import useScrollToTop from "../../hooks/useScrollToTop";
-
+import { FilterOutlined } from "@ant-design/icons";
+import * as Yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { getValue } from "@testing-library/user-event/dist/utils";
 const Products = (props) => {
   useScrollToTop();
   const callBackUrl = window.location.pathname;
@@ -30,6 +34,34 @@ const Products = (props) => {
     (state) => state.product
   );
 
+  const shemaPriceRange = Yup.object().shape({
+    startPrice: Yup.string().test(
+      "test start num",
+      "giá bắt đầu phải lớn hơn 0",
+      (value) => value >= 0
+    ),
+    endPrice: Yup.string().test(
+      "check end price",
+      "giá kết thúc không nhỏ hơn giá bắt đầu",
+      (value, context) => context.parent.startPrice < value
+    ),
+  });
+
+  const {
+    handleSubmit: handFilterPrice,
+    register,
+    watch,
+    formState: { errors },
+    control,
+    setValue,
+    getValues,
+    reset,
+  } = useForm({
+    defaultValue: { startPrice: "0", endPrice: "" },
+    mode: "onSubmit",
+    resolver: yupResolver(shemaPriceRange),
+  });
+
   useEffect(() => {
     dispatch(
       setFilters({
@@ -37,44 +69,74 @@ const Products = (props) => {
         catalogue: catalogue,
         status: status,
         search: search,
+        startPrice: getValues("startPrice"),
+        endPrice: getValues("endPrice"),
       })
     );
-  }, [search, status, catalogue]);
+  }, [
+    search,
+    status,
+    catalogue,
+    getValues("startPrice"),
+    getValues("endPrice"),
+  ]);
 
   useEffect(() => {
     handleChangeSort("default");
   }, [catalogue]);
 
   useEffect(() => {
-    dispatch(
-      actfetchAllProducts({
-        _page: pagination.currentPage,
-        _limit: pagination.pageSize,
-        _sort: sortBy.sort,
-        _order: sortBy.order,
-        q: filters.search,
-        productCatalogue: filters.catalogue,
+    if (filters.endPrice !== "") {
+      dispatch(
+        actfetchAllProducts({
+          _page: pagination.currentPage,
+          _limit: pagination.pageSize,
+          _sort: sortBy.sort,
+          _order: sortBy.order,
 
-        productPromote: filters.status,
-      })
-    );
+          q: filters.search,
+          productCatalogue: filters.catalogue,
+          productPrice_gte: filters.startPrice,
+          productPrice_lte: filters.endPrice,
+          productPromote: filters.status,
+        })
+      );
+      handleChangePageSize(pagination.pageSize);
+      handleChangePage(pagination.currentPage);
+    } else {
+      dispatch(
+        actfetchAllProducts({
+          _page: pagination.currentPage,
+          _limit: pagination.pageSize,
+          _sort: sortBy.sort,
+          _order: sortBy.order,
+
+          q: filters.search,
+          productCatalogue: filters.catalogue,
+
+          productPromote: filters.status,
+        })
+      );
+      handleChangePageSize(pagination.pageSize);
+      handleChangePage(pagination.currentPage);
+    }
   }, [filters, sortBy, pagination.pageSize, pagination.currentPage]);
 
-  useEffect(() => {
-    dispatch(
-      actfetchAllProducts({
-        _page: pagination.currentPage,
-        _limit: pagination.pageSize,
-      })
-    );
+  // useEffect(() => {
+  //   dispatch(
+  //     actfetchAllProducts({
+  //       _page: pagination.currentPage,
+  //       _limit: pagination.pageSize,
+  //     })
+  //   );
 
-    handleChangePageSize(pagination.pageSize);
-    handleChangePage(pagination.currentPage);
-  }, [pagination.pageSize, pagination.currentPage]);
+  //   handleChangePageSize(pagination.pageSize);
+  //   handleChangePage(pagination.currentPage);
+  // }, [pagination.pageSize, pagination.currentPage]);
 
-  useEffect(() => {
-    handleChangePageSize(pagination.pageSize);
-  }, [filters]);
+  // useEffect(() => {
+  //   handleChangePageSize(pagination.pageSize);
+  // }, [filters]);
 
   const handleProductDetails = (productId) => {
     navigate(`/Products/${productId}`);
@@ -90,6 +152,18 @@ const Products = (props) => {
   };
   const handleChangeSort = (value) => {
     dispatch(setSort(value));
+    dispatch(setPage(1));
+  };
+
+  const onValid = (data) => {
+    dispatch(
+      actfetchAllProducts({
+        _page: pagination.currentPage,
+        _limit: pagination.pageSize,
+        productPrice_gte: data.startPrice,
+        productPrice_lte: data.endPrice,
+      })
+    );
   };
 
   return (
@@ -132,7 +206,7 @@ const Products = (props) => {
         Kết quả tìm kiếm cho từ khóa: {searchParams.get("search")}
       </h4>
       <div className="row p-3 m-0 justify-content-between">
-        <div className="col-sm-left-6">
+        <div className="col-sm-left-4">
           <div className="row m-0  justify-items-center">
             <p className="m-0 mr-2 my-auto">Sắp xếp</p>
             <select
@@ -151,7 +225,8 @@ const Products = (props) => {
             </select>
           </div>
         </div>
-        <div className="col-sm-right-6 px-3">
+
+        <div className="col-sm-right-4 px-3">
           <div className="row">
             <p className="m-0 mr-2 my-auto">Sản phẩm/trang</p>
             <select
@@ -160,7 +235,9 @@ const Products = (props) => {
                 e.preventDefault();
                 handleChangePageSize(e.target.value);
               }}
+              value={pagination.pageSize}
             >
+              <option value={4}>4</option>
               <option value={8}>8</option>
               <option value={16}>16</option>
               <option value={24}>24</option>
@@ -169,7 +246,36 @@ const Products = (props) => {
           </div>
         </div>
       </div>
-      <div className="border">
+      <div className="px-3">
+        <form className="row p-0 m-0" onSubmit={handFilterPrice(onValid)}>
+          <div className="my-auto p-0 col-sm-2 align-items-center">
+            <p className="m-0 p-0">Lọc theo giá:</p>
+          </div>
+          <div className="d-flex col-sm-4 w-75 align-items-center p-0">
+            <p className="m-0 pr-1">Từ:</p>
+            <input
+              className="form-control"
+              name="startPrice"
+              {...register("startPrice")}
+            ></input>
+          </div>
+          <div className="d-flex col-sm-4 align-items-center w-75 p-0">
+            <p className="m-0 px-1">đến:</p>
+            <input
+              name="endPrice"
+              className="form-control"
+              {...register("endPrice")}
+            ></input>
+          </div>
+          <div className="col-sm-2 align-items-center align-middle">
+            <button className="border-0 bg-transparent" type="submit">
+              <FilterOutlined />
+              Lọc
+            </button>
+          </div>
+        </form>
+      </div>
+      <div className="border mt-3">
         <div className="row m-0 p-0 ">
           <RenderProducts
             data={products}

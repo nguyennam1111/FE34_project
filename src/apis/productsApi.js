@@ -17,7 +17,21 @@ export const productsApi = {
     );
     return data;
   },
-  updateProduct: async (updateId, updateItem) => {
+  updateProductStatus: async (updateId, updateItem) => {
+    const { data } = await axios.patch(
+      `${process.env.REACT_APP_BE_URL}products/${updateId}`,
+      updateItem
+    );
+    return data;
+  },
+  updateProductPrice: async (updateId, updateItem) => {
+    const { data } = await axios.patch(
+      `${process.env.REACT_APP_BE_URL}products/${updateId}`,
+      updateItem
+    );
+    return data;
+  },
+  updateProductSaleQty: async (updateId, updateItem) => {
     const { data } = await axios.patch(
       `${process.env.REACT_APP_BE_URL}products/${updateId}`,
       updateItem

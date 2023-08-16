@@ -10,14 +10,6 @@ export const actAddOrder = createAsyncThunk(
   "orders/addOrders",
   async (item) => {
     return await ordersRecordApi.addOrder(item);
-
-    // const listOrder = await ordersRecordApi.getAllOrders();
-    // const exitEmailIndex = listOrder.findIndex(
-    //   (e) => e.orderEmail === item.orderEmail
-    // );
-    // if (exitEmailIndex) {
-    //   return listOrder[exitEmailIndex].orderList.push(...item.orderList);
-    // } else return await ordersRecordApi.addOrder(item);
   }
 );
 export const actGetAllOrders = createAsyncThunk(

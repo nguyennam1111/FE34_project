@@ -62,9 +62,8 @@ const ShowHotProducts = (props) => {
                       <NumericFormat
                         value={
                           item.saleOffValue === 0
-                            ? item.productPrice
-                            : item.productPrice -
-                              item.productPrice * item.saleOffValue
+                            ? item.oldProductPrice
+                            : item.productPrice
                         }
                         displayType={"text"}
                         allowLeadingZeros
@@ -81,7 +80,7 @@ const ShowHotProducts = (props) => {
                       }
                     >
                       <NumericFormat
-                        value={item.productPrice}
+                        value={item.oldProductPrice}
                         displayType={"text"}
                         allowLeadingZeros
                         thousandSeparator={true}
@@ -101,10 +100,7 @@ const ShowHotProducts = (props) => {
           </div>
 
           <div className="col-sm-8 border pb-3 overflow-y-scroll">
-            <div
-              className="row p-2 "
-              style={{ maxHeight: 500, height: "100%", overflowY: "scroll" }}
-            >
+            <div className="row p-2 ">
               <RenderProducts
                 data={data}
                 classCol={classCol}

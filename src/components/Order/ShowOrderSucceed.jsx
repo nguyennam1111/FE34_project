@@ -9,7 +9,6 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 const ShowOrderSucceed = (props) => {
-  console.log(props.orderSucceed, "orderSucceed");
   const navigate = useNavigate();
   return (
     <div className="container-fluid px-4 bg-light">
@@ -132,10 +131,12 @@ const ShowOrderSucceed = (props) => {
           >
             Tiếp tục mua hàng
           </button>
-          <span style={{ color: "#2A9DCC", fontSize: 20 }}>
-            {" "}
-            <PrinterOutlined /> <span>In</span>
-          </span>
+          <button
+            onClick={() => window.print()}
+            className="btn border-0 bg-transparent"
+          >
+            <PrinterOutlined style={{ color: "#2A9DCC", fontSize: 20 }} /> In
+          </button>
         </div>
       </div>
     </div>

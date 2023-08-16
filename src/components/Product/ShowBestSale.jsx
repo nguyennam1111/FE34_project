@@ -45,10 +45,7 @@ const ShowsBestSale = (props) => {
                 <p>{item.productName}</p>
                 <p className="m-0 text-highlight">
                   <NumericFormat
-                    value={
-                      Number(item.productPrice) -
-                      Number(item.productPrice) * Number(item?.saleOffValue)
-                    }
+                    value={Number(item.productPrice)}
                     displayType={"text"}
                     allowLeadingZeros
                     thousandSeparator={true}
@@ -64,7 +61,7 @@ const ShowsBestSale = (props) => {
                   }
                 >
                   <NumericFormat
-                    value={Number(item.productPrice)}
+                    value={Number(item.oldProductPrice)}
                     displayType={"text"}
                     allowLeadingZeros
                     thousandSeparator={true}

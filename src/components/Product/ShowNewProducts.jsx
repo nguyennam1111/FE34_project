@@ -39,10 +39,7 @@ const ShowNewProducts = (props) => {
             </li>
           </ul>
         </div>
-        <div
-          className="row border  m-0"
-          style={{ maxHeight: 700, height: "100%", overflowY: "scroll" }}
-        >
+        <div className="row border  m-0">
           <RenderProducts
             data={data}
             classCol={classCol}

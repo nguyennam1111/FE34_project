@@ -69,6 +69,13 @@ const ProductDetails = () => {
   }, [productDetails.tags]);
 
   const imageList = productDetails?.productsImg;
+  const qtyInCart = Number(
+    cart
+      .map((item) => (item.productId == params.id ? item.productQty : ""))
+      .reduce((total, num) => {
+        return total + Number(num);
+      }, 0)
+  );
   const schemaAddToCart = Yup.object().shape({
     size: Yup.string().required("Chọn size"),
     color: Yup.string().required("Chọn màu"),
@@ -82,10 +89,15 @@ const ProductDetails = () => {
       .test("check min", "Số lượng phải lớn hơn 0", (value) => value > 0)
       .test(
         "checkStockQty",
-        "Over stock",
+        `Không đủ hàng, tối đa ${
+          Number(productDetails?.stock?.totalQty) -
+          Number(productDetails?.stock?.saledQty) -
+          qtyInCart
+        }`,
         (value) =>
           Number(productDetails?.stock?.totalQty) -
-            Number(productDetails?.stock?.saledQty) >=
+            Number(productDetails?.stock?.saledQty) -
+            qtyInCart >=
           value
       ),
   });
@@ -118,6 +130,12 @@ const ProductDetails = () => {
       return (
         <button
           style={{ backgroundColor: "" }}
+          disabled={
+            Number(productDetails?.stock?.totalQty) -
+              Number(productDetails?.stock?.saledQty) -
+              qtyInCart ==
+            0
+          }
           type="button"
           key={size}
           className={`btn border mr-2 ${
@@ -139,6 +157,12 @@ const ProductDetails = () => {
       return (
         <div className="d-flex mr-2">
           <button
+            disabled={
+              Number(productDetails?.stock?.totalQty) -
+                Number(productDetails?.stock?.saledQty) -
+                qtyInCart ==
+              0
+            }
             type="button"
             className={`btn border ${
               watch("color") === color ? "bg-success text-white" : ""
@@ -160,6 +184,9 @@ const ProductDetails = () => {
         inputQty: data.inputQty,
       })
     );
+    setValue("size", "");
+    setValue("color", "");
+    setValue("inputQty", "");
   };
 
   return (
@@ -203,7 +230,7 @@ const ProductDetails = () => {
             >
               Giá gốc:{" "}
               <NumericFormat
-                value={productDetails?.productPrice}
+                value={productDetails?.oldProductPrice}
                 displayType={"text"}
                 allowLeadingZeros
                 thousandSeparator={true}
@@ -213,11 +240,7 @@ const ProductDetails = () => {
             <p>
               Giá:{" "}
               <NumericFormat
-                value={
-                  Number(productDetails?.productPrice) -
-                  Number(productDetails?.productPrice) *
-                    Number(productDetails?.saleOffValue)
-                }
+                value={Number(productDetails?.productPrice)}
                 displayType={"text"}
                 allowLeadingZeros
                 thousandSeparator={true}
@@ -227,7 +250,8 @@ const ProductDetails = () => {
             </p>
             <p className="bg-highlight text-white font-instock px-2">
               {Number(productDetails?.stock?.totalQty) -
-                Number(productDetails?.stock?.saledQty) !==
+                Number(productDetails?.stock?.saledQty) -
+                qtyInCart !=
               0
                 ? "Còn hàng"
                 : "Hết hàng"}
@@ -277,17 +301,19 @@ const ProductDetails = () => {
                       onChange={(e) => setValue("inputQty", e.target.value)}
                       disabled={
                         Number(productDetails?.stock?.totalQty) -
-                          Number(productDetails?.stock?.saledQty) ===
+                          Number(productDetails?.stock?.saledQty) -
+                          qtyInCart ==
                         0
                       }
                     ></input>
 
                     <button
-                      className="btn bg-content mx-2 text-white"
+                      className="btn btn-primary mx-2 text-white"
                       type="submit"
                       disabled={
                         Number(productDetails?.stock?.totalQty) -
-                          Number(productDetails?.stock?.saledQty) ===
+                          Number(productDetails?.stock?.saledQty) -
+                          qtyInCart ==
                         0
                       }
                     >
