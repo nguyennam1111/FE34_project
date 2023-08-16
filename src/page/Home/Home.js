@@ -132,7 +132,7 @@ const Home = () => {
     <div className="m-0 container-fluid">
       <Banner data={banners} />
       <div className="row m-0 mt-2">
-        <div className="col-md-3 p-2 " id="sidebar ">
+        <div className="col-md-3 p-2 " id="homeLeftSide">
           <ShowLogos data={logos} />
 
           <ShowBestSale

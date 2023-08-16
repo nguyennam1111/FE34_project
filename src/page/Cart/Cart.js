@@ -47,7 +47,7 @@ const Cart = () => {
       return (
         <tr key={item.id && item.sizeAndColor} className="text-center">
           <td className="align-middle">{item.productCode}</td>
-          <td className=" align-middle p-0">
+          <td className=" align-middle p-0 ">
             <img
               src={item.productImg}
               className="img-fluid img p-0 product-block"
@@ -72,7 +72,8 @@ const Cart = () => {
             <input
               type="number"
               placeholder="0"
-              className="text-center text-center p-0 m-auto border w-50"
+              className="text-center text-center p-0 m-auto border"
+              style={{ maxWidth: 100, width: "100%" }}
               min={0}
               value={item.productQty}
               onChange={(e) => {
@@ -107,7 +108,7 @@ const Cart = () => {
   return (
     <div className="container-fluid mt-3">
       <div>
-        <table className="table table-bordered">
+        <table className="table table-bordered table-responsive-md">
           <thead className="sticky-sm-top">
             <tr className="text-center align-middle">
               <th className="align-middle">MÃ SẢN PHẨM</th>

@@ -50,6 +50,8 @@
   margin: auto;
 }
 .img {
+  max-width: 150px;
+  width: 100%;
   object-fit: cover;
 }
 .product-block {
@@ -66,7 +68,8 @@
   font-style: italic;
 }
 @media (max-width: 768px) {
-  #sidebar {
+  #homeLeftSide,
+  #sideBar {
     display: none;
   }
   .img {

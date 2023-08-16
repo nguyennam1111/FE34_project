@@ -20,7 +20,7 @@ const OrderHistory = (props) => {
   const renderOrderHistory = () => {
     return orderHistory.map((order) => {
       return (
-        <table className="table table-stripped border  mt-3">
+        <table className="table table-stripped border table-responsive-md mt-3">
           <thead className="text-primary text-center mt-2 bg-body">
             <tr className="text-left">
               <th colSpan={8}>
@@ -125,6 +125,7 @@ const OrderHistory = (props) => {
 
   return (
     <div className="container-fluid m-0 p-3">
+      <h4 className="text-title-normal">KidShop</h4>
       <div>
         <h5>
           Thông tin lịch sử mua hàng của{" "}
