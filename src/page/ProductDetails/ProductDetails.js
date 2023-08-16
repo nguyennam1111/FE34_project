@@ -138,7 +138,7 @@ const ProductDetails = () => {
           }
           type="button"
           key={size}
-          className={`btn border mr-2 ${
+          className={`btn border me-2 ${
             watch("size") === size ? "bg-success text-white" : ""
           }`}
           value={size}
@@ -155,7 +155,7 @@ const ProductDetails = () => {
   const renderColor = () => {
     return productDetails.productColor?.map((color) => {
       return (
-        <div className="d-flex mr-2">
+        <div className="d-flex me-2">
           <button
             disabled={
               Number(productDetails?.stock?.totalQty) -
@@ -275,13 +275,13 @@ const ProductDetails = () => {
             <div>
               <form onSubmit={handleAddProductToCart(AddProductToCart)}>
                 <div className="d-flex mt-3" {...register("size")}>
-                  <p className="mr-2">Chọn size: </p>
+                  <p className="me-2">Chọn size: </p>
 
                   {renderSize()}
                 </div>
                 <p className="text-danger">{errors?.size?.message}</p>
                 <div className="d-flex mt-3" {...register("color")}>
-                  <p className="mr-2">Chọn màu: </p>
+                  <p className="me-2">Chọn màu: </p>
 
                   {renderColor()}
                 </div>
@@ -380,12 +380,9 @@ const ProductDetails = () => {
         </div>
       </div>
       <div className="mt-5 border-top">
-        <h4 className="text-title-normal pl-3 py-2 m-0">SẢN PHẨM LIÊN QUAN</h4>
+        <h4 className="text-title-normal ps-3 py-2 m-0">SẢN PHẨM LIÊN QUAN</h4>
 
-        <div
-          className="row m-0"
-          style={{ maxHeight: 400, height: "100%", overflowY: "scroll" }}
-        >
+        <div className="row m-0">
           <RenderProducts
             data={products}
             classCol="col-md-2"

@@ -145,7 +145,7 @@ const Home = () => {
             <h3 className="py-3 text-white">090.515.0109</h3>
           </div>
         </div>
-        <div className="col-md-9 mt-2 text-center">
+        <div className="col-md-9 mt-2">
           <ShowHotProducts
             data={hotProducts}
             classCol={"col-sm-4"}

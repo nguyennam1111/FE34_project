@@ -72,7 +72,7 @@ const ShowHotProducts = (props) => {
                       />
                     </p>
                     <p
-                      className="m-0 text-line-through"
+                      className="m-0 text-decoration-line-through"
                       style={
                         item.saleOffValue !== 0
                           ? { display: "block" }

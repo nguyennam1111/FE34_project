@@ -167,33 +167,34 @@ const Products = (props) => {
   };
 
   return (
-    <div className="col-sm-9 container">
-      <div>
-        <div>
-          <ol className="breadcrumb m-0">
-            <li className="breadcrumb-item">
-              <a href="Home">Trang chủ</a>
-            </li>
-            <li className="breadcrumb-item active" aria-current="page">
-              <a>
-                {searchParams.get("search") != null
-                  ? "Tìm kiếm"
-                  : catalogue === "boy"
-                  ? "Bé trai"
-                  : catalogue === "girl"
-                  ? "Bé gái"
-                  : catalogue === "accessory"
-                  ? "Phụ kiện"
-                  : status === "promote"
-                  ? "Khuyến mãi"
-                  : catalogue === null
-                  ? "Tất cả sản phẩm"
-                  : ""}
-              </a>
-            </li>
-          </ol>
-        </div>
+    <div className="col-md-9 container-fluid">
+      <div className="mt-3">
+        <ol className="breadcrumb m-0">
+          <li className="breadcrumb-item">
+            <a href="Home" className="text-decoration-none">
+              Trang chủ
+            </a>
+          </li>
+          <li className="breadcrumb-item active" aria-current="page">
+            <a>
+              {searchParams.get("search") != null
+                ? "Tìm kiếm"
+                : catalogue === "boy"
+                ? "Bé trai"
+                : catalogue === "girl"
+                ? "Bé gái"
+                : catalogue === "accessory"
+                ? "Phụ kiện"
+                : status === "promote"
+                ? "Khuyến mãi"
+                : catalogue === null
+                ? "Tất cả sản phẩm"
+                : ""}
+            </a>
+          </li>
+        </ol>
       </div>
+
       <h4
         className="mt-3"
         style={
@@ -205,75 +206,79 @@ const Products = (props) => {
         {" "}
         Kết quả tìm kiếm cho từ khóa: {searchParams.get("search")}
       </h4>
-      <div className="row p-3 m-0 justify-content-between">
-        <div className="col-sm-left-4">
-          <div className="row m-0  justify-items-center">
-            <p className="m-0 mr-2 my-auto">Sắp xếp</p>
-            <select
-              className="form-select border p-2"
-              onChange={(e) => {
-                handleChangeSort(e.target.value);
-              }}
-            >
-              <option value={"desc_productPrice"}>Mặc định</option>
-              <option value={"asc_productPrice"}>Giá tăng dần</option>
-              <option value={"desc_productPrice"}>Giá giảm dần</option>
-              <option value={"asc_productName"}>Từ A-Z</option>
-              <option value={"desc_productName"}>Từ Z-A</option>
-              <option value={"asc_New-Old"}>Từ mới đến cũ</option>
-              <option value={"desc_New-Old"}>Từ cũ đến mới</option>
-            </select>
+      <div className="border bg-light mt-3">
+        <div className="row p-3 m-0">
+          <div className="col-md-4 p-0">
+            <div className="d-flex m-0  justify-items-center">
+              <p className="m-0 me-2 my-auto">Sắp xếp</p>
+              <select
+                className="form-select border p-2 w-50"
+                onChange={(e) => {
+                  handleChangeSort(e.target.value);
+                }}
+              >
+                <option value={"desc_productPrice"}>Mặc định</option>
+                <option value={"asc_productPrice"}>Giá tăng dần</option>
+                <option value={"desc_productPrice"}>Giá giảm dần</option>
+                <option value={"asc_productName"}>Từ A-Z</option>
+                <option value={"desc_productName"}>Từ Z-A</option>
+                <option value={"asc_New-Old"}>Từ mới đến cũ</option>
+                <option value={"desc_New-Old"}>Từ cũ đến mới</option>
+              </select>
+            </div>
           </div>
-        </div>
-
-        <div className="col-sm-right-4 px-3">
-          <div className="row">
-            <p className="m-0 mr-2 my-auto">Sản phẩm/trang</p>
-            <select
-              className="form-select p-2 border"
-              onChange={(e) => {
-                e.preventDefault();
-                handleChangePageSize(e.target.value);
-              }}
-              value={pagination.pageSize}
+          <div className="col-md-8 p-0">
+            <form
+              className="row p-0 m-0 justify-content-end"
+              onSubmit={handFilterPrice(onValid)}
             >
-              <option value={4}>4</option>
-              <option value={8}>8</option>
-              <option value={16}>16</option>
-              <option value={24}>24</option>
-              <option value={32}>32</option>
-            </select>
+              <div className="my-auto p-0 col-md-3 align-items-center">
+                <p className="m-0 p-0">Lọc theo giá:</p>
+              </div>
+              <div className="d-flex col-md-4 align-items-center p-0">
+                <p className="m-0 pe-1">Từ:</p>
+                <input
+                  className="form-control"
+                  name="startPrice"
+                  {...register("startPrice")}
+                ></input>
+              </div>
+              <div className="d-flex col-md-4 align-items-center  p-0">
+                <p className="m-0 px-1">đến:</p>
+                <input
+                  name="endPrice"
+                  className="form-control"
+                  {...register("endPrice")}
+                ></input>
+              </div>
+              <div className="col-md-1 my-auto p-0">
+                <button className="border-0 bg-transparent" type="submit">
+                  <FilterOutlined />
+                  Lọc
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-      <div className="px-3">
-        <form className="row p-0 m-0" onSubmit={handFilterPrice(onValid)}>
-          <div className="my-auto p-0 col-md-2 align-items-center">
-            <p className="m-0 p-0">Lọc theo giá:</p>
-          </div>
-          <div className="d-flex col-md-4 align-items-center p-0">
-            <p className="m-0 pr-1">Từ:</p>
-            <input
-              className="form-control"
-              name="startPrice"
-              {...register("startPrice")}
-            ></input>
-          </div>
-          <div className="d-flex col-md-4 align-items-center  p-0">
-            <p className="m-0 px-1">đến:</p>
-            <input
-              name="endPrice"
-              className="form-control"
-              {...register("endPrice")}
-            ></input>
-          </div>
-          <div className="d-flex col-md-2 align-center p-0">
-            <button className="border-0 bg-transparent" type="submit">
-              <FilterOutlined />
-              Lọc
-            </button>
-          </div>
-        </form>
+      <div className="col-md-4 offset-md-8 mt-2">
+        <div className="d-flex align-items-center justify-content-end m-0">
+          <p className="m-0 me-2 ">Sản phẩm/trang</p>
+          <select
+            className="form-select p-2 border w-25"
+            onChange={(e) => {
+              e.preventDefault();
+              handleChangePageSize(e.target.value);
+            }}
+            value={pagination.pageSize}
+          >
+            <option value={4}>4</option>
+            <option value={8}>8</option>
+            <option value={16}>16</option>
+            <option value={24}>24</option>
+            <option value={32}>32</option>
+          </select>
+        </div>
       </div>
       <div className="border mt-3">
         <div className="row m-0 p-0 ">

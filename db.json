@@ -515,7 +515,7 @@
       "saleOffValue": 0.25,
       "stock": {
         "totalQty": 100,
-        "saledQty": 3
+        "saledQty": 57
       },
       "inboundDate": "2023-07-18",
       "tags": [
@@ -2223,6 +2223,142 @@
       ],
       "orderAt": "Wed Aug 16 2023 9:13:22 AM",
       "id": 11
+    },
+    {
+      "orderEmail": "abc@gmail.com",
+      "fullName": "Nguyen Vu Truong Nam",
+      "phone": "0905150109",
+      "address": "20-Chon tam 12",
+      "district": "Huyện Phù Cừ",
+      "ward": "Xã Thụy Lôi",
+      "shippingType": "Giao hàng nhanh",
+      "shippingFee": 35000,
+      "province": "Tỉnh Cà Mau",
+      "paymentMethod": "COD",
+      "orderCode": "#789",
+      "totalAmount": 12500000,
+      "totalItemQty": 52,
+      "orderList": [
+        {
+          "id": 1,
+          "productId": 13,
+          "productCode": "SM-234_1",
+          "productName": "Áo sơ mi bé trai cotton cổ đức túi ốp ngực họa tiết kẻ",
+          "sizeAndColor": "M/Xanh caro",
+          "productImg": "https://canifa.com/img/1000/1500/resize/2/t/2th23s002-cg090-120-1.webp",
+          "productPrice": 250000,
+          "productQty": "2",
+          "productAmount": 500000,
+          "createdAt": "Wed Aug 16 2023 1:25:47 PM"
+        },
+        {
+          "id": 2,
+          "productId": 6,
+          "productCode": "KID-123_3",
+          "productName": "Váy liên thân KIDS - KF5",
+          "sizeAndColor": "M/blue",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay9.jpg?v=1473603722567",
+          "productPrice": 240000,
+          "productQty": "50",
+          "productAmount": 12000000,
+          "createdAt": "Wed Aug 16 2023 3:26:53 PM"
+        }
+      ],
+      "orderAt": "Wed Aug 16 2023 9:04:17 PM",
+      "id": 12
+    },
+    {
+      "orderEmail": "abc@gmail.com",
+      "fullName": "Nguyen Vu Truong Nam",
+      "phone": "0924510222",
+      "address": "20-Chon tam 12",
+      "district": "Huyện Phú Bình",
+      "ward": "Xã Tiên Hội",
+      "province": "Tỉnh Cà Mau",
+      "shippingType": "Giao hàng nhanh",
+      "shippingFee": 35000,
+      "paymentMethod": "COD",
+      "orderCode": "#607",
+      "totalAmount": 480000,
+      "totalItemQty": 2,
+      "orderList": [
+        {
+          "id": 1,
+          "productId": 6,
+          "productCode": "KID-123_3",
+          "productName": "Váy liên thân KIDS - KF5",
+          "sizeAndColor": "L/blue",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay9.jpg?v=1473603722567",
+          "productPrice": 240000,
+          "productQty": "2",
+          "productAmount": 480000,
+          "createdAt": "Wed Aug 16 2023 9:08:29 PM"
+        }
+      ],
+      "orderAt": "Wed Aug 16 2023 9:08:44 PM",
+      "id": 13
+    },
+    {
+      "orderEmail": "abc@gmail.com",
+      "fullName": "Nguyen Vu Truong Nam",
+      "phone": "0924510222",
+      "address": "20-Chon tam 12",
+      "district": "Huyện Hiệp Hòa",
+      "ward": "Xã Đồng Sơn",
+      "province": "Tỉnh Cà Mau",
+      "shippingType": "Giao hàng nhanh",
+      "shippingFee": 35000,
+      "paymentMethod": "COD",
+      "orderCode": "#386",
+      "totalAmount": 480000,
+      "totalItemQty": 2,
+      "orderList": [
+        {
+          "id": 1,
+          "productId": 6,
+          "productCode": "KID-123_3",
+          "productName": "Váy liên thân KIDS - KF5",
+          "sizeAndColor": "L/blue",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay9.jpg?v=1473603722567",
+          "productPrice": 240000,
+          "productQty": "2",
+          "productAmount": 480000,
+          "createdAt": "Wed Aug 16 2023 9:13:00 PM"
+        }
+      ],
+      "orderAt": "Wed Aug 16 2023 9:13:23 PM",
+      "id": 14
+    },
+    {
+      "orderEmail": "abc@gmail.com",
+      "fullName": "Nguyen Nam",
+      "phone": "0905150109",
+      "address": "20-Chon Tam 12",
+      "district": "Huyện Cô Tô",
+      "ward": "Xã Hạ Long",
+      "province": "Tỉnh Cà Mau",
+      "shippingType": "Giao hàng nhanh",
+      "shippingFee": 35000,
+      "paymentMethod": "COD",
+      "orderCode": "#950",
+      "totalAmount": 720000,
+      "totalItemQty": 3,
+      "orderList": [
+        {
+          "id": 1,
+          "productId": 6,
+          "productCode": "KID-123_3",
+          "productName": "Váy liên thân KIDS - KF5",
+          "sizeAndColor": "XL/green",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay9.jpg?v=1473603722567",
+          "productPrice": 240000,
+          "productQty": "3",
+          "productAmount": 720000,
+          "createdAt": "Wed Aug 16 2023 9:14:53 PM"
+        }
+      ],
+      "orderAt": "Wed Aug 16 2023 9:18:42 PM",
+      "id": 15
     }
   ]
 }

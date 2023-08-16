@@ -133,9 +133,9 @@ const Cart = () => {
         </table>
       </div>
       <div className="row mt-2 align-items-center">
-        <div className="col-md-9 text-left">
+        <div className="col-md-9 order-ms-2 order-2 text-left">
           <button
-            className="btn btn-primary btn-sm mr-2"
+            className="btn btn-primary btn-sm me-2"
             onClick={() => {
               navigate(ROUTES.HOME);
             }}
@@ -150,13 +150,12 @@ const Cart = () => {
             CẬP NHẬT
           </button>
         </div>
-        <div className="col-md-3 text-left">
-          <table className="table table-bordered mt-2 ">
+        <div className="col-md-3  text-start order-1 order-md-2">
+          <table className="table table-bordered table-responsive-md mt-2 ">
             <tbody>
               <tr>
                 <td>Tổng tiền</td>
-                <td>
-                  {" "}
+                <td className="text-end">
                   <NumericFormat
                     value={totalAmount}
                     displayType={"text"}
@@ -170,9 +169,9 @@ const Cart = () => {
           </table>
         </div>
       </div>
-      <div className="justify-content-end text-right mt-2">
+      <div className="text-end mt-2">
         <button
-          className={`btn ${
+          className={` btn ${
             cart.length === 0 ? "btn-secondary" : "btn-primary"
           } `}
           disabled={cart.length == 0 ? true : false}

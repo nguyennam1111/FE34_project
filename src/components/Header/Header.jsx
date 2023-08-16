@@ -38,24 +38,24 @@ const Header = () => {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid ">
       <div className="row py-2 m-0">
         <div className="col-md-5 offset-md-6 p-0">
           <div style={isAuth ? { display: "none" } : { display: "" }}>
             <Link
               to={ROUTES.SIGNIN}
-              className="mr-3"
+              className="me-3 text-decoration-none"
               onClick={() => dispatch(setForgotPassword(false))}
             >
-              <i className="bi bi-person-fill pr-1 border rounded-circle"></i>
+              <i className="bi bi-person-fill pe-1 border rounded-circle me-2"></i>
               Đăng nhập
             </Link>
-            <Link to={ROUTES.SIGNUP}>
-              <i className="bi bi-person-plus-fill pr-1 border rounded-circle"></i>
+            <Link to={ROUTES.SIGNUP} className="text-decoration-none">
+              <i className="bi bi-person-plus-fill pe-1 border rounded-circle me-2 "></i>
               Đăng ký
             </Link>
           </div>
-          <div className="row m-0 align-items-center">
+          <div className="row m-0 align-items-center text-md-end">
             <div className="col-md-8">
               <p
                 className="m-0 p-0  "
@@ -63,7 +63,7 @@ const Header = () => {
               >
                 Xin chào:
                 <span
-                  className="text-primary  pl-0 header-userAcc"
+                  className="text-primary  ps-0 header-userAcc"
                   onClick={() => {
                     navigate(`/userAccount/${userProfile.id}`);
                   }}
@@ -73,7 +73,7 @@ const Header = () => {
               </p>
             </div>
             <button
-              className="btn btn-outline-none m-0 col-md-4 text-danger text-left"
+              className="btn btn-outline-none m-0 col-md-3 text-danger text-start"
               onClick={() => handleSignOut()}
               style={isAuth ? { display: "block" } : { display: "none" }}
             >
@@ -81,15 +81,15 @@ const Header = () => {
             </button>
           </div>
         </div>
-        <div className="col-md-1 my-auto">
-          <Link to={ROUTES.CART}>
+        <div className="col-md-1 my-auto fw-bold">
+          <Link to={ROUTES.CART} className="text-decoration-none">
             <i
-              className={`bi bi-cart align-middle mr-2 fw-2 ${
-                cart?.length === 0 ? "text-danger" : "text-sucess"
+              className={`bi bi-cart  ${
+                cart?.length === 0 ? "text-danger" : "text-primary"
               }`}
             >
-              <span className="ml-2">
-                {cart?.length === 0 ? 0 : cart?.length}
+              <span className="ms-2">
+                {cart?.length == 0 ? 0 : cart?.length}
               </span>
             </i>
           </Link>
@@ -107,8 +107,8 @@ const Header = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            Menu
-            {/* <span className="navbar-toggler-icon text-white p-0"></span> */}
+            {/* Menu */}
+            <span className="navbar-toggler-icon text-white p-0"></span>
           </button>
           <div
             className="collapse navbar-collapse p-0 align-items-center"
@@ -221,7 +221,7 @@ const Header = () => {
             role="search"
           >
             <input
-              className="form-control mr-2 w-100"
+              className="form-control me-2 w-100"
               type="search"
               placeholder="Tìm kiếm"
               aria-label="Search"

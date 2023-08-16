@@ -145,7 +145,7 @@ const OrderHistory = (props) => {
           <PrinterOutlined /> In
         </button>
         <button
-          className=" btn btn-primary text-right ml-3"
+          className=" btn btn-primary text-right ms-3"
           type="button"
           onClick={() => navigate(ROUTES.HOME)}
         >

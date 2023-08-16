@@ -49,11 +49,12 @@ const Footer = () => {
             ></img>
           </div>
         </div>
-        <div className="col-md-2">
+        <div className="col-md-2 ">
           <h5>THÔNG TIN</h5>
 
           <p>
             <Link
+              className="text-decoration-none"
               onClick={() => handleVerifyLogin()}
               to={isAuth ? `/userAccount/${userProfile.id}` : ""}
             >
@@ -62,6 +63,7 @@ const Footer = () => {
           </p>
           <p>
             <Link
+              className="text-decoration-none"
               to={
                 isAuth ? `/Payment/user=${userProfile.id}?status=history` : ""
               }
@@ -71,50 +73,88 @@ const Footer = () => {
             </Link>
           </p>
           <p>
-            <Link to={"/Information?branch=transportationPolicy"}>
+            <Link
+              to={"/Information?branch=transportationPolicy"}
+              className="text-decoration-none"
+            >
               Chính sách vận chuyển
             </Link>
           </p>
           <p>
-            <Link to={"/Information?branch=OnlineShopping"}>
+            <Link
+              to={"/Information?branch=OnlineShopping"}
+              className="text-decoration-none"
+            >
               Hướng dẫn mua online
             </Link>
           </p>
           <p>
-            <Link to={ROUTES.CONTACTUS}>Liên hệ</Link>
+            <Link to={ROUTES.CONTACTUS} className="text-decoration-none">
+              Liên hệ
+            </Link>
           </p>
         </div>
         <div className="col-md-2">
           <h5>SẢN PHẨM</h5>
           <p>
-            <Link to={"/Products?"}>Tất cả sản phẩm </Link>
+            <Link to={"/Products?"} className="text-decoration-none">
+              Tất cả sản phẩm{" "}
+            </Link>
           </p>
           <p>
-            <Link to={"/Products?catalogue=boy"}>Góc bé trai</Link>
+            <Link
+              to={"/Products?catalogue=boy"}
+              className="text-decoration-none"
+            >
+              Góc bé trai
+            </Link>
           </p>
           <p>
-            <Link to={"/Products?catalogue=girl"}>Góc bé gái</Link>
+            <Link
+              to={"/Products?catalogue=girl"}
+              className="text-decoration-none"
+            >
+              Góc bé gái
+            </Link>
           </p>
           <p>
-            <Link to={"/Products?catalogue=accessory"}>Phụ kiện</Link>
+            <Link
+              to={"/Products?catalogue=accessory"}
+              className="text-decoration-none"
+            >
+              Phụ kiện
+            </Link>
           </p>
           <p>
-            <Link to={"/Products?status=promote"}>Khuyễn mãi</Link>
+            <Link
+              to={"/Products?status=promote"}
+              className="text-decoration-none"
+            >
+              Khuyễn mãi
+            </Link>
           </p>
         </div>
         <div className="col-md-2">
           <h5>LIÊN KẾT BLOG</h5>
           <p>
-            <a href="#">Cẩm nang cho mẹ</a>
+            <a href="#" className="text-decoration-none">
+              Cẩm nang cho mẹ
+            </a>
           </p>
           <p>
-            <a href="#">Chương trình ưu đãi</a>
+            <a href="#" className="text-decoration-none">
+              Chương trình ưu đãi
+            </a>
           </p>
           <p>
-            <a href="#">Tin thời trang</a>
+            <a href="#" className="text-decoration-none">
+              Tin thời trang
+            </a>
           </p>
           <p>
-            <a href="#">Góc chia sẻ</a>
+            <a href="#" className="text-decoration-none">
+              Góc chia sẻ
+            </a>
           </p>
         </div>
       </div>

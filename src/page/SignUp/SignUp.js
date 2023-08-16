@@ -210,7 +210,7 @@ const SignUp = () => {
 
           <div className="d-flex">
             <button
-              className="btn btn-primary mr-2"
+              className="btn btn-primary me-2"
               onClick={() => {
                 navigate(`/userAccount/${userProfile.id}?edit=true`);
               }}
@@ -247,7 +247,11 @@ const SignUp = () => {
           <h4 className="mt-3">ĐĂNG KÝ</h4>
           <p className="">
             Nếu bạn đã có tài khoản, vui lòng chuyển qua đăng nhập tại trang
-            <a href="SignIn"> ĐĂNG NHẬP</a> hoặc đăng ký mới tại đây
+            <a href="SignIn" className="text-decoration-none">
+              {" "}
+              ĐĂNG NHẬP
+            </a>{" "}
+            hoặc đăng ký mới tại đây
           </p>
         </div>
         <div
@@ -269,89 +273,109 @@ const SignUp = () => {
               <p className="col-md-2 m-0">
                 Họ <span className="text-danger">*</span>
               </p>
-              <Controller
-                render={({ field }) => (
-                  <input
-                    className={`form-control col-md-8 `}
-                    disabled={isAuth ? !isEdit : isAuth}
-                    {...field}
-                  />
-                )}
-                name="firstName"
-                control={control}
-                defaultValue={isAuth ? userProfile?.firstName : ""}
-              />
-              <p className="text-danger offset-sm-2">
-                {errors.firstName?.message}
-              </p>
+              <div className=" col-md-8 ">
+                <Controller
+                  render={({ field }) => (
+                    <input
+                      className={`form-control`}
+                      disabled={isAuth ? !isEdit : isAuth}
+                      {...field}
+                    />
+                  )}
+                  name="firstName"
+                  control={control}
+                  defaultValue={isAuth ? userProfile?.firstName : ""}
+                />
+              </div>
+              <div className="row">
+                <span className="col-md-2"></span>
+                <p className="text-danger m-0 col-md-8">
+                  {errors.firstName?.message}
+                </p>
+              </div>
             </div>
 
             <div className="row align-items-center m-0 mt-2">
               <p className="col-md-2 m-0 ">
                 Tên <span className="text-danger p-0 m-0">*</span>
               </p>
-              <Controller
-                render={({ field }) => (
-                  <input
-                    className={`form-control col-md-8 `}
-                    disabled={isAuth ? !isEdit : isAuth}
-                    {...field}
-                  />
-                )}
-                name="lastName"
-                control={control}
-                defaultValue={isEdit ? userProfile?.lastName : ""}
-              />
-              <p className="text-danger offset-sm-2 mt-2">
-                {errors.lastName?.message}
-              </p>
+              <div className="col-md-8">
+                <Controller
+                  render={({ field }) => (
+                    <input
+                      className={`form-control  `}
+                      disabled={isAuth ? !isEdit : isAuth}
+                      {...field}
+                    />
+                  )}
+                  name="lastName"
+                  control={control}
+                  defaultValue={isEdit ? userProfile?.lastName : ""}
+                />
+              </div>
+              <div className="row">
+                <span className="col-md-2"></span>
+                <p className="text-danger m-0 col-md-8">
+                  {errors.lastName?.message}
+                </p>
+              </div>
             </div>
 
             <div className=" row align-items-center m-0 mt-2">
               <p className="col-md-2 m-0">
                 Email <span className="text-danger">*</span>
               </p>
-              <Controller
-                render={({ field }) => (
-                  <>
-                    <input
-                      id="email"
-                      className={`form-control col-md-8 `}
-                      disabled={isAuth}
-                      {...field}
-                    />
-                  </>
-                )}
-                name="email"
-                control={control}
-                defaultValue={isAuth ? userProfile.email : ""}
-              />
-              <p className="text-danger offset-sm-2 mt-2">
-                {errors.email?.message}
-              </p>
+              <div className="col-md-8">
+                <Controller
+                  render={({ field }) => (
+                    <>
+                      <input
+                        id="email"
+                        className={`form-control  `}
+                        disabled={isAuth}
+                        {...field}
+                      />
+                    </>
+                  )}
+                  name="email"
+                  control={control}
+                  defaultValue={isAuth ? userProfile.email : ""}
+                />
+              </div>
+              <div className="row">
+                <span className="col-md-2"></span>
+                <p className="text-danger m-0 col-md-8">
+                  {errors.email?.message}
+                </p>
+              </div>
             </div>
 
             <div className=" row m-0 mt-2">
               <p className="col-md-2 m-0 ">
                 Điện Thoại <span className="text-danger">*</span>
               </p>
-              <Controller
-                render={({ field }) => (
-                  <>
-                    <input
-                      className={`form-control col-md-8 `}
-                      disabled={isAuth ? !isEdit : isAuth}
-                      {...field}
-                    />
-                  </>
-                )}
-                name="phone"
-                control={control}
-                defaultValue={isEdit ? userProfile?.phone : ""}
-              />
-              <p className="text-danger offset-sm-2 mt-2">
-                {errors.phone?.message}
-              </p>
+              <div className="col-md-8">
+                <Controller
+                  render={({ field }) => (
+                    <>
+                      <input
+                        className={`form-control col-md-8 `}
+                        disabled={isAuth ? !isEdit : isAuth}
+                        {...field}
+                      />
+                    </>
+                  )}
+                  name="phone"
+                  control={control}
+                  defaultValue={isEdit ? userProfile?.phone : ""}
+                />
+              </div>
+              <div className="row">
+                <span className="col-md-2"></span>
+                <p className="text-danger m-0 col-md-8">
+                  {errors.phone?.message}
+                </p>
+              </div>
             </div>
 
             <div
@@ -364,7 +388,7 @@ const SignUp = () => {
               }
             >
               <p
-                className="offset-sm-2 text-primary mt-2 mr-3 setHover"
+                className="offset-md-2 text-primary mt-2 me-3 setHover"
                 onClick={() => {
                   isChangePass
                     ? dispatch(changePassword(false))
@@ -397,115 +421,133 @@ const SignUp = () => {
                 <p className="col-md-2 m-0">
                   Mật khẩu cũ<span className="text-danger">*</span>
                 </p>
-                <Controller
-                  render={({ field }) => (
-                    <>
-                      <input
-                        type={eyeOldPassword}
-                        className={`form-control col-md-8 `}
-                        disabled={isAuth ? !isEdit : isAuth}
-                        {...field}
-                      />
-                      <i
-                        className={`bi ${
-                          eyeOldPassword === "password"
-                            ? "bi-eye-slash"
-                            : "bi-eye"
-                        } my-auto toggle-eye`}
-                        id="toggleOldPassword"
-                        onClick={() => {
-                          eyeOldPassword === "password"
-                            ? setEyeOldPassword("text")
-                            : setEyeOldPassword("password");
-                        }}
-                      />
-                    </>
-                  )}
-                  name="oldPassword"
-                  control={control}
-                  defaultValue=""
-                />
-                <p className="text-danger offset-sm-2 mt-2">
-                  {errors.oldPassword?.message}
-                </p>
+                <div className="col-md-8">
+                  <Controller
+                    render={({ field }) => (
+                      <div className="d-flex">
+                        <input
+                          type={eyeOldPassword}
+                          className={`form-control `}
+                          disabled={isAuth ? !isEdit : isAuth}
+                          {...field}
+                        />
+                        <i
+                          className={`bi ${
+                            eyeOldPassword === "password"
+                              ? "bi-eye-slash"
+                              : "bi-eye"
+                          } my-auto toggle-eye`}
+                          id="toggleOldPassword"
+                          onClick={() => {
+                            eyeOldPassword === "password"
+                              ? setEyeOldPassword("text")
+                              : setEyeOldPassword("password");
+                          }}
+                        />
+                      </div>
+                    )}
+                    name="oldPassword"
+                    control={control}
+                    defaultValue=""
+                  />
+                </div>
+                <div className="row">
+                  <span className="col-md-2"></span>
+                  <p className="text-danger m-0 col-md-8">
+                    {errors.oldPassword?.message}
+                  </p>
+                </div>
               </div>
               <div className=" row m-0 mt-2">
                 <p className="col-md-2 m-0">
                   Mật khẩu <span className="text-danger">*</span>
                 </p>
-                <Controller
-                  render={({ field }) => (
-                    <>
-                      <input
-                        type={eyePassword}
-                        className={`form-control col-md-8 `}
-                        disabled={isAuth ? !isEdit : isAuth}
-                        {...field}
-                      />
-                      <i
-                        className={`bi ${
-                          eyePassword === "password" ? "bi-eye-slash" : "bi-eye"
-                        } my-auto toggle-eye`}
-                        id="togglePassword"
-                        onClick={() => {
-                          eyePassword === "password"
-                            ? setEyePassword("text")
-                            : setEyePassword("password");
-                        }}
-                      />
-                    </>
-                  )}
-                  name="inputPassword"
-                  control={control}
-                  defaultValue=""
-                />
-                <p className="text-danger offset-sm-2 mt-2">
-                  {errors.inputPassword?.message}
-                </p>
+                <div className="col-md-8">
+                  <Controller
+                    render={({ field }) => (
+                      <div className="d-flex">
+                        <input
+                          type={eyePassword}
+                          className={`form-control`}
+                          disabled={isAuth ? !isEdit : isAuth}
+                          {...field}
+                        />
+                        <i
+                          className={`bi ${
+                            eyePassword === "password"
+                              ? "bi-eye-slash"
+                              : "bi-eye"
+                          } my-auto toggle-eye`}
+                          id="togglePassword"
+                          onClick={() => {
+                            eyePassword === "password"
+                              ? setEyePassword("text")
+                              : setEyePassword("password");
+                          }}
+                        />
+                      </div>
+                    )}
+                    name="inputPassword"
+                    control={control}
+                    defaultValue=""
+                  />
+                </div>
+
+                <div className="row">
+                  <span className="col-md-2"></span>
+                  <p className="text-danger m-0 col-md-8">
+                    {errors.inputPassword?.message}
+                  </p>
+                </div>
               </div>
               <div>
                 <div className=" row m-0 mt-2">
                   <p className="col-md-2 m-0">
                     Xác nhận mật khẩu <span className="text-danger">*</span>
                   </p>
-                  <Controller
-                    render={({ field }) => (
-                      <>
-                        <input
-                          type={eyeConfirmedPass}
-                          className="form-control col-md-8"
-                          {...field}
-                        />
-                        <i
-                          className={`bi ${
-                            eyeConfirmedPass === "password"
-                              ? "bi-eye-slash"
-                              : "bi-eye"
-                          } my-auto toggle-eye`}
-                          id="toggleConfirmedPassword"
-                          onClick={() => {
-                            eyeConfirmedPass === "password"
-                              ? setEyeConfirmedPass("text")
-                              : setEyeConfirmedPass("password");
-                          }}
-                        />
-                      </>
-                    )}
-                    name="confirmedPassword"
-                    control={control}
-                    defaultValue=""
-                  />
-                  <p className="text-danger offset-sm-2 mt-2">
-                    {errors.confirmedPassword?.message}
-                  </p>
+                  <div className="col-md-8">
+                    <Controller
+                      render={({ field }) => (
+                        <div className="d-flex">
+                          <input
+                            type={eyeConfirmedPass}
+                            className="form-control"
+                            {...field}
+                          />
+                          <i
+                            className={`bi ${
+                              eyeConfirmedPass === "password"
+                                ? "bi-eye-slash"
+                                : "bi-eye"
+                            } my-auto toggle-eye`}
+                            id="toggleConfirmedPassword"
+                            onClick={() => {
+                              eyeConfirmedPass === "password"
+                                ? setEyeConfirmedPass("text")
+                                : setEyeConfirmedPass("password");
+                            }}
+                          />
+                        </div>
+                      )}
+                      name="confirmedPassword"
+                      control={control}
+                      defaultValue=""
+                    />
+                  </div>
+                  <div className="row">
+                    <span className="col-md-2"></span>
+                    <p className="text-danger m-0 col-md-8">
+                      {errors.confirmedPassword?.message}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="row mr-0 offset-sm-2">
-              <div className="row col-md-9 p-0 mt-2">
+            <div className="row me-0 offset-md-2">
+              <div className="d-flex p-0 mt-2">
                 <button
-                  className="btn bg-content px-2 mr-2 text-white"
+                  className="btn bg-content px-2 me-2 text-white"
                   type="submit"
                 >
                   {isEdit ? "Cập nhật" : "ĐĂNG KÝ"}
@@ -519,18 +561,18 @@ const SignUp = () => {
                 </button>
               </div>
             </div>
-            <div className="row mr-0 offset-sm-2">
-              <div className="row  col-md-9  p-0 align-items-center">
+            <div className="row me-0 offset-md-2">
+              <div className="d-flex  p-0 align-items-center">
                 <img
                   src="https:////bizweb.dktcdn.net/assets/admin/images/login/fb-btn.svg"
                   alt="Facebook"
-                  className="img-fluid mt-3 img-social "
+                  className="img-fluid mt-3 me-2 img-social "
                 ></img>
 
                 <img
                   src="	https://bizweb.dktcdn.net/assets/admin/images/login/gp-btn.svg"
                   alt="Google+"
-                  className="img-fluid ml-sm-2 mt-3 img-social"
+                  className="img-fluid ml-md-2 mt-3 img-social"
                 ></img>
               </div>
             </div>
@@ -541,16 +583,16 @@ const SignUp = () => {
   };
 
   return (
-    <div className="container-fluid text-left">
-      <div className="col-md-12 p-0">
+    <div className="container-fluid">
+      <div className="col-md-12 py-2 mt-2 bg-light">
         <ol className="breadcrumb m-0">
           <li className="breadcrumb-item">
-            <Link to={ROUTES.HOME}>Trang chủ</Link>
+            <Link to={ROUTES.HOME} className="text-decoration-none">
+              Trang chủ
+            </Link>
           </li>
-          <li className="breadcrumb-item active">
-            <a className="active">
-              {isAuth ? "Thông tin tài khoản" : " Đăng ký "}
-            </a>
+          <li className="breadcrumb-item active" aria-current="page">
+            {isAuth ? "Thông tin tài khoản" : " Đăng ký "}
           </li>
         </ol>
       </div>

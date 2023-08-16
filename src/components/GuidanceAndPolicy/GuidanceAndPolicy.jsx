@@ -12,7 +12,10 @@ const GuidanceAndPolicy = (props) => {
                 <div>1.</div>
                 <div>
                   <h5>
-                    <a href="#" className="text-white bg-transparent">
+                    <a
+                      href="#"
+                      className="text-white bg-transparent text-decoration-none"
+                    >
                       {item.policy.title}
                     </a>
                   </h5>
@@ -25,7 +28,10 @@ const GuidanceAndPolicy = (props) => {
                 <div>2.</div>
                 <div>
                   <h5>
-                    <a href="#" className="text-white bg-transparent">
+                    <a
+                      href="#"
+                      className="text-white bg-transparent text-decoration-none"
+                    >
                       {item.onlineShopping.title}
                     </a>
                   </h5>
@@ -38,7 +44,10 @@ const GuidanceAndPolicy = (props) => {
                 <div>3.</div>
                 <div>
                   <h5>
-                    <a href="#" className="text-white bg-transparent">
+                    <a
+                      href="#"
+                      className="text-white bg-transparent text-decoration-none"
+                    >
                       {item.exchange.title}
                     </a>
                   </h5>
@@ -51,7 +60,10 @@ const GuidanceAndPolicy = (props) => {
                 <div className="px-2">4.</div>
                 <div>
                   <h5>
-                    <a href="#" className="text-white bg-transparent">
+                    <a
+                      href="#"
+                      className="text-white bg-transparent text-decoration-none"
+                    >
                       {item.giftPrizePromote.title}
                     </a>
                   </h5>

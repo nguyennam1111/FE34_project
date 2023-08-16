@@ -72,7 +72,7 @@ const ShowOrderSucceed = (props) => {
             <h5 className="m-0">
               Đơn hàng: {props.orderSucceed?.orderCode}
               <span style={{ color: "#2a9dcc" }}>
-                ({props.totalItemQty} sản phẩm)
+                ({props.orderSucceed?.totalItemQty} sản phẩm)
               </span>
             </h5>
             <div className="container border-top border-bottom py-3 order-summary ">
@@ -84,7 +84,7 @@ const ShowOrderSucceed = (props) => {
             <p className="col-md-6 m-0">Tạm tính</p>
             <p className="col-md-6 m-0 text-right">
               <NumericFormat
-                value={props.totalAmount}
+                value={props.orderSucceed?.totalAmount}
                 displayType={"text"}
                 allowLeadingZeros
                 thousandSeparator={true}

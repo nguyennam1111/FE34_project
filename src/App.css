@@ -20,10 +20,7 @@
 .text-title-normal {
   color: rgb(121, 189, 154);
 }
-.text-line-through {
-  text-decoration: line-through;
-  color: black;
-}
+
 .discount {
   position: absolute;
   top: 0;
@@ -43,7 +40,7 @@
   border: 2px white;
   vertical-align: middle;
   background-color: rgb(208, 129, 165);
-  /* background-image: url(https://bizweb.dktcdn.net/100/117/632/themes/157694/assets/sale-circle.png); */
+
   position: absolute;
   top: 0px;
   right: 0px;

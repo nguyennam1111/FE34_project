@@ -6,13 +6,14 @@
 }
 .order-summary-img {
   width: 50px;
-  height: 50px;
+  height: 80px;
   max-width: 100%;
   max-height: 100%;
 }
 .order-summary-itemQty {
   position: absolute;
-  top: -5px;
+  font-size: 14px;
+  top: 0px;
   right: 0;
   width: 20px;
   height: 20px;
@@ -21,4 +22,6 @@
   border-radius: 50%;
   background-color: #2a9dcc;
   color: white;
+}
+@media (max-width: 768px) {
 }

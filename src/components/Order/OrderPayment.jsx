@@ -137,6 +137,8 @@ const OrderPayment = (props) => {
     dispatch(
       setOrderSucceed({
         ...data,
+        totalAmount: props.totalAmount,
+        totalItemQty: props.totalItemQty,
         province: provinceName,
         district: districtName,
         orderCode: orderCode,
@@ -178,17 +180,20 @@ const OrderPayment = (props) => {
   return (
     <div className="row container-fluid m-0">
       <div className="col-md-8">
-        <h4 className="text-title-normal py-4">KidShop</h4>
+        <h4 className="text-title-normal py-4 px-3">KidShop</h4>
         <div className="row m-0">
           <div className="col-md-6">
             <div className="row m-0 justify-content-between">
               <h5 className="col-md-8 m-0 p-0">Thông tin nhận hàng</h5>
               <div
-                className="col-md-4 text-right p-0"
+                className="col-md-4 text-end p-0"
                 style={isAuth ? { display: "none" } : { display: "" }}
               >
-                <Link to={ROUTES.SIGNIN} className="text-right">
-                  <i className="bi bi-person-fill pr-1 p-0 border rounded-circle"></i>
+                <Link
+                  to={ROUTES.SIGNIN}
+                  className="text-md-end text-decoration-none "
+                >
+                  <i className="bi bi-person-fill pr-1 p-0 border rounded-circle me-2"></i>
                   Đăng nhập
                 </Link>
               </div>
@@ -287,10 +292,13 @@ const OrderPayment = (props) => {
               <h4>Vận Chuyển</h4>
               <form form="form-order">
                 <div className="row justify-content-between m-0 p-2 border rounded">
-                  <label className="m-0 " htmlFor="shipping_fast">
+                  <label
+                    className="m-0 col-md-8 col-sm-8"
+                    htmlFor="shipping_fast"
+                  >
                     <input
                       // {...register("shippingType")}
-                      className="mr-2"
+                      className="me-2"
                       type="radio"
                       name="shippingType"
                       id="shipping_fast"
@@ -302,7 +310,10 @@ const OrderPayment = (props) => {
                     ></input>
                     Giao hàng nhanh
                   </label>
-                  <span className="col-md-4 p-0 text-right" name="shippingFee">
+                  <span
+                    className="col-md-4 col-sm-4 p-0 text-md-end"
+                    name="shippingFee"
+                  >
                     <NumericFormat
                       value={
                         watch("shippingType") == "Giao hàng nhanh"
@@ -316,11 +327,14 @@ const OrderPayment = (props) => {
                     />
                   </span>
                 </div>
-                <div className="row justify-content-between m-0 p-2 border rounded">
-                  <label className="m-0" htmlFor="shipping_normal">
+                <div className="row m-0 mt-2 p-2 border rounded">
+                  <label
+                    className="m-0 col-md-8 col-sm-8"
+                    htmlFor="shipping_normal"
+                  >
                     <input
                       // {...register("shippingType")}
-                      className="mr-2"
+                      className="me-2"
                       type="radio"
                       name="shippingType"
                       id="shipping_normal"
@@ -333,7 +347,10 @@ const OrderPayment = (props) => {
                     ></input>
                     Giao thường
                   </label>
-                  <span className="col-md-4 p-0 text-right" name="shippingFee">
+                  <span
+                    className="col-md-4 col-sm-4 p-0 text-md-end"
+                    name="shippingFee"
+                  >
                     <NumericFormat
                       value={
                         watch("shippingType") == "Giao thường"
@@ -362,7 +379,7 @@ const OrderPayment = (props) => {
                     <input
                       // {...register("paymentMethod")}
                       type="radio"
-                      className="m-0 mr-2"
+                      className="m-0 me-2"
                       id="cod"
                       name="paymentMethod"
                       value="COD"
@@ -379,7 +396,7 @@ const OrderPayment = (props) => {
                     <input
                       // {...register("paymentMethod")}
                       type="radio"
-                      className="m-0 mr-2"
+                      className="m-0 me-2"
                       id="online"
                       name="paymentMethod"
                       value="OnlinePayment"
@@ -402,11 +419,11 @@ const OrderPayment = (props) => {
                       : { display: "none" }
                   }
                 >
-                  <label htmlFor="visa" className="mr-3">
+                  <label htmlFor="visa" className="me-3">
                     <input
                       // {...register("transferMethod")}
                       type="radio"
-                      className="m-0 mr-2"
+                      className="m-0 me-2"
                       id="visa"
                       name="transferMethod"
                       value={"visa"}
@@ -421,7 +438,7 @@ const OrderPayment = (props) => {
                     <input
                       // {...register("transferMethod")}
                       type="radio"
-                      className="m-0 mr-2"
+                      className="m-0 me-2"
                       id="banking"
                       value="banking"
                       name="transferMethod"
@@ -449,22 +466,21 @@ const OrderPayment = (props) => {
               ({props.totalItemQty} sản phẩm)
             </span>
           </h4>
-          <div className="container border-top border-bottom py-3 order-summary ">
+          <div className="container border-top border-bottom py-3 order-summary">
             <OrderList data={props.cart} />
           </div>
         </div>
-        <div className="row m-0 py-4 border-bottom">
-          <input
-            className="col-md-8 form-control"
-            placeholder="Mã giảm giá"
-          ></input>
-          <div className="col-md-4 p-0 text-right">
+        <div className="row m-0 py-4 border-bottom justify-content-between">
+          <div className="col-md-8 col-sm-8 ">
+            <input className="form-control " placeholder="Mã giảm giá"></input>
+          </div>
+          <div className="col-md-4 col-sm-4 p-0 text-md-end">
             <button className="btn btn-primary">Áp dụng</button>
           </div>
         </div>
-        <div className="row mx-0 py-3">
-          <p className="col-md-6 m-0">Tạm tính</p>
-          <p className="col-md-6 m-0 text-right">
+        <div className="row mx-0 py-3 ">
+          <p className="col-md-6 col-sm-6  m-0">Tạm tính</p>
+          <p className="col-md-6 col-sm-6 m-0 text-md-end">
             <NumericFormat
               value={props.totalAmount}
               displayType={"text"}
@@ -475,8 +491,8 @@ const OrderPayment = (props) => {
           </p>
         </div>
         <div className="row mx-0 py-3 border-bottom">
-          <p className="col-md-6 m-0">Phí vận chuyển</p>
-          <p className="col-md-6 m-0 text-right">
+          <p className="col-md-6 col-sm-6 m-0 ps-3">Phí vận chuyển</p>
+          <p className="col-md-6 col-sm-6 m-0 text-md-end">
             <NumericFormat
               value={watch("shippingFee")}
               displayType={"text"}
@@ -487,8 +503,11 @@ const OrderPayment = (props) => {
           </p>
         </div>
         <div className="row mx-0 py-3 border-bottom">
-          <h4 className="col-md-6 m-0">Tổng cộng</h4>
-          <h4 className="col-md-6 m-0 text-right" style={{ color: "#2a9dcc" }}>
+          <h4 className="col-md-6 col-sm-6 m-0">Tổng cộng</h4>
+          <h4
+            className="col-md-6 col-sm-6 m-0 text-md-end"
+            style={{ color: "#2a9dcc" }}
+          >
             <NumericFormat
               value={props.totalAmount + Number(watch("shippingFee"))}
               displayType={"text"}
@@ -500,7 +519,7 @@ const OrderPayment = (props) => {
         </div>
         <div className="row mx-0 py-3 justify-content-between">
           <button
-            className="col-md-6 border-0 bg-transparent m-0 p-0 text-left"
+            className="col-md-6 border-0 bg-transparent m-0 p-0 text-start"
             style={{ color: "#2a9dcc" }}
             onClick={() => {
               handleBackToCart();
@@ -508,7 +527,7 @@ const OrderPayment = (props) => {
           >
             {"<<"} Quay về giỏ hàng
           </button>
-          <div className="col-md-6 p-0 text-right">
+          <div className="col-md-6 p-0 mt-md-2 text-md-end">
             <button className="btn btn-primary" form="form-order" type="submit">
               ĐẶT HÀNG
             </button>

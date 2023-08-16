@@ -9,7 +9,7 @@ const DetailsLayout = () => {
     <div>
       <Header />
       <div className="row m-0">
-        <div className="col-md-3 text-left" id="sideBar">
+        <div className="col-md-3" id="sideBar">
           <SideBar />
         </div>
         <Outlet />

@@ -8,9 +8,7 @@ const PaymentLayout = () => {
   return (
     <div>
       <Header />
-      <div className="container-fluid">
-        <Outlet />;
-      </div>
+      <Outlet />
       <Footer />
     </div>
   );
