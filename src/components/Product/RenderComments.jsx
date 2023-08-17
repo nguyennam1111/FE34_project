@@ -106,7 +106,7 @@ const RenderComments = (props) => {
               <ReactStars value={item.rate} edit={false} size={20} />
 
               <p className="m-0">{item?.commentsContent}</p>
-              <p className="text-right fst-italic">
+              <p className="text-end fst-italic">
                 Bình luận lúc: {item?.createdAt}
               </p>
             </div>
@@ -174,8 +174,8 @@ const RenderComments = (props) => {
       <div>
         <h5 className="m-0 mt-2">Khách hàng đánh giá:</h5>
         <div
-          className="border p-3 bg-light"
-          style={{ height: "100%", maxHeight: 200, overflowY: "scroll" }}
+          className="border p-3 bg-light overflow-y-scroll"
+          style={{ height: "100%", maxHeight: 400 }}
         >
           {listComments(props.productComments)}
         </div>

@@ -19,8 +19,8 @@ export const actLogin = createAsyncThunk(
     try {
       const mapUserAccount = userAccounts.find(
         (item) =>
-          (item.email === loginData.loginUser) &
-          (item.password === loginData.loginPassword)
+          item.email == loginData.loginUser &&
+          item.password == loginData.loginPassword
       );
       if (mapUserAccount) {
         return {

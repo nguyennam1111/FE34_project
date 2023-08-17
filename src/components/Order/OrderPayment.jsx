@@ -466,15 +466,18 @@ const OrderPayment = (props) => {
               ({props.totalItemQty} sản phẩm)
             </span>
           </h4>
-          <div className="container border-top border-bottom py-3 order-summary">
+          <div
+            className="container border-top border-bottom py-3 overflow-y-scroll"
+            style={{ maxHeight: 200, height: "100%" }}
+          >
             <OrderList data={props.cart} />
           </div>
         </div>
         <div className="row m-0 py-4 border-bottom justify-content-between">
-          <div className="col-md-8 col-sm-8 ">
+          <div className="col-md-8 col-sm-8 p-2">
             <input className="form-control " placeholder="Mã giảm giá"></input>
           </div>
-          <div className="col-md-4 col-sm-4 p-0 text-md-end">
+          <div className="col-md-4 col-sm-4 p-2 text-md-end">
             <button className="btn btn-primary">Áp dụng</button>
           </div>
         </div>
@@ -502,9 +505,9 @@ const OrderPayment = (props) => {
             />
           </p>
         </div>
-        <div className="row mx-0 py-3 border-bottom">
-          <h4 className="col-md-6 col-sm-6 m-0">Tổng cộng</h4>
-          <h4
+        <div className="row mx-0 py-3 border-bottom text-primary">
+          <h5 className="col-md-6 col-sm-6 m-0">Tổng cộng</h5>
+          <h5
             className="col-md-6 col-sm-6 m-0 text-md-end"
             style={{ color: "#2a9dcc" }}
           >
@@ -515,11 +518,11 @@ const OrderPayment = (props) => {
               thousandSeparator={true}
               suffix={"đ"}
             />
-          </h4>
+          </h5>
         </div>
         <div className="row mx-0 py-3 justify-content-between">
           <button
-            className="col-md-6 border-0 bg-transparent m-0 p-0 text-start"
+            className="col-md-6 border-0 bg-transparent m-0 p-2 text-start"
             style={{ color: "#2a9dcc" }}
             onClick={() => {
               handleBackToCart();
@@ -527,7 +530,7 @@ const OrderPayment = (props) => {
           >
             {"<<"} Quay về giỏ hàng
           </button>
-          <div className="col-md-6 p-0 mt-md-2 text-md-end">
+          <div className="col-md-6 p-2 mt-md-2 text-md-end">
             <button className="btn btn-primary" form="form-order" type="submit">
               ĐẶT HÀNG
             </button>

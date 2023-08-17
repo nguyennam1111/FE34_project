@@ -18,12 +18,15 @@
   font-family: "UTM DaxMedium";
 }
 .guidance {
-  /* background: url(https://bizweb.dktcdn.net/100/117/632/themes/157694/assets/bg-para.jpg)
-    no-repeat center center; */
   background-color: rgba(0, 0, 0, 0.35);
   color: white;
   font-family: "Awesome";
 }
 .guidance-content ::before {
   content: "\f1d0";
+}
+@media (width: 768px) {
+  #homeRightSide {
+    display: grid;
+  }
 }

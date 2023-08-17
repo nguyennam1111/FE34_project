@@ -132,7 +132,7 @@ const Home = () => {
     <div className="m-0 container-fluid">
       <Banner data={banners} />
       <div className="row m-0 mt-2">
-        <div className="col-md-3 p-2 " id="homeLeftSide">
+        <div className="col-md-3 p-2" id="homeLeftSide">
           <ShowLogos data={logos} />
 
           <ShowBestSale
@@ -145,10 +145,10 @@ const Home = () => {
             <h3 className="py-3 text-white">090.515.0109</h3>
           </div>
         </div>
-        <div className="col-md-9 mt-2">
+        <div className="container-fluid col-md-9 m-0 mt-2" id="homeRightSide">
           <ShowHotProducts
             data={hotProducts}
-            classCol={"col-sm-4"}
+            classCol={"col-md-4"}
             handleProductDetails={handleProductDetails}
           />
           <ShowNewProducts
@@ -159,15 +159,15 @@ const Home = () => {
                     (item) => item.productCatalogue === catalogue
                   )
             }
-            classCol={"col-sm-3"}
+            classCol={"col-md-3"}
             handleProductDetails={handleProductDetails}
           />
-          <div className="m-0 mt-2">
-            <img
-              className="img-fluid object-fit-cover"
-              src="https://bizweb.dktcdn.net/100/117/632/themes/157694/assets/banner1.gif?1564585558451"
-            ></img>
-          </div>
+        </div>
+        <div className="m-0 mt-2">
+          <img
+            className="img-fluid object-fit-cover w-100"
+            src="https://bizweb.dktcdn.net/100/117/632/themes/157694/assets/banner1.gif?1564585558451"
+          ></img>
         </div>
       </div>
       <GuidanceAndPolicy data={guidance} />

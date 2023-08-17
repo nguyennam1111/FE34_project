@@ -35,16 +35,19 @@ const SignIn = () => {
     loginUser: Yup.string()
       .email("Sai email")
       .required("Nhập email đã đăng ký")
-      .oneOf(
-        userAccounts?.map((item) => item.email),
-        "Email không đúng"
+      .test("match email", "Email không đúng", (value) =>
+        userAccounts.map((item) => item.email == value)
       ),
+    // .oneOf(
+    //   userAccounts?.map((item) => item.email),
+    //   "Email không đúng"
+    // ),
     loginPassword: Yup.string()
       .required("Nhập mật khẩu")
       .test("matchPass", "Mật khẩu không đúng", (value, context) => {
         const index = userAccounts?.findIndex(
           (item) =>
-            item.email === context.parent.loginUser && item.password === value
+            item.email == context.parent.loginUser && item.password == value
         );
 
         if (index >= 0) {
@@ -139,174 +142,182 @@ const SignIn = () => {
           Quay về
         </button>
       </div>
-      <div
-        className="col-md-8"
-        style={
-          ({ color: "#686868" },
-          isForgot ? { display: "none" } : { display: "" })
-        }
-      >
-        <h4 className="pt-4">ĐĂNG NHẬP</h4>
-        <p>
-          Nếu bạn có một tài khoản, xin vui lòng đăng nhập hoặc đăng ký mới
-          <a href="SignUp" className="text-decoration-none">
-            {" "}
-            Đăng ký
-          </a>{" "}
-          nếu chưa có tài khoản
-        </p>
-
-        <form key={1} onSubmit={handleSignIn(onValidLogin)}>
-          <p className="text-danger">{loginError}</p>
-          <div className="row">
-            <p className="col-md-3 pe-0 m-0">
-              Tên đăng nhập<span className="text-danger"> *</span>
-            </p>
-            <div className="col-md-8">
-              <Controller
-                render={({ field }) => (
-                  <input className=" form-control " {...field} />
-                )}
-                id="loginUser"
-                name="loginUser"
-                control={control}
-                defaultValue=""
-              />
-            </div>
-          </div>
-          <p className="text-danger offset-sm-4 mx-0 my-2 text-left">
-            {errors.loginUser?.message}
+      <div className="row m-0 align-items-center">
+        <div
+          className="col-md-8"
+          style={
+            ({ color: "#686868" },
+            isForgot ? { display: "none" } : { display: "" })
+          }
+        >
+          <h4 className="pt-4">ĐĂNG NHẬP</h4>
+          <p>
+            Nếu bạn có một tài khoản, xin vui lòng đăng nhập hoặc đăng ký mới
+            <a href="SignUp" className="text-decoration-none">
+              {" "}
+              Đăng ký
+            </a>{" "}
+            nếu chưa có tài khoản
           </p>
 
-          <div className=" row">
-            <p className="col-md-3 pe-0 m-0">
-              Mật khẩu <span className="text-danger">*</span>
-            </p>
-            <div className="col-md-8">
-              <Controller
-                render={({ field }) => (
-                  <div className="d-flex">
-                    <input
-                      type={eyePassword}
-                      className="form-control"
-                      {...field}
-                    />
-                    <i
-                      className={`bi ${
-                        eyePassword === "password" ? "bi-eye-slash" : "bi-eye"
-                      } my-auto toggle-eye`}
-                      id="togglePassword"
-                      onClick={() => {
-                        eyePassword === "password"
-                          ? setEyePassword("text")
-                          : setEyePassword("password");
-                      }}
-                    />
-                  </div>
-                )}
-                id="loginPassword"
-                name="loginPassword"
-                control={control}
-                defaultValue=""
-              />
+          <form key={1} onSubmit={handleSignIn(onValidLogin)}>
+            <p className="text-danger">{loginError}</p>
+            <div className="row">
+              <p className="col-md-3 pe-0 m-0">
+                Tên đăng nhập<span className="text-danger"> *</span>
+              </p>
+              <div className="col-md-8">
+                <Controller
+                  render={({ field }) => (
+                    <input className=" form-control " {...field} />
+                  )}
+                  id="loginUser"
+                  name="loginUser"
+                  control={control}
+                  defaultValue=""
+                />
+              </div>
             </div>
-          </div>
-          <p className="text-danger offset-sm-4 mx-0 my-2 text-left">
-            {errors.loginPassword?.message}
-          </p>
+            <p className="row text-danger offset-md-3 me-0 my-2">
+              {errors.loginUser?.message}
+            </p>
 
+            <div className=" row">
+              <p className="col-md-3 pe-0 m-0">
+                Mật khẩu <span className="text-danger">*</span>
+              </p>
+              <div className="col-md-8">
+                <Controller
+                  render={({ field }) => (
+                    <div className="d-flex">
+                      <input
+                        type={eyePassword}
+                        className="form-control"
+                        {...field}
+                      />
+                      <i
+                        className={`bi ${
+                          eyePassword === "password" ? "bi-eye-slash" : "bi-eye"
+                        } my-auto toggle-eye`}
+                        id="togglePassword"
+                        onClick={() => {
+                          eyePassword === "password"
+                            ? setEyePassword("text")
+                            : setEyePassword("password");
+                        }}
+                      />
+                    </div>
+                  )}
+                  id="loginPassword"
+                  name="loginPassword"
+                  control={control}
+                  defaultValue=""
+                />
+              </div>
+            </div>
+            <p className="row text-danger offset-md-3 me-0 my-2">
+              {errors.loginPassword?.message}
+            </p>
+
+            <div className="row m-0">
+              <div
+                className="col-md-8 p-0 offset-sm-3 forgot-pass"
+                onClick={() => dispatch(setForgotPassword(true))}
+              >
+                <p className="">Quên mật khẩu</p>
+              </div>
+              <div className="col-md-8 p-0 offset-md-3">
+                <button
+                  className="btn btn-primary text-white me-2"
+                  type="submit"
+                >
+                  ĐĂNG NHẬP
+                </button>
+
+                <button
+                  className="btn btn-secondary col-md-3"
+                  type="button"
+                  onClick={() => {
+                    dispatch(setForgotPassword(false));
+                    navigate(ROUTES.HOME);
+                  }}
+                >
+                  HỦY
+                </button>
+              </div>
+            </div>
+          </form>
           <div className="row m-0">
-            <div
-              className="col-md-8 p-0 offset-sm-3 forgot-pass"
-              onClick={() => dispatch(setForgotPassword(true))}
-            >
-              <p>Quên mật khẩu</p>
-            </div>
-            <div className="col-md-8 p-0 offset-md-3">
-              <button
-                className="btn text-white bg-content p-0 me-2"
-                type="submit"
-              >
-                ĐĂNG NHẬP
-              </button>
+            <div className="col-md-8 mt-2 p-0 offset-md-3">
+              <img
+                src="https:////bizweb.dktcdn.net/assets/admin/images/login/fb-btn.svg"
+                alt="Facebook"
+                className="img-fluid me-2 "
+                style={{ width: 100, maxWidth: "100%" }}
+              ></img>
 
-              <button
-                className="btn btn-secondary col-md-3 p-0"
-                type="button"
-                onClick={() => {
-                  dispatch(setForgotPassword(false));
-                  navigate(ROUTES.HOME);
-                }}
-              >
-                HỦY
-              </button>
+              <img
+                src="	https://bizweb.dktcdn.net/assets/admin/images/login/gp-btn.svg"
+                alt="Google+"
+                className="img-fluid col-md-3"
+                style={{ width: 100, maxWidth: "100%" }}
+              ></img>
             </div>
-          </div>
-        </form>
-        <div className="row m-0">
-          <div className="col-md-8 mt-2 p-0 offset-md-3">
-            <img
-              src="https:////bizweb.dktcdn.net/assets/admin/images/login/fb-btn.svg"
-              alt="Facebook"
-              className="img-fluid me-2 "
-              style={{ width: 100, maxWidth: "100%" }}
-            ></img>
-
-            <img
-              src="	https://bizweb.dktcdn.net/assets/admin/images/login/gp-btn.svg"
-              alt="Google+"
-              className="img-fluid col-md-3"
-              style={{ width: 100, maxWidth: "100%" }}
-            ></img>
           </div>
         </div>
-      </div>
+        <div className={`col-md-4  ${isForgot ? "order-2" : "order-1"}`}>
+          <img
+            src="http://bizweb.dktcdn.net/100/117/632/themes/157694/assets/logo.png?1564585558451"
+            className={`ig-fluid object-fit-cover w-75`}
+          ></img>
+        </div>
 
-      <div
-        className="col-md-8 "
-        style={
-          ({ color: "#686868" },
-          isForgot ? { display: "" } : { display: "none" })
-        }
-      >
-        <h4 className="pt-4">QUÊN MẬT KHẨU</h4>
-        <h6>Bạn đã có một tài khoản nhưng không nhớ mật khẩu.</h6>
-        <p className="pt-3  ">
-          Hãy điền Email đã đăng ý vào phía dưới và nhận thông tin qua Email để
-          có thể lấy lại mật khẩu.
-        </p>
-        <form key={2} onSubmit={handleRecoverPassword(onValidRecover)}>
-          <div className="row">
-            <p className="col-md-3">Email</p>
-            <div className="col-md-8">
-              <Controller
-                render={({ field }) => (
-                  <input className="form-control" {...field} />
-                )}
-                id="recoverEmail"
-                name="recoverEmail"
-                control={control2}
-                defaultValue=""
-              />
+        <div
+          className="col-md-8 order-1"
+          style={
+            ({ color: "#686868" },
+            isForgot ? { display: "" } : { display: "none" })
+          }
+        >
+          <h4 className="pt-4">QUÊN MẬT KHẨU</h4>
+          <h6>Bạn đã có một tài khoản nhưng không nhớ mật khẩu.</h6>
+          <p className="pt-3  ">
+            Hãy điền Email đã đăng ý vào phía dưới và nhận thông tin qua Email
+            để có thể lấy lại mật khẩu.
+          </p>
+          <form key={2} onSubmit={handleRecoverPassword(onValidRecover)}>
+            <div className="row">
+              <p className="col-md-3">Email</p>
+              <div className="col-md-8">
+                <Controller
+                  render={({ field }) => (
+                    <input className="form-control" {...field} />
+                  )}
+                  id="recoverEmail"
+                  name="recoverEmail"
+                  control={control2}
+                  defaultValue=""
+                />
+              </div>
             </div>
-          </div>
-          <p className="text-danger">{errors2.recoverEmail?.message}</p>
-          <div className="row">
-            <div className="col-md-8 offset-sm-3 p-0 ">
-              <button className="btn bg-content sm p-0 px-3 me-2">GỬI</button>
-              <button
-                className="btn btn-secondary col-md-3 p-0 px-3"
-                type="button"
-                onClick={() => {
-                  dispatch(setForgotPassword(false));
-                  navigate(ROUTES.HOME);
-                }}
-              >
-                HỦY
-              </button>
+            <p className="text-danger">{errors2.recoverEmail?.message}</p>
+            <div className="row">
+              <div className="col-md-8 offset-sm-3 p-0 ">
+                <button className="btn bg-content sm p-0 px-3 me-2">GỬI</button>
+                <button
+                  className="btn btn-secondary col-md-3 p-0 px-3"
+                  type="button"
+                  onClick={() => {
+                    dispatch(setForgotPassword(false));
+                    navigate(ROUTES.HOME);
+                  }}
+                >
+                  HỦY
+                </button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );

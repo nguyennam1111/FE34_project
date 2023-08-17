@@ -107,8 +107,8 @@ const Cart = () => {
 
   return (
     <div className="container-fluid mt-3">
-      <div>
-        <table className="table table-bordered table-responsive-md">
+      <div className="overflow-x-scroll">
+        <table className="table table-bordered table-responsive-md ">
           <thead className="sticky-sm-top">
             <tr className="text-center align-middle">
               <th className="align-middle">MÃ SẢN PHẨM</th>
@@ -150,8 +150,8 @@ const Cart = () => {
             CẬP NHẬT
           </button>
         </div>
-        <div className="col-md-3  text-start order-1 order-md-2">
-          <table className="table table-bordered table-responsive-md mt-2 ">
+        <div className="col-md-3 overflow-x-scroll text-start order-1 order-md-2">
+          <table className="table table-bordered table-responsive-md table-responsive-sm mt-2 ">
             <tbody>
               <tr>
                 <td>Tổng tiền</td>

@@ -47,7 +47,7 @@ const OrderHistory = (props) => {
                 <tr className="p-0 align-middle">
                   <td className=" align-middle">{item.productCode}</td>
                   <td className="align-middle">
-                    <img src={item.productImg} className=" img w-50 h-50"></img>
+                    <img src={item.productImg} className="img-fluid img"></img>
                   </td>
 
                   <td className="align-middle">{item.productName}</td>
@@ -133,7 +133,7 @@ const OrderHistory = (props) => {
         </h5>
       </div>
 
-      <div className="border">{renderOrderHistory()}</div>
+      <div className="border  overflow-x-scroll">{renderOrderHistory()}</div>
 
       <div className="mt-3 text-center">
         <button

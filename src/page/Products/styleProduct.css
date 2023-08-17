@@ -1,0 +1,6 @@
+@media (width: 768px) {
+  #product-section {
+    display: grid;
+    width: 100%;
+  }
+}

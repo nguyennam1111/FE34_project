@@ -35,7 +35,7 @@ const ShowHotProducts = (props) => {
                   }}
                 >
                   <img
-                    className="img-fluid border"
+                    className="img-fluid border img"
                     src={item.productsImg[0]}
                   ></img>
 

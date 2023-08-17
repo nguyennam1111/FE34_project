@@ -338,22 +338,22 @@ const ProductDetails = () => {
                 </div>
               </form>
               <p className="mt-3">Gọi ngay để được tư vấn</p>
-              <h5 className="p-3 bg-highlight text-center text-white w-sm-50">
+              <h5 className="p-3 bg-highlight text-center text-white w-50">
                 HOTLINE: 0905150109
               </h5>
-              <div>
+              <div className="mt-2 ">
                 <img
                   src="https://bizweb.dktcdn.net/100/117/632/themes/157694/assets/icon-dt.jpg?1564585558451"
                   alt="Gao Hàng toàn quốc-Đổi trả trong vòng 48 giờ"
-                  className="mt-2 img-fluid"
+                  className="object-fit-cover align-content-center w-100"
                 ></img>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="row m-0">
-          <div className="col-md-8 fixed-content position-relative ">
+        <div className="row mt-2 m-0">
+          <div className="col-md-8 fixed-content " id="productDetail-leftSide">
             <ProductDescription
               productDetails={productDetails}
               data={guidance}
@@ -370,7 +370,7 @@ const ProductDetails = () => {
             </div>
           </div>
 
-          <div className="col-md-4">
+          <div className="col-md-4" id="productDetail-rightSide">
             <SideBar />
             <ShowsBestSale
               data={bestSaleProducts}

@@ -62,14 +62,12 @@ const Header = () => {
                 style={isAuth ? { display: "block" } : { display: "none" }}
               >
                 Xin chào:
-                <span
-                  className="text-primary  ps-0 header-userAcc"
-                  onClick={() => {
-                    navigate(`/userAccount/${userProfile.id}`);
-                  }}
+                <Link
+                  className="text-primary  ps-0 text-decoration-none"
+                  to={`/userAccount/${userProfile.id}`}
                 >
                   {userProfile?.fullName}
-                </span>
+                </Link>
               </p>
             </div>
             <button

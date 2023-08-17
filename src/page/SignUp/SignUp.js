@@ -190,20 +190,20 @@ const SignUp = () => {
           </h4>
         </div>
         <div className="container-fluid">
-          <div className="row">
+          <div className="row m-0">
             <p className="col-md-2">Họ và tên</p>
             <p className="col-md-3">{userProfile.fullName}</p>
           </div>
-          <div className="row">
+          <div className="row m-0">
             <p className="col-md-2">Email</p>
             <p className="col-md-3">{userProfile.email}</p>
           </div>
-          <div className="row">
+          <div className="row m-0">
             <p className="col-md-2">Số điện thoại</p>
             <p className="col-md-3">{userProfile.phone}</p>
           </div>
 
-          <div className="row">
+          <div className="row m-0">
             <p className="col-md-2">Đăng ký lúc</p>
             <p className="col-md-3">{userProfile.createdAt}</p>
           </div>
@@ -287,9 +287,10 @@ const SignUp = () => {
                   defaultValue={isAuth ? userProfile?.firstName : ""}
                 />
               </div>
-              <div className="row">
+
+              <div className="row m-0">
                 <span className="col-md-2"></span>
-                <p className="text-danger m-0 col-md-8">
+                <p className="text-danger m-0 me-0 col-md-8 p-0">
                   {errors.firstName?.message}
                 </p>
               </div>
@@ -547,7 +548,7 @@ const SignUp = () => {
             <div className="row me-0 offset-md-2">
               <div className="d-flex p-0 mt-2">
                 <button
-                  className="btn bg-content px-2 me-2 text-white"
+                  className="btn btn-primary border-0 px-2 me-2 text-white"
                   type="submit"
                 >
                   {isEdit ? "Cập nhật" : "ĐĂNG KÝ"}
@@ -584,7 +585,7 @@ const SignUp = () => {
 
   return (
     <div className="container-fluid">
-      <div className="col-md-12 py-2 mt-2 bg-light">
+      <div className="py-2 mt-2 bg-light">
         <ol className="breadcrumb m-0">
           <li className="breadcrumb-item">
             <Link to={ROUTES.HOME} className="text-decoration-none">
@@ -596,12 +597,20 @@ const SignUp = () => {
           </li>
         </ol>
       </div>
-      <div className="container-fluid">
-        {isAuth
-          ? isEdit
-            ? renderSignUp()
-            : renderUserInformation()
-          : renderSignUp()}
+      <div className="row m-0 align-items-center align-contents-center">
+        <div className="col-md-8">
+          {isAuth
+            ? isEdit
+              ? renderSignUp()
+              : renderUserInformation()
+            : renderSignUp()}
+        </div>
+        <div className="col-md-4">
+          <img
+            src="http://bizweb.dktcdn.net/100/117/632/themes/157694/assets/logo.png?1564585558451"
+            className={`img-fluid object-fit-cover w-75`}
+          ></img>
+        </div>
       </div>
     </div>
   );

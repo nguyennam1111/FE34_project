@@ -29,16 +29,7 @@ const RenderProducts = (props) => {
               >
                 {Number(item?.saleOffValue) * 100}%
               </button>
-              <div
-                className="py-2 position-absolute bg-opacity"
-                style={{
-                  width: "100%",
-                  bottom: 0,
-                  left: 0,
-                  // maxHeight: 50,
-                  // height: "100%",
-                }}
-              >
+              <div className="py-2 position-absolute bg-opacity w-100 bottom-0 end-0">
                 <p className="m-0 text-highlight fw-bolder">
                   <NumericFormat
                     value={Number(item.productPrice)}

@@ -6,7 +6,7 @@ const OrderList = (props) => {
     return data?.map((item) => {
       return (
         <div key={item?.index && item?.productName} className="row m-0 py-2">
-          <div className="col-md-2 col-sm-2 bg-white position-relative p-0">
+          <div className="col-md-2 col-sm-2 bg-white position-relative p-0 orderList ">
             <img
               src={item?.productImg}
               className="img-fluid object-fit-cover order-summary-img"

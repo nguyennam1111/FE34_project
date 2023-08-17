@@ -46,11 +46,7 @@
   right: 0px;
   margin: auto;
 }
-.img {
-  max-width: 150px;
-  width: 100%;
-  object-fit: cover;
-}
+
 .product-block {
   width: auto;
 }
@@ -64,13 +60,27 @@
   color: rgb(121, 189, 154);
   font-style: italic;
 }
+.img {
+  max-width: 195px;
+  width: 100%;
+}
+
 @media (max-width: 768px) {
   #homeLeftSide,
   #sideBar {
     display: none;
   }
+
   .img {
-    max-width: 200px;
+    max-width: 150px;
+    width: 100%;
+  }
+}
+@media (width: 768px) {
+  #product-section,
+  #homeRightSide,
+  #productDetail-leftSide {
+    display: grid;
     width: 100%;
   }
 }
