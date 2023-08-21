@@ -107,18 +107,18 @@ const Cart = () => {
 
   return (
     <div className="container-fluid mt-3">
-      <div className="overflow-x-scroll">
-        <table className="table table-bordered table-responsive-md ">
+      <form className=" form-control overflow-x-scroll">
+        <table className="table table-bordered table-responsive-md align-middle">
           <thead className="sticky-sm-top">
-            <tr className="text-center align-middle">
-              <th className="align-middle">MÃ SẢN PHẨM</th>
-              <th className="align-middle">HÌNH ẢNH</th>
-              <th className="align-middle">SẢN PHẨM</th>
-              <th className="align-middle">Size/Màu</th>
-              <th className="align-middle">ĐƠN GIÁ</th>
-              <th className="align-middle">SỐ LƯỢNG</th>
-              <th className="align-middle">THÀNH TIỀN</th>
-              <th className="align-middle">XÓA</th>
+            <tr className="text-center">
+              <th>MÃ SẢN PHẨM</th>
+              <th>HÌNH ẢNH</th>
+              <th>SẢN PHẨM</th>
+              <th>Size/Màu</th>
+              <th>ĐƠN GIÁ</th>
+              <th>SỐ LƯỢNG</th>
+              <th>THÀNH TIỀN</th>
+              <th>XÓA</th>
             </tr>
           </thead>
           <tbody
@@ -131,7 +131,7 @@ const Cart = () => {
             {renderCartItems(cart)}
           </tbody>
         </table>
-      </div>
+      </form>
       <div className="row mt-2 align-items-center">
         <div className="col-md-9 order-ms-2 order-2 text-left">
           <button
@@ -150,8 +150,8 @@ const Cart = () => {
             CẬP NHẬT
           </button>
         </div>
-        <div className="col-md-3 overflow-x-scroll text-start order-1 order-md-2">
-          <table className="table table-bordered table-responsive-md table-responsive-sm mt-2 ">
+        <form className="col-md-3 text-start order-1 order-md-2">
+          <table className="table table-bordered mt-2 ">
             <tbody>
               <tr>
                 <td>Tổng tiền</td>
@@ -167,7 +167,7 @@ const Cart = () => {
               </tr>
             </tbody>
           </table>
-        </div>
+        </form>
       </div>
       <div className="text-end mt-2">
         <button

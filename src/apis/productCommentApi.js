@@ -12,9 +12,11 @@ export const productCommentApi = {
       `${process.env.REACT_APP_BE_URL}productComments`,
       {
         params: {
-          _sort: "id",
+          _sort: "createdAt",
           _order: "desc",
-          ...params,
+          params: {
+            ...params,
+          },
         },
       }
     );

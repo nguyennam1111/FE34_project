@@ -11,9 +11,11 @@ import { ROUTES } from "../../constants/routes";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
+  actLogin,
   logout,
   setForgotPassword,
 } from "../../redux/feature/Authenticate/authSlice";
+import { clearCart } from "../../redux/feature/Cart/cartSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -34,13 +36,15 @@ const Header = () => {
 
   const handleSignOut = () => {
     dispatch(logout());
+    dispatch(setForgotPassword(false));
+    dispatch(clearCart());
     navigate(ROUTES.HOME);
   };
 
   return (
-    <div className="container-fluid ">
+    <div className="container-fluid">
       <div className="row py-2 m-0">
-        <div className="col-md-5 offset-md-6 p-0">
+        <div className="col-md-5 offset-md-6 p-0 text-md-end">
           <div style={isAuth ? { display: "none" } : { display: "" }}>
             <Link
               to={ROUTES.SIGNIN}
@@ -79,16 +83,15 @@ const Header = () => {
             </button>
           </div>
         </div>
-        <div className="col-md-1 my-auto fw-bold">
+        <div className="col-md-1 my-auto fw-bold ">
           <Link to={ROUTES.CART} className="text-decoration-none">
             <i
               className={`bi bi-cart  ${
                 cart?.length === 0 ? "text-danger" : "text-primary"
-              }`}
+              }  `}
             >
-              <span className="ms-2">
-                {cart?.length == 0 ? 0 : cart?.length}
-              </span>
+              {" "}
+              <span>{cart?.length == 0 ? 0 : cart?.length}</span>
             </i>
           </Link>
         </div>
@@ -97,7 +100,7 @@ const Header = () => {
       <nav className="navbar navbar-expand-md bg-content sticky-sm-top p-2 ">
         <div className="container-fluid p-0">
           <button
-            class="navbar-toggler border-white text-white p-2"
+            className="navbar-toggler border-white text-white p-2"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNavDropdown"

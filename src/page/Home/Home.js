@@ -45,39 +45,7 @@ const Home = () => {
   const { isAuth } = useSelector((state) => state.auth);
   const { saleStatus } = useSelector((state) => state.saleStatus);
 
-  // useEffect(() => {
-  //   products?.map((item) => {
-  //     const newPrice =
-  //       item.oldProductPrice - item.oldProductPrice * item.saleOffValue;
-  //     saleStatus?.map((saleItem) => {
-  //       if (saleItem.productId == item.id) {
-  //         dispatch(
-  //           actUpdateProductStatus({
-  //             updateId: item.id,
-  //             updateSaleStatus: {
-  //               productStatus: saleItem.productStatus,
-  //               productPromote: saleItem.productPromote,
-  //               saleOffValue: saleItem.saleOffValue,
-  //             },
-  //           })
-  //         );
-  //       }
-  //     });
-  //     dispatch(
-  //       actUpdateProductPrice({
-  //         updateId: item.id,
-  //         updatePrice: { productPrice: newPrice },
-  //       })
-  //     );
-  //   });
-  // }, [products]);
-
   useEffect(() => {
-    dispatch(actfetchAllLogos());
-    dispatch(actfetchAllProducts());
-    dispatch(actfetchAllBanners());
-    dispatch(actfetchAllGuidance());
-    dispatch(actGetAllSaleStatus());
     products?.map((item) => {
       const newPrice =
         item.oldProductPrice - item.oldProductPrice * item.saleOffValue;
@@ -86,10 +54,11 @@ const Home = () => {
           dispatch(
             actUpdateProductStatus({
               updateId: item.id,
-              updateSaleStatus: {
+              updateStatus: {
                 productStatus: saleItem.productStatus,
                 productPromote: saleItem.productPromote,
                 saleOffValue: saleItem.saleOffValue,
+                productActive: saleItem.productActive,
               },
             })
           );
@@ -102,6 +71,13 @@ const Home = () => {
         })
       );
     });
+  }, [saleStatus]);
+
+  useEffect(() => {
+    dispatch(actfetchAllLogos());
+    dispatch(actfetchAllProducts());
+    dispatch(actfetchAllBanners());
+    dispatch(actfetchAllGuidance());
   }, []);
 
   useEffect(() => {
@@ -132,7 +108,7 @@ const Home = () => {
     <div className="m-0 container-fluid">
       <Banner data={banners} />
       <div className="row m-0 mt-2">
-        <div className="col-md-3 p-2" id="homeLeftSide">
+        <div className="col-md-3 p-3" id="homeLeftSide">
           <ShowLogos data={logos} />
 
           <ShowBestSale
@@ -140,12 +116,15 @@ const Home = () => {
             handleProductDetails={handleProductDetails}
             handlePrevButton={handlePrevButton}
           />
-          <div className="text-white text-center  mt-2 bg-highlight">
+          <div className="text-white text-center bg-highlight">
             <h3 className="border-bottom mx-5 py-3 text-white">HOTLINE</h3>
             <h3 className="py-3 text-white">090.515.0109</h3>
           </div>
         </div>
-        <div className="container-fluid col-md-9 m-0 mt-2" id="homeRightSide">
+        <div
+          className="container-fluid col-md-9 m-0 mt-2 p-0"
+          id="homeRightSide"
+        >
           <ShowHotProducts
             data={hotProducts}
             classCol={"col-md-4"}
@@ -163,10 +142,11 @@ const Home = () => {
             handleProductDetails={handleProductDetails}
           />
         </div>
-        <div className="m-0 mt-2">
+        <div className="m-0 p-0">
           <img
             className="img-fluid object-fit-cover w-100"
             src="https://bizweb.dktcdn.net/100/117/632/themes/157694/assets/banner1.gif?1564585558451"
+            onClick={() => navigate(`/Products?status=promote`)}
           ></img>
         </div>
       </div>

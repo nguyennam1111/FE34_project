@@ -159,19 +159,22 @@
       "productId": 1,
       "productStatus": "hot",
       "productPromote": "promote",
-      "saleOffValue": 0.15
+      "saleOffValue": 0.15,
+      "productActive": "Actived"
     },
     {
       "productId": 2,
       "productStatus": "bestSale",
       "productPromote": "promote",
-      "saleOffValue": 0.15
+      "saleOffValue": 0.15,
+      "productActive": "Actived"
     },
     {
       "productId": 3,
       "productStatus": "new",
       "productPromote": "",
-      "saleOffValue": 0
+      "saleOffValue": 0,
+      "productActive": "Actived"
     },
     {
       "productId": 4,
@@ -183,43 +186,50 @@
       "productId": 5,
       "productStatus": "bestSale",
       "productPromote": "promote",
-      "saleOffValue": 0.2
+      "saleOffValue": 0.2,
+      "productActive": "Actived"
     },
     {
       "productId": 6,
       "productStatus": "hot",
       "productPromote": "promote",
-      "saleOffValue": 0.25
+      "saleOffValue": 0.25,
+      "productActive": "Actived"
     },
     {
       "productId": 7,
       "productStatus": "hot",
       "productPromote": "",
-      "saleOffValue": 0
+      "saleOffValue": 0,
+      "productActive": "Actived"
     },
     {
       "productId": 8,
       "productStatus": "hot",
       "productPromote": "promote",
-      "saleOffValue": 0.2
+      "saleOffValue": 0.2,
+      "productActive": "Actived"
     },
     {
       "productId": 9,
       "productStatus": "bestSale",
       "productPromote": "promote",
-      "saleOffValue": 0.1
+      "saleOffValue": 0.1,
+      "productActive": "Actived"
     },
     {
       "productId": 10,
       "productStatus": "new",
       "productPromote": "",
-      "saleOffValue": 0
+      "saleOffValue": 0,
+      "productActive": "InActived"
     },
     {
       "productId": 11,
       "productStatus": "hot",
       "productPromote": "",
-      "saleOffValue": 0.1
+      "saleOffValue": 0.1,
+      "productActive": "InActived"
     }
   ],
   "products": [
@@ -271,7 +281,8 @@
       "tags": [
         "Sơ mi",
         "kẻ sọc"
-      ]
+      ],
+      "productActive": "Actived"
     },
     {
       "id": 2,
@@ -314,6 +325,7 @@
         "saledQty": 15
       },
       "inboundDate": "2023-07-22",
+      "productActive": "Actived",
       "tags": [
         "tất"
       ]
@@ -361,6 +373,7 @@
         "saledQty": 7
       },
       "inboundDate": "2023-07-22",
+      "productActive": "Actived",
       "tags": [
         "váy",
         "liên thân"
@@ -417,6 +430,7 @@
         "saledQty": 6
       },
       "inboundDate": "2023-07-18",
+      "productActive": "Actived",
       "tags": [
         "Sát nách",
         "sơ mi"
@@ -463,9 +477,10 @@
       "saleOffValue": 0.2,
       "stock": {
         "totalQty": 100,
-        "saledQty": 0
+        "saledQty": 2
       },
       "inboundDate": "2023-07-22",
+      "productActive": "Actived",
       "tags": [
         "váy",
         "liên thân",
@@ -515,9 +530,10 @@
       "saleOffValue": 0.25,
       "stock": {
         "totalQty": 100,
-        "saledQty": 73
+        "saledQty": 93
       },
       "inboundDate": "2023-07-18",
+      "productActive": "Actived",
       "tags": [
         "váy",
         "liên thân",
@@ -565,9 +581,10 @@
       "saleOffValue": 0,
       "stock": {
         "totalQty": 100,
-        "saledQty": 15
+        "saledQty": 27
       },
       "inboundDate": "2023-06-18",
+      "productActive": "Actived",
       "tags": [
         "váy",
         "liên thân",
@@ -618,6 +635,7 @@
         "saledQty": 0
       },
       "inboundDate": "2023-07-18",
+      "productActive": "Actived",
       "tags": [
         "váy",
         "liên thân",
@@ -669,6 +687,7 @@
         "saledQty": 0
       },
       "inboundDate": "2023-07-18",
+      "productActive": "Actived",
       "tags": [
         "váy",
         "liên thân",
@@ -726,6 +745,7 @@
         "saledQty": 0
       },
       "inboundDate": "2023-08-07",
+      "productActive": "InActived",
       "tags": [
         "đồ bộ",
         "LOTUKA"
@@ -769,6 +789,7 @@
         "saledQty": 0
       },
       "inboundDate": "2023-08-07",
+      "productActive": "InActived",
       "tags": [
         "váy",
         "đuôi cá",
@@ -819,6 +840,7 @@
         "saledQty": 0
       },
       "inboundDate": "2023-07-18",
+      "productActive": "Actived",
       "tags": [
         "váy",
         "liên thân",
@@ -862,6 +884,7 @@
         "saledQty": 0
       },
       "inboundDate": "2023-08-05",
+      "productActive": "Actived",
       "tags": [
         "áo",
         "sơ mi",
@@ -914,6 +937,7 @@
         "saledQty": 50
       },
       "inboundDate": "2023-08-05",
+      "productActive": "Actived",
       "tags": [
         "giày",
         "thể thao"
@@ -965,6 +989,7 @@
         "saledQty": 0
       },
       "inboundDate": "2023-08-05",
+      "productActive": "Actived",
       "tags": [
         "giày",
         "thể thao",
@@ -1012,6 +1037,7 @@
         "saledQty": 0
       },
       "inboundDate": "2023-08-05",
+      "productActive": "Actived",
       "tags": [
         "kính",
         "thời trang"
@@ -1059,6 +1085,7 @@
         "saledQty": 0
       },
       "inboundDate": "2023-08-07",
+      "productActive": "Actived",
       "tags": [
         "bóng chày"
       ]
@@ -1111,9 +1138,10 @@
       "saleOffValue": 0.1,
       "stock": {
         "totalQty": 100,
-        "saledQty": 0
+        "saledQty": 53
       },
       "inboundDate": "2023-08-07",
+      "productActive": "InActived",
       "tags": [
         "đồ bộ"
       ]
@@ -1170,6 +1198,7 @@
         "saledQty": 0
       },
       "inboundDate": "2023-08-05",
+      "productActive": "Actived",
       "tags": [
         "kính",
         "kính mát"
@@ -1531,12 +1560,13 @@
   "userAccounts": [
     {
       "firstName": "Nguyen",
-      "lastName": "Vu Truong Nam",
+      "lastName": " Nam",
       "email": "abc@gmail.com",
       "phone": "0912345678",
-      "password": "123456",
+      "password": "abc123",
+      "admin": "No",
       "id": 1,
-      "createdAt": "Sun Aug 13 2023 4:50:46 PM"
+      "createdAt": "Sun Aug 20 2023 5:36:33 PM"
     },
     {
       "firstName": "Ho",
@@ -1544,6 +1574,7 @@
       "email": "lai@gmail.com",
       "phone": "0905150109",
       "password": "abc123",
+      "admin": "No",
       "id": 2,
       "createdAt": "2023-08-08 12:47:16"
     },
@@ -1553,6 +1584,7 @@
       "email": "nhan@gmail.com",
       "phone": "0924510222",
       "password": "abc12345",
+      "admin": "No",
       "id": 3,
       "createdAt": "2023-08-08 12:47:16"
     },
@@ -1562,6 +1594,7 @@
       "email": "yen@gmail.com",
       "phone": "0924510222",
       "password": "abc123",
+      "admin": "No",
       "createdAt": "2023-08-08 12:47:16",
       "id": 4
     },
@@ -1571,6 +1604,8 @@
       "email": "levana@gmail.com",
       "phone": "0924510222",
       "password": "abc123",
+      "admin": "No",
+      "createdAt": "2023-08-08 12:47:16",
       "id": 5
     },
     {
@@ -1579,6 +1614,7 @@
       "email": "vanB@gmail.com",
       "phone": "0905150109",
       "password": "abc123",
+      "admin": "No",
       "createdAt": "2023-08-08 12:47:16",
       "id": 6
     },
@@ -1588,6 +1624,7 @@
       "email": "levanC@gmail.com",
       "phone": "0905556612",
       "password": "abc123",
+      "admin": "No",
       "createdAt": "2023-08-08 12:21:43",
       "id": 7
     },
@@ -1597,6 +1634,7 @@
       "email": "vanba@gmail.com",
       "phone": "0912345678",
       "password": "abc@123",
+      "admin": "No",
       "createdAt": "2023-08-08 12:47:16",
       "id": 8
     },
@@ -1607,6 +1645,7 @@
       "phone": "0912345678",
       "inputPassword": "abc123",
       "confirmedPassword": "abc123",
+      "admin": "No",
       "createdAt": "2023-08-08 12:21:43",
       "id": 9
     },
@@ -1616,6 +1655,7 @@
       "email": "tranan@gmail.com",
       "phone": "0905150109",
       "password": "123456",
+      "admin": "No",
       "createdAt": "Sat Aug 12 2023 7:15:03 PM",
       "id": 10
     },
@@ -1625,9 +1665,174 @@
       "email": "leanh@gmail.com",
       "phone": "0905150109",
       "password": "abc123",
+      "admin": "No",
       "createdAt": "Sun Aug 13 2023 6:32:30 PM",
       "id": 11
+    },
+    {
+      "firstName": "Nguyen",
+      "lastName": "Nam",
+      "email": "123@gmail.com",
+      "phone": "0905150109",
+      "password": "123456",
+      "admin": "No",
+      "createdAt": "Sun Aug 20 2023 5:37:40 PM",
+      "id": 12
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "orderEmail": "abc@gmail.com",
+      "fullName": "Nguyen Nam",
+      "phone": "0912345678",
+      "address": "abc, 1234",
+      "district": "Huyện Sông Lô",
+      "ward": "Xã Triệu Đề",
+      "province": "Tỉnh Cà Mau",
+      "shippingType": "Giao hàng nhanh",
+      "shippingFee": 35000,
+      "paymentMethod": "COD",
+      "orderCode": "#0",
+      "totalAmount": 11925000,
+      "totalItemQty": 53,
+      "orderList": [
+        {
+          "id": 1,
+          "productId": 18,
+          "productCode": "LOTUKA-01",
+          "productName": "Đồ bộ Bé Gái LOTUKA",
+          "sizeAndColor": "M/blue",
+          "productImg": "https://down-vn.img.susercontent.com/file/b0702300e95ea44fe33ade5ffb580cbc",
+          "productPrice": 225000,
+          "productQty": "3",
+          "productAmount": 675000,
+          "createdAt": "Mon Aug 21 2023 9:20:06 AM"
+        },
+        {
+          "id": 2,
+          "productId": 18,
+          "productCode": "LOTUKA-01",
+          "productName": "Đồ bộ Bé Gái LOTUKA",
+          "sizeAndColor": "S/yellow",
+          "productImg": "https://down-vn.img.susercontent.com/file/b0702300e95ea44fe33ade5ffb580cbc",
+          "productPrice": 225000,
+          "productQty": "50",
+          "productAmount": 11250000,
+          "createdAt": "Mon Aug 21 2023 9:20:12 AM"
+        }
+      ],
+      "orderAt": "Mon Aug 21 2023 9:20:30 AM",
+      "id": 1
+    },
+    {
+      "orderEmail": "abc@gmail.com",
+      "fullName": "Nguyen Nam",
+      "phone": "0912345678",
+      "address": "abc, 1234",
+      "district": "Huyện Sông Lô",
+      "ward": "Xã Thượng Trưng",
+      "province": "Tỉnh Cà Mau",
+      "shippingType": "Giao hàng nhanh",
+      "shippingFee": 35000,
+      "paymentMethod": "COD",
+      "orderCode": "#2",
+      "totalAmount": 3602000,
+      "totalItemQty": 11,
+      "orderList": [
+        {
+          "id": 1,
+          "productId": 6,
+          "productCode": "KID-123_3",
+          "productName": "Váy liên thân KIDS - KF5",
+          "sizeAndColor": "M/blue",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay9.jpg?v=1473603722567",
+          "productPrice": 240000,
+          "productQty": "1",
+          "productAmount": 240000,
+          "createdAt": "Mon Aug 21 2023 9:22:34 AM"
+        },
+        {
+          "id": 2,
+          "productId": 5,
+          "productCode": "KID-123_1",
+          "productName": "Váy liên thân KIDS-02",
+          "sizeAndColor": "XL/Đỏ",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay4.jpg?v=1473606362390",
+          "productPrice": 280000,
+          "productQty": "2",
+          "productAmount": 560000,
+          "createdAt": "Mon Aug 21 2023 9:22:40 AM"
+        },
+        {
+          "id": 3,
+          "productId": 9,
+          "productCode": "G-342_4",
+          "productName": "Váy liên thân KIDS - KF4",
+          "sizeAndColor": "L/blue",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay1.jpg?v=1473606362390",
+          "productPrice": 387000,
+          "productQty": "2",
+          "productAmount": 774000,
+          "createdAt": "Mon Aug 21 2023 9:22:48 AM"
+        },
+        {
+          "id": 4,
+          "productId": 9,
+          "productCode": "G-342_4",
+          "productName": "Váy liên thân KIDS - KF4",
+          "sizeAndColor": "XL/yellow",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay1.jpg?v=1473606362390",
+          "productPrice": 387000,
+          "productQty": "4",
+          "productAmount": 1548000,
+          "createdAt": "Mon Aug 21 2023 9:22:51 AM"
+        },
+        {
+          "id": 5,
+          "productId": 6,
+          "productCode": "KID-123_3",
+          "productName": "Váy liên thân KIDS - KF5",
+          "sizeAndColor": "L/yellow",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay9.jpg?v=1473603722567",
+          "productPrice": 240000,
+          "productQty": "2",
+          "productAmount": 480000,
+          "createdAt": "Mon Aug 21 2023 9:23:10 AM"
+        }
+      ],
+      "orderAt": "Mon Aug 21 2023 9:23:26 AM",
+      "id": 2
+    },
+    {
+      "orderEmail": "lai@gmail.com",
+      "fullName": "HoThi Nhu Lai",
+      "phone": "0905150109",
+      "address": "20-Chon tam 12",
+      "district": "Huyện Lương Tài",
+      "ward": "Phường Hà Mãn",
+      "province": "Tỉnh Cà Mau",
+      "shippingType": "Giao hàng nhanh",
+      "shippingFee": 35000,
+      "paymentMethod": "COD",
+      "orderCode": "#3",
+      "totalAmount": 480000,
+      "totalItemQty": 2,
+      "orderList": [
+        {
+          "id": 1,
+          "productId": 6,
+          "productCode": "KID-123_3",
+          "productName": "Váy liên thân KIDS - KF5",
+          "sizeAndColor": "L/blue",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay9.jpg?v=1473603722567",
+          "productPrice": 240000,
+          "productQty": "2",
+          "productAmount": 480000,
+          "createdAt": "Mon Aug 21 2023 11:28:19 AM"
+        }
+      ],
+      "orderAt": "Mon Aug 21 2023 11:28:38 AM",
+      "id": 3
+    }
+  ]
 }

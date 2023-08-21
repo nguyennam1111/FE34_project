@@ -14,10 +14,10 @@ const ShowHotProducts = (props) => {
 
   const renderHotProducts = (data, classCol) => {
     return (
-      <div className="mt-2 ">
+      <div className="p-0  ">
         <h5 className="text-left text-title-normal">SẢN PHẨM NỔI BẬT</h5>
         <div className="row m-0">
-          <div className="col-md-4 border p-2">
+          <div className="col-md-4 border p-2" id="hotProduct-Carousel">
             <Carousel
               useKeyboardArrows={true}
               autoPlay={true}
@@ -99,7 +99,10 @@ const ShowHotProducts = (props) => {
             </Carousel>
           </div>
 
-          <div className="col-md-8 border pb-3 overflow-y-scroll">
+          <div
+            className="col-md-8 border pb-3 overflow-y-scroll"
+            id="hotProductRender"
+          >
             <div className="row p-2 ">
               <RenderProducts
                 data={data}

@@ -112,7 +112,8 @@ const ShowOrderSucceed = (props) => {
             >
               <NumericFormat
                 value={
-                  props?.totalAmount + Number(props.orderSucceed?.shippingFee)
+                  Number(props.orderSucceed?.totalAmount) +
+                  Number(props.orderSucceed?.shippingFee)
                 }
                 displayType={"text"}
                 allowLeadingZeros

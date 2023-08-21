@@ -7,13 +7,28 @@ export const ordersRecordApi = {
     );
     return data;
   },
-  getAllorders: async (params) => {
-    const response = await axios.get(`${process.env.REACT_APP_BE_URL}orders`);
+  getAllOrders: async (params) => {
+    const response = await axios.get(`${process.env.REACT_APP_BE_URL}orders`, {
+      params: {
+        _sort: "orderAt",
+        _order: "desc",
+
+        ...params,
+      },
+    });
     return response;
   },
-  getOrderbyId: async (productId) => {
-    const { data } = await axios.get(
-      `${process.env.REACT_APP_BE_URL}orders/${productId}`
+  getOrderbyUserName: async (params, userName) => {
+    const data = await axios.get(
+      `${process.env.REACT_APP_BE_URL}orders/${userName}`,
+      {
+        params: {
+          _sort: "createdAt",
+          _order: "desc",
+
+          ...params,
+        },
+      }
     );
     return data;
   },

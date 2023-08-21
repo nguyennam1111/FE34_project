@@ -16,6 +16,9 @@ import {
   setForgotPassword,
 } from "../../redux/feature/Authenticate/authSlice";
 
+import { Alert, Space } from "antd";
+import { ToastContainer, toast } from "react-toastify";
+
 const SignIn = () => {
   const [eyePassword, setEyePassword] = useState("password");
   const { userAccounts } = useSelector((state) => state.userAccount);
@@ -91,13 +94,11 @@ const SignIn = () => {
     resolver: yupResolver(schemaRecoverPassword),
   });
 
-  useEffect(() => {
-    dispatch(actLogin());
-  }, [isAuth]);
-
   const onValidLogin = (data) => {
     dispatch(setForgotPassword(false));
     dispatch(actLogin(data));
+    toast("Đăng nhập thành công");
+    alert("Đăng nhập thành công");
     navigate(backToUrl);
   };
 
@@ -105,7 +106,7 @@ const SignIn = () => {
     const validEmail = userAccounts.find(
       (item) => item.email === recoverData.recoverEmail
     );
-    console.log(validEmail, "validEmail");
+
     const resetPassword = { password: "123456" };
     dispatch(
       actUpdateUserAccount({
@@ -147,6 +148,7 @@ const SignIn = () => {
           className="col-md-8"
           style={
             ({ color: "#686868" },
+            isAuth ? { display: "none" } : { display: "" },
             isForgot ? { display: "none" } : { display: "" })
           }
         >
@@ -161,7 +163,19 @@ const SignIn = () => {
           </p>
 
           <form key={1} onSubmit={handleSignIn(onValidLogin)}>
-            <p className="text-danger">{loginError}</p>
+            {/* <p className="text-danger">{loginError}</p> */}
+            <ToastContainer
+              position="top-right"
+              autoClose={3000}
+              hideProgressBar={true}
+              newestOnTop={false}
+              closeOnClick
+              rtl={true}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
             <div className="row">
               <p className="col-md-3 pe-0 m-0">
                 Tên đăng nhập<span className="text-danger"> *</span>
@@ -221,7 +235,7 @@ const SignIn = () => {
 
             <div className="row m-0">
               <div
-                className="col-md-8 p-0 offset-sm-3 forgot-pass"
+                className="col-md-8 p-0 offset-sm-3"
                 onClick={() => dispatch(setForgotPassword(true))}
               >
                 <p className="">Quên mật khẩu</p>
@@ -239,7 +253,7 @@ const SignIn = () => {
                   type="button"
                   onClick={() => {
                     dispatch(setForgotPassword(false));
-                    navigate(ROUTES.HOME);
+                    navigate(backToUrl);
                   }}
                 >
                   HỦY

@@ -2,6 +2,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { userAccountApi } from "../../../apis/userAccountApi";
 import { toast } from "react-toastify";
 import { message } from "antd";
+import { ROUTES } from "../../../constants/routes";
+import { useNavigate } from "react-router";
 
 const initialState = {
   isAuth: JSON.parse(localStorage.getItem("isAuth")) ?? false,
@@ -65,14 +67,10 @@ export const authSlice = createSlice({
       state.isAuth = true;
       state.loginError = null;
       state.userProfile = { ...userAccount, fullName };
-
+      toast.success("Login succeed!");
       localStorage.setItem("isAuth", JSON.stringify(state.isAuth));
       localStorage.setItem("userProfile", JSON.stringify(state.userProfile));
-      toast.success("Login success!");
     });
-    // builder.addCase(fetchAllUserAccounts.fulfilled, (state, action) => {
-    //   state.userAccounts = action.payload;
-    // });
   },
 });
 export const { loginSuccess, logout, setForgotPassword, changePassword } =

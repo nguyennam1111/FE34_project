@@ -1,10 +1,11 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 const GuidanceAndPolicy = (props) => {
   const renderGuidanceAndPolicy = (data) => {
     return data.map((item) => {
       return (
-        <div key={item.id && item.index} className="guidance mt-3">
+        <div key={item.id && item.index} className="guidance">
           <h2 className="pt-3 mx-5">Chính sách & hướng dẫn của kidshop !</h2>
           <div className="row mx-5 ">
             <div className="col-md-6 my-3">
@@ -12,12 +13,9 @@ const GuidanceAndPolicy = (props) => {
                 <div>1.</div>
                 <div>
                   <h5>
-                    <a
-                      href="#"
-                      className="text-white bg-transparent text-decoration-none"
-                    >
+                    <Link className="text-white bg-transparent text-decoration-none">
                       {item.policy.title}
-                    </a>
+                    </Link>
                   </h5>
                   <p>{item.policy.content}</p>
                 </div>
@@ -28,12 +26,12 @@ const GuidanceAndPolicy = (props) => {
                 <div>2.</div>
                 <div>
                   <h5>
-                    <a
-                      href="#"
+                    <Link
+                      to={"/Information?branch=OnlineShopping"}
                       className="text-white bg-transparent text-decoration-none"
                     >
                       {item.onlineShopping.title}
-                    </a>
+                    </Link>
                   </h5>
                   <p>{item.onlineShopping.content}</p>
                 </div>

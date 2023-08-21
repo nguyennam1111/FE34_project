@@ -57,7 +57,7 @@ export const actUpdateProductStatus = createAsyncThunk(
   async (item) => {
     return await productsApi.updateProductStatus(
       item.updateId,
-      item.updateSaleStatus
+      item.updateStatus
     );
   }
 );
@@ -69,6 +69,10 @@ export const actGetProductbyId = createAsyncThunk(
   }
 );
 
+export const actDeleteProduct = createAsyncThunk(
+  "products/actDeleteProduct",
+  async (id) => {}
+);
 const productSlice = createSlice({
   name: "products",
   initialState: initialState,

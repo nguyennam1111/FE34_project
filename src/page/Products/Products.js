@@ -20,6 +20,7 @@ import { useForm } from "react-hook-form";
 import { getValue } from "@testing-library/user-event/dist/utils";
 const Products = (props) => {
   useScrollToTop();
+
   const callBackUrl = window.location.pathname;
 
   localStorage.setItem("callBackUrl", JSON.stringify(callBackUrl));

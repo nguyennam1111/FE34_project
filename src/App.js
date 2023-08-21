@@ -18,6 +18,8 @@ import ProductDetails from "./page/ProductDetails/ProductDetails";
 import Payment from "./page/Payment/Payment";
 import PaymentLayout from "./layout/PaymentLayout/PaymentLayout";
 import Information from "./page/Information/Information";
+import AdminLayout from "./layout/AdminLayout/AdminLayout";
+import Admin from "./page/Admin/Admin";
 function App() {
   return (
     <div className="App container-fluid p-0">
@@ -65,6 +67,11 @@ function App() {
             <Route path={ROUTES.INFORMATION} element={<Information />}></Route>
           </Route>
           <Route path="/" element={<Navigate to={ROUTES.HOME} />} />
+        </Routes>
+        <Routes>
+          <Route element={<AdminLayout />}>
+            <Route path={ROUTES.ADMIN} element={<Admin />}></Route>
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>

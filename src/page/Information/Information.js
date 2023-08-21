@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import OrderHistory from "../../components/Information/OrderHistory";
+
 import { useDispatch, useSelector } from "react-redux";
 import { actGetAllOrders } from "../../redux/feature/ordersRecord/ordersRecordSlice";
 import { useParams, useSearchParams } from "react-router-dom";
@@ -8,6 +8,7 @@ import { actFetchAllUserAccounts } from "../../redux/feature/UserAccount/userAcc
 import Transportation from "../../components/Information/Transportation";
 import { actfetchAllGuidance } from "../../redux/feature/guidance/guidanceSlice";
 import OnlineShopping from "../../components/Information/OnlineShopping";
+import OrderHistory from "../../components/Order/OrderHistory";
 
 const Information = () => {
   const callBackUrl = window.location.pathname;

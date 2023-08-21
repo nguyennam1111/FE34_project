@@ -24,6 +24,22 @@ export const productsApi = {
     );
     return data;
   },
+
+  createProduct: async (item) => {
+    try {
+      await axios.post(`${process.env.REACT_APP_BE_URL}products`, item);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  removeProduct: async (id) => {
+    try {
+      await axios.delete(`${process.env.REACT_APP_BE_URL}products/${id}`);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
   updateProductPrice: async (updateId, updateItem) => {
     const { data } = await axios.patch(
       `${process.env.REACT_APP_BE_URL}products/${updateId}`,

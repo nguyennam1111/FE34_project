@@ -14,7 +14,7 @@ const Footer = () => {
 
   return (
     <div className="m-0 container-fluid">
-      <div className="row m-0 py-5 mt-3 justify-content-between footer-style">
+      <div className="row m-0 py-5 justify-content-between footer-style">
         <div className="col-md-4">
           <h5>LIÊN HỆ VỚI CHÚNG TÔI</h5>
           <p>Số 442 Đội Cấn, P. Cống Vị, Q. Ba Đình, Hà Nội</p>

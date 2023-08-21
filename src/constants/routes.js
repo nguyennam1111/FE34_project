@@ -13,4 +13,6 @@ export const ROUTES = {
   INFORMATION: "/Information",
   USERACCOUNTDETAIL: "/userAccount/:id",
   ORDERHISTORY: "/Payment/:id",
+  ADMIN: "/Admin",
+  ADMIN_DETAILS: "/Admin?branch=products/:id",
 };

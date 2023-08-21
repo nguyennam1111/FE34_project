@@ -19,7 +19,7 @@ import { ToastContainer } from "react-toastify";
 import OrderPayment from "../../components/Order/OrderPayment";
 import ShowOrderSucceed from "../../components/Order/ShowOrderSucceed";
 import { actFetchAllUserAccounts } from "../../redux/feature/UserAccount/userAccountSlice";
-import OrderHistory from "../../components/Information/OrderHistory";
+import OrderHistory from "../../components/Order/OrderHistory";
 
 const Payment = () => {
   const callBackUrl = window.location.pathname;
@@ -61,7 +61,6 @@ const Payment = () => {
       return (
         <>
           <OrderHistory
-            orders={orders}
             userProfile={userProfile}
             userAccounts={userAccounts}
             isAuth={isAuth}

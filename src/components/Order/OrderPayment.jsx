@@ -116,18 +116,16 @@ const OrderPayment = (props) => {
     // create order code
     let orderCode = 0;
 
-    orders?.map((item) =>
-      item.orderCode !== `#${parseInt(Math.random() * 1000)}`
-        ? (orderCode = `#${parseInt(Math.random() * 1000)}`)
-        : ""
-    );
+    orderCode =
+      orders?.length === 0 ? 0 : Math.max(...orders?.map((item) => item.id));
+    console.log(Math.max(orders?.map((item) => item.id)));
     //
     dispatch(
       actAddOrder({
         ...data,
         province: provinceName,
         district: districtName,
-        orderCode: orderCode,
+        orderCode: `#${orderCode + 1}`,
         totalAmount: props.totalAmount,
         totalItemQty: props.totalItemQty,
         orderList: props.cart,
@@ -141,7 +139,7 @@ const OrderPayment = (props) => {
         totalItemQty: props.totalItemQty,
         province: provinceName,
         district: districtName,
-        orderCode: orderCode,
+        orderCode: `#${orderCode + 1}`,
         orderList: props.cart,
         orderAt: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`,
       })

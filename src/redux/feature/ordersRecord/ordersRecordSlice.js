@@ -4,6 +4,12 @@ import { ordersRecordApi } from "../../../apis/ordersRecordApi";
 const initialState = {
   orders: [],
   orderSucceed: [],
+  orderByUser: [],
+  pagination: {
+    currentPage: 1,
+    pageSize: 1,
+    totalOrders: 0,
+  },
 };
 
 export const actAddOrder = createAsyncThunk(
@@ -14,9 +20,20 @@ export const actAddOrder = createAsyncThunk(
 );
 export const actGetAllOrders = createAsyncThunk(
   "orders/getAllOrders",
-  async () => {
-    const { data } = await ordersRecordApi.getAllorders();
-    return data;
+  async (params, item) => {
+    const respond = await ordersRecordApi.getAllOrders(params, {
+      orderEmail: item.orderEmail,
+    });
+    return respond;
+  }
+);
+export const actGetOrderByUser = createAsyncThunk(
+  "orders/GetOrderByUser",
+  async (item) => {
+    const respond = await ordersRecordApi.getAllOrders({
+      orderEmail: item.orderEmail,
+    });
+    return respond;
   }
 );
 export const ordersRecordSlice = createSlice({
@@ -34,7 +51,11 @@ export const ordersRecordSlice = createSlice({
       state.orders = action.payload;
     });
     builder.addCase(actGetAllOrders.fulfilled, (state, action) => {
-      state.orders = action.payload;
+      state.orders = action.payload.data;
+      state.pagination.totalOrders = action.payload.headers["x-total-count"];
+    });
+    builder.addCase(actGetOrderByUser.fulfilled, (state, action) => {
+      state.orderByUser = action.payload.data;
     });
   },
 });

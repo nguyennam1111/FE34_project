@@ -67,7 +67,8 @@
 
 @media (max-width: 768px) {
   #homeLeftSide,
-  #sideBar {
+  #sideBar,
+  #hotProduct-Carousel {
     display: none;
   }
 
@@ -79,7 +80,8 @@
 @media (width: 768px) {
   #product-section,
   #homeRightSide,
-  #productDetail-leftSide {
+  #productDetail-leftSide,
+  #hotProductRender {
     display: grid;
     width: 100%;
   }
