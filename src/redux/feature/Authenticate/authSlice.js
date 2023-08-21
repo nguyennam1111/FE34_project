@@ -8,7 +8,7 @@ import { useNavigate } from "react-router";
 const initialState = {
   isAuth: JSON.parse(localStorage.getItem("isAuth")) ?? false,
   isForgot: JSON.parse(localStorage.getItem("isForgot")) ?? false,
-  isChangePass: JSON.parse(localStorage.getItem("isChangePass")) ?? false,
+
   userProfile: JSON.parse(localStorage.getItem("userProfile")) ?? null,
   loginError: null,
 };

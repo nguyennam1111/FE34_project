@@ -17,6 +17,9 @@ const SideBar = () => {
   const { products, productDetails } = useSelector((state) => state.product);
   const [searchParams] = useSearchParams();
   const catalog = searchParams.get("catalogue");
+  const search =
+    searchParams.get("search") ?? JSON.parse(localStorage.getItem("search"));
+
   useEffect(() => {
     dispatch(actfetchAllProducts());
   }, []);
@@ -31,14 +34,26 @@ const SideBar = () => {
         <h5 className="p-2 bg-info text-white">DANH MỤC</h5>
         <ul className="list-unstyled p-3">
           <li>
-            <Link to={"/Products"} className={`nav-link p-0 `} id="allProducts">
+            <Link
+              to={
+                search == "" || search == null
+                  ? `/Products`
+                  : `/Products?search=${search}`
+              }
+              className={`nav-link p-0 `}
+              id="allProducts"
+            >
               <i className="bi bi-arrow-right-circle fw-bold mx-2"></i>
               <span className="text-body">Tất cả sản phẩm</span>
             </Link>
           </li>
           <li>
             <Link
-              to={"/Products?catalogue=boy"}
+              to={
+                search == "" || search == null
+                  ? "/Products?catalogue=boy"
+                  : `/Products?catalogue=boy&search=${search}`
+              }
               className={`nav-link p-0 my-2 `}
             >
               <i className="bi bi-arrow-right-circle fw-bold mx-2"></i>
@@ -46,14 +61,25 @@ const SideBar = () => {
             </Link>
           </li>
           <li>
-            <Link to={"/Products?catalogue=girl"} className="nav-link p-0 my-2">
+            <Link
+              to={
+                search == "" || search == null
+                  ? "/Products?catalogue=girl"
+                  : `/Products?catalogue=girl&search=${search}`
+              }
+              className="nav-link p-0 my-2"
+            >
               <i className="bi bi-arrow-right-circle fw-bold mx-2"></i>
               <span className="text-body">Góc bé gái</span>
             </Link>
           </li>
           <li>
             <Link
-              to={"/Products?catalogue=accessory"}
+              to={
+                search == "" || search == null
+                  ? "/Products?catalogue=accessory"
+                  : `/Products?catalogue=accessory&search=${search}`
+              }
               className="nav-link p-0 my-2"
             >
               <i className="bi bi-arrow-right-circle fw-bold mx-2"></i>
@@ -61,7 +87,14 @@ const SideBar = () => {
             </Link>
           </li>
           <li>
-            <Link to={"/Products?status=promote"} className="nav-link p-0 my-2">
+            <Link
+              to={
+                search == "" || search == null
+                  ? "/Products?status=promote"
+                  : `/Products?status=promote&search=${search}`
+              }
+              className="nav-link p-0 my-2"
+            >
               <i className="bi bi-arrow-right-circle fw-bold mx-2"></i>
               <span className="text-body">Khuyến mãi</span>
             </Link>

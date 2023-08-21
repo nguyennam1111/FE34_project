@@ -3,10 +3,8 @@ import { NumericFormat } from "react-number-format";
 import OrderList from "./OrderList";
 import { useNavigate } from "react-router";
 import { ROUTES } from "../../constants/routes";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { CheckCircleOutlined, PrinterOutlined } from "@ant-design/icons";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 
 const ShowOrderSucceed = (props) => {
   const navigate = useNavigate();
@@ -15,19 +13,19 @@ const ShowOrderSucceed = (props) => {
       <div>
         <h4 className="mt-4 text-title-normal">KidShop</h4>
       </div>
-      <div className="row mt-3">
+      <div className="row mt-3 align-middle">
         <div className="col-md-7">
-          <div className="row m-0">
-            <div className="col-md-2">
+          <div className="row m-0 ">
+            <div className="col-md-2 align-middle">
               <CheckCircleOutlined
                 className="text-success"
                 style={{ fontSize: 70 }}
               />
             </div>
-            <div className="col-md-6">
-              <h5>cảm ơn bạn đã đặt hàng</h5>
+            <div className="col-md-10">
+              <h5>Cảm ơn bạn đã đặt hàng</h5>
               <p>
-                Một email xác nhận đã được gởi tới email
+                Một email xác nhận đã được gởi tới email{" "}
                 <a className="text-primary">{props.orderSucceed?.orderEmail}</a>
                 . Xin vui lòng kiểm tra email
               </p>

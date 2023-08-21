@@ -20,17 +20,42 @@ import { clearCart } from "../../redux/feature/Cart/cartSlice";
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [search, setSearch] = useState();
+  const [searchParams] = useSearchParams();
+
+  const [search, setSearch] = useState(
+    JSON.parse(localStorage.getItem("search")) ?? null
+  );
 
   const { cart } = useSelector((state) => state.cart);
 
   const { isAuth, userProfile, isForgot } = useSelector((state) => state.auth);
-
+  localStorage.setItem(
+    "currentUrl",
+    JSON.stringify(window.location.pathname + window.location.search)
+  );
   const backToUrl = JSON.parse(localStorage.getItem("currentUrl"));
+
+  const handleChangeSearch = (e) => {
+    localStorage.removeItem("search");
+    e.preventDefault();
+    setSearch(e.target.value);
+
+    if (e.target.value == "" || e.target.value == "null") {
+      navigate(`/Products`);
+    }
+  };
 
   const handleSearch = () => {
     if (search != undefined) {
-      navigate(`/Products?search=${search}`);
+      if (backToUrl === "/Home" || window.location.search == "") {
+        navigate(`/Products?search=${search}`);
+      } else {
+        const index = backToUrl.search("search");
+
+        index >= 0
+          ? navigate(`${backToUrl.slice(0, index)}search=${search}`)
+          : navigate(`${backToUrl}?search=${search}`);
+      }
     }
   };
 
@@ -145,7 +170,11 @@ const Header = () => {
                 <ul className="dropdown-menu">
                   <li>
                     <Link
-                      to={"/Products"}
+                      to={
+                        search == "" || search == null
+                          ? `/Products`
+                          : `/Products?search=${search}`
+                      }
                       className="dropdown-item bg-white text-title-normal "
                     >
                       TẤT CẢ SẢN PHẨM
@@ -153,7 +182,11 @@ const Header = () => {
                   </li>
                   <li>
                     <Link
-                      to={"/Products?catalogue=boy"}
+                      to={
+                        search == "" || search == null
+                          ? "/Products?catalogue=boy"
+                          : `/Products?catalogue=boy&search=${search}`
+                      }
                       className="dropdown-item bg-white text-title-normal"
                     >
                       GÓC BÉ TRAI
@@ -162,7 +195,11 @@ const Header = () => {
 
                   <li>
                     <Link
-                      to={"/Products?catalogue=girl"}
+                      to={
+                        search == "" || search == null
+                          ? "/Products?catalogue=girl"
+                          : `/Products?catalogue=girl&search=${search}`
+                      }
                       className="dropdown-item bg-white text-title-normal"
                     >
                       GÓC BÉ GÁI
@@ -170,7 +207,11 @@ const Header = () => {
                   </li>
                   <li>
                     <Link
-                      to={"/Products?catalogue=accessory"}
+                      to={
+                        search == "" || search == null
+                          ? "/Products?catalogue=accessory"
+                          : `/Products?catalogue=accessory&search=${search}`
+                      }
                       className="dropdown-item bg-white text-title-normal"
                     >
                       PHỤ KIỆN
@@ -178,7 +219,11 @@ const Header = () => {
                   </li>
                   <li>
                     <Link
-                      to={"/Products?status=promote"}
+                      to={
+                        search == "" || search == null
+                          ? "/Products?status=promote"
+                          : `/Products?status=promote&search=${search}`
+                      }
                       className="dropdown-item bg-white text-title-normal"
                     >
                       KHUYẾN MÃI
@@ -228,14 +273,15 @@ const Header = () => {
               aria-label="Search"
               value={search}
               onChange={(e) => {
-                e.preventDefault();
-                setSearch(e.target.value);
+                handleChangeSearch(e);
               }}
             ></input>
             <button
               className="border-0 bg-transparent"
               type="button"
-              onClick={() => handleSearch()}
+              onClick={() => {
+                handleSearch();
+              }}
             >
               <i className="bi bi-search text-white"></i>
             </button>

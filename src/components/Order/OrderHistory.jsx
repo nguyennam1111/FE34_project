@@ -6,37 +6,54 @@ import { ROUTES } from "../../constants/routes";
 import { NumericFormat } from "react-number-format";
 import { PrinterOutlined } from "@ant-design/icons";
 import { Pagination } from "antd";
-import { setPage } from "../../redux/feature/ProductSlice/productSlice";
+
 import { useEffect } from "react";
 import {
   actGetAllOrders,
-  actGetOrderByUser,
+  setPage,
 } from "../../redux/feature/ordersRecord/ordersRecordSlice";
+import { actFetchAllUserAccounts } from "../../redux/feature/UserAccount/userAccountSlice";
+import { actLogin } from "../../redux/feature/Authenticate/authSlice";
 
-const OrderHistory = (props) => {
+const OrderHistory = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { pagination, orderByUser } = useSelector((state) => state.orders);
-  useEffect(() => {
-    dispatch(actGetOrderByUser({ orderEmail: props.userProfile.email }));
-  }, []);
+  const { pagination, orders } = useSelector((state) => state.orders);
+  const { isAuth, userProfile } = useSelector((state) => state.auth);
 
+  // useEffect(() => {
+  //   dispatch(actLogin());
+  //   dispatch(
+  //     actGetAllOrders({
+  //       orderEmail: userProfile.email,
+  //     })
+  //   );
+  // }, [userProfile.email]);
+
+  useEffect(() => {
+    dispatch(
+      actGetAllOrders({
+        _page: pagination.currentPage,
+        _limit: pagination.pageSize,
+        orderEmail: userProfile.email,
+      })
+    );
+  }, [userProfile.email]);
   useEffect(() => {
     handleChangePage(pagination.currentPage);
-  }, [pagination.currentPage]);
-
-  console.log(pagination.totalOrders);
+  }, [pagination.currentPages]);
   const handleChangePage = (newPage) => {
     dispatch(setPage(newPage));
   };
   const renderOrderHistory = () => {
-    return orderByUser?.map((order) => {
+    return orders?.map((order) => {
       return (
         <table className="table table-stripped border table-md mt-3 align-middle">
-          <thead className="text-primary mt-2 bg-body">
-            <tr className="text-left">
+          <thead className="text-primary mt-2 ">
+            <tr className="text-left table-primary">
               <th colSpan={8}>
-                <h5>
+                <h5 className="m-0">
+                  {" "}
                   Đơn hàng:{order?.orderCode} ({order.totalItemQty} sản phẩm)
                   được tạo lúc: {order.orderAt}
                 </h5>
@@ -133,7 +150,7 @@ const OrderHistory = (props) => {
     });
   };
 
-  return orderByUser?.length === 0 ? (
+  return orders?.length === 0 ? (
     <>
       {" "}
       <p className="p-3">Không có lịch sử mua hàng</p>
@@ -151,24 +168,26 @@ const OrderHistory = (props) => {
       <div>
         <h5>
           Thông tin lịch sử mua hàng của{" "}
-          <span className="text-primary">{props.userProfile.fullName}</span>
+          <span className="text-primary">{userProfile.fullName}</span>
         </h5>
       </div>
 
-      <div
-        className="border overflow-x-scroll"
-        style={{ maxHeight: 400, height: "100%" }}
-      >
-        {renderOrderHistory()}
+      <div className="border">
+        <div
+          className="border overflow-x-scroll"
+          style={{ maxHeight: 400, height: "100%" }}
+        >
+          {renderOrderHistory()}
+        </div>
+        <Pagination
+          className="text-center"
+          onChange={(page) => {
+            handleChangePage(page);
+          }}
+          pageSize={pagination.pageSize}
+          total={pagination.totalOrders}
+        ></Pagination>
       </div>
-      <Pagination
-        className="text-center"
-        onChange={(page) => {
-          handleChangePage(page);
-        }}
-        pageSize={pagination.pageSize}
-        total={pagination.totalOrders}
-      ></Pagination>
       <div className="mt-3 text-center">
         <button
           style={{ color: "#2A9DCC", fontSize: 20 }}

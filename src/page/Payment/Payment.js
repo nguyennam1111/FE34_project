@@ -50,9 +50,9 @@ const Payment = () => {
         <>
           <ShowOrderSucceed
             orderSucceed={orderSucceed}
-            cart={cart}
-            totalItemQty={totalItemQty}
-            totalAmount={totalAmount}
+            // cart={cart}
+            // totalItemQty={totalItemQty}
+            // totalAmount={totalAmount}
           />
         </>
       );
@@ -60,11 +60,7 @@ const Payment = () => {
     case "history":
       return (
         <>
-          <OrderHistory
-            userProfile={userProfile}
-            userAccounts={userAccounts}
-            isAuth={isAuth}
-          />
+          <OrderHistory />
         </>
       );
       break;

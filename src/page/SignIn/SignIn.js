@@ -22,8 +22,9 @@ import { ToastContainer, toast } from "react-toastify";
 const SignIn = () => {
   const [eyePassword, setEyePassword] = useState("password");
   const { userAccounts } = useSelector((state) => state.userAccount);
-  const { isAuth, userProfile, loginError, isForgot, isChangePass } =
-    useSelector((state) => state.auth);
+  const { isAuth, userProfile, loginError, isForgot } = useSelector(
+    (state) => state.auth
+  );
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -95,10 +96,10 @@ const SignIn = () => {
   });
 
   const onValidLogin = (data) => {
-    dispatch(setForgotPassword(false));
     dispatch(actLogin(data));
     toast("Đăng nhập thành công");
     alert("Đăng nhập thành công");
+    dispatch(setForgotPassword(false));
     navigate(backToUrl);
   };
 
@@ -143,7 +144,7 @@ const SignIn = () => {
           Quay về
         </button>
       </div>
-      <div className="row m-0 align-items-center">
+      <div className="row m-0 align-items-center my-3">
         <div
           className="col-md-8"
           style={
@@ -227,9 +228,9 @@ const SignIn = () => {
                 className="col-md-8 p-0 offset-sm-3"
                 onClick={() => dispatch(setForgotPassword(true))}
               >
-                <p className="">Quên mật khẩu</p>
+                <p className="forgot-pass">Quên mật khẩu</p>
               </div>
-              <div className="col-md-8 p-0 offset-md-3">
+              <div className=" p-0 offset-md-3 d-flex ">
                 <button
                   className="btn btn-primary text-white me-2"
                   type="submit"
@@ -249,7 +250,7 @@ const SignIn = () => {
                   theme="light"
                 />
                 <button
-                  className="btn btn-secondary col-md-3"
+                  className="btn btn-secondary"
                   type="button"
                   onClick={() => {
                     dispatch(setForgotPassword(false));
@@ -273,7 +274,7 @@ const SignIn = () => {
               <img
                 src="	https://bizweb.dktcdn.net/assets/admin/images/login/gp-btn.svg"
                 alt="Google+"
-                className="img-fluid col-md-3"
+                className="img-fluid"
                 style={{ width: 100, maxWidth: "100%" }}
               ></img>
             </div>
@@ -287,7 +288,7 @@ const SignIn = () => {
         </div>
 
         <div
-          className="col-md-8 order-1"
+          className="col-md-8 order-1 my-3"
           style={
             ({ color: "#686868" },
             isForgot ? { display: "" } : { display: "none" })

@@ -4,10 +4,10 @@ import { ordersRecordApi } from "../../../apis/ordersRecordApi";
 const initialState = {
   orders: [],
   orderSucceed: [],
-  orderByUser: [],
+
   pagination: {
     currentPage: 1,
-    pageSize: 1,
+    pageSize: 2,
     totalOrders: 0,
   },
 };
@@ -20,22 +20,12 @@ export const actAddOrder = createAsyncThunk(
 );
 export const actGetAllOrders = createAsyncThunk(
   "orders/getAllOrders",
-  async (params, item) => {
-    const respond = await ordersRecordApi.getAllOrders(params, {
-      orderEmail: item.orderEmail,
-    });
+  async (params) => {
+    const respond = await ordersRecordApi.getAllOrders(params);
     return respond;
   }
 );
-export const actGetOrderByUser = createAsyncThunk(
-  "orders/GetOrderByUser",
-  async (item) => {
-    const respond = await ordersRecordApi.getAllOrders({
-      orderEmail: item.orderEmail,
-    });
-    return respond;
-  }
-);
+
 export const ordersRecordSlice = createSlice({
   name: "orders",
   initialState: initialState,
@@ -43,21 +33,23 @@ export const ordersRecordSlice = createSlice({
     setOrderSucceed: (state, action) => {
       state.orderSucceed = action.payload;
     },
+    setPage(state, action) {
+      state.pagination = {
+        ...state.pagination,
+        currentPage: action.payload,
+      };
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(actAddOrder.pending, (state, action) => {});
     builder.addCase(actAddOrder.rejected, (state, action) => {});
-    builder.addCase(actAddOrder.fulfilled, (state, action) => {
-      state.orders = action.payload;
-    });
+
     builder.addCase(actGetAllOrders.fulfilled, (state, action) => {
       state.orders = action.payload.data;
       state.pagination.totalOrders = action.payload.headers["x-total-count"];
-    });
-    builder.addCase(actGetOrderByUser.fulfilled, (state, action) => {
-      state.orderByUser = action.payload.data;
+      console.log(action.payload, "payload");
     });
   },
 });
-export const { setOrderSucceed } = ordersRecordSlice.actions;
+export const { setOrderSucceed, setPage } = ordersRecordSlice.actions;
 export default ordersRecordSlice.reducer;

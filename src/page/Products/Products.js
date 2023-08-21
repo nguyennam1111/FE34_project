@@ -17,7 +17,7 @@ import { FilterOutlined } from "@ant-design/icons";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { getValue } from "@testing-library/user-event/dist/utils";
+
 const Products = (props) => {
   useScrollToTop();
 
@@ -30,8 +30,9 @@ const Products = (props) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const status = searchParams.get("status");
   const catalogue = searchParams.get("catalogue");
-  const search = searchParams.get("search");
-
+  const search =
+    searchParams.get("search") ?? JSON.parse(localStorage.getItem("search"));
+  localStorage.setItem("search", JSON.stringify(search));
   const { pagination, products, filters, sortBy } = useSelector(
     (state) => state.product
   );
@@ -179,19 +180,15 @@ const Products = (props) => {
           </li>
           <li className="breadcrumb-item active" aria-current="page">
             <a>
-              {searchParams.get("search") != null
-                ? "Tìm kiếm"
-                : catalogue === "boy"
+              {catalogue === "boy"
                 ? "Bé trai"
                 : catalogue === "girl"
                 ? "Bé gái"
                 : catalogue === "accessory"
                 ? "Phụ kiện"
-                : status === "promote"
+                : catalogue === null && status === "promote"
                 ? "Khuyến mãi"
-                : catalogue === null
-                ? "Tất cả sản phẩm"
-                : ""}
+                : "Tất cả sản phẩm"}
             </a>
           </li>
         </ol>
@@ -199,14 +196,11 @@ const Products = (props) => {
 
       <h4
         className="mt-3"
-        style={
-          searchParams.get("search") != null
-            ? { display: "block" }
-            : { display: "none" }
-        }
+        style={search != null ? { display: "block" } : { display: "none" }}
       >
         {" "}
-        Kết quả tìm kiếm cho từ khóa: {searchParams.get("search")}
+        Kết quả tìm kiếm cho từ khóa:{" "}
+        <span className="text-primary fst-italic">{search}</span>
       </h4>
       <div className="border bg-light mt-3">
         <div className="p-3 ">

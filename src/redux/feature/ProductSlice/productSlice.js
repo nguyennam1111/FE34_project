@@ -162,6 +162,7 @@ const productSlice = createSlice({
 
       state.pagination.totalProducts =
         action.payload[0].headers["x-total-count"];
+      console.log(action.payload[0].headers["x-total-count"], "headers");
       state.newProducts = action.payload[1].data;
       state.bestSaleProducts = action.payload[2].data;
       state.hotProducts = action.payload[3].data;
