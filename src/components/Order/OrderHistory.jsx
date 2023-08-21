@@ -53,7 +53,7 @@ const OrderHistory = (props) => {
               <th>Mua hàng lúc</th>
             </tr>
           </thead>
-          {orderByUser?.orderList?.map((item) => {
+          {order?.orderList?.map((item) => {
             return (
               <tbody className="text-center">
                 <tr className="p-0">
@@ -156,10 +156,10 @@ const OrderHistory = (props) => {
       </div>
 
       <div
-        className="border  overflow-x-scroll"
+        className="border overflow-x-scroll"
         style={{ maxHeight: 400, height: "100%" }}
       >
-        {renderOrderHistory(props.orders)}
+        {renderOrderHistory()}
       </div>
       <Pagination
         className="text-center"
