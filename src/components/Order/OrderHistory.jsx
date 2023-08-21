@@ -1,7 +1,7 @@
 import useSelection from "antd/es/table/hooks/useSelection";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { ROUTES } from "../../constants/routes";
 import { NumericFormat } from "react-number-format";
 import { PrinterOutlined } from "@ant-design/icons";
@@ -12,43 +12,31 @@ import {
   actGetAllOrders,
   setPage,
 } from "../../redux/feature/ordersRecord/ordersRecordSlice";
-import { actFetchAllUserAccounts } from "../../redux/feature/UserAccount/userAccountSlice";
-import { actLogin } from "../../redux/feature/Authenticate/authSlice";
 
-const OrderHistory = () => {
+const OrderHistory = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { pagination, orders } = useSelector((state) => state.orders);
+  const { orders } = useSelector((state) => state.orders);
   const { isAuth, userProfile } = useSelector((state) => state.auth);
 
+  // const handleChangePage = (newPage) => {
+  //   dispatch(setPage(newPage));
+  // };
   // useEffect(() => {
-  //   dispatch(actLogin());
   //   dispatch(
   //     actGetAllOrders({
+  //       _page: pagination.currentPage,
+  //       _limit: pagination.pageSize,
   //       orderEmail: userProfile.email,
   //     })
   //   );
-  // }, [userProfile.email]);
+  //   handleChangePage(pagination.currentPage);
+  // }, [userProfile.email, pagination.currentPage]);
 
-  useEffect(() => {
-    dispatch(
-      actGetAllOrders({
-        _page: pagination.currentPage,
-        _limit: pagination.pageSize,
-        orderEmail: userProfile.email,
-      })
-    );
-  }, [userProfile.email]);
-  useEffect(() => {
-    handleChangePage(pagination.currentPage);
-  }, [pagination.currentPages]);
-  const handleChangePage = (newPage) => {
-    dispatch(setPage(newPage));
-  };
   const renderOrderHistory = () => {
-    return orders?.map((order) => {
+    return props.orders?.map((order) => {
       return (
-        <table className="table table-stripped border table-md mt-3 align-middle">
+        <table className="table table-stripped border table-responsive-md mt-3 align-middle">
           <thead className="text-primary mt-2 ">
             <tr className="text-left table-primary">
               <th colSpan={8}>
@@ -76,7 +64,10 @@ const OrderHistory = () => {
                 <tr className="p-0">
                   <td>{item.productCode}</td>
                   <td>
-                    <img src={item.productImg} className="img-fluid img"></img>
+                    <img
+                      src={item.productImg}
+                      className="img-fluid order-summary-img"
+                    ></img>
                   </td>
 
                   <td>{item.productName}</td>
@@ -150,7 +141,7 @@ const OrderHistory = () => {
     });
   };
 
-  return orders?.length === 0 ? (
+  return props.orders?.length === 0 ? (
     <>
       {" "}
       <p className="p-3">Không có lịch sử mua hàng</p>
@@ -173,19 +164,14 @@ const OrderHistory = () => {
       </div>
 
       <div className="border">
-        <div
-          className="border overflow-x-scroll"
-          style={{ maxHeight: 400, height: "100%" }}
-        >
-          {renderOrderHistory()}
-        </div>
+        <div className="border overflow-x-scroll">{renderOrderHistory()}</div>
         <Pagination
           className="text-center"
           onChange={(page) => {
-            handleChangePage(page);
+            props.handleChangePage(page);
           }}
-          pageSize={pagination.pageSize}
-          total={pagination.totalOrders}
+          pageSize={props.pagination.pageSize}
+          total={props.pagination.totalOrders}
         ></Pagination>
       </div>
       <div className="mt-3 text-center">

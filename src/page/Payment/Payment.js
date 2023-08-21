@@ -14,6 +14,7 @@ import {
   actGetAllOrders,
   setOrderSucceed,
   setOrderSuccess,
+  setPage,
 } from "../../redux/feature/ordersRecord/ordersRecordSlice";
 import { ToastContainer } from "react-toastify";
 import OrderPayment from "../../components/Order/OrderPayment";
@@ -33,7 +34,9 @@ const Payment = () => {
   const { cart, totalAmount, totalItemQty } = useSelector(
     (state) => state.cart
   );
-  const { orderSucceed, orders } = useSelector((state) => state.orders);
+  const { orderSucceed, orders, pagination } = useSelector(
+    (state) => state.orders
+  );
   const { isAuth, userProfile } = useSelector((state) => state.auth);
   const { userAccounts } = useSelector((state) => state.userAccount);
   const orderStatus = searchParams.get("status");
@@ -43,7 +46,19 @@ const Payment = () => {
     dispatch(setOrderSucceed());
     dispatch(actFetchAllUserAccounts());
   }, []);
-
+  useEffect(() => {
+    dispatch(
+      actGetAllOrders({
+        _page: pagination.currentPage,
+        _limit: pagination.pageSize,
+        orderEmail: userProfile.email,
+      })
+    );
+    handleChangePage(pagination.currentPage);
+  }, [userProfile.email, pagination.currentPage]);
+  const handleChangePage = (newPage) => {
+    dispatch(setPage(newPage));
+  };
   switch (orderStatus) {
     case "succeed":
       return (
@@ -60,7 +75,11 @@ const Payment = () => {
     case "history":
       return (
         <>
-          <OrderHistory />
+          <OrderHistory
+            handleChangePage={handleChangePage}
+            pagination={pagination}
+            orders={orders}
+          />
         </>
       );
       break;

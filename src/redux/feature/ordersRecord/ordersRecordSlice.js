@@ -7,7 +7,7 @@ const initialState = {
 
   pagination: {
     currentPage: 1,
-    pageSize: 2,
+    pageSize: 1,
     totalOrders: 0,
   },
 };

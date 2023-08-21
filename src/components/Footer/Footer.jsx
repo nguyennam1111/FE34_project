@@ -64,9 +64,7 @@ const Footer = () => {
           <p>
             <Link
               className="text-decoration-none"
-              to={
-                isAuth ? `/Payment/user=${userProfile.id}?status=history` : ""
-              }
+              to={isAuth ? `/Payment/${userProfile.id}?status=history` : ""}
               onClick={() => handleVerifyLogin()}
             >
               Lịch sử mua hàng
