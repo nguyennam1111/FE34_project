@@ -164,18 +164,7 @@ const SignIn = () => {
 
           <form key={1} onSubmit={handleSignIn(onValidLogin)}>
             {/* <p className="text-danger">{loginError}</p> */}
-            <ToastContainer
-              position="top-right"
-              autoClose={3000}
-              hideProgressBar={true}
-              newestOnTop={false}
-              closeOnClick
-              rtl={true}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="light"
-            />
+
             <div className="row">
               <p className="col-md-3 pe-0 m-0">
                 Tên đăng nhập<span className="text-danger"> *</span>
@@ -247,7 +236,18 @@ const SignIn = () => {
                 >
                   ĐĂNG NHẬP
                 </button>
-
+                <ToastContainer
+                  position="top-right"
+                  autoClose={3000}
+                  hideProgressBar={true}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={true}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="light"
+                />
                 <button
                   className="btn btn-secondary col-md-3"
                   type="button"

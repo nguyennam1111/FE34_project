@@ -530,7 +530,7 @@
       "saleOffValue": 0.25,
       "stock": {
         "totalQty": 100,
-        "saledQty": 93
+        "saledQty": 60
       },
       "inboundDate": "2023-07-18",
       "productActive": "Actived",
@@ -1833,6 +1833,130 @@
       ],
       "orderAt": "Mon Aug 21 2023 11:28:38 AM",
       "id": 3
+    },
+    {
+      "orderEmail": "lai@gmail.com",
+      "fullName": "HoThi Nhu Lai",
+      "phone": "0905150109",
+      "address": "20-Chon tam 12",
+      "district": "Huyện Bạch Long Vĩ",
+      "ward": "Xã Trân Châu",
+      "province": "Tỉnh Cà Mau",
+      "shippingType": "Giao hàng nhanh",
+      "shippingFee": 35000,
+      "paymentMethod": "COD",
+      "orderCode": "#4",
+      "totalAmount": 1200000,
+      "totalItemQty": 5,
+      "orderList": [
+        {
+          "id": 1,
+          "productId": 6,
+          "productCode": "KID-123_3",
+          "productName": "Váy liên thân KIDS - KF5",
+          "sizeAndColor": "L/blue",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay9.jpg?v=1473603722567",
+          "productPrice": 240000,
+          "productQty": "5",
+          "productAmount": 1200000,
+          "createdAt": "Mon Aug 21 2023 12:10:18 PM"
+        }
+      ],
+      "orderAt": "Mon Aug 21 2023 12:10:42 PM",
+      "id": 4
+    },
+    {
+      "orderEmail": "lai@gmail.com",
+      "fullName": "HoThi Nhu Lai",
+      "phone": "0905150109",
+      "address": "20-Chon tam 12",
+      "district": "Huyện Bạch Long Vĩ",
+      "ward": "Xã Trân Châu",
+      "province": "Tỉnh Cà Mau",
+      "shippingType": "Giao hàng nhanh",
+      "shippingFee": 35000,
+      "paymentMethod": "COD",
+      "orderCode": "#5",
+      "totalAmount": 1200000,
+      "totalItemQty": 5,
+      "orderList": [
+        {
+          "id": 1,
+          "productId": 6,
+          "productCode": "KID-123_3",
+          "productName": "Váy liên thân KIDS - KF5",
+          "sizeAndColor": "L/blue",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay9.jpg?v=1473603722567",
+          "productPrice": 240000,
+          "productQty": "5",
+          "productAmount": 1200000,
+          "createdAt": "Mon Aug 21 2023 12:10:18 PM"
+        }
+      ],
+      "orderAt": "Mon Aug 21 2023 12:11:24 PM",
+      "id": 5
+    },
+    {
+      "orderEmail": "lai@gmail.com",
+      "fullName": "HoThi Nhu Lai",
+      "phone": "0905150109",
+      "address": "20-Chon tam 12",
+      "district": "Huyện Sông Lô",
+      "ward": "Phường Hội Hợp",
+      "province": "Tỉnh Cà Mau",
+      "shippingType": "Giao hàng nhanh",
+      "shippingFee": 35000,
+      "paymentMethod": "COD",
+      "orderCode": "#6",
+      "totalAmount": 1200000,
+      "totalItemQty": 5,
+      "orderList": [
+        {
+          "id": 1,
+          "productId": 6,
+          "productCode": "KID-123_3",
+          "productName": "Váy liên thân KIDS - KF5",
+          "sizeAndColor": "M/blue",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay9.jpg?v=1473603722567",
+          "productPrice": 240000,
+          "productQty": "5",
+          "productAmount": 1200000,
+          "createdAt": "Mon Aug 21 2023 12:21:55 PM"
+        }
+      ],
+      "orderAt": "Mon Aug 21 2023 12:22:10 PM",
+      "id": 6
+    },
+    {
+      "orderEmail": "lai@gmail.com",
+      "fullName": "HoThi Nhu Lai",
+      "phone": "0905150109",
+      "address": "20-Chon tam 12",
+      "district": "Huyện Sông Lô",
+      "ward": "Phường Hội Hợp",
+      "province": "Tỉnh Cà Mau",
+      "shippingType": "Giao hàng nhanh",
+      "shippingFee": 35000,
+      "paymentMethod": "COD",
+      "orderCode": "#7",
+      "totalAmount": 1200000,
+      "totalItemQty": 5,
+      "orderList": [
+        {
+          "id": 1,
+          "productId": 6,
+          "productCode": "KID-123_3",
+          "productName": "Váy liên thân KIDS - KF5",
+          "sizeAndColor": "M/blue",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay9.jpg?v=1473603722567",
+          "productPrice": 240000,
+          "productQty": "5",
+          "productAmount": 1200000,
+          "createdAt": "Mon Aug 21 2023 12:21:55 PM"
+        }
+      ],
+      "orderAt": "Mon Aug 21 2023 12:23:09 PM",
+      "id": 7
     }
   ]
 }

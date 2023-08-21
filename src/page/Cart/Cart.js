@@ -107,8 +107,8 @@ const Cart = () => {
 
   return (
     <div className="container-fluid mt-3">
-      <form className=" form-control overflow-x-scroll">
-        <table className="table table-bordered table-responsive-md align-middle">
+      <div className="overflow-x-scroll">
+        <table className="table table-bordered table-md align-middle">
           <thead className="sticky-sm-top">
             <tr className="text-center">
               <th>MÃ SẢN PHẨM</th>
@@ -131,7 +131,7 @@ const Cart = () => {
             {renderCartItems(cart)}
           </tbody>
         </table>
-      </form>
+      </div>
       <div className="row mt-2 align-items-center">
         <div className="col-md-9 order-ms-2 order-2 text-left">
           <button

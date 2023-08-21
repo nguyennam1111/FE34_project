@@ -146,25 +146,28 @@ const OrderPayment = (props) => {
     );
     // update saleQty
 
-    products.map((list) => {
-      const cartQty = props.cart
-        ?.map((item) => (list.id == item.productId ? item.productQty : ""))
-        .reduce((total, num) => {
-          return total + Number(num);
-        }, 0);
-      const updateStock = {
-        stock: {
-          totalQty: list.stock.totalQty,
-          saledQty: Number(list.stock.saledQty) + Number(cartQty),
-        },
-      };
-
-      dispatch(
-        actUpdateSaleQty({
-          updateId: list.id,
-          updateItem: updateStock,
-        })
-      );
+    products?.map((list) => {
+      props.cart.map((item) => {
+        if (list.id == item.productId) {
+          const cartQty = props.cart
+            ?.map((item) => (list.id == item.productId ? item.productQty : ""))
+            .reduce((total, num) => {
+              return total + Number(num);
+            }, 0);
+          const updateStock = {
+            stock: {
+              totalQty: list.stock.totalQty,
+              saledQty: Number(list.stock.saledQty) + Number(cartQty),
+            },
+          };
+          dispatch(
+            actUpdateSaleQty({
+              updateId: list.id,
+              updateItem: updateStock,
+            })
+          );
+        }
+      });
     });
 
     dispatch(clearCart());
