@@ -6,7 +6,7 @@ const initialState = {
   userAccounts: [],
   userAccountDetail: [],
   existEmailError: null,
-
+  editUser: JSON.parse(localStorage.getItem("editUser")) ?? false,
   callbackURL: ROUTES.HOME,
 };
 
@@ -54,7 +54,12 @@ export const actUpdateUserAccount = createAsyncThunk(
 export const userAccountSlice = createSlice({
   name: "userAccounts",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    setEditUser: (state, action) => {
+      state.editUser = action.payload;
+      localStorage.setItem("editUser", JSON.stringify(state.editUser));
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(actAddUserAccount.pending, (state, action) => {
       state.isLoading = true;
@@ -86,5 +91,5 @@ export const userAccountSlice = createSlice({
     });
   },
 });
-export const { addUserAccount } = userAccountSlice.actions;
+export const { setEditUser } = userAccountSlice.actions;
 export default userAccountSlice.reducer;

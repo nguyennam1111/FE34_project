@@ -46,32 +46,38 @@ const Home = () => {
   const { saleStatus } = useSelector((state) => state.saleStatus);
 
   useEffect(() => {
-    products?.map((item) => {
-      const newPrice =
-        item.oldProductPrice - item.oldProductPrice * item.saleOffValue;
-      saleStatus?.map((saleItem) => {
-        if (saleItem.productId == item.id) {
-          dispatch(
-            actUpdateProductStatus({
-              updateId: item.id,
-              updateStatus: {
-                productStatus: saleItem.productStatus,
-                productPromote: saleItem.productPromote,
-                saleOffValue: saleItem.saleOffValue,
-                productActive: saleItem.productActive,
-              },
-            })
-          );
-        }
-      });
-      dispatch(
-        actUpdateProductPrice({
-          updateId: item.id,
-          updatePrice: { productPrice: newPrice },
-        })
-      );
-    });
-  }, [saleStatus]);
+    dispatch(actUpdateProductPrice());
+    dispatch(actUpdateProductStatus());
+    dispatch(actGetAllSaleStatus());
+  }, []);
+
+  // useEffect(() => {
+  //   products?.map((item) => {
+  //     const newPrice =
+  //       item.oldProductPrice - item.oldProductPrice * item.saleOffValue;
+  //     saleStatus?.map((saleItem) => {
+  //       if (saleItem.productId == item.id) {
+  //         dispatch(
+  //           actUpdateProductStatus({
+  //             updateId: item.id,
+  //             updateStatus: {
+  //               productStatus: saleItem.productStatus,
+  //               productPromote: saleItem.productPromote,
+  //               saleOffValue: saleItem.saleOffValue,
+  //               productActive: saleItem.productActive,
+  //             },
+  //           })
+  //         );
+  //       }
+  //     });
+  //     dispatch(
+  //       actUpdateProductPrice({
+  //         updateId: item.id,
+  //         updatePrice: { productPrice: newPrice },
+  //       })
+  //     );
+  //   });
+  // }, [saleStatus]);
 
   useEffect(() => {
     dispatch(actfetchAllLogos());

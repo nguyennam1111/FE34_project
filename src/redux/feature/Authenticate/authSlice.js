@@ -25,6 +25,7 @@ export const actLogin = createAsyncThunk(
           item.password == loginData.loginPassword
       );
       if (mapUserAccount) {
+        toast.success("Login succeed!");
         return {
           userAccount: mapUserAccount,
           fullName: mapUserAccount.firstName + mapUserAccount.lastName,

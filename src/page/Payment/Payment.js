@@ -42,9 +42,11 @@ const Payment = () => {
   const orderStatus = searchParams.get("status");
 
   useEffect(() => {
-    dispatch(actGetAllOrders());
     dispatch(setOrderSucceed());
     dispatch(actFetchAllUserAccounts());
+  }, []);
+  useEffect(() => {
+    dispatch(setPage(1));
   }, []);
   useEffect(() => {
     dispatch(

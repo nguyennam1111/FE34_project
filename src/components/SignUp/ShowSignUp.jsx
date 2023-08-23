@@ -15,8 +15,10 @@ import {
 } from "../../redux/feature/Authenticate/authSlice";
 import {
   actAddUserAccount,
+  actFetchAllUserAccounts,
   actUpdateUserAccount,
 } from "../../redux/feature/UserAccount/userAccountSlice";
+import ShowLocation from "../Location/ShowLocation";
 
 const ShowSignUp = () => {
   const phonePattern = /^((0|84)[3|5|7|8|9])+(\d{8})$\b/g;
@@ -29,14 +31,22 @@ const ShowSignUp = () => {
   const [eyePassword, setEyePassword] = useState("password");
   const [eyeConfirmedPass, setEyeConfirmedPass] = useState("password");
   const [eyeOldPassword, setEyeOldPassword] = useState("password");
-  const { userAccounts, userAccountDetail, existEmailError, isExist } =
-    useSelector((state) => state.userAccount);
+  const {
+    userAccounts,
+    userAccountDetail,
+    existEmailError,
+    isExist,
+    editUser,
+  } = useSelector((state) => state.userAccount);
 
   const params = useParams();
   const [searchParams] = useSearchParams();
+  const [provinceName, setProvinceName] = useState("");
+  const [districtName, setDistrictName] = useState("");
+
   const backToUrl =
     JSON.parse(localStorage.getItem("currentUrl")) ?? ROUTES.HOME;
-  const isEdit = searchParams.get("edit");
+
   const schemaSignUp = Yup.object().shape({
     checkExistEmail: Yup.boolean(),
     firstName: Yup.string().max(10, "max=10 ").required("Nhập họ"),
@@ -53,6 +63,10 @@ const ShowSignUp = () => {
           ),
 
     phone: Yup.string().matches(phonePattern, "Số điện thoại không đúng"),
+    address: Yup.string().required("Nhập địa chỉ"),
+    province: Yup.string().required("Chọn tỉnh thành"),
+    district: Yup.string().required("Chọn quận huyện"),
+    ward: Yup.string().required("Chọn phường xã"),
     oldPassword: isChangePass
       ? Yup.string()
           .required("Nhập mật khẩu")
@@ -110,6 +124,9 @@ const ShowSignUp = () => {
       lastName: "",
       email: "",
       phone: "",
+      address: "",
+      province: "",
+      ward: "",
       password: "",
       oldPassword: "",
     },
@@ -122,18 +139,23 @@ const ShowSignUp = () => {
     formState: { errors },
     control,
     reset,
+    watch,
+    setValue,
+    register,
   } = methods;
   useEffect(() => {
     dispatch(actLogin());
   }, [userProfile.id]);
-
+  useEffect(() => {
+    dispatch(actFetchAllUserAccounts());
+  }, []);
   const onValid = (formState) => {
     dispatch(
       actAddUserAccount({
-        firstName: formState.firstName,
-        lastName: formState.lastName,
-        email: formState.email,
-        phone: formState.phone,
+        ...formState,
+        provinceName: provinceName,
+        districtName: districtName,
+
         password: formState.inputPassword,
         admin: "No",
         createdAt: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`,
@@ -142,21 +164,23 @@ const ShowSignUp = () => {
 
     navigate(ROUTES.SIGNIN);
   };
+
   const onUpdate = async (data) => {
     let updateData = {};
     isChangePass
       ? (updateData = {
-          firstName: data.firstName,
-          lastName: data.lastName,
-          email: data.email,
-          phone: data.phone,
+          ...data,
+          provinceName: provinceName,
+          districtName: districtName,
+
           password: data.inputPassword,
           createdAt: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`,
         })
       : (updateData = {
-          firstName: data.firstName,
-          lastName: data.lastName,
-          email: data.email,
+          ...data,
+          provinceName: provinceName,
+          districtName: districtName,
+
           phone: data.phone,
           createdAt: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`,
         });
@@ -170,67 +194,14 @@ const ShowSignUp = () => {
     navigate(ROUTES.SIGNIN);
   };
 
-  const renderUserInformation = () => {
-    return (
-      <div className="my-3 p-3 border">
-        <div className="">
-          <h4>
-            Thông tin cá nhân tài khoản <a href="#">{userProfile.email}</a>:
-          </h4>
-        </div>
-        <div className="container-fluid">
-          <div className="row m-0">
-            <p className="col-md-2">Họ và tên</p>
-            <p className="col-md-3">{userProfile.fullName}</p>
-          </div>
-          <div className="row m-0">
-            <p className="col-md-2">Email</p>
-            <p className="col-md-3">{userProfile.email}</p>
-          </div>
-          <div className="row m-0">
-            <p className="col-md-2">Số điện thoại</p>
-            <p className="col-md-3">{userProfile.phone}</p>
-          </div>
-
-          <div className="row m-0">
-            <p className="col-md-2">Đăng ký lúc</p>
-            <p className="col-md-3">{userProfile.createdAt}</p>
-          </div>
-
-          <div className="d-flex">
-            <button
-              className="btn btn-primary me-2"
-              onClick={() => {
-                navigate(`/userAccount/${userProfile.id}?edit=true`);
-              }}
-            >
-              Chỉnh sửa thông tin
-            </button>
-            <button
-              className="btn btn-secondary"
-              onClick={() => {
-                navigate(ROUTES.HOME);
-              }}
-            >
-              Quay về
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   const renderSignUp = () => {
     return (
       <>
         <div
           className="m-0"
           style={
-            isAuth
-              ? isEdit
-                ? { display: "none" }
-                : { display: "" }
-              : { display: "" }
+            isAuth ? { display: "none" } : { display: "" }
+            // editUser ? { display: "none" } : { display: "" })
           }
         >
           <h4 className="mt-3">ĐĂNG KÝ</h4>
@@ -246,11 +217,11 @@ const ShowSignUp = () => {
         <div
           className="m-0"
           style={
-            isAuth
-              ? isEdit
-                ? { display: "" }
-                : { display: "none" }
-              : { display: "none" }
+            isAuth ? { display: "" } : { display: "none" }
+            //  editUser
+            //   ? { display: "" }
+            //   : { display: "none" }
+            // : { display: "none" }
           }
         >
           <h4 className="mt-3">CẬP NHẬT THÔNG TIN</h4>
@@ -267,7 +238,7 @@ const ShowSignUp = () => {
                   render={({ field }) => (
                     <input
                       className={`form-control`}
-                      disabled={isAuth ? !isEdit : isAuth}
+                      disabled={isAuth ? !editUser : isAuth}
                       {...field}
                     />
                   )}
@@ -294,13 +265,13 @@ const ShowSignUp = () => {
                   render={({ field }) => (
                     <input
                       className={`form-control  `}
-                      disabled={isAuth ? !isEdit : isAuth}
+                      disabled={isAuth ? !editUser : isAuth}
                       {...field}
                     />
                   )}
                   name="lastName"
                   control={control}
-                  defaultValue={isEdit ? userProfile?.lastName : ""}
+                  defaultValue={editUser ? userProfile?.lastName : ""}
                 />
               </div>
               <div className="row">
@@ -350,14 +321,14 @@ const ShowSignUp = () => {
                     <>
                       <input
                         className={`form-control col-md-8 `}
-                        disabled={isAuth ? !isEdit : isAuth}
+                        disabled={isAuth ? !editUser : isAuth}
                         {...field}
                       />
                     </>
                   )}
                   name="phone"
                   control={control}
-                  defaultValue={isEdit ? userProfile?.phone : ""}
+                  defaultValue={editUser ? userProfile?.phone : ""}
                 />
               </div>
               <div className="row">
@@ -367,11 +338,48 @@ const ShowSignUp = () => {
                 </p>
               </div>
             </div>
-
+            <div className=" row m-0 mt-2">
+              <p className="col-md-2 m-0 ">
+                Địa chỉ <span className="text-danger">*</span>
+              </p>
+              <div className="col-md-8">
+                <Controller
+                  render={({ field }) => (
+                    <>
+                      <input
+                        className={`form-control col-md-8 `}
+                        disabled={isAuth ? !editUser : isAuth}
+                        {...field}
+                      />
+                    </>
+                  )}
+                  name="address"
+                  control={control}
+                  defaultValue={editUser ? userProfile?.address : ""}
+                />
+              </div>
+              <div className="row">
+                <span className="col-md-2"></span>
+                <p className="text-danger m-0 col-md-8">
+                  {errors.address?.message}
+                </p>
+              </div>
+            </div>
+            <div className="row col-md-8 offset-md-2 px-3">
+              <ShowLocation
+                watch={watch}
+                setValue={setValue}
+                setProvinceName={setProvinceName}
+                setDistrictName={setDistrictName}
+                register={register}
+                errors={errors}
+                editUser={editUser}
+              />
+            </div>
             <div
               style={
                 isAuth
-                  ? isEdit
+                  ? editUser
                     ? { display: "" }
                     : { display: "none" }
                   : { display: "none" }
@@ -418,7 +426,7 @@ const ShowSignUp = () => {
                         <input
                           type={eyeOldPassword}
                           className={`form-control `}
-                          disabled={isAuth ? !isEdit : isAuth}
+                          disabled={isAuth ? !editUser : isAuth}
                           {...field}
                         />
                         <i
@@ -459,7 +467,7 @@ const ShowSignUp = () => {
                         <input
                           type={eyePassword}
                           className={`form-control`}
-                          disabled={isAuth ? !isEdit : isAuth}
+                          disabled={isAuth ? !editUser : isAuth}
                           {...field}
                         />
                         <i
@@ -540,7 +548,7 @@ const ShowSignUp = () => {
                   className="btn btn-primary border-0 px-2 me-2 text-white"
                   type="submit"
                 >
-                  {isEdit ? "Cập nhật" : "ĐĂNG KÝ"}
+                  {editUser ? "Cập nhật" : "ĐĂNG KÝ"}
                 </button>
                 <button
                   className="btn btn-secondary px-2 m-0 text-white"

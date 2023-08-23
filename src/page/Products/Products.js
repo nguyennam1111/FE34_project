@@ -85,10 +85,6 @@ const Products = (props) => {
   ]);
 
   useEffect(() => {
-    handleChangeSort("default");
-  }, [catalogue]);
-
-  useEffect(() => {
     if (filters.endPrice !== "") {
       dispatch(
         actfetchAllProducts({
@@ -96,7 +92,6 @@ const Products = (props) => {
           _limit: pagination.pageSize,
           _sort: sortBy.sort,
           _order: sortBy.order,
-
           q: filters.search,
           productCatalogue: filters.catalogue,
           productPrice_gte: filters.startPrice,
@@ -113,10 +108,8 @@ const Products = (props) => {
           _limit: pagination.pageSize,
           _sort: sortBy.sort,
           _order: sortBy.order,
-
           q: filters.search,
           productCatalogue: filters.catalogue,
-
           productPromote: filters.status,
         })
       );
@@ -124,22 +117,6 @@ const Products = (props) => {
       handleChangePage(pagination.currentPage);
     }
   }, [filters, sortBy, pagination.pageSize, pagination.currentPage]);
-
-  // useEffect(() => {
-  //   dispatch(
-  //     actfetchAllProducts({
-  //       _page: pagination.currentPage,
-  //       _limit: pagination.pageSize,
-  //     })
-  //   );
-
-  //   handleChangePageSize(pagination.pageSize);
-  //   handleChangePage(pagination.currentPage);
-  // }, [pagination.pageSize, pagination.currentPage]);
-
-  // useEffect(() => {
-  //   handleChangePageSize(pagination.pageSize);
-  // }, [filters]);
 
   const handleProductDetails = (productId) => {
     navigate(`/Products/${productId}`);
@@ -163,10 +140,16 @@ const Products = (props) => {
       actfetchAllProducts({
         _page: pagination.currentPage,
         _limit: pagination.pageSize,
+        q: filters.search,
         productPrice_gte: data.startPrice,
         productPrice_lte: data.endPrice,
+        productCatalogue: filters.catalogue,
+
+        productPromote: filters.status,
       })
     );
+    dispatch(setPage(1));
+    handleChangeSort("default");
   };
 
   return (

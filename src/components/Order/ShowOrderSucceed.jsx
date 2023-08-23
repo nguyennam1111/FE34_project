@@ -52,8 +52,8 @@ const ShowOrderSucceed = (props) => {
               <div>
                 <h4>Địa chỉ nhận hàng</h4>
                 <p>Địa chỉ:{props.orderSucceed?.address}</p>
-                <p>Tỉnh:{props.orderSucceed?.province}</p>
-                <p>Quận/Huyện:{props.orderSucceed?.district}</p>
+                <p>Tỉnh:{props.orderSucceed?.provinceName}</p>
+                <p>Quận/Huyện:{props.orderSucceed?.districtName}</p>
 
                 <p>Phường/Xã:{props.orderSucceed?.ward}</p>
               </div>

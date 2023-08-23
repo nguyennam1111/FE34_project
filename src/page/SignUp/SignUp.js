@@ -16,6 +16,7 @@ import ShowSignUp from "../../components/SignUp/ShowSignUp";
 
 const SignUp = () => {
   const phonePattern = /^((0|84)[3|5|7|8|9])+(\d{8})$\b/g;
+
   const { isAuth, userProfile, isChangePass } = useSelector(
     (state) => state.auth
   );

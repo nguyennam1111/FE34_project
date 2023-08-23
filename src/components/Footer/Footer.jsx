@@ -1,14 +1,25 @@
 import React from "react";
 import "./footerStyle.css";
-import { Link, useNavigate } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import { ROUTES } from "../../constants/routes";
 import { useSelector } from "react-redux";
-import { Alert, Space } from "antd";
+
 const Footer = () => {
   const currentUrl = window.location.pathname;
   localStorage.setItem("currentUrl", JSON.stringify(currentUrl));
   const { isAuth, userProfile } = useSelector((state) => state.auth);
   const navigate = useNavigate();
+  const params = useParams();
+  const [searchParams] = useSearchParams();
+  const catalogue = searchParams.get("catalogue");
+
+  const status = searchParams.get("status");
+  const pathname = window.location.pathname;
   const handleVerifyLogin = () => (isAuth ? "" : alert("Bạn chưa đăng nhập"));
   // <Alert message="Bạn chưa đăng nhập" type="warning" closable />
 
@@ -54,7 +65,11 @@ const Footer = () => {
 
           <p>
             <Link
-              className="text-decoration-none"
+              className={`text-decoration-none ${
+                pathname == `/userAccount/${params.id}`
+                  ? `active fw-bolder text-primary`
+                  : ""
+              }`}
               onClick={() => handleVerifyLogin()}
               to={isAuth ? `/userAccount/${userProfile.id}` : ""}
             >
@@ -63,7 +78,9 @@ const Footer = () => {
           </p>
           <p>
             <Link
-              className="text-decoration-none"
+              className={`text-decoration-none ${
+                status == "history" ? `active fw-bolder text-primary` : ""
+              }`}
               to={isAuth ? `/Payment/${userProfile.id}?status=history` : ""}
               onClick={() => handleVerifyLogin()}
             >
@@ -72,22 +89,35 @@ const Footer = () => {
           </p>
           <p>
             <Link
-              to={"/Information?branch=transportationPolicy"}
-              className="text-decoration-none"
+              to={"/Information?catalogue=transportationPolicy"}
+              className={`text-decoration-none ${
+                catalogue == "transportationPolicy"
+                  ? `active fw-bolder text-primary`
+                  : ""
+              }`}
             >
               Chính sách vận chuyển
             </Link>
           </p>
           <p>
             <Link
-              to={"/Information?branch=OnlineShopping"}
-              className="text-decoration-none"
+              to={"/Information?catalogue=OnlineShopping"}
+              className={`text-decoration-none ${
+                catalogue == "OnlineShopping"
+                  ? `active fw-bolder text-primary`
+                  : ""
+              }`}
             >
               Hướng dẫn mua online
             </Link>
           </p>
           <p>
-            <Link to={ROUTES.CONTACTUS} className="text-decoration-none">
+            <Link
+              to={ROUTES.CONTACTUS}
+              className={`text-decoration-none ${
+                pathname == "/ContactUs" ? `active fw-bolder text-primary` : ""
+              }`}
+            >
               Liên hệ
             </Link>
           </p>
@@ -95,14 +125,23 @@ const Footer = () => {
         <div className="col-md-2">
           <h5>SẢN PHẨM</h5>
           <p>
-            <Link to={"/Products?"} className="text-decoration-none">
-              Tất cả sản phẩm{" "}
+            <Link
+              to={"/Products?"}
+              className={`text-decoration-none ${
+                pathname == "/Products" && catalogue == null && status == null
+                  ? `active fw-bolder text-primary`
+                  : ""
+              }`}
+            >
+              Tất cả sản phẩm
             </Link>
           </p>
           <p>
             <Link
               to={"/Products?catalogue=boy"}
-              className="text-decoration-none"
+              className={`text-decoration-none ${
+                catalogue == "boy" ? `active fw-bolder text-primary` : ""
+              }`}
             >
               Góc bé trai
             </Link>
@@ -110,7 +149,9 @@ const Footer = () => {
           <p>
             <Link
               to={"/Products?catalogue=girl"}
-              className="text-decoration-none"
+              className={`text-decoration-none ${
+                catalogue == "girl" ? `active fw-bolder text-primary` : ""
+              }`}
             >
               Góc bé gái
             </Link>
@@ -118,7 +159,9 @@ const Footer = () => {
           <p>
             <Link
               to={"/Products?catalogue=accessory"}
-              className="text-decoration-none"
+              className={`text-decoration-none ${
+                catalogue == "accessory" ? `active fw-bolder text-primary` : ""
+              }`}
             >
               Phụ kiện
             </Link>
@@ -126,7 +169,9 @@ const Footer = () => {
           <p>
             <Link
               to={"/Products?status=promote"}
-              className="text-decoration-none"
+              className={`text-decoration-none ${
+                status == "promote" ? `active fw-bolder text-primary` : ""
+              }`}
             >
               Khuyễn mãi
             </Link>

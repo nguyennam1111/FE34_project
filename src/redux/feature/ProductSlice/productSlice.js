@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import { productsApi } from "../../../apis/productsApi";
+import { saleStatusApi } from "../../../apis/saleStatusApi";
+import { wait } from "@testing-library/user-event/dist/utils";
 
 const initialState = {
   isLoading: false,
@@ -34,11 +36,19 @@ export const actfetchAllProducts = createAsyncThunk(
 
 export const actUpdateProductPrice = createAsyncThunk(
   "product/actUpdateProductPrice",
-  async (item) => {
-    return await productsApi.updateProductPrice(
-      item.updateId,
-      item.updatePrice
-    );
+  async () => {
+    const products = await productsApi.getAllProducts().data;
+    products.map((item) => {
+      const newPrice =
+        item.oldProductPrice - item.oldProductPrice * item.saleOffValue;
+      return productsApi.updateProductPrice(item.id, {
+        productPrice: newPrice,
+      });
+    });
+    // return await productsApi.updateProductPrice(
+    //   item.updateId,
+    //   item.updatePrice
+    // );
   }
 );
 
@@ -54,11 +64,26 @@ export const actUpdateSaleQty = createAsyncThunk(
 
 export const actUpdateProductStatus = createAsyncThunk(
   "product/actUpdateProductStatus",
-  async (item) => {
-    return await productsApi.updateProductStatus(
-      item.updateId,
-      item.updateStatus
-    );
+  async () => {
+    const products = await productsApi.getAllProducts();
+    const saleStatus = await saleStatusApi.getAllSaleStatus();
+
+    products.data.map((item) => {
+      saleStatus.data?.map((saleItem) => {
+        if (saleItem.productId == item.id) {
+          return productsApi.updateProductSaleQty(item.id, {
+            productStatus: saleItem.productStatus,
+            productPromote: saleItem.productPromote,
+            saleOffValue: saleItem.saleOffValue,
+            productActive: saleItem.productActive,
+          });
+        }
+      });
+    });
+    // return await productsApi.updateProductStatus(
+    //   item.updateId,
+    //   item.updateStatus
+    // );
   }
 );
 
@@ -162,7 +187,7 @@ const productSlice = createSlice({
 
       state.pagination.totalProducts =
         action.payload[0].headers["x-total-count"];
-      console.log(action.payload[0].headers["x-total-count"], "headers");
+
       state.newProducts = action.payload[1].data;
       state.bestSaleProducts = action.payload[2].data;
       state.hotProducts = action.payload[3].data;

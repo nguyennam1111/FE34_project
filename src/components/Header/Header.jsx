@@ -16,11 +16,15 @@ import {
   setForgotPassword,
 } from "../../redux/feature/Authenticate/authSlice";
 import { clearCart } from "../../redux/feature/Cart/cartSlice";
+import { setEditUser } from "../../redux/feature/UserAccount/userAccountSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const catalogue = searchParams.get("catalogue");
+  const pathname = window.location.pathname;
+  const status = searchParams.get("status");
 
   const [search, setSearch] = useState(
     JSON.parse(localStorage.getItem("search")) ?? null
@@ -47,6 +51,7 @@ const Header = () => {
 
   const handleSearch = () => {
     if (search != undefined) {
+      localStorage.setItem("search", JSON.stringify(search));
       if (backToUrl === "/Home" || window.location.search == "") {
         navigate(`/Products?search=${search}`);
       } else {
@@ -175,7 +180,13 @@ const Header = () => {
                           ? `/Products`
                           : `/Products?search=${search}`
                       }
-                      className="dropdown-item bg-white text-title-normal "
+                      className={`dropdown-item bg-white text-title-normal ${
+                        pathname == "/Products" &&
+                        catalogue == null &&
+                        status == null
+                          ? `active fw-bolder text-primary`
+                          : ""
+                      }`}
                     >
                       TẤT CẢ SẢN PHẨM
                     </Link>
@@ -187,7 +198,11 @@ const Header = () => {
                           ? "/Products?catalogue=boy"
                           : `/Products?catalogue=boy&search=${search}`
                       }
-                      className="dropdown-item bg-white text-title-normal"
+                      className={`dropdown-item bg-white text-title-normal  ${
+                        catalogue == "boy"
+                          ? `active fw-bolder text-primary`
+                          : ""
+                      }`}
                     >
                       GÓC BÉ TRAI
                     </Link>
@@ -200,7 +215,11 @@ const Header = () => {
                           ? "/Products?catalogue=girl"
                           : `/Products?catalogue=girl&search=${search}`
                       }
-                      className="dropdown-item bg-white text-title-normal"
+                      className={`dropdown-item bg-white text-title-normal  ${
+                        catalogue == "girl"
+                          ? `active fw-bolder text-primary`
+                          : ""
+                      }`}
                     >
                       GÓC BÉ GÁI
                     </Link>
@@ -212,7 +231,11 @@ const Header = () => {
                           ? "/Products?catalogue=accessory"
                           : `/Products?catalogue=accessory&search=${search}`
                       }
-                      className="dropdown-item bg-white text-title-normal"
+                      className={`dropdown-item bg-white text-title-normal  ${
+                        catalogue == "accessory"
+                          ? `active fw-bolder text-primary`
+                          : ""
+                      }`}
                     >
                       PHỤ KIỆN
                     </Link>
@@ -224,7 +247,11 @@ const Header = () => {
                           ? "/Products?status=promote"
                           : `/Products?status=promote&search=${search}`
                       }
-                      className="dropdown-item bg-white text-title-normal"
+                      className={`dropdown-item bg-white text-title-normal  ${
+                        status == "promote"
+                          ? `active fw-bolder text-primary`
+                          : ""
+                      }`}
                     >
                       KHUYẾN MÃI
                     </Link>

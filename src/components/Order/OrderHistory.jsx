@@ -159,7 +159,8 @@ const OrderHistory = (props) => {
       <div>
         <h5>
           Thông tin lịch sử mua hàng của{" "}
-          <span className="text-primary">{userProfile.fullName}</span>
+          <span className="text-primary">{userProfile.fullName}.</span>
+          <span>Tổng {props.pagination.totalOrders} đơn hàng đã mua</span>
         </h5>
       </div>
 

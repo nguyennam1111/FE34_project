@@ -16,10 +16,11 @@ const SideBar = () => {
   const params = useParams();
   const { products, productDetails } = useSelector((state) => state.product);
   const [searchParams] = useSearchParams();
-  const catalog = searchParams.get("catalogue");
+  const catalogue = searchParams.get("catalogue");
+  const status = searchParams.get("status");
   const search =
     searchParams.get("search") ?? JSON.parse(localStorage.getItem("search"));
-
+  const pathname = window.location.pathname;
   useEffect(() => {
     dispatch(actfetchAllProducts());
   }, []);
@@ -40,11 +41,15 @@ const SideBar = () => {
                   ? `/Products`
                   : `/Products?search=${search}`
               }
-              className={`nav-link p-0 `}
+              className={`nav-link p-0  ${
+                pathname == "/Products" && catalogue == null && status == null
+                  ? `active fw-bolder text-primary`
+                  : "text-body"
+              }`}
               id="allProducts"
             >
-              <i className="bi bi-arrow-right-circle fw-bold mx-2"></i>
-              <span className="text-body">Tất cả sản phẩm</span>
+              <i className={`bi bi-arrow-right-circle fw-bolder px-2`}></i>Tất
+              cả sản phẩm
             </Link>
           </li>
           <li>
@@ -54,10 +59,14 @@ const SideBar = () => {
                   ? "/Products?catalogue=boy"
                   : `/Products?catalogue=boy&search=${search}`
               }
-              className={`nav-link p-0 my-2 `}
+              className={`nav-link p-0 my-2  ${
+                catalogue == "boy"
+                  ? `active fw-bolder text-primary`
+                  : "text-body"
+              }`}
             >
-              <i className="bi bi-arrow-right-circle fw-bold mx-2"></i>
-              <span className="text-body">Góc bé trai </span>
+              <i className="bi bi-arrow-right-circle fw-bold px-2"></i>
+              Góc bé trai
             </Link>
           </li>
           <li>
@@ -67,10 +76,14 @@ const SideBar = () => {
                   ? "/Products?catalogue=girl"
                   : `/Products?catalogue=girl&search=${search}`
               }
-              className="nav-link p-0 my-2"
+              className={`nav-link p-0 my-2  ${
+                catalogue == "girl"
+                  ? `active fw-bolder text-primary`
+                  : "text-body"
+              }`}
             >
               <i className="bi bi-arrow-right-circle fw-bold mx-2"></i>
-              <span className="text-body">Góc bé gái</span>
+              Góc bé gái
             </Link>
           </li>
           <li>
@@ -80,10 +93,14 @@ const SideBar = () => {
                   ? "/Products?catalogue=accessory"
                   : `/Products?catalogue=accessory&search=${search}`
               }
-              className="nav-link p-0 my-2"
+              className={`nav-link p-0 my-2  ${
+                catalogue == "accessory"
+                  ? `active fw-bolder text-primary`
+                  : "text-body"
+              }`}
             >
               <i className="bi bi-arrow-right-circle fw-bold mx-2"></i>
-              <span className="text-body ">Phụ kiện</span>
+              Phụ kiện
             </Link>
           </li>
           <li>
@@ -93,10 +110,14 @@ const SideBar = () => {
                   ? "/Products?status=promote"
                   : `/Products?status=promote&search=${search}`
               }
-              className="nav-link p-0 my-2"
+              className={`nav-link p-0 my-2  ${
+                status == "promote"
+                  ? `active fw-bolder text-primary`
+                  : "text-body"
+              }`}
             >
               <i className="bi bi-arrow-right-circle fw-bold mx-2"></i>
-              <span className="text-body">Khuyến mãi</span>
+              Khuyến mãi
             </Link>
           </li>
         </ul>

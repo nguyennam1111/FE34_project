@@ -25,6 +25,8 @@ import {
   actfetchAllProducts,
 } from "../../redux/feature/ProductSlice/productSlice";
 import ProductDetails from "../../page/ProductDetails/ProductDetails";
+import { actFetchAllUserAccounts } from "../../redux/feature/UserAccount/userAccountSlice";
+import { actLogin } from "../../redux/feature/Authenticate/authSlice";
 
 const OrderPayment = (props) => {
   const phonePattern = /^([0|84])([3|5|7|8|9]{1})+(\d{8})$\b/g;
@@ -36,11 +38,16 @@ const OrderPayment = (props) => {
   const { products } = useSelector((state) => state.product);
   const [provinceName, setProvinceName] = useState("");
   const [districtName, setDistrictName] = useState("");
+  const [wardName, setWardName] = useState("");
 
   useEffect(() => {
     dispatch(actGetAllOrders());
     dispatch(actfetchAllProducts());
+    dispatch(actFetchAllUserAccounts());
   }, []);
+  useEffect(() => {
+    dispatch(actLogin());
+  }, [userProfile.id]);
 
   const schemaValidatePayment = Yup.object().shape({
     orderEmail: Yup.string().email("wrong email").required("Enter email"),
@@ -75,7 +82,7 @@ const OrderPayment = (props) => {
       fullName: "",
       phone: "",
       address: "",
-      province: "  ",
+      province: "",
       district: "",
       ward: "",
       comments: "",
@@ -123,8 +130,8 @@ const OrderPayment = (props) => {
     dispatch(
       actAddOrder({
         ...data,
-        province: provinceName,
-        district: districtName,
+        provinceName: provinceName,
+        districtName: districtName,
         orderCode: `#${orderCode + 1}`,
         totalAmount: props.totalAmount,
         totalItemQty: props.totalItemQty,
@@ -137,8 +144,8 @@ const OrderPayment = (props) => {
         ...data,
         totalAmount: props.totalAmount,
         totalItemQty: props.totalItemQty,
-        province: provinceName,
-        district: districtName,
+        provinceName: provinceName,
+        districtName: districtName,
         orderCode: `#${orderCode + 1}`,
         orderList: props.cart,
         orderAt: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`,
@@ -202,7 +209,7 @@ const OrderPayment = (props) => {
             <div>
               <form
                 className="m-0 row"
-                id="form-order"
+                // id="form-order"
                 onSubmit={handlePayment(onPayment)}
               >
                 <Controller
@@ -264,7 +271,7 @@ const OrderPayment = (props) => {
                   )}
                   name="address"
                   control={control}
-                  defaultValue=""
+                  defaultValue={isAuth ? userProfile?.address : ""}
                 />
                 <p className="m-0 text-danger">{errors?.address?.message}</p>
                 <ShowLocation
@@ -274,6 +281,8 @@ const OrderPayment = (props) => {
                   watch={watch}
                   setProvinceName={setProvinceName}
                   setDistrictName={setDistrictName}
+                  isAuth={isAuth}
+                  userProfile={userProfile}
                 />
 
                 <textarea
