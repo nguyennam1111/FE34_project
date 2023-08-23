@@ -67,8 +67,8 @@ const Header = () => {
   const handleSignOut = () => {
     dispatch(logout());
     dispatch(setForgotPassword(false));
-    dispatch(clearCart());
-    navigate(ROUTES.HOME);
+    dispatch(setEditUser(false));
+    navigate(backToUrl);
   };
 
   return (
