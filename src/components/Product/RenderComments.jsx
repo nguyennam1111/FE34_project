@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ReactStars from "react-stars";
 import { toast } from "react-toastify";
 import {
   actAddComment,
   actGetAllComments,
+  actGetCommentDetails,
 } from "../../redux/feature/ProductComments/productCommentsSlice";
 import { CaretDownOutlined } from "@ant-design/icons";
 import { Alert } from "antd";
+import { useParams } from "react-router";
 
 const RenderComments = (props) => {
   const [rate, setRate] = useState();
   const [comment, setComment] = useState("");
   const dispatch = useDispatch();
   const [showRate, setShowRate] = useState(false);
+  const { productComments, starDetails, averageRate, starDetailsValue } =
+    useSelector((state) => state.productComment);
 
   useEffect(() => {
     dispatch(
@@ -50,43 +54,29 @@ const RenderComments = (props) => {
       }
     } else {
       alert("Bạn chưa đăng nhập. Vui lòng đâng nhập để đánh giá sản phẩm");
-      <Alert
-        message="Warning"
-        description="Bạn chưa đăng nhập. Vui lòng đâng nhập để đánh giá sản phẩm"
-        type="warning"
-        showIcon
-        closable
-      />;
+      return (
+        <Alert
+          message="Warning"
+          description="Bạn chưa đăng nhập. Vui lòng đâng nhập để đánh giá sản phẩm"
+          type="warning"
+          showIcon
+          closable
+        />
+      );
     }
   };
 
-  const averageRate = (
-    props.productComments
-      ?.map((item) => (item.rate > 0 ? item.rate : ""))
-      .reduce((total, num) => {
-        return total + Number(num);
-      }, 0) / props.productComments?.filter((item) => item.rate > 0).length
-  ).toFixed(1);
-
   const renderDetailsStar = () => {
-    let starDetails = [];
-    for (let i = 1; i <= 5; i++) {
-      starDetails
-        .push(
-          props.productComments
-            ?.map((item) => item.rate < i + 1 && item.rate >= i)
-            .reduce((total, num) => {
-              return total + Number(num);
-            }, 0)
-        )
-        .toFixed(1);
-    }
-
-    return starDetails.map((star, index) => {
+    return starDetails?.map((star, index) => {
       return (
         <>
           <div className="d-flex align-items-center ">
-            <ReactStars count={5} size={20} value={index + 1} edit={false} />
+            <ReactStars
+              count={5}
+              size={20}
+              value={starDetailsValue[index] ? starDetailsValue[index] : 0}
+              edit={false}
+            />
             <span className="align-middle g-3">{star} đánh giá</span>
           </div>
         </>
@@ -103,7 +93,12 @@ const RenderComments = (props) => {
           <>
             <div key={item.id}>
               <p className="fst-italic m-0">{item.fullName}</p>
-              <ReactStars value={item.rate} edit={false} size={20} />
+              <ReactStars
+                value={item.rate}
+                edit={false}
+                size={20}
+                half={true}
+              />
 
               <p className="m-0">{item?.commentsContent}</p>
               <p className="text-end fst-italic">
@@ -159,7 +154,7 @@ const RenderComments = (props) => {
           value={comment}
           onChange={(e) => setComment(e.target.value)}
         ></textarea>
-        <div className="text-right align-right">
+        <div className="text-end">
           <button
             type="button"
             className="btn btn-primary"

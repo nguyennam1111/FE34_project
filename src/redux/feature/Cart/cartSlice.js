@@ -16,6 +16,7 @@ const initialState = {
       ?.reduce((total, num) => {
         return total + Number(num);
       }, 0) ?? "",
+  qtyInCartById: "",
 };
 
 export const cartSlice = createSlice({
@@ -163,7 +164,19 @@ export const cartSlice = createSlice({
       state.cart = [];
       state.totalAmount = "";
       state.totalItemQty = "";
+
       localStorage.removeItem("cart");
+    },
+    getOrderQtyById: (state, action) => {
+      state.qtyInCartById = Number(
+        state.cart
+          .map((item) =>
+            item.productId == action.payload ? item.productQty : ""
+          )
+          .reduce((total, num) => {
+            return total + Number(num);
+          }, 0)
+      );
     },
   },
 });
@@ -175,5 +188,6 @@ export const {
   setCartItemQty,
   updateCartValue,
   clearCart,
+  getOrderQtyById,
 } = cartSlice.actions;
 export default cartSlice.reducer;

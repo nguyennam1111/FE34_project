@@ -19,7 +19,10 @@ import { NumericFormat } from "react-number-format";
 import SideBar from "../../components/SideBar/SideBar";
 import ShowsBestSale from "../../components/Product/ShowBestSale";
 import RenderProducts from "../../components/Product/RenderProducts";
-import { addItemToCart } from "../../redux/feature/Cart/cartSlice";
+import {
+  addItemToCart,
+  getOrderQtyById,
+} from "../../redux/feature/Cart/cartSlice";
 import useScrollToTop from "../../hooks/useScrollToTop";
 import { ROUTES } from "../../constants/routes";
 import ProductDescription from "../../components/Product/ProductDescription";
@@ -47,7 +50,7 @@ const ProductDetails = () => {
   const { isAuth, userProfile } = useSelector((state) => state.auth);
 
   const { productComments } = useSelector((state) => state.productComment);
-  const { cart } = useSelector((state) => state.cart);
+  const { cart, qtyInCartById } = useSelector((state) => state.cart);
 
   useEffect(() => {
     dispatch(actfetchAllProducts());
@@ -59,6 +62,9 @@ const ProductDetails = () => {
       })
     );
   }, [params.id]);
+  useEffect(() => {
+    dispatch(getOrderQtyById(params.id));
+  }, [params.id, qtyInCartById]);
 
   useEffect(() => {
     dispatch(
@@ -69,13 +75,7 @@ const ProductDetails = () => {
   }, [productDetails.tags]);
 
   const imageList = productDetails?.productsImg;
-  const qtyInCart = Number(
-    cart
-      .map((item) => (item.productId == params.id ? item.productQty : ""))
-      .reduce((total, num) => {
-        return total + Number(num);
-      }, 0)
-  );
+
   const schemaAddToCart = Yup.object().shape({
     size: Yup.string().required("Chọn size"),
     color: Yup.string().required("Chọn màu"),
@@ -92,12 +92,12 @@ const ProductDetails = () => {
         `Không đủ hàng, tối đa ${
           Number(productDetails?.stock?.totalQty) -
           Number(productDetails?.stock?.saledQty) -
-          qtyInCart
+          qtyInCartById
         }`,
         (value) =>
           Number(productDetails?.stock?.totalQty) -
             Number(productDetails?.stock?.saledQty) -
-            qtyInCart >=
+            qtyInCartById >=
           value
       ),
   });
@@ -133,7 +133,7 @@ const ProductDetails = () => {
           disabled={
             Number(productDetails?.stock?.totalQty) -
               Number(productDetails?.stock?.saledQty) -
-              qtyInCart ==
+              qtyInCartById ==
             0
           }
           type="button"
@@ -160,7 +160,7 @@ const ProductDetails = () => {
             disabled={
               Number(productDetails?.stock?.totalQty) -
                 Number(productDetails?.stock?.saledQty) -
-                qtyInCart ==
+                qtyInCartById ==
               0
             }
             type="button"
@@ -184,6 +184,7 @@ const ProductDetails = () => {
         inputQty: data.inputQty,
       })
     );
+    dispatch(getOrderQtyById(params.id));
     setValue("size", "");
     setValue("color", "");
     setValue("inputQty", "");
@@ -251,7 +252,7 @@ const ProductDetails = () => {
             <p className="bg-highlight text-white font-instock px-2">
               {Number(productDetails?.stock?.totalQty) -
                 Number(productDetails?.stock?.saledQty) -
-                qtyInCart !=
+                qtyInCartById !=
               0
                 ? "Còn hàng"
                 : "Hết hàng"}
@@ -273,7 +274,15 @@ const ProductDetails = () => {
             </p>
             <p>{productDetails.productDescription?.title}</p>
             <div>
-              <form onSubmit={handleAddProductToCart(AddProductToCart)}>
+              <form
+                onSubmit={handleAddProductToCart(AddProductToCart)}
+                disabled={
+                  Number(productDetails?.stock?.totalQty) -
+                    Number(productDetails?.stock?.saledQty) -
+                    qtyInCartById ==
+                  0
+                }
+              >
                 <div className="d-flex mt-3" {...register("size")}>
                   <p className="me-2">Chọn size: </p>
 
@@ -293,16 +302,12 @@ const ProductDetails = () => {
                       id="inputQty"
                       name="inputQty"
                       type="number"
-                      // max={`${
-                      //   Number(productDetails?.stock?.totalQty) -
-                      //   Number(productDetails?.stock?.saledQty)
-                      // }`}
                       className="form-control w-25"
                       onChange={(e) => setValue("inputQty", e.target.value)}
                       disabled={
                         Number(productDetails?.stock?.totalQty) -
                           Number(productDetails?.stock?.saledQty) -
-                          qtyInCart ==
+                          qtyInCartById ==
                         0
                       }
                     ></input>
@@ -313,7 +318,7 @@ const ProductDetails = () => {
                       disabled={
                         Number(productDetails?.stock?.totalQty) -
                           Number(productDetails?.stock?.saledQty) -
-                          qtyInCart ==
+                          qtyInCartById ==
                         0
                       }
                     >
@@ -338,7 +343,7 @@ const ProductDetails = () => {
                 </div>
               </form>
               <p className="mt-3">Gọi ngay để được tư vấn</p>
-              <h5 className="p-3 bg-highlight text-center text-white w-50">
+              <h5 className="col-md-6 p-3 bg-highlight text-center text-white">
                 HOTLINE: 0905150109
               </h5>
               <div className="mt-2 ">
@@ -382,7 +387,7 @@ const ProductDetails = () => {
       <div className="mt-5 border-top">
         <h4 className="text-title-normal ps-3 py-2 m-0">SẢN PHẨM LIÊN QUAN</h4>
 
-        <div className="row m-0">
+        <div className="row m-0 p-3">
           <RenderProducts
             data={products}
             classCol="col-md-2"
