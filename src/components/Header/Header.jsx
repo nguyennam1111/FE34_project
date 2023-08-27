@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./HeaderStyle.css";
-import {
-  Link,
-  useLocation,
-  useNavigate,
-  useSearchParams,
-} from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 
 import { ROUTES } from "../../constants/routes";
 import { useDispatch, useSelector } from "react-redux";

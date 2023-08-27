@@ -119,6 +119,7 @@ const OrderPayment = (props) => {
   // });
 
   //
+
   const onPayment = (data) => {
     // create order code
     let orderCode = 0;
@@ -209,7 +210,7 @@ const OrderPayment = (props) => {
             <div>
               <form
                 className="m-0 row"
-                // id="form-order"
+                id="form-order"
                 onSubmit={handlePayment(onPayment)}
               >
                 <Controller

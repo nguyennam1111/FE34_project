@@ -16,8 +16,8 @@ import {
   setForgotPassword,
 } from "../../redux/feature/Authenticate/authSlice";
 
-import { Alert, Space } from "antd";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignIn = () => {
   const [eyePassword, setEyePassword] = useState("password");
@@ -115,10 +115,36 @@ const SignIn = () => {
         formData: resetPassword,
       })
     );
+
     alert(
       `Mật khẩu mới được gởi về email ${recoverData.recoverEmail}. Vui lòng check email và thực hiện đăng nhập lại`
     );
     dispatch(setForgotPassword(false));
+
+    // test send email
+
+    // const client = new SMTPClient({
+    //   user: "namnvt.ctin@gmail.com",
+    //   password: "BinEm@251278",
+    //   host: "smtp.gmail.com",
+    //   ssl: true,
+    // });
+
+    // // send the message and get a callback with an error or details of the message that was sent
+    // client.send(
+    //   {
+    //     text: "Recover password is 123456",
+    //     from: "NguyenVuTruongNam<namnvt.ctin@gmail.com>",
+    //     to: "NguyenVuTruongNam<namnvt.ctin@gmail.com>",
+    //     cc: "",
+    //     subject: "Recover password",
+    //   },
+    //   (err, message) => {
+    //     console.log(err || message);
+    //   }
+    // );
+
+    //
   };
 
   return (
@@ -164,7 +190,7 @@ const SignIn = () => {
           </p>
 
           <form key={1} onSubmit={handleSignIn(onValidLogin)}>
-            {/* <p className="text-danger">{loginError}</p> */}
+            {/* {loginError ? <p className="text-danger">{loginError}</p> : ""} */}
 
             <div className="row">
               <p className="col-md-3 pe-0 m-0">

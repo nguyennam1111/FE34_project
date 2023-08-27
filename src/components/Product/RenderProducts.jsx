@@ -1,7 +1,9 @@
 import React from "react";
 import btn_buy from "../../image/btn-buy.png";
 import { NumericFormat } from "react-number-format";
+import useScrollToTop from "../../hooks/useScrollToTop";
 const RenderProducts = (props) => {
+  useScrollToTop();
   const renderProducts = (data, classCol) => {
     return data?.map((item) => {
       return (

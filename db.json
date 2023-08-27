@@ -164,16 +164,16 @@
     },
     {
       "productId": 2,
-      "productStatus": "bestSale",
-      "productPromote": "promote",
-      "saleOffValue": 0.25,
+      "productStatus": "new",
+      "productPromote": "No",
+      "saleOffValue": 0,
       "productActive": "Actived"
     },
     {
       "productId": 3,
-      "productStatus": "hot",
+      "productStatus": "new",
       "productPromote": "",
-      "saleOffValue": 0.25,
+      "saleOffValue": 0,
       "productActive": "Actived"
     },
     {
@@ -317,9 +317,9 @@
         ]
       },
       "productCatalogue": "accessory",
-      "productStatus": "bestSale",
-      "productPromote": "promote",
-      "saleOffValue": 0.25,
+      "productStatus": "new",
+      "productPromote": "No",
+      "saleOffValue": 0,
       "stock": {
         "totalQty": 100,
         "saledQty": 15
@@ -365,9 +365,9 @@
         ]
       },
       "productCatalogue": "girl",
-      "productStatus": "hot",
+      "productStatus": "new",
       "productPromote": "",
-      "saleOffValue": 0.25,
+      "saleOffValue": 0,
       "stock": {
         "totalQty": 100,
         "saledQty": 7
@@ -530,7 +530,7 @@
       "saleOffValue": 0.2,
       "stock": {
         "totalQty": 100,
-        "saledQty": 61
+        "saledQty": 64
       },
       "inboundDate": "2023-07-18",
       "productActive": "Actived",
@@ -581,7 +581,7 @@
       "saleOffValue": 0,
       "stock": {
         "totalQty": 100,
-        "saledQty": 30
+        "saledQty": 32
       },
       "inboundDate": "2023-06-18",
       "productActive": "Actived",
@@ -1662,6 +1662,24 @@
       "commentsContent": "dddd",
       "createdAt": "Fri Aug 25 2023 9:58:15 AM",
       "id": 52
+    },
+    {
+      "rate": 5,
+      "productId": 1,
+      "email": "abc@gmail.com",
+      "fullName": "NguyenNam",
+      "commentsContent": "good",
+      "createdAt": "Fri Aug 25 2023 10:47:51 AM",
+      "id": 53
+    },
+    {
+      "rate": 4.5,
+      "productId": 6,
+      "email": "lean@gmail.com",
+      "fullName": "leAn",
+      "commentsContent": "OK",
+      "createdAt": "Sun Aug 27 2023 9:35:39 AM",
+      "id": 54
     }
   ],
   "userAccounts": [
@@ -1702,6 +1720,44 @@
       "admin": "No",
       "createdAt": "Wed Aug 23 2023 7:47:28 PM",
       "id": 2
+    },
+    {
+      "firstName": "Nguyen",
+      "lastName": "Thanh Nhan",
+      "email": "nhan@gmail.com",
+      "phone": "0924510222",
+      "address": "20-Chon tam 12",
+      "province": "48",
+      "district": "490",
+      "ward": "Phường Hòa Minh",
+      "oldPassword": "",
+      "inputPassword": "abc123",
+      "confirmedPassword": "abc123",
+      "provinceName": "Thành phố Đà Nẵng",
+      "districtName": "Quận Liên Chiểu",
+      "password": "abc123",
+      "admin": "No",
+      "createdAt": "Fri Aug 25 2023 1:11:06 PM",
+      "id": 3
+    },
+    {
+      "firstName": "le",
+      "lastName": "An",
+      "email": "lean@gmail.com",
+      "phone": "0905150109",
+      "address": "abc, 1234",
+      "province": "12",
+      "district": "105",
+      "ward": "Phường Đoàn Kết",
+      "oldPassword": "",
+      "inputPassword": "abc123",
+      "confirmedPassword": "abc123",
+      "provinceName": "Tỉnh Lai Châu",
+      "districtName": "Thành phố Lai Châu",
+      "password": "abc123",
+      "admin": "No",
+      "createdAt": "Sun Aug 27 2023 9:31:13 AM",
+      "id": 4
     }
   ],
   "orders": [
@@ -2227,6 +2283,84 @@
       ],
       "orderAt": "Wed Aug 23 2023 11:49:20 AM",
       "id": 13
+    },
+    {
+      "orderEmail": "lean@gmail.com",
+      "fullName": "leAn",
+      "phone": "0905150109",
+      "address": "abc, 1234",
+      "province": "12",
+      "district": "105",
+      "ward": "Phường Đoàn Kết",
+      "shippingType": "Giao hàng nhanh",
+      "shippingFee": 35000,
+      "paymentMethod": "COD",
+      "provinceName": "Tỉnh Lai Châu",
+      "districtName": "Thành phố Lai Châu",
+      "orderCode": "#14",
+      "totalAmount": 620000,
+      "totalItemQty": 2,
+      "orderList": [
+        {
+          "id": 1,
+          "productId": 7,
+          "productCode": "G-342_5",
+          "productName": "Váy liên thân KIDS - KF-2",
+          "sizeAndColor": "S/pink",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay7.jpg?v=1473606362390",
+          "productPrice": 310000,
+          "productQty": "2",
+          "productAmount": 620000,
+          "createdAt": "Sun Aug 27 2023 9:27:49 AM"
+        }
+      ],
+      "orderAt": "Sun Aug 27 2023 9:53:08 AM",
+      "id": 14
+    },
+    {
+      "orderEmail": "lean@gmail.com",
+      "fullName": "leAn",
+      "phone": "0905150109",
+      "address": "abc, 1234",
+      "province": "1",
+      "district": "20",
+      "ward": "Xã Duyên Hà",
+      "shippingType": "Giao hàng nhanh",
+      "shippingFee": 35000,
+      "paymentMethod": "COD",
+      "provinceName": "Thành phố Hà Nội",
+      "districtName": "Huyện Thanh Trì",
+      "orderCode": "#15",
+      "totalAmount": 720000,
+      "totalItemQty": 3,
+      "orderList": [
+        {
+          "id": 1,
+          "productId": 6,
+          "productCode": "KID-123_3",
+          "productName": "Váy liên thân KIDS - KF5",
+          "sizeAndColor": "M/pink",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay9.jpg?v=1473603722567",
+          "productPrice": 240000,
+          "productQty": "2",
+          "productAmount": 480000,
+          "createdAt": "Sun Aug 27 2023 10:04:41 AM"
+        },
+        {
+          "id": 2,
+          "productId": 6,
+          "productCode": "KID-123_3",
+          "productName": "Váy liên thân KIDS - KF5",
+          "sizeAndColor": "S/pink",
+          "productImg": "https://bizweb.dktcdn.net/100/117/632/products/aovay9.jpg?v=1473603722567",
+          "productPrice": 240000,
+          "productQty": "1",
+          "productAmount": 240000,
+          "createdAt": "Sun Aug 27 2023 10:04:45 AM"
+        }
+      ],
+      "orderAt": "Sun Aug 27 2023 11:31:31 AM",
+      "id": 15
     }
   ]
 }

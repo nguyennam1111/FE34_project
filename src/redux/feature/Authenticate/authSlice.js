@@ -1,9 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { userAccountApi } from "../../../apis/userAccountApi";
 import { toast } from "react-toastify";
-import { message } from "antd";
-import { ROUTES } from "../../../constants/routes";
-import { useNavigate } from "react-router";
 
 const initialState = {
   isAuth: JSON.parse(localStorage.getItem("isAuth")) ?? false,
@@ -25,7 +22,6 @@ export const actLogin = createAsyncThunk(
           item.password == loginData.loginPassword
       );
       if (mapUserAccount) {
-        toast.success("Login succeed!");
         return {
           userAccount: mapUserAccount,
           fullName: mapUserAccount.firstName + mapUserAccount.lastName,
@@ -69,6 +65,7 @@ export const authSlice = createSlice({
       state.loginError = null;
       state.userProfile = { ...userAccount, fullName };
       toast.success("Login succeed!");
+
       localStorage.setItem("isAuth", JSON.stringify(state.isAuth));
       localStorage.setItem("userProfile", JSON.stringify(state.userProfile));
     });

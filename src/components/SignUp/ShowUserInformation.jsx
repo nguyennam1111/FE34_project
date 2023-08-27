@@ -7,6 +7,7 @@ import {
   actFetchAllUserAccounts,
   setEditUser,
 } from "../../redux/feature/UserAccount/userAccountSlice";
+import OrderHistory from "../Order/OrderHistory";
 
 const ShowUserInformation = (props) => {
   const { editUser } = useSelector((state) => state.userAccount);
@@ -68,12 +69,20 @@ const ShowUserInformation = (props) => {
               Chỉnh sửa thông tin
             </button>
             <button
-              className="btn btn-secondary"
+              className="btn btn-secondary me-2"
               onClick={() => {
                 navigate(ROUTES.HOME);
               }}
             >
               Quay về
+            </button>
+            <button
+              className="btn btn-info"
+              onClick={() => {
+                navigate(`/Payment/${userProfile.id}?status=history`);
+              }}
+            >
+              Lịch sử mua hàng
             </button>
           </div>
         </div>

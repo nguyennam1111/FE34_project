@@ -45,22 +45,22 @@ const Payment = () => {
     dispatch(setOrderSucceed());
     dispatch(actFetchAllUserAccounts());
   }, []);
-  useEffect(() => {
-    dispatch(setPage(1));
-  }, []);
-  useEffect(() => {
-    dispatch(
-      actGetAllOrders({
-        _page: pagination.currentPage,
-        _limit: pagination.pageSize,
-        orderEmail: userProfile.email,
-      })
-    );
-    handleChangePage(pagination.currentPage);
-  }, [userProfile.email, pagination.currentPage]);
-  const handleChangePage = (newPage) => {
-    dispatch(setPage(newPage));
-  };
+  // useEffect(() => {
+  //   dispatch(setPage(1));
+  // }, []);
+  // useEffect(() => {
+  //   dispatch(
+  //     actGetAllOrders({
+  //       _page: pagination.currentPage,
+  //       _limit: pagination.pageSize,
+  //       orderEmail: userProfile.email,
+  //     })
+  //   );
+  //   handleChangePage(pagination.currentPage);
+  // }, [userProfile.email, pagination.currentPage]);
+  // const handleChangePage = (newPage) => {
+  //   dispatch(setPage(newPage));
+  // };
   switch (orderStatus) {
     case "succeed":
       return (
@@ -78,9 +78,9 @@ const Payment = () => {
       return (
         <>
           <OrderHistory
-            handleChangePage={handleChangePage}
-            pagination={pagination}
-            orders={orders}
+          // handleChangePage={handleChangePage}
+          // pagination={pagination}
+          // orders={orders}
           />
         </>
       );

@@ -13,8 +13,11 @@ import { actLogin } from "../../redux/feature/Authenticate/authSlice";
 
 import ShowUserInformation from "../../components/SignUp/ShowUserInformation";
 import ShowSignUp from "../../components/SignUp/ShowSignUp";
+import OrderHistory from "../../components/Order/OrderHistory";
 
 const SignUp = () => {
+  const callBackUrl = window.location.pathname;
+  localStorage.setItem("callBackUrl", JSON.stringify(callBackUrl));
   const phonePattern = /^((0|84)[3|5|7|8|9])+(\d{8})$\b/g;
 
   const { isAuth, userProfile, isChangePass } = useSelector(
@@ -50,6 +53,7 @@ const SignUp = () => {
           </li>
         </ol>
       </div>
+
       <div className="row m-0 align-items-center align-contents-center">
         <div className="col-md-8">
           {isAuth ? (
